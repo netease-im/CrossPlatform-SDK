@@ -13,6 +13,17 @@
 extern"C"
 {
 #endif
+/** @typedef void (*nim_msglog_query_single_cb_func)(int res_code, const char *msg_id, const char *result, const char *json_extension, const void *user_data)
+  * 查询单条消息历史回调函数定义
+  * @param[out] res_code		操作结果，成功200
+  * @param[out] id				查询时传入的客户端消息ID
+  * @param[out] result			查询结果 Json String (Keys SEE MORE in `nim_talk_def.h` 『消息结构 Json Keys』)
+  * @param[out] json_extension	json扩展数据（备用）
+  * @param[out] user_data		APP的自定义用户数据，SDK只负责传回给回调函数，不做任何处理！
+  * @return void 无返回值
+  */ 
+typedef void (*nim_msglog_query_single_cb_func)(int res_code, const char *msg_id, const char *result, const char *json_extension, const void *user_data);
+
 /** @typedef void (*nim_msglog_query_cb_func)(int res_code, const char *id, NIMSessionType type, const char *result, const char *json_extension, const void *user_data)
   * 本地或在线查询消息的回调函数定义
   * @param[out] res_code		操作结果，成功200
@@ -91,6 +102,7 @@ enum NIMMessageType
 	kNIMMessageTypeLocation  = 4,			/**< 位置类型消息*/
 	kNIMMessageTypeNotification	= 5,		/**< 系统类型通知（包括入群出群通知等） NIMNotificationId*/
 	kNIMMessageTypeFile		 = 6,			/**< 文件类型消息*/
+	kNIMMessageTypeTips		 = 10,			/**< 提醒类型消息,Tip内容根据格式要求填入消息结构中的kNIMMsgKeyServerExt字段*/
 	kNIMMessageTypeCustom    = 100,			/**< 自定义消息*/
 
 	kNIMMessageTypeUnknown	 = 1000,		/**< 未知类型消息，作为默认值*/
@@ -124,16 +136,16 @@ enum NIMMsgLogStatus
 /** @enum NIMNotificationId Notification Id */
 enum NIMNotificationId
 {
-	kNIMNotificationIdTeamInvite			= 0,			/**< 普通群拉人，{"ids":["a1", "a2"]}*/
-	kNIMNotificationIdTeamKick				= 1,			/**< 普通群踢人，{"ids":["a1", "a2"]}*/
-	kNIMNotificationIdTeamLeave				= 2,			/**< 退出群，{"id" : "a1"}*/
-	kNIMNotificationIdTeamUpdate			= 3,			/**< team_info更新，{"team_info":team_info} //群组信息(Keys SEE MORE `nim_team_def.h` 『群组信息 Json Keys』)*/
-	kNIMNotificationIdTeamDismiss			= 4,			/**< 群解散，{}*/
-	kNIMNotificationIdTeamApplyPass			= 5,			/**< 高级群申请加入成功，{"id":"a1"}*/
-	kNIMNotificationIdTeamOwnerTransfer		= 6,			/**< 高级群移交群主，{"id":"a1", "leave" : bool}*/
-	kNIMNotificationIdTeamAddManager		= 7,			/**< 增加管理员，{"ids":["a1","a2"]}*/
-	kNIMNotificationIdTeamRemoveManager		= 8,			/**< 删除管理员，{"ids":["a1","a2"]}*/
-	kNIMNotificationIdTeamInviteAccept		= 9,			/**< 高级群接受邀请进群，{"id":"a1"}*/
+	kNIMNotificationIdTeamInvite			= 0,			/**< 普通群拉人，{"ids":["a1", "a2"],"user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamKick				= 1,			/**< 普通群踢人，{"ids":["a1", "a2"],"user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamLeave				= 2,			/**< 退出群，{"id" : "a1","user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamUpdate			= 3,			/**< team_info更新，{"team_info":team_info,"user_namecards":["namecard1", "namecard2"]} //群组信息(Keys SEE MORE `nim_team_def.h` 『群组信息 Json Keys』)*/
+	kNIMNotificationIdTeamDismiss			= 4,			/**< 群解散，{"user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamApplyPass			= 5,			/**< 高级群申请加入成功，{"id":"a1","user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamOwnerTransfer		= 6,			/**< 高级群移交群主，{"id":"a1", "leave" : bool,"user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamAddManager		= 7,			/**< 增加管理员，{"ids":["a1","a2"],"user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamRemoveManager		= 8,			/**< 删除管理员，{"ids":["a1","a2"],"user_namecards":["namecard1", "namecard2"]}*/
+	kNIMNotificationIdTeamInviteAccept		= 9,			/**< 高级群接受邀请进群，{"id":"a1","user_namecards":["namecard1", "namecard2"]}*/
 
 	kNIMNotificationIdNetcallMiss			= 101,			/**< 未接电话,{"calltype":1,"channel":6146078138783760761,"from":"id1","ids":["id1","id2"],"time":1430995380471}*/
 	kNIMNotificationIdNetcallBill			= 102,			/**< 话单,{"calltype":2,"channel":6146077129466446197,"duration":8,"ids":["id1","id2"],"time":1430995117398}*/
@@ -192,6 +204,7 @@ static const char *kNIMNotificationKeyDataIds	= "ids";			/**< string array */
 static const char *kNIMNotificationKeyDataId	= "id";				/**< string */
 static const char *kNIMNotificationKeyTeamInfo	= "team_info";		/**< string, team_info 群组信息 Json Keys*/
 static const char *kNIMNotificationKeyTeamMember = "team_member";	/**< string, team_member_property 群组成员信息 Json Keys*/
+static const char *kNIMNotificationKeyUserNameCards = "name_cards";	/**< json string array, 操作者和被操作者双方的 用户名片 Json Keys*/
 /** @}*/ //群组通知 Json Keys
 
 /** @name kNIMNotificationIdNetcallBill/kNIMNotificationIdNetcallMiss/kNIMNotificationIdLocalNetcallReject/kNIMNotificationIdLocalNetcallNoResponse Data Keys
