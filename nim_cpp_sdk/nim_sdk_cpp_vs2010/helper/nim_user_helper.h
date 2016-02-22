@@ -1,6 +1,6 @@
 ﻿/** @file nim_user_helper.h
   * @brief SDK用户信息辅助方法
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/20
   */
@@ -10,7 +10,9 @@
 
 #include <string>
 #include <list>
+#include <assert.h>
 #include "json.h"
+#include "nim_common_helper.h"
 
 /**
 * @namespace nim
@@ -36,7 +38,7 @@ enum UserNameCardValueKey
 	kUserNameCardKeyAll		= (1 << 8) - 1		/**< 全部内容都有 */
 };
 
-/** @struct 云信用户名片 */
+/** @brief 云信用户名片 */
 struct UserNameCard
 {
 	/** 构造函数，推荐使用 */
@@ -196,8 +198,10 @@ public:
 	  */
 	void Update(const UserNameCard& namecard)
 	{
-		if (!namecard.GetAccId().empty())
-			SetAccId(namecard.GetAccId());
+		assert(namecard.GetAccId() == accid_);
+		if (namecard.GetAccId() != accid_)
+			return;
+
 		if (namecard.ExistValue(kUserNameCardKeyName))
 			SetName(namecard.GetName());
 		if (namecard.ExistValue(kUserNameCardKeyIconUrl))
@@ -255,7 +259,7 @@ public:
 		if (ExistValue(kUserNameCardKeyEx))
 			values[kNIMNameCardKeyEx] = GetExpand();
 
-		return values.toStyledString();
+		return GetJsonStringWithNoStyled(values);
 	}
 
 private:
@@ -274,7 +278,7 @@ private:
 	unsigned int	value_available_flag_;
 };
 
-/** @struct 黑名单信息 */
+/** @brief 黑名单信息 */
 struct BlackListInfo
 {
 	std::string		accid_;				/**< 用户ID */
@@ -285,7 +289,7 @@ struct BlackListInfo
 	BlackListInfo() : set_black_(true), create_timetag_(0), update_timetag_(0){}
 };
 
-/** @struct 静音名单信息 */
+/** @brief 静音名单信息 */
 struct MuteListInfo
 {
 	std::string		accid_;				/**< 用户ID */
@@ -296,7 +300,7 @@ struct MuteListInfo
 	MuteListInfo() : set_mute_(true), create_timetag_(0), update_timetag_(0) {}
 };
 
-/** @struct 黑名单和静音名单变更通知 */
+/** @brief 黑名单和静音名单变更通知 */
 struct SpecialRelationshipChangeEvent
 {
 	NIMUserSpecialRelationshipChangeType type_;		/**< 黑名单/静音名单更新事件类型 */
@@ -310,6 +314,14 @@ struct SpecialRelationshipChangeEvent
   * @return bool 解析成功或失败 
   */
 bool ParseNameCards(const std::string& namecards_json, std::list<UserNameCard>& namecards);
+
+/** @fn bool ParseNameCards(const Json::Value& namecards_json, std::list<UserNameCard>& namecards)
+  * @brief 解析用户名片
+  * @param[in] namecards_json 用户名片（json array）
+  * @param[out] namecards 用户名片
+  * @return bool 解析成功或失败
+  */
+bool ParseNameCards(const Json::Value& namecards_json, std::list<UserNameCard>& namecards);
 
 /** @fn bool ParseNameCard(const std::string& namecard_json, UserNameCard& namecard)
   * @brief 解析用户名片

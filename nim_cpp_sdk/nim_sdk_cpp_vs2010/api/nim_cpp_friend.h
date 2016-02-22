@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_friend.h
   * @brief NIM 好友相关接口
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author caowei, Oleg
   * @date 2015/8/17
   */
@@ -30,6 +30,7 @@ public:
 	typedef std::function<void(const FriendChangeEvent& )> FriendChangeCallback;	/**< 好友信息变更通知回调模板 */
 	typedef std::function<void(NIMResCode res_code)> FriendOptCallback;				/**< 变更好友信息回调模板 */
 	typedef std::function<void(NIMResCode res_code, const std::list<nim::FriendProfile>& user_profile_list)> GetFriendsListCallback;	/**< 获取好友回调模板 */
+	typedef std::function<void(const std::string& accid, const nim::FriendProfile& user_profile)> GetFriendProfileCallback;	/**< 获取好友信息回调模板 */
 
 public:
 	/** @fn static void RegChangeCb(const FriendChangeCallback &cb, const std::string& json_extension = "")
@@ -77,6 +78,15 @@ public:
 	*/
 	static void GetList(const GetFriendsListCallback& cb, const std::string& json_extension = "");
 
+	/** @fn static void GetFriendProfile(const std::string &accid, const GetFriendProfileCallback& cb, const std::string& json_extension = "")
+	* 获取好友信息
+	* @param[in] accid	对方帐号
+	* @param[in] cb	获取好友信息回调函数
+	* @param[in] json_extension json扩展参数（备用，目前不需要）
+	* @return void 无返回值
+	*/
+	static void GetFriendProfile(const std::string &accid, const GetFriendProfileCallback& cb, const std::string& json_extension = "");
+
 	/** @fn static bool ParseFriendAddEvent(const FriendChangeEvent& change_event, FriendAddEvent& out_event)
 	* 解析收到的好友添加请求通知
 	* @param[in] change_event	好友添加请求通知
@@ -108,6 +118,12 @@ public:
 	* @return bool 解析是否成功
 	*/
 	static bool ParseFriendProfileSyncEvent(const FriendChangeEvent& change_event, FriendProfileSyncEvent& out_event);
+
+	/** @fn void UnregFriendCb()
+	* 反注册Friend提供的所有回调
+	* @return void 无返回值
+	*/
+	static void UnregFriendCb();
 };
 
 }

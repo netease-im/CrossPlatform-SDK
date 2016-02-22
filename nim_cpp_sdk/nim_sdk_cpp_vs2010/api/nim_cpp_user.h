@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_user.h
   * @brief NIM SDK提供的用户相关接口
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/8/17
   */
@@ -24,7 +24,7 @@ namespace nim
 
 /** @class User
   * @brief NIM SDK提供的用户相关接口
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/8/17
   */
@@ -43,7 +43,7 @@ public:
 
 	typedef std::function<void(const std::list<UserNameCard>&)> UserNameCardChangedCallback;					/**< 用户名片变更通知回调模板 */
 	typedef std::function<void(const std::list<UserNameCard>&)> GetUserNameCardCallback;						/**< 获取用户名片回调模板 */
-	typedef std::function<void(NIMResCode res_code)> UpdateUserNameCardCallback;								/**< 更新用户名片回调模板 */
+	typedef std::function<void(NIMResCode res_code)> UpdateMyUserNameCardCallback;								/**< 更新我的名片回调模板 */
 
 	/** @fn static void RegSpecialRelationshipChangedCb(const SpecialRelationshipChangedCallback& cb, const std::string& json_extension = "")
 	* 统一注册用户属性变更通知回调函数（多端同步黑名单、静音名单变更）
@@ -115,14 +115,14 @@ public:
 	*/
 	static bool GetUserNameCardOnline(const std::list<std::string>& accids, const GetUserNameCardCallback& cb, const std::string& json_extension = "");
 
-	/** @fn static bool UpdateUserNameCard(const UserNameCard& namecard, const UpdateUserNameCardCallback& cb, const std::string& json_extension = "")
+	/** @fn static bool UpdateMyUserNameCard(const UserNameCard& namecard, const UpdateMyUserNameCardCallback& cb, const std::string& json_extension = "")
 	* 更新用户名片
 	* @param[in] namecard 用户名片内容
 	* @param[in] cb 操作结果回调
 	* @param[in] json_extension json扩展参数（备用，目前不需要）
 	* @return bool 检查参数如果不符合要求则返回失败
 	*/
-	static bool UpdateUserNameCard(const UserNameCard& namecard, const UpdateUserNameCardCallback& cb, const std::string& json_extension = "");
+	static bool UpdateMyUserNameCard(const UserNameCard& namecard, const UpdateMyUserNameCardCallback& cb, const std::string& json_extension = "");
 
 	/** @fn static bool ParseBlackListInfoChange(const SpecialRelationshipChangeEvent& change_event, BlackListUserNameCard& info)
 	* 解析黑名单变更通知
@@ -148,6 +148,12 @@ public:
 	* @return bool 解析是否成功
 	*/
 	static bool ParseSyncSpecialRelationshipChange(const SpecialRelationshipChangeEvent& change_event, std::list<BlackListInfo>& black_list, std::list<MuteListInfo>& mute_list);
+
+	/** @fn void UnregUserCb()
+	* 反注册User提供的所有回调
+	* @return void 无返回值
+	*/
+	static void UnregUserCb();
 
 };
 

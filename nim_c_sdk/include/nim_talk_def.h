@@ -1,6 +1,6 @@
 ﻿/** @file nim_talk_def.h
   * @brief NIM SDK talk相关的定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/02/02
   */
@@ -59,7 +59,7 @@ static const char *kNIMMsgKeyFromNick		= "from_nick";			/**< string,消息发送
 static const char *kNIMMsgKeyTime			= "time";				/**< long,消息时间戳(毫秒) */
 static const char *kNIMMsgKeyType			= "msg_type";			/**< int,消息类型(NIMMessageType) */
 static const char *kNIMMsgKeyBody			= "msg_body";			/**< string,消息正文,长度限制：5000字符 */
-static const char *kNIMMsgKeyAttach			= "msg_attach";			/**< string,消息多媒体资源参数,不同类型多媒体参数不同,发送非多媒体消息时不需要填写 */
+static const char *kNIMMsgKeyAttach			= "msg_attach";			/**< string,消息多媒体资源参数,不同类型多媒体参数不同,发送非多媒体消息时不需要填写,如需使用json string,限制为非格式化的json string */
 static const char *kNIMMsgKeyClientMsgid	= "client_msg_id";		/**< string,客户端消息id */
 static const char *kNIMMsgKeyServerMsgid	= "server_msg_id";		/**< long,服务器端消息id */
 static const char *kNIMMsgKeyResendFlag		= "resend_flag";		/**< int,消息重发标记位,第一次发送0,重发1 */
@@ -67,8 +67,8 @@ static const char *kNIMMsgKeyHistorySave	= "cloud_history";		/**< int,(可选)�
 static const char *kNIMMsgKeyMsgRoaming		= "roam_msg";			/**< int,(可选)该消息是否支持漫游,可选,仅对kNIMMessageTypeCustom有效,0:不支持,1:支持, 默认1 */
 static const char *kNIMMsgKeyMsgSync		= "sync_msg";			/**< int,(可选)该消息是否支持发送者多端同步,可选,仅对kNIMMessageTypeCustom有效,0:不支持,1:支持, 默认1 */
 static const char *kNIMMsgKeyNeedBadge		= "need_badge";			/**< int,(可选)是否要做消息计数，0:不需要，1:需要，默认1 */
-static const char *kNIMMsgKeyServerExt		= "server_ext";			/**< string,服务器扩展,内容限Json String,长度限制1024 */
-static const char *kNIMMsgKeyPushPayload	= "push_payload";		/**< string,第三方自定义的推送属性，限制json string，长度2048 */
+static const char *kNIMMsgKeyServerExt		= "server_ext";			/**< string,服务器扩展,内容限非格式化的json string,长度限制1024 */
+static const char *kNIMMsgKeyPushPayload	= "push_payload";		/**< string,第三方自定义的推送属性，限制非格式化的json string，长度2048 */
 static const char *kNIMMsgKeyPushContent	= "push_content";		/**< string,自定义推送文案，长度限制200字节 */
 static const char *kNIMMsgKeyPushEnable		= "push_enable";		/**< int,(可选)是否需要推送, 0:不需要,1:需要,默认1,aos在收到0是不要模拟本地推送 */
 static const char *kNIMMsgKeyNeedPushNick	= "push_nick";			/**< int,需要推送昵称，0：不需要，1：需要，默认1 */

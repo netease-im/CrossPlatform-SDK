@@ -1,6 +1,6 @@
 ﻿/** @file nim_msglog_helper.h
   * @brief msglog 辅助方法和数据结构定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/22
   */
@@ -21,7 +21,7 @@
 namespace nim
 {
 
-/** @struct 查询到消息历史结果 */
+/** @brief 查询到消息历史结果 */
 struct QueryMsglogResult
 {
 	int count_;						/**< 消息数 */

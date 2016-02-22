@@ -1,6 +1,6 @@
 ﻿/** @file nim_friend_helper.h
   * @brief SDK好友辅助方法
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/20
   */
@@ -10,7 +10,9 @@
 
 #include <string>
 #include <list>
+#include <assert.h>
 #include "json.h"
+#include "nim_common_helper.h"
 
 /**
 * @namespace nim
@@ -34,7 +36,7 @@ enum FriendProfileKey
 	kFriendProfileKeyAll = (1 << 6) - 1				/**< 有数据  */
 };
 
-/** @struct 云信好友 */
+/** @brief 云信好友 */
 struct FriendProfile
 {
 	/** 构造函数 */
@@ -206,7 +208,36 @@ struct FriendProfile
 			friend_profile_json[kNIMFriendKeyCreateTime] = create_timetag_;
 		if (update_timetag_ > 0)
 			friend_profile_json[kNIMFriendKeyUpdateTime] = update_timetag_;
-		return friend_profile_json.toStyledString();
+		return GetJsonStringWithNoStyled(friend_profile_json);
+	}
+
+	/** @fn void Update(const FriendProfile& profile)
+	  * @brief 更新好友数据
+	  * @param[in] profile 好友数据
+	  * @return void 
+	  */
+	void Update(const FriendProfile& profile)
+	{
+		assert(profile.accid_ == accid_);
+		if (profile.accid_ != accid_)
+			return;
+
+		if (profile.ExistValue(kFriendProfileKeyRelationship))
+			relationship_ = profile.relationship_;
+		if (profile.ExistValue(kFriendProfileKeyPassiveRelationship))
+			passive_relationship_ = profile.passive_relationship_;
+		if (profile.ExistValue(kFriendProfileKeySource))
+			source_ = profile.source_;
+		if (profile.ExistValue(kFriendProfileKeyAlias))
+			alias_ = profile.alias_;
+		if (profile.ExistValue(kFriendProfileKeyBits))
+			bits_ = profile.bits_;
+		if (profile.ExistValue(kFriendProfileKeyEx))
+			expand_ = profile.expand_;
+		if (profile.create_timetag_ > 0)
+			create_timetag_ = profile.create_timetag_;
+		if (profile.update_timetag_ > 0)
+			update_timetag_ = profile.update_timetag_;
 	}
 
 private:
@@ -225,14 +256,14 @@ private:
 
 };
 
-/** @struct 云信好友变更事件 */
+/** @brief 云信好友变更事件 */
 struct FriendChangeEvent
 {
 	NIMFriendChangeType	type_;			/**< 事件类型 */
 	std::string			content_;		/**< 事件内容，根据事件类型通过提供的ParsexxxEvent接口(nim_cpp_friend.h)解析该内容 */
 };
 
-/** @struct 云信好友变更事件（请求添加） */
+/** @brief 云信好友变更事件（请求添加） */
 struct FriendAddEvent
 {
 	std::string		accid_;				/**< 用户ID */
@@ -240,19 +271,19 @@ struct FriendAddEvent
 	std::string		msg_;				/**< 附言 */
 };
 
-/** @struct 云信好友变更事件（删除） */
+/** @brief 云信好友变更事件（删除） */
 struct FriendDelEvent
 {
 	std::string		accid_;				/**< 用户ID */
 };
 
-/** @struct 云信好友变更事件（更新） */
+/** @brief 云信好友变更事件（更新） */
 struct FriendProfileUpdateEvent
 {
 	FriendProfile	profile_;			/**< 用户信息 */
 };
 
-/** @struct 云信好友变更事件（多端同步） */
+/** @brief 云信好友变更事件（多端同步） */
 struct FriendProfileSyncEvent
 {
 	std::list<FriendProfile> profiles_;	/**< 用户信息列表 */

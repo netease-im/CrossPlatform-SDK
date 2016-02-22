@@ -1,6 +1,6 @@
 ﻿/** @file nim_sdk_helper.h
   * @brief SDK库辅助方法
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/09/08
   */
@@ -15,8 +15,10 @@
 #include "assert.h"
 #include "wtypes.h"
 #include "json.h"
-// #include "..\..\..\..\tool_kits/base/thread/thread_manager.h"
-// #include "..\..\..\..\tool_kits/base/callback/callback.h"
+#ifndef NIM_SDK
+#include "..\..\..\..\tool_kits/base/thread/thread_manager.h"
+#include "..\..\..\..\tool_kits/base/callback/callback.h"
+#endif
 
 /**
 * @namespace nim
@@ -25,10 +27,12 @@
 namespace nim
 {
 
-// inline void PostTaskToUIThread(const StdClosure &closure)
-// {
-// 	nbase::ThreadManager::PostTask(0, closure);
-// }
+#ifndef NIM_SDK
+inline void PostTaskToUIThread(const StdClosure &closure)
+{
+	nbase::ThreadManager::PostTask(0, closure);
+}
+#endif
 
 /** @class SDKFunction
   * @brief SDK库辅助类，提供加载/卸载SDK库以及获取接口的方法

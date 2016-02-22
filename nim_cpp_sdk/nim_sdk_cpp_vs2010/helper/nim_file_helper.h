@@ -1,6 +1,6 @@
 ﻿/** @file nim_file_helper.h
   * @brief SDK文件操作辅助方法
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/09/08
   */

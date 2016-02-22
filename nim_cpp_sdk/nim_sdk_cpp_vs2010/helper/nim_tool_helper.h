@@ -1,6 +1,6 @@
 ﻿/** @file nim_tool_helper.h
   * @brief SDK工具类辅助方法以及定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/09/24
   */
@@ -22,7 +22,7 @@ namespace nim
 
 #include "nim_res_code_def.h"
 
-/** @struct 语音信息，用于语音转文字 */
+/** @brief 语音信息，用于语音转文字 */
 struct AudioInfo
 {
 	std::string mime_type_;				/**< 语音类型 */

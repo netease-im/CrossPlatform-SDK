@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_vchat.h
   * @brief NIM VChat提供的音视频（包括设备）相关接口
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/4/30
   */
@@ -9,36 +9,29 @@
 #define _NIM_SDK_CPP_VCHAT_H_
 
 #include <string>
+#include <functional>
 
-/**
-* @namespace nim
-* @brief namespace nim
-*/
 namespace nim
 {
 
 #include "nim_vchat_def.h"
 #include "nim_device_def.h"
 
-/** @class VChat
-  * @brief NIM VChat提供的音视频（包括设备）相关接口
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
-  * @author gq
-  * @date 2015/4/30
-  */
 class VChat
 {
 
 public:
+	typedef std::function<void(bool ret, int code, const std::string& file, __int64 time)>  Mp4OptCallback;
 	/** 
 	* NIM VCHAT初始化，需要在SDK的nim_client_init成功之后
 	* @param[in] json_extension 无效的扩展字段
 	* @return bool 初始化结果，如果是false则以下所有接口调用无效
 	*/
-	static bool Init(const std::string& json_extension);
+	static bool Init(const std::string& json_info);
 
 	/** 
 	* NIM VCHAT清理，需要在SDK的nim_client_cleanup之前
+	* @param[in] json_extension 无效的扩展字段
 	* @return void 无返回值
 	*/
 	static void Cleanup();
@@ -46,7 +39,9 @@ public:
 	/** 
 	* NIM VCHAT DEVICE 遍历设备
 	* @param[in] type NIMDeviceType 见nim_device_def.h
+	* @param[in] json_extension 无效的扩展字段
 	* @param[in] cb 结果回调见nim_device_def.h
+	* @param[in] user_data 无效的扩展字段
 	* @return void 无返回值
 	*/
 	static void EnumDeviceDevpath(nim::NIMDeviceType type, nim_vchat_enum_device_devpath_sync_cb_func cb);
@@ -56,7 +51,9 @@ public:
 	* @param[in] type NIMDeviceType 见nim_device_def.h
 	* @param[in] device_path 无效的扩展字段
 	* @param[in] fps 摄像头为采样频率（一般传电源频率取50）,其他NIMDeviceType无效（麦克风采样频率由底层控制，播放器采样频率也由底层控制）
+	* @param[in] json_extension 无效的扩展字段
 	* @param[in] cb 结果回调见nim_device_def.h
+	* @param[in] user_data 无效的扩展字段
 	* @return void 无返回值
 	*/
 	static void StartDevice(nim::NIMDeviceType type, const std::string& device_path, unsigned fps, nim_vchat_start_device_cb_func cb);
@@ -64,6 +61,7 @@ public:
 	/** 
 	* NIM VCHAT DEVICE 结束设备
 	* @param[in] type NIMDeviceType 见nim_device_def.h
+	* @param[in] json_extension 无效的扩展字段
 	* @return void 无返回值
 	*/
 	static void EndDevice(nim::NIMDeviceType type);
@@ -138,9 +136,10 @@ public:
 	* NIM VCHAT 启动通话，异步回调nim_vchat_cb_func 见nim_vchat_def.h
 	* @param[in] mode NIMVideoChatMode 启动音视频通话类型 见nim_vchat_def.h
 	* @param[in] json_extension Json string 扩展，kNIMVChatUids成员id列表,kNIMVChatCustomVideo自主视频数据和kNIMVChatCustomAudio自主音频 如{"uids":["uid_temp"],"custom_video":1, "custom_audio":1}
+	* @param[in] user_data 无效的扩展字段
 	* @return bool true 调用成功，false 调用失败可能有正在进行的通话
 	*/
-	static bool Start(NIMVideoChatMode mode, const std::string& json_extension);
+	static bool Start(NIMVideoChatMode mode, const std::string& apns_text, const std::string& custom_info, const std::string& json_info);
 
 	/** 
 	* NIM VCHAT 设置通话模式，在更改通话模式后，通知底层
@@ -154,9 +153,10 @@ public:
 	* NIM VCHAT 回应音视频通话邀请，异步回调nim_vchat_cb_func 见nim_vchat_def.h
 	* @param[in] channel_id 音视频通话通道id
 	* @param[in] accept true 接受，false 拒绝
+	* @param[in] json_extension Json string 扩展，kNIMVChatCustomVideo自主视频数据和kNIMVChatCustomAudio自主音频 如{"custom_video":1, "custom_audio":1}
 	* @return bool true 调用成功，false 调用失败（可能channel_id无匹配，如要接起另一路通话前先结束当前通话）
 	*/
-	static bool CalleeAck(unsigned __int64 channel_id, bool accept);
+	static bool CalleeAck(unsigned __int64 channel_id, bool accept, const std::string& json_extension);
 
 	/** 
 	* NIM VCHAT 音视频通话控制，异步回调nim_vchat_cb_func 见nim_vchat_def.h
@@ -167,7 +167,23 @@ public:
 	static bool Control(unsigned __int64 channel_id, NIMVChatControlType type);
 
 	/** 
+	* NRTC 开始录制MP4文件，一次只允许一个录制文件，在通话开始的时候才有实际数据
+	* @param[in] path 文件录制路径
+	* @param[in] cb 结果回调
+	* @return void 无返回值
+	*/
+	static void StartRecord(const std::string& path, Mp4OptCallback cb);
+
+	/** 
+	* NRTC 停止录制MP4文件
+	* @param[in] cb 结果回调
+	* @return void 无返回值
+	*/
+	static void StopRecord(Mp4OptCallback cb);
+
+	/** 
 	* NIM VCHAT 结束通话(需要主动在通话结束后调用，用于底层挂断和清理数据)
+	* @param[in] json_extension 无效的扩展字段
 	* @return void 无返回值
 	*/
 	static void End();

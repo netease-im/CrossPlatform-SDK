@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_sysmsg.h
   * @brief 系统消息接口；主要包括查询系统消息、删除系统消息等功能
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/2/1
   */
@@ -37,6 +37,7 @@ public:
 	typedef NotifySysmsgResCallback	QuerySysmsgUnreadCallback;	/**< 查询系统消息自定义通知未读数回调模板 */
 	typedef NotifySysmsgResCallback	ReadAllCallback;			/**< 设置系统消息自定义通知已读状态回调模板 */
 	typedef NotifySysmsgResCallback	DeleteAllCallback;			/**< 删除全部系统消息自定义通知回调模板 */
+	typedef NotifySysmsgResCallback	BatchSetCallback;			/**< 批量调整系统消息自定义通知回调模板 */
 	typedef std::function<void(nim::NIMResCode res_code, __int64 msg_id, int unread_count)>	NotifySingleSysmsgCallback;	/**< 修改（单条）系统消息自定义通知回调模板 */
 	typedef NotifySingleSysmsgCallback SetStatusCallback;		/**< 设置系统消息自定义通知状态回调模板 */
 	typedef NotifySingleSysmsgCallback DeleteCallback;			/**< 删除系统消息自定义通知回调模板 */
@@ -133,6 +134,32 @@ public:
 	* @return void 无返回值
 	*/
 	static void DeleteAllAsync(const DeleteAllCallback& cb, const std::string& json_extension = "");
+
+	/** @fn static void SetStatusByTypeAsync(NIMSysMsgType type, NIMSysMsgStatus status, const BatchSetCallback& cb, const std::string& json_extension = "")
+	* 按类型设置系统通知状态
+	* @param[in] type 类型
+	* @param[in] status 状态
+	* @param[in] json_extension json扩展参数（备用，目前不需要）
+	* @param[in] cb			回调函数
+	* @return void 无返回值
+	*/
+	static void SetStatusByTypeAsync(NIMSysMsgType type, NIMSysMsgStatus status, const BatchSetCallback& cb, const std::string& json_extension = "");
+
+	/** @fn static void DeleteStatusByTypeAsync(NIMSysMsgType type, const BatchSetCallback& cb, const std::string& json_extension = "")
+	* 按类型删除系统通知
+	* @param[in] type 类型
+	* @param[in] json_extension json扩展参数（备用，目前不需要）
+	* @param[in] cb			回调函数
+	* @return void 无返回值
+	*/
+	static void DeleteStatusByTypeAsync(NIMSysMsgType type, const BatchSetCallback& cb, const std::string& json_extension = "");
+
+	/** @fn void UnregSysmsgCb()
+	* 反注册SysMsg提供的所有回调
+	* @return void 无返回值
+	*/
+	static void UnregSysmsgCb();
+
 };
 
 } 

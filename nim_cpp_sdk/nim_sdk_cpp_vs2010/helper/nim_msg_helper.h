@@ -1,6 +1,6 @@
 ﻿/** @file nim_msg_helper.h
   * @brief Message 通用辅助方法和数据结构定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/20
   */
@@ -22,7 +22,7 @@ namespace nim
 
 #include "nim_res_code_def.h"
 
-/** @struct 发送消息回执 */
+/** @brief 发送消息回执 */
 struct SendMessageArc
 {
 	std::string talk_id_;	/**< 会话ID */

@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_session.h
   * @brief 会话列表管理功能；主要包括查询会话列表、删除会话列表等功能
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/2/1
   */
@@ -80,6 +80,13 @@ public:
 	* @return bool 检查参数如果不符合要求则返回失败
 	*/
 	static bool SetUnreadCountZeroAsync(nim::NIMSessionType to_type, const std::string& id, const SetUnreadCountZeroCallback& cb, const std::string& json_extension = "");
+
+	/** @fn void UnregSessionCb()
+	* 反注册Session提供的所有回调
+	* @return void 无返回值
+	*/
+	static void UnregSessionCb();
+
 };
 
 } 

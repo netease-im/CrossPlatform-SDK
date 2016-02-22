@@ -94,6 +94,9 @@
     <ClCompile Include="helper\nim_session_helper.cpp">
       <Filter>helper</Filter>
     </ClCompile>
+    <ClCompile Include="api\nim_cpp_plugin_in.cpp">
+      <Filter>api</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helper\nim_client_helper.h">
@@ -177,6 +180,9 @@
     </ClInclude>
     <ClInclude Include="helper\nim_session_helper.h">
       <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="api\nim_cpp_plugin_in.h">
+      <Filter>api</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

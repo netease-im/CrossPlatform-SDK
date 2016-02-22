@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_team.h
   * @brief 群组功能；主要包括查询群信息、查询群成员信息、加人、踢人等功能
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/2/1
   */
@@ -377,6 +377,13 @@ public:
 	* @return bool 解析成功失败
 	*/
 	static bool ParseTeamInfo(const std::string& json_team_info, TeamInfo& team_info);
+
+	/** @fn void UnregTeamCb()
+	* 反注册Team提供的所有回调
+	* @return void 无返回值
+	*/
+	static void UnregTeamCb();
+
 };
 
 } 

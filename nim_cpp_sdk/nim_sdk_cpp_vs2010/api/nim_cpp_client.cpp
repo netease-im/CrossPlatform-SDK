@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_client.cpp
   * @brief 全局管理功能；主要包括SDK初始化/清理、客户端登录/退出等功能
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/09/21
   */
@@ -96,7 +96,7 @@ static void CallbackMutliSpotLogin(const char* json_res, const void* callback)
 		Json::Value values;
 		if (reader.parse(PCharToString(json_res), values) && values.isObject())
 		{
-			res.notiry_type_ = (NIMMultiSpotNotiyType)values[kNIMMultiSpotNotiyType].asUInt();
+			res.notify_type_ = (NIMMultiSpotNotifyType)values[kNIMMultiSpotNotifyType].asUInt();
 			ParseOtherClientsPres(values[kNIMOtherClientsPres], res.other_clients_);
 		}
 		Client::MultiSpotLoginCallback *cb = (Client::MultiSpotLoginCallback *)callback;
@@ -287,4 +287,32 @@ void Client::RegKickOtherClientCb(const KickOtherCallback& cb, const std::string
 	return NIM_SDK_GET_FUNC(nim_client_reg_kickout_other_client_cb)(json_extension.c_str(), &CallbackKickother, g_cb_kickother_);
 }
 
+void Client::UnregClientCb()
+{
+	if (g_cb_relogin_ != nullptr)
+	{
+		delete g_cb_relogin_;
+		g_cb_relogin_ = nullptr;
+	}
+	if (g_cb_kickout_ != nullptr)
+	{
+		delete g_cb_kickout_;
+		g_cb_kickout_ = nullptr;
+	}
+	if (g_cb_disconnect_ != nullptr)
+	{
+		delete g_cb_disconnect_;
+		g_cb_disconnect_ = nullptr;
+	}
+	if (g_cb_multispot_login_ != nullptr)
+	{
+		delete g_cb_multispot_login_;
+		g_cb_multispot_login_ = nullptr;
+	}
+	if (g_cb_kickother_ != nullptr)
+	{
+		delete g_cb_kickother_;
+		g_cb_kickother_ = nullptr;
+	}
+}
 }

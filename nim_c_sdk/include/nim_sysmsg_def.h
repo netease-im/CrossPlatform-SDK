@@ -1,6 +1,6 @@
 ﻿/** @file nim_sysmsg_def.h
   * @brief system msg define
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/2/1
   */
@@ -114,7 +114,7 @@ static const char *kNIMSysMsgKeyCustomSaveFlag	= "custom_save_flag";	/**< int,		
 static const char *kNIMSysMsgKeyCustomApnsText	= "custom_apns_text";	/**< string,	自定义通知消息推送文本，不填则不推送*/
 static const char *kNIMSysMsgKeyLocalStatus		= "log_status";			/**< int,		本地定义的系统消息状态,见NIMSysMsgStatus,发送方不需要填写*/
 static const char *kNIMSysMsgKeyLocalClientMsgId= "client_msg_id";		/**< string,	本地定义的消息id,发送方必填,建议使用uuid */
-static const char *kNIMSysMsgKeyPushPayload		= "push_payload";		/**< json string, 第三方自定义的推送属性，限制json string，长度2048 */
+static const char *kNIMSysMsgKeyPushPayload		= "push_payload";		/**< json string, 第三方自定义的推送属性，限制非格式化的json string，长度2048 */
 static const char *kNIMSysMsgKeyPushEnable		= "push_enable";		/**< int,		是否需要推送, 0:不需要,1:需要,默认1 */
 static const char *kNIMSysMsgKeyNeedBadge		= "need_badge";			/**< int,		是否要做消息计数，0:不需要，1:需要，默认1 */
 static const char *kNIMSysMsgKeyPushNeedNick	= "push_nick";			/**< int,		需要推送昵称，0：不需要，1：需要，默认0 */

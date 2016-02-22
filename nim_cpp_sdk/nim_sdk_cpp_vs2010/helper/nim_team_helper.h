@@ -1,6 +1,6 @@
 ﻿/** @file nim_team_helper.h
   * @brief Team 辅助方法和数据结构定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/14
   */
@@ -13,6 +13,7 @@
 #include <functional>
 #include "json.h"
 #include "nim_sdk_helper.h"
+#include "nim_user_helper.h"
 
 /**
 * @namespace nim
@@ -25,7 +26,7 @@ namespace nim
 #include "nim_msglog_def.h"
 #include "nim_res_code_def.h"
 
-/** @struct 群组信息数据标记Key,用以标记对应数据的有效性 */
+/** @brief 群组信息数据标记Key,用以标记对应数据的有效性 */
 enum TeamInfoKey
 {
 	kTeamInfoKeyNone = 0,					/**< 无数据 */	
@@ -42,7 +43,7 @@ enum TeamInfoKey
 	kTeamInfoKeyAll = (1 << 10) - 1			/**< 有数据 */
 };
 
-/** @struct 群组信息 */
+/** @brief 群组信息 */
 struct TeamInfo
 {
 public:
@@ -352,7 +353,7 @@ public:
 			json[nim::kNIMTeamInfoKeyCustom] = custom_;
 		json[nim::kNIMTeamInfoKeyServerCustom] = server_custom_;
 
-		return json.toStyledString();
+		return GetJsonStringWithNoStyled(json);
 	}
 
 private:
@@ -380,7 +381,7 @@ private:
 	unsigned int	value_available_flag_;
 };
 
-/** @struct 群成员信息数据标记Key,用以标记对应数据的有效性 */
+/** @brief 群成员信息数据标记Key,用以标记对应数据的有效性 */
 enum TeamMemberValueKey
 {
 	kTeamMemberPropertyKeyNone = 0,				/**< 无数据 */
@@ -391,7 +392,7 @@ enum TeamMemberValueKey
 	kTeamMemberPropertyKeyAll = (1 << 4) - 1	/**< 有数据 */
 };
 
-/** @struct 群组成员信息 */
+/** @brief 群组成员信息 */
 struct TeamMemberProperty
 {
 public:
@@ -538,7 +539,7 @@ public:
 		if (update_timetag_ > 0)
 			json[nim::kNIMTeamUserKeyUpdateTime] = update_timetag_;
 
-		return json.toStyledString();
+		return GetJsonStringWithNoStyled(json);
 	}
 
 private:
@@ -556,13 +557,14 @@ private:
 	unsigned int	value_available_flag_;
 };
 
-/** @struct 群组事件通知 */
+/** @brief 群组事件通知 */
 struct TeamEvent
 {
 	NIMResCode res_code_;					/**< 错误码 */
 	NIMNotificationId notification_id_;		/**< 通知类型ID */
 	std::string team_id_;					/**< 群组ID */
 	std::list<std::string> ids_;			/**< 通知可能涉及到的群成员ID */
+	std::list<UserNameCard> namecards_;		/**< 通知可能涉及到的群成员的用户名片 */
 	TeamInfo	team_info_;					/**< 通知可能涉及到的群信息 */
 };
 

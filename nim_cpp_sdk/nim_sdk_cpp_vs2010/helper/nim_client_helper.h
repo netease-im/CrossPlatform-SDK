@@ -1,6 +1,6 @@
 ﻿/** @file nim_client_helper.h
   * @brief Client 辅助方法和数据结构定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/09/07
   */
@@ -21,7 +21,7 @@ namespace nim
 #include "nim_client_def.h"
 #include "nim_res_code_def.h"
 
-/** @struct SDK设置项 */
+/** @brief SDK设置项 */
 struct SDKConfig
 {
 	//global_config
@@ -47,7 +47,7 @@ struct SDKConfig
 				, sdk_log_level_(kNIMSDKLogLevelApp) {}
 };
 
-/** @struct 多端登陆客户端信息 */
+/** @brief 多端登陆客户端信息 */
 struct OtherClientPres
 {
 	std::string	app_account_;			/**< 第三方账号 */
@@ -61,7 +61,7 @@ struct OtherClientPres
 	OtherClientPres() : login_time_(0) {}
 };
 
-/** @struct 登录结果回调信息 */
+/** @brief 登录结果回调信息 */
 struct LoginRes
 {
 	NIMResCode res_code_;				/**< 返回的错误码NIMResCode */
@@ -73,21 +73,21 @@ struct LoginRes
 	LoginRes() : relogin_(false) {}
 };
 
-/** @struct 被踢结果回调信息 */
+/** @brief 被踢结果回调信息 */
 struct KickoutRes
 {
 	NIMClientType client_type_;			/**< int, 客户端类型NIMClientType */
 	NIMKickReason kick_reason_;			/**< 返回的被踢原因NIMKickReason */
 };
 
-/** @struct 多端登录回调信息 */
+/** @brief 多端登录回调信息 */
 struct MultiSpotLoginRes
 {
-	NIMMultiSpotNotiyType	notiry_type_;			/**< NIMMultiSpotNotiyType 多点登录通知类型 */
+	NIMMultiSpotNotifyType	notify_type_;			/**< NIMMultiSpotNotifyType 多点登录通知类型 */
 	std::list<OtherClientPres> other_clients_;		/**< 其他端的在线状态列表 */
 };
 
-/** @struct 踢人结果回调信息 */
+/** @brief 踢人结果回调信息 */
 struct KickOtherRes
 {
 	NIMResCode res_code_;					/**< 返回的错误码NIMResCode */

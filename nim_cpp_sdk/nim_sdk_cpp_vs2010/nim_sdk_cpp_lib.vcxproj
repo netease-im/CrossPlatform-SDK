@@ -52,7 +52,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;NIM_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)api\;$(ProjectDir)helper\;$(SolutionDir)third_party\jsoncpp\include\json\;$(ProjectDir)..\nim_sdk_dll\export_headers\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -71,7 +71,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;NIM_SDK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)api\;$(ProjectDir)helper\;$(SolutionDir)third_party\jsoncpp\include\json\;$(ProjectDir)..\nim_sdk_dll\export_headers\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -101,6 +101,7 @@
     <ClCompile Include="api\nim_cpp_tool.cpp" />
     <ClCompile Include="api\nim_cpp_user.cpp" />
     <ClCompile Include="api\nim_cpp_vchat.cpp" />
+    <ClCompile Include="api\nim_cpp_plugin_in.cpp" />
     <ClCompile Include="helper\nim_client_helper.cpp" />
     <ClCompile Include="helper\nim_common_helper.cpp" />
     <ClCompile Include="helper\nim_file_helper.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="api\nim_cpp_tool.h" />
     <ClInclude Include="api\nim_cpp_user.h" />
     <ClInclude Include="api\nim_cpp_vchat.h" />
+    <ClInclude Include="api\nim_cpp_plugin_in.h" />
     <ClInclude Include="helper\nim_client_helper.h" />
     <ClInclude Include="helper\nim_common_helper.h" />
     <ClInclude Include="helper\nim_file_helper.h" />

@@ -1,6 +1,6 @@
 ﻿/** @file nim_talk_helper.h
   * @brief Talk 辅助方法和数据结构定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/16
   */
@@ -12,6 +12,7 @@
 #include <list>
 #include <functional>
 #include "json.h"
+#include "nim_common_helper.h"
 
 /**
 * @namespace nim
@@ -25,7 +26,78 @@ namespace nim
 #include "nim_msglog_def.h"
 #include "nim_res_code_def.h"
 
-/** @struct P2P和群组消息 */
+/** @brief 消息属性设置 */
+struct MessageSetting
+{
+	BoolStatus resend_flag_;			/**< 该消息是否为重发状态 */
+	BoolStatus server_history_saved_;	/**< 该消息是否存储云端历史 */
+	BoolStatus roaming_;				/**< 该消息是否支持漫游 */
+	BoolStatus self_sync_;				/**< 该消息是否支持发送者多端同步 */
+	BoolStatus persist_enable_;			/**< 消息是否要存离线 */
+	BoolStatus be_muted_;				/**< 该消息是否在接收方被静音处理 */
+	BoolStatus need_push_; 				/**< 是否需要推送 */
+	BoolStatus push_need_badge_;		/**< 是否要做消息计数 */
+	BoolStatus push_need_nick_;			/**< 需要推送昵称 */
+
+	/** 构造函数 */
+	MessageSetting() : server_history_saved_(BS_NOT_INIT)
+		, roaming_(BS_NOT_INIT)
+		, self_sync_(BS_NOT_INIT)
+		, persist_enable_(BS_NOT_INIT)
+		, be_muted_(BS_NOT_INIT)
+		, need_push_(BS_NOT_INIT)
+		, push_need_badge_(BS_NOT_INIT)
+		, push_need_nick_(BS_NOT_INIT)
+		, resend_flag_(BS_NOT_INIT){}
+
+	/** @fn void ToJsonValue(Json::Value& message) const
+	  * @brief 组装Json Value字符串
+	  * @param[out] message 消息Json
+	  * @return void
+      */
+	void ToJsonValue(Json::Value& message) const
+	{
+		if (server_history_saved_ != BS_NOT_INIT)
+			message[kNIMMsgKeyHistorySave] = server_history_saved_== BS_TRUE;
+		if (roaming_ != BS_NOT_INIT)
+			message[kNIMMsgKeyMsgRoaming] = roaming_== BS_TRUE;
+		if (self_sync_ != BS_NOT_INIT)
+			message[kNIMMsgKeyMsgSync] = self_sync_== BS_TRUE;
+		if (push_need_badge_ != BS_NOT_INIT)
+			message[kNIMMsgKeyNeedBadge] = push_need_badge_== BS_TRUE;
+		if (need_push_ != BS_NOT_INIT)
+			message[kNIMMsgKeyPushEnable] = need_push_== BS_TRUE;
+		if (push_need_nick_ != BS_NOT_INIT)
+			message[kNIMMsgKeyNeedPushNick] = push_need_nick_== BS_TRUE;
+		if (resend_flag_ != BS_NOT_INIT)
+			message[kNIMMsgKeyResendFlag] = resend_flag_== BS_TRUE;
+	}
+
+	/** @fn void ParseMessageSetting(const Json::Value& message)
+	  * @brief 从Json Value解析出消息属性设置
+	  * @param[in] message 消息Json
+	  * @return void
+      */
+	void ParseMessageSetting(const Json::Value& message)
+	{
+		if (message.isMember(kNIMMsgKeyHistorySave))
+			server_history_saved_ = (BoolStatus)message[kNIMMsgKeyHistorySave].asInt() == 1 ? BS_TRUE : BS_FALSE;
+		if (message.isMember(kNIMMsgKeyMsgRoaming))
+			roaming_ = (BoolStatus)message[kNIMMsgKeyMsgRoaming].asInt() == 1 ? BS_TRUE : BS_FALSE;
+		if (message.isMember(kNIMMsgKeyMsgSync))
+			self_sync_ = (BoolStatus)message[kNIMMsgKeyMsgSync].asInt() == 1 ? BS_TRUE : BS_FALSE;
+		if (message.isMember(kNIMMsgKeyNeedBadge))
+			push_need_badge_ = (BoolStatus)message[kNIMMsgKeyNeedBadge].asInt() == 1 ? BS_TRUE : BS_FALSE;
+		if (message.isMember(kNIMMsgKeyPushEnable))
+			need_push_ = (BoolStatus)message[kNIMMsgKeyPushEnable].asInt() == 1 ? BS_TRUE : BS_FALSE;
+		if (message.isMember(kNIMMsgKeyNeedPushNick))
+			push_need_nick_ = (BoolStatus)message[kNIMMsgKeyNeedPushNick].asInt() == 1 ? BS_TRUE : BS_FALSE;
+		if (message.isMember(kNIMMsgKeyResendFlag))
+			resend_flag_ = (BoolStatus)message[kNIMMsgKeyResendFlag].asInt() == 1 ? BS_TRUE : BS_FALSE;
+	}
+};
+
+/** @brief P2P和群组消息 */
 struct IMMessage
 {
 public:
@@ -33,18 +105,20 @@ public:
 	NIMMessageFeature	feature_;				/**< 消息属性 */
 
 public:
-	NIMSessionType session_type_;				/**< 会话类型 */
-	std::string	   receiver_accid_;				/**< 接收者ID */
-	std::string    sender_accid_;				/**< 发送者ID */
-	__int64		   timetag_;					/**< 消息时间戳（毫秒） */
-	std::string	   content_;					/**< 消息内容 */
-	NIMMessageType type_;						/**< 消息类型 */
-	std::string	   attach_;						/**< 消息附件 */
-	std::string	   client_msg_id_;				/**< 消息ID（客户端） */
-	bool		   resend_flag_;				/**< 重发标记 */
-	bool		   support_cloud_history_;		/**< 是否支持云端存储 */
-	bool		   support_roam_msg_;			/**< 是否支持消息漫游 */
-	bool		   support_sync_msg_;			/**< 是否支持消息多端同步 */
+	NIMSessionType	session_type_;				/**< 会话类型 */
+	std::string		receiver_accid_;			/**< 接收者ID */
+	std::string		sender_accid_;				/**< 发送者ID */
+	__int64			timetag_;					/**< 消息时间戳（毫秒） */
+	std::string		content_;					/**< 消息内容 */
+	NIMMessageType	type_;						/**< 消息类型 */
+	std::string		attach_;					/**< 消息附件 */
+	std::string		client_msg_id_;				/**< 消息ID（客户端） */
+	bool			resend_flag_;				/**< 重发标记 */
+	Json::Value		push_payload_;				/**< 第三方自定义的推送属性，长度2048 */
+	std::string		push_content_;				/**< 自定义推送文案，长度限制200字节 */
+	Json::Value		server_ext_;				/**< 第三方扩展字段, 长度限制1024 */
+	std::string		local_ext_;					/**< 本地扩展字段, 格式不限 */
+	MessageSetting	msg_setting_;				/**< 消息属性设置 */
 
 public:
 	std::string	   local_res_path_;				/**< 媒体文件本地绝对路径（客户端） */
@@ -61,9 +135,6 @@ public:
 
 	/** 构造函数 */
 	IMMessage() : resend_flag_(false)
-				, support_cloud_history_(true)
-				, support_roam_msg_(true)
-				, support_sync_msg_(true)
 				, readonly_sender_client_type_(0) 
 				, readonly_server_id_(0)
 				, feature_(kNIMMessageFeatureDefault)
@@ -71,6 +142,52 @@ public:
 				, timetag_(0)
 				, status_(nim::kNIMMsgLogStatusNone)
 				, sub_status_(nim::kNIMMsgLogSubStatusNone) {}
+
+	/** 构造函数 */
+	IMMessage(const std::string &json_msg) : resend_flag_(false)
+		, readonly_sender_client_type_(0) 
+		, readonly_server_id_(0)
+		, feature_(kNIMMessageFeatureDefault)
+		, session_type_(kNIMSessionTypeP2P)
+		, timetag_(0)
+		, status_(nim::kNIMMsgLogStatusNone)
+		, sub_status_(nim::kNIMMsgLogSubStatusNone) 
+	{
+		Json::Value values;
+		Json::Reader reader;
+		if (reader.parse(json_msg, values) && values.isObject())
+		{
+			session_type_ = (NIMSessionType)values[kNIMMsgKeyToType].asUInt();
+			receiver_accid_ = values[kNIMMsgKeyToAccount].asString();
+			sender_accid_ = values[kNIMMsgKeyFromAccount].asString();
+			readonly_sender_client_type_ = values[kNIMMsgKeyFromClientType].asUInt();
+			readonly_sender_device_id_ = values[kNIMMsgKeyFromDeviceId].asString();
+			readonly_sender_nickname_ = values[kNIMMsgKeyFromNick].asString();
+			timetag_ = values[kNIMMsgKeyTime].asUInt64();
+
+			type_ = (NIMMessageType)values[kNIMMsgKeyType].asUInt();
+			content_ = values[kNIMMsgKeyBody].asString();
+			attach_ = values[kNIMMsgKeyAttach].asString();
+			client_msg_id_ = values[kNIMMsgKeyClientMsgid].asString();
+			readonly_server_id_ = values[kNIMMsgKeyServerMsgid].asUInt64();
+			resend_flag_ = values[kNIMMsgKeyResendFlag].asUInt() > 0;
+
+			local_res_path_ = values[kNIMMsgKeyLocalFilePath].asString();
+			local_talk_id_ = values[kNIMMsgKeyLocalTalkId].asString();
+			local_res_id_ = values[kNIMMsgKeyLocalResId].asString();
+			status_ = (NIMMsgLogStatus)values[kNIMMsgKeyLocalLogStatus].asUInt();
+			sub_status_ = (NIMMsgLogSubStatus)values[kNIMMsgKeyLocalLogSubStatus].asUInt();
+
+			if (!reader.parse(values[kNIMMsgKeyLocalExt].asString(), server_ext_) || !server_ext_.isObject())
+				assert(0);
+			if (!reader.parse(values[kNIMMsgKeyPushPayload].asString(), push_payload_) || !push_payload_.isObject())
+				assert(0);
+			local_ext_ = values[kNIMMsgKeyLocalExt].asString();
+			push_content_ = values[kNIMMsgKeyPushContent].asString();
+
+			msg_setting_.ParseMessageSetting(values);
+		}
+	}
 
 	/** @fn std::string ToJsonString() const
 	  * @brief 组装Json Value字符串
@@ -88,14 +205,19 @@ public:
 		values[kNIMMsgKeyAttach] = attach_;
 		values[kNIMMsgKeyClientMsgid] = client_msg_id_;
 		values[kNIMMsgKeyResendFlag] = resend_flag_ ? 1 : 0;
-		values[kNIMMsgKeyHistorySave] = support_cloud_history_ ? 1 : 0;
-		values[kNIMMsgKeyMsgRoaming] = support_roam_msg_ ? 1 : 0;
-		values[kNIMMsgKeyMsgSync] = support_sync_msg_ ? 1 : 0;
 		values[kNIMMsgKeyLocalFilePath] = local_res_path_;
 		values[kNIMMsgKeyLocalTalkId] = receiver_accid_;
 		values[kNIMMsgKeyLocalResId] = local_res_id_;
 		values[kNIMMsgKeyLocalLogStatus] = status_;
 		values[kNIMMsgKeyLocalLogSubStatus] = sub_status_;
+		values[kNIMMsgKeyLocalExt] = local_ext_;
+		if (!server_ext_.empty())
+			values[kNIMMsgKeyServerExt] = GetJsonStringWithNoStyled(server_ext_);
+		values[kNIMMsgKeyPushContent] = push_content_;
+		if (!push_payload_.empty())
+			values[kNIMMsgKeyPushPayload] = GetJsonStringWithNoStyled(push_payload_);
+
+		msg_setting_.ToJsonValue(values);
 
 		if (!use_to_send)
 		{
@@ -104,11 +226,11 @@ public:
 			values[kNIMMsgKeyFromNick] = readonly_sender_nickname_;
 			values[kNIMMsgKeyServerMsgid] = readonly_server_id_;
 		}
-		return values.toStyledString();
+		return GetJsonStringWithNoStyled(values);
 	}
 };
 
-/** @struct 文件消息附件 */
+/** @brief 文件消息附件 */
 struct IMFile
 {
 	std::string	md5_;				/**< 文件内容MD5 */
@@ -137,7 +259,7 @@ struct IMFile
 		if (size_ > 0)
 			attach[kNIMFileMsgKeySize] = size_;
 
-		return attach.toStyledString();
+		return GetJsonStringWithNoStyled(attach);
 	}
 
 	/** @fn std::string ToJsonString() const
@@ -153,7 +275,7 @@ struct IMFile
 	}
 };
 
-/** @struct 图片消息附件 */
+/** @brief 图片消息附件 */
 struct IMImage : IMFile
 {
 	int			width_;			/**< 图片宽度 */
@@ -177,7 +299,7 @@ struct IMImage : IMFile
 	}
 };
 
-/** @struct 位置消息附件 */
+/** @brief 位置消息附件 */
 struct IMLocation
 {
 	std::string	description_;		/**< 位置描述内容 */
@@ -198,11 +320,11 @@ struct IMLocation
 		attach[kNIMLocationMsgKeyLatitude] = latitude_;
 		attach[kNIMLocationMsgKeyLongitude] = longitude_;
 
-		return attach.toStyledString();
+		return GetJsonStringWithNoStyled(attach);
 	}
 };
 
-/** @struct 语音消息附件 */
+/** @brief 语音消息附件 */
 struct IMAudio : IMFile
 {
 	int			duration_;			/**< 语音时长 */
@@ -223,7 +345,7 @@ struct IMAudio : IMFile
 	}
 };
 
-/** @struct 小视频消息附件 */
+/** @brief 小视频消息附件 */
 struct IMVideo : IMFile
 {
 	int			duration_;			/**< 视频时长 */
@@ -264,7 +386,7 @@ bool ParseMessage(const std::string& msg_json, IMMessage& message);
   */
 bool ParseReceiveMessage(const std::string& msg_json, IMMessage& message);
 
-/** @fn bool ParseReceiveMessage(const Json::Value& msg_json, IMMessage& message)
+/** @fn void ParseReceiveMessage(const Json::Value& msg_json, IMMessage& message)
   * @brief 解析消息
   * @param[in] msg_json 消息(Json Value数据)
   * @param[out] message 消息

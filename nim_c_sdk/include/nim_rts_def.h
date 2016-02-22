@@ -1,6 +1,6 @@
 ﻿/** @file nim_rts_def.h
   * @brief NIM RTS提供的实时会话（数据通道）接口定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/6/30
   */

@@ -1,6 +1,6 @@
 ﻿/** @file nim_sysmsg_helper.h
   * @brief sysmsg 辅助方法和数据结构定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/20
   */
@@ -12,6 +12,7 @@
 #include <list>
 #include <functional>
 #include "json.h"
+#include "nim_common_helper.h"
 
 /**
 * @namespace nim
@@ -24,7 +25,7 @@ namespace nim
 #include "nim_msglog_def.h"
 #include "nim_res_code_def.h"
 
-/** @struct 系统消息和自定义通知数据 */
+/** @brief 系统消息和自定义通知数据 */
 struct SysMessage
 {
 	__int64		timetag_;			/**< 通知时间戳（毫秒） */
@@ -34,9 +35,14 @@ struct SysMessage
 	std::string content_;			/**< 通知内容 */
 	std::string	attach_;			/**< 通知附件 */
 	__int64		id_;				/**< 通知ID */
-	bool		support_offline_;	/**< 是否支持离线消息 */
+	BoolStatus	support_offline_;	/**< 是否支持离线消息*/
 	std::string	apns_text_;			/**< 推送通知内容 */
 	NIMSysMsgStatus	status_;		/**< 通知状态 */
+
+	Json::Value push_payload_;		/**< 第三方自定义的推送属性，长度2048 */
+	BoolStatus	push_enable_;		/**< 是否需要推送*/
+	BoolStatus	push_need_badge_;	/**< 推送是否需要做消息计数*/
+	BoolStatus	push_need_nick_;	/**< 推送是否需要昵称*/
 
 	NIMResCode	rescode_;			/**< 通知错误码 */
 	NIMMessageFeature	feature_;	/**< 通知属性 */
@@ -46,11 +52,14 @@ struct SysMessage
 	/** 构造函数 */
 	SysMessage() : timetag_(0)
 		, id_(0)
-		, support_offline_(true)
+		, support_offline_(BS_NOT_INIT)
 		, total_unread_count_(0)
 		, type_(kNIMSysMsgTypeUnknown)
 		, status_(kNIMSysMsgStatusNone)
-		, feature_(kNIMMessageFeatureDefault) {}
+		, feature_(kNIMMessageFeatureDefault) 
+		, push_enable_(BS_NOT_INIT)
+		, push_need_badge_(BS_NOT_INIT)
+		, push_need_nick_(BS_NOT_INIT) {}
 
 	/** @fn std::string ToJsonString() const
 	  * @brief 组装Json Value字符串
@@ -65,12 +74,21 @@ struct SysMessage
 		values[kNIMSysMsgKeyAttach] = attach_;
 		values[kNIMSysMsgKeyMsg] = content_;
 		values[kNIMSysMsgKeyLocalClientMsgId] = client_msg_id_;
-		values[kNIMSysMsgKeyCustomSaveFlag] = support_offline_ ? 1 : 0;
+		if (support_offline_ != BS_NOT_INIT)
+			values[kNIMSysMsgKeyCustomSaveFlag] = support_offline_ == BS_TRUE ? 1 : 0;
 		values[kNIMSysMsgKeyCustomApnsText] = apns_text_;
 		values[kNIMSysMsgKeyTime] = timetag_;
 		values[kNIMSysMsgKeyMsgId] = id_;
 		values[kNIMSysMsgKeyLocalStatus] = status_;
-		return values.toStyledString();
+		if (push_enable_ != BS_NOT_INIT)
+			values[kNIMSysMsgKeyPushEnable] = push_enable_ == BS_TRUE ? 1 : 0;
+		if (push_need_nick_ != BS_NOT_INIT)
+			values[kNIMSysMsgKeyPushNeedNick] = push_need_nick_ == BS_TRUE ? 1 : 0;
+		if (push_need_badge_ != BS_NOT_INIT)
+			values[kNIMSysMsgKeyNeedBadge] = push_need_badge_ == BS_TRUE ? 1 : 0;
+		if (!push_payload_.empty())
+			values[kNIMSysMsgKeyPushPayload] = GetJsonStringWithNoStyled(push_payload_);
+		return GetJsonStringWithNoStyled(values);
 	}
 };
 

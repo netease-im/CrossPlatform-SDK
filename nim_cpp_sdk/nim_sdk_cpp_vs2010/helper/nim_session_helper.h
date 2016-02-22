@@ -1,6 +1,6 @@
 ﻿/** @file nim_session_helper.h
   * @brief Session 辅助方法和数据结构定义
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/10/22
   */
@@ -23,7 +23,7 @@ namespace nim
 #include "nim_session_def.h"
 #include "nim_msglog_def.h"
 
-/** @struct 会话数据 */
+/** @brief 会话数据 */
 struct SessionData
 {
 	std::string		id_;					/**< 会话ID */
@@ -49,7 +49,7 @@ struct SessionData
 				, msg_sub_status_(kNIMMsgLogSubStatusNone){}
 };
 
-/** @struct 会话列表数据 */
+/** @brief 会话列表数据 */
 struct SessionDataList
 {
 	int			count_;					/**< 会话列表项数量 */

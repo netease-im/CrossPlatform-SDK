@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_client.h
   * @brief 全局管理功能；主要包括SDK初始化/清理、客户端登录/退出等功能
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/09/21
   */
@@ -131,6 +131,12 @@ public:
 	* @return void 无返回值
 	*/
 	static void RegKickOtherClientCb(const KickOtherCallback& cb, const std::string& json_extension = "");
+
+	/** @fn void UnregClientCb()
+	* 反注册Client提供的所有回调
+	* @return void 无返回值
+	*/
+	static void UnregClientCb();
 };
 
 } 

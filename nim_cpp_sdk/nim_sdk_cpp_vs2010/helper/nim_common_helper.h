@@ -1,6 +1,6 @@
 ﻿/** @file nim_common_helper.h
   * @brief SDK辅助方法
-  * @copyright (c) 2015, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/09/08
   */
@@ -19,6 +19,14 @@
 */
 namespace nim
 {
+/** @enum 自定义的布尔值类型数据的替代数据类型 */
+enum BoolStatus
+{
+	BS_NOT_INIT = -1,	/**< 未初始化 */
+	BS_FALSE	= 0,	/**< false */
+	BS_TRUE		= 1		/**< true */
+};
+
 /** @fn bool StrListToJsonString(const std::list<std::string>& list, std::string& out)
   * @brief 将一个string类型的list组装成一个Json Array
   * @param[in] list string类型的list
@@ -41,6 +49,19 @@ bool JsonStrArrayToList(const Json::Value& array_str, std::list<std::string>& ou
   * @return string 字符串
   */
 std::string PCharToString(const char* str);
+
+/** @fn std::string GetJsonStringWithNoStyled(const Json::Value& values);
+  * @brief 获得非格式化的Json string,传入SDK的json string格式要求为非格式化的，如果是格式化的json string可能会影响功能
+  * @param[in] values Json Value
+  * @return std::string 非格式化的json string
+  */
+std::string GetJsonStringWithNoStyled(const Json::Value& values);
+
+/** @fn Json::Value GetJsonValueFromJsonString(const std::string& json_string);
+  * @brief 解析JsonString
+  * @return JsonValue
+  */
+Json::Value GetJsonValueFromJsonString(const std::string& json_string);
 
 }
 
