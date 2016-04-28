@@ -19,7 +19,7 @@ typedef void(*nim_sysmsg_set_status_async)(__int64 msg_id, nim::NIMSysMsgStatus 
 typedef void(*nim_sysmsg_read_all_async)(const char *json_extension, nim_sysmsg_res_cb_func cb, const void* user_data);
 typedef void(*nim_sysmsg_delete_async)(__int64 msg_id, const char *json_extension, nim_sysmsg_res_ex_cb_func cb, const void *user_data);
 typedef void(*nim_sysmsg_delete_all_async)(const char *json_extension, nim_sysmsg_res_cb_func cb, const void *user_data);
-typedef void(*nim_sysmsg_reg_custom_notification_arc_cb)(const char *json_extension, nim_custom_sysmsg_arc_cb_func cb, const void *user_data);
+typedef void(*nim_sysmsg_reg_custom_notification_ack_cb)(const char *json_extension, nim_custom_sysmsg_ack_cb_func cb, const void *user_data);
 typedef void(*nim_sysmsg_send_custom_notification)(const char *json_msg, const char *json_extension);
 typedef void(*nim_sysmsg_set_logs_status_by_type_async)(NIMSysMsgType type, NIMSysMsgStatus status, const char *json_extension, nim_sysmsg_res_cb_func cb, const void *user_data);
 typedef void(*nim_sysmsg_delete_logs_by_type_async)(NIMSysMsgType type, const char *json_extension, nim_sysmsg_res_cb_func cb, const void *user_data);
@@ -48,7 +48,7 @@ static void CallbackSendCustomSysmsg(const char *result, const void *callback)
 		if (*cb_pointer)
 		{
 			SendMessageArc arc;
-			if (ParseSendMessageArc(PCharToString(result), arc))
+			if (ParseSendMessageAck(PCharToString(result), arc))
 			{
 				(*cb_pointer)(arc);
 			}
@@ -121,7 +121,7 @@ SystemMsg::ReceiveSysmsgCallback* g_cb_receive_sysmsg_ = nullptr;
 		 g_cb_send_custom_sysmsg_ = nullptr;
 	 }
 	 g_cb_send_custom_sysmsg_ = new SendCustomSysmsgCallback(cb);
-	 return NIM_SDK_GET_FUNC(nim_sysmsg_reg_custom_notification_arc_cb)(json_extension.c_str(), &CallbackSendCustomSysmsg, g_cb_send_custom_sysmsg_);
+	 return NIM_SDK_GET_FUNC(nim_sysmsg_reg_custom_notification_ack_cb)(json_extension.c_str(), &CallbackSendCustomSysmsg, g_cb_send_custom_sysmsg_);
  }
 
  void SystemMsg::SendCustomNotificationMsg(const std::string& json_msg)
@@ -143,7 +143,7 @@ SystemMsg::ReceiveSysmsgCallback* g_cb_receive_sysmsg_ = nullptr;
 	 values[kNIMSysMsgKeyLocalClientMsgId] = client_msg_id;
 	 values[kNIMSysMsgKeyCustomSaveFlag] = support_offline ? 1 : 0;
 	 values[kNIMSysMsgKeyCustomApnsText] = apns_text;
-	 return values.toStyledString();
+	 return GetJsonStringWithNoStyled(values);
  }
 
  bool SystemMsg::QueryMsgAsync(int limit_count, __int64 last_time, const QueryMsgCallback& cb, const std::string& json_extension)

@@ -15,7 +15,7 @@
 
 /**
 * @namespace nim
-* @brief namespace nim
+* @brief IM
 */
 namespace nim
 {
@@ -39,12 +39,15 @@ public:
 	typedef std::function<void(nim::NIMResCode res_code, const std::string& msg_id)> ModifySingleMsglogCallback; /**< 修改（单条）消息历史回调模板 */
 	typedef ModifySingleMsglogCallback SetStatusCallback;	/**< 修改消息历史状态回调模板 */
 	typedef ModifySingleMsglogCallback SetSubStatusCallback;/**< 修改消息历史子状态回调模板 */
+	typedef ModifySingleMsglogCallback UpdateLocalExtCallback;/**< 修改消息历史本地扩展字段内容回调模板 */
 	typedef ModifySingleMsglogCallback WriteMsglogCallback;	/**< 保存消息历史回调模板 */
 	typedef ModifySingleMsglogCallback DeleteCallback;		/**< 删除消息历史回调模板 */
 	typedef ModifySingleMsglogCallback DeleteAllCallback;	/**< 删除全部消息历史回调模板 */
 
 	typedef std::function<void(nim::NIMResCode res_code)> DBFunctionCallback;		/**< 消息历史变更回调模板 */
 	typedef std::function<void(__int64 imported_count, __int64 total_count)> ImportDbPrgCallback;	/**< 导入消息历史回调模板 */
+
+	typedef std::function<void(const MessageStatusChangedResult&)>	MessageStatusChangedCallback;	/**< 发送消息已读回执通知回调模板 */
 
 	/** @fn static bool QueryMsgByIDAysnc(const std::string &client_msg_id, const QuerySingleMsgCallback &cb, const std::string &json_extension = "")
 	 * 根据消息ID查询本地（单条）消息
@@ -255,7 +258,41 @@ public:
 		, const ImportDbPrgCallback& prg_cb
 		, const std::string& json_extension = "");
 
+	/** @fn void SendReceiptAsync(const std::string& json_msg, const MessageStatusChangedCallback& cb)
+	* 发送消息已读回执
+	* @param[in] json_msg			已读消息json string。
+	* @param[in] cb				操作结果的回调函数
+	* @return void 无返回值
+	*/
+	static void SendReceiptAsync(const std::string& json_msg, const MessageStatusChangedCallback& cb);
 
+	/** @fn bool QueryMessageBeReaded(const IMMessage& msg)
+	* 查询自己发送的消息是否被对方已读
+	* @param[in] msg			消息。
+	* @return bool 是否被已读
+	*/
+	static bool QueryMessageBeReaded(const IMMessage& msg);
+
+	/** @fn void RegMessageStatusChangedCb(const MessageStatusChangedCallback& cb, const std::string &json_extension = "")
+	* 注册全局的消息状态变更通知（目前只支持已读状态的通知）
+	* @param[in] cb				回调函数
+	* @param[in] json_extension	json扩展参数（备用，目前不需要）
+	* @return void 无返回值
+	*/
+	static void RegMessageStatusChangedCb(const MessageStatusChangedCallback& cb, const std::string &json_extension = "");
+
+	/** @fn static bool UpdateLocalExtAsync(const std::string& msg_id, const std::string& local_ext, const UpdateLocalExtCallback& cb, const std::string& json_extension = "")
+	* 更新本地消息扩展字段内容
+	* @param[in] msg_id		消息id
+	* @param[in] local_ext  本地扩展字段内容
+	* @param[in] json_extension json扩展参数（备用，目前不需要）
+	* @param[in] cb			操作结果的回调函数
+	* @return bool 检查参数如果不符合要求则返回失败
+	*/
+	static bool UpdateLocalExtAsync(const std::string& msg_id
+		, const std::string& local_ext
+		, const UpdateLocalExtCallback& cb
+		, const std::string& json_extension = "");
 };
 
 } 

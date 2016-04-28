@@ -214,7 +214,7 @@ bool User::GetUserNameCard(const std::list<std::string>& accids, const GetUserNa
 	for (auto iter = accids.cbegin(); iter != accids.cend(); ++iter)
 		values.append(*iter);
 	
-	NIM_SDK_GET_FUNC(nim_user_get_user_name_card)(values.toStyledString().c_str(), json_extension.c_str(), &CallbackGetUserNameCard, cb_pointer);
+	NIM_SDK_GET_FUNC(nim_user_get_user_name_card)(GetJsonStringWithNoStyled(values).c_str(), json_extension.c_str(), &CallbackGetUserNameCard, cb_pointer);
 
 	return true;
 }
@@ -234,7 +234,7 @@ bool User::GetUserNameCardOnline(const std::list<std::string>& accids, const Get
 	for (auto iter = accids.cbegin(); iter != accids.cend(); ++iter)
 		values.append(*iter);
 
-	NIM_SDK_GET_FUNC(nim_user_get_user_name_card_online)(values.toStyledString().c_str(), json_extension.c_str(), &CallbackGetUserNameCard, cb_pointer);
+	NIM_SDK_GET_FUNC(nim_user_get_user_name_card_online)(GetJsonStringWithNoStyled(values).c_str(), json_extension.c_str(), &CallbackGetUserNameCard, cb_pointer);
 
 	return true;
 }

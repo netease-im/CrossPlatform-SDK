@@ -1,5 +1,5 @@
-/** @file nim_plugin.h
-  * @brief NIM SDKÌá¹©µÄplugin½ÓÈëËùĞè½Ó¿Ú
+ï»¿/** @file nim_plugin_in.h
+  * @brief NIM SDKæä¾›çš„pluginæ¥å…¥æ‰€éœ€æ¥å£
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/12/28
@@ -17,12 +17,12 @@ extern"C"
 #endif
 
 /** @fn void nim_plugin_chatroom_request_enter_async(const __int64 room_id, const char *json_extension, nim_plugin_chatroom_request_enter_cb_func cb, const void *user_data)
-  * Òì²½»ñÈ¡½øÈëÁÄÌìÊÒµÄĞÅÏ¢
-  * @param[in] room_id				ÁÄÌìÊÒID
-  * @param[in] json_extension		jsonÀ©Õ¹²ÎÊı£¨±¸ÓÃ£¬Ä¿Ç°²»ĞèÒª£©
-  * @param[in] cb					»Øµ÷º¯Êı, ¶¨Òå¼ûnim_plugin_in_def.h
-  * @param[in] user_data			APPµÄ×Ô¶¨ÒåÓÃ»§Êı¾İ£¬SDKÖ»¸ºÔğ´«»Ø¸ø»Øµ÷º¯Êıcb£¬²»×öÈÎºÎ´¦Àí£¡
-  * @return void ÎŞ·µ»ØÖµ
+  * å¼‚æ­¥è·å–è¿›å…¥èŠå¤©å®¤çš„ä¿¡æ¯
+  * @param[in] room_id				èŠå¤©å®¤ID
+  * @param[in] json_extension		jsonæ‰©å±•å‚æ•°ï¼ˆå¤‡ç”¨ï¼Œç›®å‰ä¸éœ€è¦ï¼‰
+  * @param[in] cb					å›è°ƒå‡½æ•°, å®šä¹‰è§nim_plugin_in_def.h
+  * @param[in] user_data			APPçš„è‡ªå®šä¹‰ç”¨æˆ·æ•°æ®ï¼ŒSDKåªè´Ÿè´£ä¼ å›ç»™å›è°ƒå‡½æ•°cbï¼Œä¸åšä»»ä½•å¤„ç†ï¼
+  * @return void æ— è¿”å›å€¼
   */
 NIM_SDK_DLL_API void nim_plugin_chatroom_request_enter_async(const __int64 room_id, const char *json_extension, nim_plugin_chatroom_request_enter_cb_func cb, const void *user_data);
 

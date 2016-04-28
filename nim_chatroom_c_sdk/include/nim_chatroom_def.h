@@ -1,5 +1,5 @@
 ﻿/** @file nim_chatroom_def.h
-  * @brief NIM CHATROOM SDK 定义
+  * @brief NIM 聊天室 SDK 定义
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/12/24
@@ -130,21 +130,35 @@ typedef void (*nim_chatroom_get_info_cb_func)(__int64 room_id, int error_code, c
   */
 typedef void (*nim_chatroom_kick_member_cb_func)(__int64 room_id, int error_code, const char *json_extension, const void *user_data);
 
+/** @name 进入聊天室的可选填信息Json Keys
+* @{
+*/
+static const char *kNIMChatRoomEnterKeyNick		= "nick";		/**< string, 进入聊天室后展示的昵称,选填 */
+static const char *kNIMChatRoomEnterKeyAvatar	= "avatar";		/**< string, 进入聊天室后展示的头像,选填 */
+static const char *kNIMChatRoomEnterKeyExt		= "ext";		/**< string, 聊天室可用的扩展字段,必须为可以解析为Json的非格式化的字符串,选填 */
+static const char *kNIMChatRoomEnterKeyNotifyExt= "notify_ext";	/**< string, 进入聊天室通知开发者扩展字段,必须为可以解析为Json的非格式化的字符串,选填*/
+/** @}*/ //登录Json Keys
+
+
 /** @name 消息结构 Json Keys
   * @{
   */
 //协议定义
-static const char *kNIMChatRoomMsgKeyRoomID			= "room_id";			/**< long, 消息所属的聊天室id(服务器填充) */
-static const char *kNIMChatRoomMsgKeyFromAccount	= "from_id";			/**< string, 消息发送者的账号(服务器填充) */
-static const char *kNIMChatRoomMsgKeyTime			= "time";				/**< long, 消息发送的时间戳(服务器填充)(毫秒) */
-static const char *kNIMChatRoomMsgKeyFromClientType = "from_client_type";	/**< int,消息发送方客户端类型,服务器填写,发送方不需要填写 */
-
-static const char *kNIMChatRoomMsgKeyFromNick		= "from_nick";			/**< string, 消息发送方昵称*/
 static const char *kNIMChatRoomMsgKeyType			= "msg_type";			/**< int, 消息类型(NIMChatRoomMsgType) */
-static const char *kNIMChatRoomMsgKeyAttach			= "msg_attach";			/**< string, 消息内容, 格式限制非格式化的json string, 文本消息和其他消息保持一致 */
+static const char *kNIMChatRoomMsgKeyAttach			= "msg_attach";			/**< string, 消息内容,如果约定的是json字符串，必须为可以解析为json的非格式化的字符串 */
 static const char *kNIMChatRoomMsgKeyClientMsgid	= "client_msg_id";		/**< string,客户端消息id */
 static const char *kNIMChatRoomMsgKeyResendFlag		= "resend_flag";		/**< int,消息重发标记位,第一次发送0,重发1 */
-static const char *kNIMChatRoomMsgKeyExt			= "ext";				/**< string, 第三方扩展字段, 长度限制4096, 格式限制非格式化的json string*/
+static const char *kNIMChatRoomMsgKeyExt			= "ext";				/**< string, 第三方扩展字段, 长度限制4096, 必须为可以解析为Json的非格式化的字符串*/
+
+//以下定义对于客户端只读
+static const char *kNIMChatRoomMsgKeyRoomID			= "room_id";			/**< long, 消息所属的聊天室id,服务器填写,发送方不需要填写 */
+static const char *kNIMChatRoomMsgKeyFromAccount	= "from_id";			/**< string, 消息发送者的账号,服务器填写,发送方不需要填写 */
+static const char *kNIMChatRoomMsgKeyTime			= "time";				/**< long, 消息发送的时间戳(毫秒),服务器填写,发送方不需要填写 */
+static const char *kNIMChatRoomMsgKeyFromClientType = "from_client_type";	/**< int,消息发送方客户端类型,服务器填写,发送方不需要填写 */
+static const char *kNIMChatRoomMsgKeyFromNick		= "from_nick";			/**< string, 消息发送方昵称,服务器填写,发送方不需要填写*/
+static const char *kNIMChatRoomMsgKeyFromAvatar		= "from_avator";		/**< string, 消息发送方头像,服务器填写,发送方不需要填写*/
+static const char *kNIMChatRoomMsgKeyFromExt		= "from_ext";			/**< string, 消息发送方身份扩展字段,服务器填写,发送方不需要填写*/
+
 //本地定义
 static const char *kNIMChatRoomMsgKeyLocalFilePath	= "local_res_path";		/**< string, 暂时不用,多媒体消息资源本地绝对路径,SDK本地维护,发送多媒体消息时必填 */
 static const char *kNIMChatRoomMsgKeyLocalResId		= "res_id";				/**< string, 暂时不用,多媒体资源id,发送方选填,接收方收到的是客户端消息id */
@@ -153,11 +167,18 @@ static const char *kNIMChatRoomMsgKeyLocalResId		= "res_id";				/**< string, 暂
 /** @enum NIMChatRoomMsgType 聊天室消息类型*/
 enum NIMChatRoomMsgType
 {
-	kNIMChatRoomMsgTypeText			= 0,			/**< 文本类型消息*/
-	kNIMChatRoomMsgTypeNotification	= 5,			/**< 活动室通知*/
-	kNIMChatRoomMsgTypeCustom		= 100,			/**< 自定义消息*/
+	kNIMChatRoomMsgTypeText = 0,		/**< 文本类型消息*/
+	kNIMChatRoomMsgTypeImage = 1,		/**< 图片类型消息*/
+	kNIMChatRoomMsgTypeAudio = 2,		/**< 声音类型消息*/
+	kNIMChatRoomMsgTypeVideo = 3,		/**< 视频类型消息*/
+	kNIMChatRoomMsgTypeLocation = 4,	/**< 位置类型消息*/
+	kNIMChatRoomMsgTypeNotification = 5,/**< 活动室通知*/
+	kNIMChatRoomMsgTypeFile = 6,		/**< 文件类型消息*/
 
-	kNIMChatRoomMsgTypeUnknown		= 1000,			/**< 未知类型消息，作为默认值*/
+	kNIMChatRoomMsgTypeTips = 10,		/**< 提醒类型消息*/
+	kNIMChatRoomMsgTypeCustom = 100,	/**< 自定义消息*/
+
+	kNIMChatRoomMsgTypeUnknown = 1000,	/**< 未知类型消息，作为默认值*/
 };
 
 /** @name 进入聊天室回调结果Json Keys
@@ -177,7 +198,7 @@ static const char *kNIMChatRoomInfoKeyAnnouncement	= "announcement";	/**< string
 static const char *kNIMChatRoomInfoKeyBroadcastUrl	= "broadcast_url";	/**< string, 视频直播拉流地址 */
 static const char *kNIMChatRoomInfoKeyCreatorID		= "creator_id";		/**< string, 聊天室创建者账号 */
 static const char *kNIMChatRoomInfoKeyValidFlag		= "valid_flag";		/**< int, 聊天室有效标记, 1:有效,0:无效 */
-static const char *kNIMChatRoomInfoKeyExt			= "ext";			/**< string, 第三方扩展字段, 格式限制非格式化的json string, 长度4k */
+static const char *kNIMChatRoomInfoKeyExt			= "ext";			/**< string, 第三方扩展字段, 必须为可以解析为Json的非格式化的字符串, 长度4k */
 static const char *kNIMChatRoomInfoKeyOnlineCount	= "online_count";	/**< int, 当前在线用户数量 */
 /** @}*/ //聊天室Info Json Keys
 
@@ -200,8 +221,8 @@ static const char *kNIMChatRoomMemberInfoKeyAccID		= "account_id"; /**<string �
 static const char *kNIMChatRoomMemberInfoKeyType		= "type";		/**<int 成员类型, -1:受限用户; 0:普通;1:创建者;2:管理员*/
 static const char *kNIMChatRoomMemberInfoKeyLevel		= "level";		/**<int 成员级别: >=0表示用户开发者可以自定义的级别*/
 static const char *kNIMChatRoomMemberInfoKeyNick		= "nick";		/**<string 聊天室内的昵称字段,预留字段, 可从Uinfo中取 */
-static const char *kNIMChatRoomMemberInfoKeyAvator		= "avator";		/**<string 聊天室内的头像,预留字段, 可从Uinfo中取icon */
-static const char *kNIMChatRoomMemberInfoKeyExt			= "ext";		/**<string 开发者扩展字段, 长度限制2k, 格式限制非格式化的json string*/
+static const char *kNIMChatRoomMemberInfoKeyAvatar		= "avatar";		/**<string 聊天室内的头像,预留字段, 可从Uinfo中取icon */
+static const char *kNIMChatRoomMemberInfoKeyExt			= "ext";		/**<string 开发者扩展字段, 长度限制2k, 必须为可以解析为Json的非格式化的字符串*/
 //以下字段即时生成,仅在在线状态中存储
 static const char *kNIMChatRoomMemberInfoKeyOnlineState	= "online_state";	/**<NIMChatRoomOnlineState 成员是否处于在线状态, 仅特殊成员才可能离线, 对游客/匿名用户而言只能是在线*/
 static const char *kNIMChatRoomMemberInfoKeyGuestFlag	= "guest_flag";		/**<NIMChatRoomGuestFlag 是否是普通游客类型,0:不是游客,1:是游客; 游客身份在聊天室中没有持久化, 只有在线时才会有内存状态*/
@@ -264,7 +285,7 @@ static const char *kNIMChatRoomGetMsgHistoryKeyLimit	 = "limit";	/**<int 本次�
 static const char *kNIMChatRoomSetMemberAttributeKeyAccoutID	= "account_id";	/**<string 成员ID */
 static const char *kNIMChatRoomSetMemberAttributeKeyAttribute	= "attribute";	/**<NIMChatRoomMemberAttribute */
 static const char *kNIMChatRoomSetMemberAttributeKeyOpt			= "opt";		/**<boolean: true:是,false:否*/
-static const char *kNIMChatRoomSetMemberAttributeKeyNotifyExt	= "notify_ext";	/**<string 自定义的事件通知扩展字段, 格式限制非格式化的json string*/
+static const char *kNIMChatRoomSetMemberAttributeKeyNotifyExt	= "notify_ext";	/**<string 自定义的事件通知扩展字段, 必须为可以解析为Json的非格式化的字符串*/
 /** @}*/ //设定聊天室成员标记身份条件Keys
 
 /** @name 聊天室通知Keys
@@ -272,7 +293,7 @@ static const char *kNIMChatRoomSetMemberAttributeKeyNotifyExt	= "notify_ext";	/*
   */
 static const char *kChatRoomNotificationKeyData		=	"data";			/**<string 通知内容*/
 static const char *kChatRoomNotificationKeyID		=	"id";			/**<string 通知类型ID */
-static const char *kChatRoomNotificationDataKeyExt	=	"ext";			/**<string 上层开发自定义的事件通知扩展字段, 格式限制非格式化的json string */
+static const char *kChatRoomNotificationDataKeyExt	=	"ext";			/**<string 上层开发自定义的事件通知扩展字段, 必须为可以解析为Json的非格式化的字符串 */
 static const char *kChatRoomNotificationDataKeyOpt	=	"operator";		/**<string 操作者的账号accid */
 static const char *kChatRoomNotificationDataKeyOptNick		=	"opeNick";		/**<string 操作者的账号nick */
 static const char *kChatRoomNotificationDataKeyTargetNick	=	"tarNick";	/**<string json array 被操作者的nick列表 */
@@ -313,6 +334,16 @@ enum NIMChatRoomEnterStep
 	kNIMChatRoomEnterStepServerConnectOver	= 3,	/**< 服务器连接结束,连接结果见error_code*/
 	kNIMChatRoomEnterStepRoomAuthing		= 4,	/**< 聊天室鉴权中*/
 	kNIMChatRoomEnterStepRoomAuthOver		= 5,	/**< 聊天室鉴权结束,鉴权结果见error_code, error_code非408则需要开发者重新请求聊天室进入信息*/
+};
+
+/** @enum NIMChatRoomProxyType 代理类型 */
+enum NIMChatRoomProxyType
+{
+	kNIMChatRoomProxyNone = 0,	/**< 不使用代理*/
+	kNIMChatRoomProxyHttp11 = 1,	/**< HTTP 1.1 Proxy（暂不支持）*/
+	kNIMChatRoomProxySocks4 = 4,	/**< Socks4 Proxy*/
+	kNIMChatRoomProxySocks4a = 5,	/**< Socks4a Proxy*/
+	kNIMChatRoomProxySocks5 = 6,	/**< Socks5 Proxy*/
 };
 
 #ifdef __cplusplus

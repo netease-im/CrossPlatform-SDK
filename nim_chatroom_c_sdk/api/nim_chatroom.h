@@ -1,5 +1,5 @@
 ﻿/** @file nim_chatroom.h
-  * @brief NIM ChatRoom SDK提供的接口
+  * @brief NIM 聊天室 SDK提供的接口
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/12/28
@@ -175,6 +175,17 @@ NIM_SDK_DLL_API void nim_chatroom_get_members_by_ids_online_async(const __int64 
   * @return void 无返回值
   */
 NIM_SDK_DLL_API void nim_chatroom_kick_member_async(const __int64 room_id, const char *id, const char *notify_ext, const char *json_extension, nim_chatroom_kick_member_cb_func cb, const void *user_data);
+
+/** @fn void nim_chatroom_set_proxy(NIMChatRoomProxyType type, const char *host, int port, const char *user, const char *password)
+* 设置Chatroom SDK统一的网络代理。不需要代理时，type设置为kNIMProxyNone，其余参数都传空字符串（端口设为0）。有些代理不需要用户名和密码，相应参数也传空字符串。
+* @param[in] type 代理类型，见NIMProxyType定义
+* @param[in] host 代理地址
+* @param[in] port 代理端口
+* @param[in] user 代理用户名
+* @param[in] password 代理密码
+* @return void 无返回值
+*/
+NIM_SDK_DLL_API void nim_chatroom_set_proxy(NIMChatRoomProxyType type, const char *host, int port, const char *user, const char *password);
 
 #ifdef __cplusplus
 };

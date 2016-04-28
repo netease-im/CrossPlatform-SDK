@@ -17,7 +17,7 @@ bool StrListToJsonString(const std::list<std::string>& list, std::string& out)
 	{
 		json_ids.append(*it);
 	}
-	out = json_ids.toStyledString();
+	out = GetJsonStringWithNoStyled(json_ids);
 	return true;
 }
 

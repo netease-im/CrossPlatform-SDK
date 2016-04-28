@@ -16,7 +16,7 @@
 
 /**
 * @namespace nim
-* @brief namespace nim
+* @brief IM
 */
 namespace nim
 {
@@ -32,7 +32,7 @@ enum FriendProfileKey
 	kFriendProfileKeySource = 1 << 2,				/**< 好友来源  */
 	kFriendProfileKeyAlias = 1 << 3,				/**< 别称  */
 	kFriendProfileKeyBits = 1 << 4,					/**< 扩展项,int64  */
-	kFriendProfileKeyEx = 1 << 5,					/**< 扩展项,string  */
+	kFriendProfileKeyEx = 1 << 5,					/**< 扩展项,json value  */
 	kFriendProfileKeyAll = (1 << 6) - 1				/**< 有数据  */
 };
 
@@ -137,15 +137,15 @@ struct FriendProfile
 		return bits_;
 	}
 
-	/** 设置扩展信息(string) */
-	void SetEx(const std::string& ex)
+	/** 设置扩展信息(json value) */
+	void SetEx(const Json::Value& ex)
 	{
 		expand_ = ex;
 		value_available_flag_ |= kFriendProfileKeyEx;
 	}
 
-	/** 获取扩展信息(string) */
-	std::string GetEx() const
+	/** 获取扩展信息(json value) */
+	Json::Value GetEx() const
 	{
 		return expand_;
 	}
@@ -203,7 +203,7 @@ struct FriendProfile
 		if (ExistValue(kFriendProfileKeyBits))
 			friend_profile_json[kNIMFriendKeyBits] = bits_;
 		if (ExistValue(kFriendProfileKeyEx))
-			friend_profile_json[kNIMFriendKeyEx] = expand_;
+			friend_profile_json[kNIMFriendKeyEx] = GetJsonStringWithNoStyled(expand_);
 		if (create_timetag_ > 0)
 			friend_profile_json[kNIMFriendKeyCreateTime] = create_timetag_;
 		if (update_timetag_ > 0)
@@ -247,7 +247,7 @@ private:
 	NIMFriendSource source_;					/**< 好友来源 */
 	std::string		alias_;						/**< 好友别名 */
 	__int64			bits_;						/**< 扩展数据 */
-	std::string		expand_;					/**< 扩展数据 */
+	Json::Value		expand_;					/**< 扩展数据 */
 	unsigned int	value_available_flag_;		/**< 好友数据有效性，结合好友Key使用 */
 
 private:

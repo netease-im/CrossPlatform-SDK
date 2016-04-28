@@ -15,7 +15,7 @@
 
 /**
 * @namespace nim
-* @brief namespace nim
+* @brief IM
 */
 namespace nim
 {
@@ -28,15 +28,16 @@ struct SendMessageArc
 	std::string talk_id_;	/**< 会话ID */
 	std::string msg_id_;	/**< 消息ID */
 	NIMResCode rescode_;	/**< 错误码 */
+	__int64	msg_timetag_;	/**< 消息时间戳 */
 };
 
-/** @fn bool ParseSendMessageArc(const std::string& arc_json, SendMessageArc& arc)
+/** @fn bool ParseSendMessageAck(const std::string& arc_json, SendMessageArc& arc)
   * @brief 解析发送消息回执
   * @param[in] arc_json 发送消息回执(Json Value数据字符串)
   * @param[out] arc 发送消息回执
   * @return bool 解析成功 或失败
   */
-bool ParseSendMessageArc(const std::string& arc_json, SendMessageArc& arc);
+bool ParseSendMessageAck(const std::string& arc_json, SendMessageArc& arc);
 
 } //namespace nim
 

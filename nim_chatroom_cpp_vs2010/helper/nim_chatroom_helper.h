@@ -1,5 +1,5 @@
 ﻿/** @file nim_chatroom_helper.h
-  * @brief chatroom辅助方法
+  * @brief 聊天室SDK辅助方法
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/12/29
@@ -16,63 +16,67 @@
 
 /**
 * @namespace nim_chatroom
-* @brief namespace nim_chatroom
+* @brief 聊天室
 */
 namespace nim_chatroom
 {
 #include "nim_chatroom_def.h"
 #include "nim_res_code_def.h"
 
-/** @brief 聊天室登录信息,暂时不支持*/
+/** @brief 聊天室登录信息*/
 struct ChatRoomEnterInfo
 {
-// 	/** @fn void SetNick(const std::string &nick)
-// 	  * @brief 设置进入聊天室后展示的昵称,选填
-// 	  * @return void
-//       */
-// 	void SetNick(const std::string &nick)
-// 	{
-// 		values_[kNIMChatRoomEnterKeyNick] = nick;
-// 	}
-// 
-// 	/** @fn void SetAvator(const std::string &avator)
-// 	  * @brief 设置进入聊天室后展示的头像,选填
-// 	  * @return void 
-//       */
-// 	void SetAvator(const std::string &avator)
-// 	{
-// 		values_[kNIMChatRoomEnterKeyAvator] = avator;
-// 	}
-// 
-// 	/** @fn void SetExt(const std::string &ext)
-// 	  * @brief 设置聊天室可用的扩展字段,选填
-// 	  * @return void
-//       */
-// 	void SetExt(const std::string &ext)
-// 	{
-// 		values_[kNIMChatRoomEnterKeyExt] = ext;
-// 	}
-// 
-// 	/** @fn void SetNotifyExt(const std::string &notify_ext)
-// 	  * @brief 设置进入聊天室通知开发者扩展字段,选填
-// 	  * @return void 
-//       */
-// 	void SetNotifyExt(const std::string &notify_ext)
-// 	{
-// 		values_[kNIMChatRoomEnterKeyNotifyExt] = notify_ext;
-// 	}
-// 
-// 	/** @fn std::string ToJsonString() const
-// 	  * @brief 组装Json Value字符串
-// 	  * @return void
-//       */
-// 	std::string	ToJsonString() const
-// 	{
-// 		return values_.empty() ? "" : values_.toStyledString();
-// 	}
-// 
-// private:
-// 	Json::Value		values_;
+	/** @fn void SetNick(const std::string &nick)
+	  * @brief 设置进入聊天室后展示的昵称,选填
+	  * @param[in] nick 聊天室昵称
+	  * @return void
+      */
+	void SetNick(const std::string &nick)
+	{
+		values_[kNIMChatRoomEnterKeyNick] = nick;
+	}
+
+	/** @fn void SetAvatar(const std::string &avatar)
+	  * @brief 设置进入聊天室后展示的头像,选填
+	  * @param[in] avatar 聊天室头像下载地址
+	  * @return void
+      */
+	void SetAvatar(const std::string &avatar)
+	{
+		values_[kNIMChatRoomEnterKeyAvatar] = avatar;
+	}
+
+	/** @fn void SetExt(const std::string &ext)
+	  * @brief 设置聊天室可用的扩展字段,选填
+	  * @param[in] ext 聊天室可用的扩展字段
+	  * @return void
+      */
+	void SetExt(const Json::Value &ext)
+	{
+		values_[kNIMChatRoomEnterKeyExt] = GetJsonStringWithNoStyled(ext);
+	}
+
+	/** @fn void SetNotifyExt(const std::string &notify_ext)
+	  * @brief 设置进入聊天室通知开发者扩展字段,选填
+	  * @param[in] notify_ext 进入聊天室通知开发者扩展字段
+	  * @return void
+      */
+	void SetNotifyExt(const Json::Value &notify_ext)
+	{
+		values_[kNIMChatRoomEnterKeyNotifyExt] = GetJsonStringWithNoStyled(notify_ext);
+	}
+
+	/** @fn std::string ToJsonString() const
+	  * @brief 组装Json Value字符串
+	  * @return void
+      */
+	std::string	ToJsonString() const
+	{
+		return values_.empty() ? "" : GetJsonStringWithNoStyled(values_);
+	}
+
+private:
+	Json::Value		values_;
 };
 
 /** @brief 聊天室信息*/
@@ -84,7 +88,7 @@ struct ChatRoomInfo
 	std::string		broadcast_url_;		/**< 视频直播拉流地址 */
 	std::string		creator_id_;		/**< 聊天室创建者账号 */
 	int				valid_flag_;		/**< 聊天室有效标记, 1:有效,0:无效 */
-	std::string		ext_;				/**< 第三方扩展字段, 格式限制非格式化的json string, 长度4k */
+	std::string		ext_;				/**< 第三方扩展字段, 必须为可以解析为json的非格式化的字符串, 长度4k */
 	int				online_count_;		/**< 在线人数 */
 
 	/** 构造函数 */
@@ -112,7 +116,7 @@ struct ChatRoomInfo
 struct ChatRoomNotification
 {
 	NIMChatRoomNotificationId		id_;		/**< 通知类型 */
-	std::string						ext_;		/**< 上层开发自定义的事件通知扩展字段, 格式限制非格式化的json string */
+	std::string						ext_;		/**< 上层开发自定义的事件通知扩展字段, 必须为可以解析为json的非格式化的字符串 */
 	std::string						operator_id_;/**< 操作者的账号accid */
 	std::string						operator_nick_;/**< 操作者的账号nick */
 	std::list<std::string>			target_nick_;/**< 被操作者的账号nick列表 */
@@ -141,18 +145,20 @@ struct ChatRoomNotification
 struct ChatRoomMessage
 {
 public:
-	__int64			room_id_;					/**< 消息所属的聊天室id(服务器填充) */
-	std::string		from_id_;					/**< 消息发送者的账号(服务器填充) */
-	__int64			timetag_;					/**< 消息发送的时间戳(服务器填充)(毫秒) */
+	__int64			room_id_;					/**< 消息所属的聊天室id,服务器填写,发送方不需要填写 */
+	std::string		from_id_;					/**< 消息发送者的账号,服务器填写,发送方不需要填写 */
+	__int64			timetag_;					/**< 消息发送的时间戳(毫秒),服务器填写,发送方不需要填写 */
 	int				from_client_type_;			/**< 消息发送方客户端类型,服务器填写,发送方不需要填写 */
 	
 public:
-	std::string		from_nick_;					/**< 消息发送方昵称 */
+	std::string		from_nick_;					/**< 发送方昵称,服务器填写,发送方不需要填写 */
+	std::string		from_avatar_;				/**< 发送方头像,服务器填写,发送方不需要填写 */
+	std::string		from_ext_;					/**< 发送方身份扩展字段,服务器填写,发送方不需要填写 */
 	NIMChatRoomMsgType	msg_type_;				/**< 消息类型 */
 	std::string		msg_attach_;				/**< 消息内容,json结构, 文本消息和其他消息保持一致 */
 	std::string		client_msg_id_;				/**< 客户端消息id */
 	bool			resend_flag_;				/**< 消息重发标记位 */
-	std::string		ext_;						/**< 第三方扩展字段, 格式限制非格式化的json string，长度限制4096 */
+	std::string		ext_;						/**< 第三方扩展字段, 必须为可以解析为json的非格式化的字符串，长度限制4096 */
 
 public:
 	std::string	   local_res_path_;				/**< 媒体文件本地绝对路径（客户端） */
@@ -176,6 +182,8 @@ public:
 		timetag_ = values[kNIMChatRoomMsgKeyTime].asUInt64();
 		from_client_type_ = values[kNIMChatRoomMsgKeyFromClientType].asUInt();
 		from_nick_ = values[kNIMChatRoomMsgKeyFromNick].asString();
+		from_avatar_ = values[kNIMChatRoomMsgKeyFromAvatar].asString();
+		from_ext_ = values[kNIMChatRoomMsgKeyFromExt].asString();
 		msg_type_ = (NIMChatRoomMsgType)values[kNIMChatRoomMsgKeyType].asUInt();
 		msg_attach_ = values[kNIMChatRoomMsgKeyAttach].asString();
 		client_msg_id_ = values[kNIMChatRoomMsgKeyClientMsgid].asString();
@@ -189,10 +197,9 @@ public:
 	  * @brief 组装Json Value字符串
 	  * @return string Json Value字符串 
       */
-	std::string		ToJsonString(bool use_to_send = true) const
+	std::string		ToJsonString() const
 	{
 		Json::Value values;
-		values[kNIMChatRoomMsgKeyFromNick] = from_nick_;
 		values[kNIMChatRoomMsgKeyType] = msg_type_;
 		values[kNIMChatRoomMsgKeyAttach] = msg_attach_;
 		values[kNIMChatRoomMsgKeyClientMsgid] = client_msg_id_;
@@ -256,7 +263,7 @@ struct ChatRoomSetMemberAttributeParameters
 	std::string account_id_;				/**<成员ID */
 	NIMChatRoomMemberAttribute attribute_;	/**<身份标识 */
 	bool opt_;								/**<true:是,false:否*/
-	std::string notify_ext_;				/**<通知的扩展字段 格式限制非格式化的json string*/
+	std::string notify_ext_;				/**<通知的扩展字段, 必须为可以解析为Json的非格式化的字符串*/
 
 	/** 构造函数 */
 	ChatRoomSetMemberAttributeParameters() : level_(0) {}
@@ -288,8 +295,8 @@ struct ChatRoomMemberInfo
 	int				type_;				/**<成员类型, -1:受限用户; 0:普通;1:创建者;2:管理员*/
 	int				level_;				/**<成员级别: >=0表示用户开发者可以自定义的级别*/
 	std::string		nick_;				/**<聊天室内的昵称字段,预留字段, 可从Uinfo中取*/
-	std::string		avator_;			/**<聊天室内的头像,预留字段, 可从Uinfo中取icon*/
-	std::string		ext_;				/**<开发者扩展字段, 长度限制2k, 格式限制非格式化的json string*/
+	std::string		avatar_;			/**<聊天室内的头像,预留字段, 可从Uinfo中取icon*/
+	std::string		ext_;				/**<开发者扩展字段, 长度限制2k, 必须为可以解析为json的非格式化的字符串*/
 	NIMChatRoomOnlineState	state_;		/**<成员是否处于在线状态, 仅特殊成员才可能离线, 对游客/匿名用户而言只能是在线*/
 	NIMChatRoomGuestFlag	guest_flag_;/**<是否是普通游客类型,0:不是游客,1:是游客; 游客身份在聊天室中没有持久化, 只有在线时才会有内存状态*/
 	__int64			enter_timetag_;		/**<进入聊天室的时间点,对于离线成员该字段为空*/
@@ -323,8 +330,8 @@ struct ChatRoomMemberInfo
 			level_ = value[kNIMChatRoomMemberInfoKeyLevel].asInt();
 		if (value.isMember(kNIMChatRoomMemberInfoKeyNick))
 			nick_ = value[kNIMChatRoomMemberInfoKeyNick].asString();
-		if (value.isMember(kNIMChatRoomMemberInfoKeyAvator))
-			avator_ = value[kNIMChatRoomMemberInfoKeyAvator].asString();
+		if (value.isMember(kNIMChatRoomMemberInfoKeyAvatar))
+			avatar_ = value[kNIMChatRoomMemberInfoKeyAvatar].asString();
 		if (value.isMember(kNIMChatRoomMemberInfoKeyExt))
 			ext_ = value[kNIMChatRoomMemberInfoKeyExt].asString();
 		if (value.isMember(kNIMChatRoomMemberInfoKeyOnlineState))

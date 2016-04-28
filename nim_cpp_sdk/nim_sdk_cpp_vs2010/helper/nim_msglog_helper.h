@@ -16,7 +16,7 @@
 
 /**
 * @namespace nim
-* @brief namespace nim
+* @brief IM
 */
 namespace nim
 {
@@ -29,6 +29,42 @@ struct QueryMsglogResult
 
 	/** 构造函数 */
 	QueryMsglogResult() : count_(0) {}
+};
+
+/** @brief 发送消息已读回执 */
+struct MessageStatusChanged
+{
+	NIMMsgLogStatus status_;	/**< 变更后的状态 */
+	std::string		talk_id_;	/**< 会话ID */
+	__int64			msg_timetag_;	/**< 临界的消息的时间戳 */
+
+	MessageStatusChanged() : msg_timetag_(0) {}
+};
+
+/** @brief 发送消息已读回执 */
+struct MessageStatusChangedResult
+{
+	NIMResCode rescode_;	/**< 错误码 */
+	std::list<MessageStatusChanged> results_;	/**< 结果 */
+
+	MessageStatusChangedResult(int rescode, std::string &result)
+	{
+		rescode_ = (NIMResCode)rescode;
+		Json::Value values;
+		Json::Reader reader;
+		if (reader.parse(result, values) && values.isArray())
+		{
+			int size = values.size();
+			for (int i = 0; i < size; i++)
+			{
+				MessageStatusChanged changed;
+				changed.status_ = (NIMMsgLogStatus)values[i][kNIMMsglogStatusChangedKeyStatus].asUInt();
+				changed.talk_id_ = values[i][kNIMMsglogStatusChangedKeyTalkID].asString();
+				changed.msg_timetag_ = values[i][kNIMMsglogStatusChangedKeyMsgTimetag].asInt64();
+				results_.push_back(changed);
+			}
+		}
+	}
 };
 
 /** @fn bool ParseMsglogs(const std::string& msgs_json, QueryMsglogResult& res)

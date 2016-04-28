@@ -81,6 +81,24 @@ typedef void (*nim_msglog_modify_res_cb_func)(int res_code, const char *json_ext
   */
 typedef void (*nim_msglog_import_prg_cb_func)(__int64 imported_count, __int64 total_count, const char *json_extension, const void *user_data);
 
+/** @typedef void (*nim_msglog_status_changed_cb_func)(int res_code, const char *result, const char *json_extension, const void *user_data)
+  * 消息状态变更通知的回调函数定义
+  * @param[out] res_code 		操作结果，成功200
+  * @param[out] result			结果(key定义见下面的 消息状态变更通知结果 Json Keys)
+  * @param[out] json_extension	json扩展数据（备用）
+  * @param[out] user_data		APP的自定义用户数据，SDK只负责传回给回调函数，不做任何处理！
+  * @return void 无返回值
+  */
+typedef void (*nim_msglog_status_changed_cb_func)(int res_code, const char *result, const char *json_extension, const void *user_data);
+
+/** @name 消息状态变更通知结果 Json Keys
+  * @{
+  */
+static const char *kNIMMsglogStatusChangedKeyTalkID	= "talk_id";
+static const char *kNIMMsglogStatusChangedKeyMsgTimetag	= "msg_timetag";
+static const char *kNIMMsglogStatusChangedKeyStatus = "status";
+/** @}*/ //消息状态变更通知结果 Json Keys
+
 /** @name 查询消息历史结果Json Keys
   * for example: 
   * {"count": 20,

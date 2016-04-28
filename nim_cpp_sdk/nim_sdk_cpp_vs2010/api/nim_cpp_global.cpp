@@ -13,6 +13,7 @@ namespace nim
 
 typedef	void (*nim_global_free_str_buf)(char *str);
 typedef	void (*nim_global_free_buf)(void *data);
+typedef void (*nim_global_set_proxy)(NIMProxyType, const char*, int, const char*, const char*);
 
 void Global::FreeStrBuf(char *str)
 {
@@ -22,6 +23,11 @@ void Global::FreeStrBuf(char *str)
 void Global::FreeBuf(void *data)
 {
 	return NIM_SDK_GET_FUNC(nim_global_free_buf)(data);
+}
+
+void Global::SetProxy(NIMProxyType type, const std::string& host, int port, const std::string& user, const std::string& password)
+{
+	return NIM_SDK_GET_FUNC(nim_global_set_proxy)(type, host.c_str(), port, user.c_str(), password.c_str());
 }
 
 }

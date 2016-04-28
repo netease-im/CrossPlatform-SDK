@@ -16,7 +16,7 @@
 
 /**
 * @namespace nim
-* @brief namespace nim
+* @brief IM
 */
 namespace nim
 {
@@ -155,14 +155,14 @@ public:
 	}
 
 	/** 设置用户扩展数据 */
-	void SetExpand(const std::string& expand)
+	void SetExpand(const Json::Value& expand)
 	{
 		expand_ = expand;
 		value_available_flag_ |= kUserNameCardKeyEx;
 	}
 
 	/** 获得用户扩展数据 */
-	std::string GetExpand() const
+	Json::Value GetExpand() const
 	{
 		return expand_;
 	}
@@ -257,7 +257,7 @@ public:
 		if (ExistValue(kUserNameCardKeyMobile))
 			values[kNIMNameCardKeyMobile] = GetMobile();
 		if (ExistValue(kUserNameCardKeyEx))
-			values[kNIMNameCardKeyEx] = GetExpand();
+			values[kNIMNameCardKeyEx] = GetJsonStringWithNoStyled(GetExpand());
 
 		return GetJsonStringWithNoStyled(values);
 	}
@@ -271,7 +271,7 @@ private:
 	std::string		email_;				/**< 用户邮箱 */
 	std::string		birth_;				/**< 用户生日 */
 	std::string		mobile_;			/**< 用户电话 */
-	std::string		expand_;			/**< 用户扩展数据 */
+	Json::Value		expand_;			/**< 用户扩展数据 */
 	__int64			create_timetag_;	/**< 用户档案创建时间戳(毫秒) */
 	__int64			update_timetag_;	/**< 用户档案更新时间戳(毫秒) */
 

@@ -96,7 +96,7 @@ bool Tool::GetAudioTextAsync(const AudioInfo& audio_info, const GetAudioTextCall
 	json_value[nim::kNIMTransAudioKeySample] = audio_info.samplerate_;
 	json_value[nim::kNIMTransAudioKeyAudioUrl] = audio_info.url_;
 	json_value[nim::kNIMTransAudioKeyDuration] = audio_info.duration_;
-	NIM_SDK_GET_FUNC(nim_tool_get_audio_text_async)(json_value.toStyledString().c_str(), json_extension.c_str(), &CallbackGetAudioText, cb_pointer);
+	NIM_SDK_GET_FUNC(nim_tool_get_audio_text_async)(GetJsonStringWithNoStyled(json_value).c_str(), json_extension.c_str(), &CallbackGetAudioText, cb_pointer);
 
 	return true;
 }

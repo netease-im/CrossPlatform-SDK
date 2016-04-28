@@ -53,7 +53,7 @@ static const char *kNIMNameCardKeyGender	= "gender";	/**< int 性别*/
 static const char *kNIMNameCardKeyEmail	= "email";	/**< string 邮箱*/
 static const char *kNIMNameCardKeyBirth	= "birth";	/**< string 生日*/
 static const char *kNIMNameCardKeyMobile	= "mobile";	/**< string 电话*/
-static const char *kNIMNameCardKeyEx		= "ex";		/**< string 扩展字段*/
+static const char *kNIMNameCardKeyEx		= "ex";		/**< string 扩展字段, 必须为可以解析为json的非格式化的字符串*/
 static const char *kNIMNameCardKeyCreateTime	= "create_timetag";	/**< long 创建时间戳 毫秒*/
 static const char *kNIMNameCardKeyUpdateTime	= "update_timetag";	/**< long 更新时间戳 毫秒*/
 /** @}*/ //用户名片 Json Keys

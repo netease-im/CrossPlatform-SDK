@@ -1,27 +1,27 @@
-/** @file nim_chatroom_def.h
-  * @brief NIM SDK CHATROOM¶¨Òå
+ï»¿/** @file nim_plugin_in_def.h
+  * @brief plugin def
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/12/24
   */
-#ifndef NIM_SDK_DLL_EXPORT_HEADERS_NIM_CHATROOM_DEF_H_
-#define NIM_SDK_DLL_EXPORT_HEADERS_NIM_CHATROOM_DEF_H_
+#ifndef NIM_SDK_DLL_EXPORT_HEADERS_NIM_PLUGIN_IN_DEF_H_
+#define NIM_SDK_DLL_EXPORT_HEADERS_NIM_PLUGIN_IN_DEF_H_
 
 #ifdef __cplusplus
 extern"C"
 {
 #endif
 /** @typedef void (*nim_plugin_chatroom_request_enter_cb_func)(int error_code, const char *result, const void *user_data)
-  * ÇëÇó»ñÈ¡½øÈëÁÄÌìÊÒĞÅÏ¢µÄ»Øµ÷º¯Êı¶¨Òå
-  * @param[out] int			´íÎóÂë
-  * @param[out] result		µÇÂ¼ĞÅÏ¢£¬Ö±½Ó×÷Îª²ÎÊıµ÷ÓÃÁÄÌìÊÒµÇÂ¼½Ó¿Ú
-  * @param[out] json_extension	jsonÀ©Õ¹Êı¾İ£¨±¸ÓÃ£©
-  * @param[out] user_data	APPµÄ×Ô¶¨ÒåÓÃ»§Êı¾İ£¬SDKÖ»¸ºÔğ´«»Ø¸ø»Øµ÷º¯Êı£¬²»×öÈÎºÎ´¦Àí£¡
-  * @return void ÎŞ·µ»ØÖµ
+  * è¯·æ±‚è·å–è¿›å…¥èŠå¤©å®¤ä¿¡æ¯çš„å›è°ƒå‡½æ•°å®šä¹‰
+  * @param[out] int			é”™è¯¯ç 
+  * @param[out] result		ç™»å½•ä¿¡æ¯ï¼Œç›´æ¥ä½œä¸ºå‚æ•°è°ƒç”¨èŠå¤©å®¤ç™»å½•æ¥å£
+  * @param[out] json_extension	jsonæ‰©å±•æ•°æ®ï¼ˆå¤‡ç”¨ï¼‰
+  * @param[out] user_data	APPçš„è‡ªå®šä¹‰ç”¨æˆ·æ•°æ®ï¼ŒSDKåªè´Ÿè´£ä¼ å›ç»™å›è°ƒå‡½æ•°ï¼Œä¸åšä»»ä½•å¤„ç†ï¼
+  * @return void æ— è¿”å›å€¼
   */
 typedef void (*nim_plugin_chatroom_request_enter_cb_func)(int error_code, const char *result, const char *json_extension, const void *user_data);
 
 #ifdef __cplusplus
 };
 #endif //__cplusplus
-#endif //NIM_SDK_DLL_EXPORT_HEADERS_NIM_CHATROOM_DEF_H_
+#endif //NIM_SDK_DLL_EXPORT_HEADERS_NIM_PLUGIN_IN_DEF_H_

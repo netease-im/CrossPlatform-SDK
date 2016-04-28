@@ -61,6 +61,11 @@ static const char *kNIMRtsVChatCustomAudio	= "custom_audio";	/**< int 是否用�
 static const char *kNIMRtsDataRecord		= "record";			/**< int 是否需要录制数据 >0表示是 */
 static const char *kNIMRtsApnsText			= "apns";			/**< string 推送用的文本 nim_rts_ack无效 */
 static const char *kNIMRtsCreateCustomInfo	= "custom_info";	/**< string 自定义数据，透传给被邀请方 nim_rts_ack无效 */
+static const char *kNIMRtsPushEnable		= "push_enable";	/**< int 是否需要推送 >0表示是 默认是 */
+static const char *kNIMRtsNeedBadge			= "need_badge";		/**< int 是否需要角标计数 >0表示是 默认是 */
+static const char *kNIMRtsNeedFromNick		= "need_nick";		/**< int 是否需要推送昵称 >0表示是 默认是 */
+static const char *kNIMRtsApnsPayload		= "payload";		/**< string JSON格式,推送payload */
+static const char *kNIMRtsSound				= "sound";			/**< string 推送声音 */
 /** @}*/ //json extension params for nim_rts_start and nim_rts_ack
 
 /** @name json extension params for nim_rts_connect_notify_cb_func

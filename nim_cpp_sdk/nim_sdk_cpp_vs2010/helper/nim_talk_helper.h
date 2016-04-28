@@ -16,7 +16,7 @@
 
 /**
 * @namespace nim
-* @brief namespace nim
+* @brief IM
 */
 namespace nim
 {
@@ -33,18 +33,18 @@ struct MessageSetting
 	BoolStatus server_history_saved_;	/**< 该消息是否存储云端历史 */
 	BoolStatus roaming_;				/**< 该消息是否支持漫游 */
 	BoolStatus self_sync_;				/**< 该消息是否支持发送者多端同步 */
-	BoolStatus persist_enable_;			/**< 消息是否要存离线 */
-	BoolStatus be_muted_;				/**< 该消息是否在接收方被静音处理 */
 	BoolStatus need_push_; 				/**< 是否需要推送 */
 	BoolStatus push_need_badge_;		/**< 是否要做消息计数 */
 	BoolStatus push_need_nick_;			/**< 需要推送昵称 */
+	Json::Value push_payload_;
+	std::string push_content_;
+	Json::Value server_ext_;
+	std::string local_ext_;
 
 	/** 构造函数 */
 	MessageSetting() : server_history_saved_(BS_NOT_INIT)
 		, roaming_(BS_NOT_INIT)
 		, self_sync_(BS_NOT_INIT)
-		, persist_enable_(BS_NOT_INIT)
-		, be_muted_(BS_NOT_INIT)
 		, need_push_(BS_NOT_INIT)
 		, push_need_badge_(BS_NOT_INIT)
 		, push_need_nick_(BS_NOT_INIT)
@@ -58,19 +58,27 @@ struct MessageSetting
 	void ToJsonValue(Json::Value& message) const
 	{
 		if (server_history_saved_ != BS_NOT_INIT)
-			message[kNIMMsgKeyHistorySave] = server_history_saved_== BS_TRUE;
+			message[kNIMMsgKeyHistorySave] = server_history_saved_;
 		if (roaming_ != BS_NOT_INIT)
-			message[kNIMMsgKeyMsgRoaming] = roaming_== BS_TRUE;
+			message[kNIMMsgKeyMsgRoaming] = roaming_;
 		if (self_sync_ != BS_NOT_INIT)
-			message[kNIMMsgKeyMsgSync] = self_sync_== BS_TRUE;
+			message[kNIMMsgKeyMsgSync] = self_sync_;
 		if (push_need_badge_ != BS_NOT_INIT)
-			message[kNIMMsgKeyNeedBadge] = push_need_badge_== BS_TRUE;
+			message[kNIMMsgKeyNeedBadge] = push_need_badge_;
 		if (need_push_ != BS_NOT_INIT)
-			message[kNIMMsgKeyPushEnable] = need_push_== BS_TRUE;
+			message[kNIMMsgKeyPushEnable] = need_push_;
 		if (push_need_nick_ != BS_NOT_INIT)
-			message[kNIMMsgKeyNeedPushNick] = push_need_nick_== BS_TRUE;
+			message[kNIMMsgKeyNeedPushNick] = push_need_nick_;
 		if (resend_flag_ != BS_NOT_INIT)
-			message[kNIMMsgKeyResendFlag] = resend_flag_== BS_TRUE;
+			message[kNIMMsgKeyResendFlag] = resend_flag_;
+		if (!push_payload_.empty())
+			message[kNIMMsgKeyPushPayload] = GetJsonStringWithNoStyled(push_payload_);
+		if (!push_content_.empty())
+			message[kNIMMsgKeyPushContent] = push_content_;
+		if (!server_ext_.empty())
+			message[kNIMMsgKeyServerExt] = GetJsonStringWithNoStyled(server_ext_);
+		if (!local_ext_.empty())
+			message[kNIMMsgKeyLocalExt] = local_ext_;
 	}
 
 	/** @fn void ParseMessageSetting(const Json::Value& message)
@@ -94,6 +102,14 @@ struct MessageSetting
 			push_need_nick_ = (BoolStatus)message[kNIMMsgKeyNeedPushNick].asInt() == 1 ? BS_TRUE : BS_FALSE;
 		if (message.isMember(kNIMMsgKeyResendFlag))
 			resend_flag_ = (BoolStatus)message[kNIMMsgKeyResendFlag].asInt() == 1 ? BS_TRUE : BS_FALSE;
+
+		Json::Reader reader;
+		if (!reader.parse(message[kNIMMsgKeyServerExt].asString(), server_ext_) || !server_ext_.isObject())
+			//assert(0);
+		if (!reader.parse(message[kNIMMsgKeyPushPayload].asString(), push_payload_) || !push_payload_.isObject())
+			//assert(0);
+		local_ext_ = message[kNIMMsgKeyLocalExt].asString();
+		push_content_ = message[kNIMMsgKeyPushContent].asString();
 	}
 };
 
@@ -114,10 +130,6 @@ public:
 	std::string		attach_;					/**< 消息附件 */
 	std::string		client_msg_id_;				/**< 消息ID（客户端） */
 	bool			resend_flag_;				/**< 重发标记 */
-	Json::Value		push_payload_;				/**< 第三方自定义的推送属性，长度2048 */
-	std::string		push_content_;				/**< 自定义推送文案，长度限制200字节 */
-	Json::Value		server_ext_;				/**< 第三方扩展字段, 长度限制1024 */
-	std::string		local_ext_;					/**< 本地扩展字段, 格式不限 */
 	MessageSetting	msg_setting_;				/**< 消息属性设置 */
 
 public:
@@ -178,13 +190,6 @@ public:
 			status_ = (NIMMsgLogStatus)values[kNIMMsgKeyLocalLogStatus].asUInt();
 			sub_status_ = (NIMMsgLogSubStatus)values[kNIMMsgKeyLocalLogSubStatus].asUInt();
 
-			if (!reader.parse(values[kNIMMsgKeyLocalExt].asString(), server_ext_) || !server_ext_.isObject())
-				assert(0);
-			if (!reader.parse(values[kNIMMsgKeyPushPayload].asString(), push_payload_) || !push_payload_.isObject())
-				assert(0);
-			local_ext_ = values[kNIMMsgKeyLocalExt].asString();
-			push_content_ = values[kNIMMsgKeyPushContent].asString();
-
 			msg_setting_.ParseMessageSetting(values);
 		}
 	}
@@ -210,12 +215,6 @@ public:
 		values[kNIMMsgKeyLocalResId] = local_res_id_;
 		values[kNIMMsgKeyLocalLogStatus] = status_;
 		values[kNIMMsgKeyLocalLogSubStatus] = sub_status_;
-		values[kNIMMsgKeyLocalExt] = local_ext_;
-		if (!server_ext_.empty())
-			values[kNIMMsgKeyServerExt] = GetJsonStringWithNoStyled(server_ext_);
-		values[kNIMMsgKeyPushContent] = push_content_;
-		if (!push_payload_.empty())
-			values[kNIMMsgKeyPushPayload] = GetJsonStringWithNoStyled(push_payload_);
 
 		msg_setting_.ToJsonValue(values);
 
@@ -258,6 +257,8 @@ struct IMFile
 			attach[kNIMFileMsgKeyMd5] = md5_;
 		if (size_ > 0)
 			attach[kNIMFileMsgKeySize] = size_;
+		if (!url_.empty())
+			attach[kNIMMsgAttachKeyUrl] = url_;
 
 		return GetJsonStringWithNoStyled(attach);
 	}
@@ -385,6 +386,14 @@ bool ParseMessage(const std::string& msg_json, IMMessage& message);
   * @return bool 解析成功或失败 
   */
 bool ParseReceiveMessage(const std::string& msg_json, IMMessage& message);
+
+/** @fn void ParseReceiveMessage(const Json::Value& msg_json_value, IMMessage& message)
+  * @brief 解析消息
+  * @param[in] msg_json_value 消息
+  * @param[out] message 消息
+  * @return bool 解析成功或失败 
+  */
+void ParseReceiveMessage(const Json::Value& msg_json_value, IMMessage& message);
 
 /** @fn void ParseReceiveMessage(const Json::Value& msg_json, IMMessage& message)
   * @brief 解析消息

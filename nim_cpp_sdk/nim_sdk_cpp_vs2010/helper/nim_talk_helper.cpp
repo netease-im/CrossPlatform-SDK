@@ -28,14 +28,19 @@ bool ParseReceiveMessage(const std::string& msg_json, IMMessage& message)
 	Json::Reader reader;
 	if (reader.parse(msg_json, values) && values.isObject())
 	{
-		message.rescode_ = (NIMResCode)values[kNIMMsgKeyLocalRescode].asUInt();
-		message.feature_ = (NIMMessageFeature)values[kNIMMsgKeyLocalMsgFeature].asUInt();
-
-		ParseMessage(values[kNIMMsgKeyLocalReceiveMsgContent], message);
+		ParseReceiveMessage(values, message);
 		return true;
 	}
 	
 	return false;
+}
+
+void ParseReceiveMessage(const Json::Value& msg_json_value, IMMessage& message)
+{
+	message.rescode_ = (NIMResCode)msg_json_value[kNIMMsgKeyLocalRescode].asUInt();
+	message.feature_ = (NIMMessageFeature)msg_json_value[kNIMMsgKeyLocalMsgFeature].asUInt();
+
+	ParseMessage(msg_json_value[kNIMMsgKeyLocalReceiveMsgContent], message);
 }
 
 void ParseMessage(const Json::Value& msg_json, IMMessage& message)
@@ -60,10 +65,6 @@ void ParseMessage(const Json::Value& msg_json, IMMessage& message)
 	message.local_res_id_ = msg_json[kNIMMsgKeyLocalResId].asString();
 	message.status_ = (NIMMsgLogStatus)msg_json[kNIMMsgKeyLocalLogStatus].asUInt();
 	message.sub_status_ = (NIMMsgLogSubStatus)msg_json[kNIMMsgKeyLocalLogSubStatus].asUInt();
-
-	Json::Reader reader;
-	message.local_ext_ = msg_json[kNIMMsgKeyLocalExt].asString();
-	message.push_content_ = msg_json[kNIMMsgKeyPushContent].asString();
 
 	message.msg_setting_.ParseMessageSetting(msg_json);
 }

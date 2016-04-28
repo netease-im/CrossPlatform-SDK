@@ -11,15 +11,16 @@ namespace nim
 {
 #include "nim_talk_def.h"
 
-bool ParseSendMessageArc(const std::string& arc_json, SendMessageArc& arc)
+bool ParseSendMessageAck(const std::string& arc_json, SendMessageArc& arc)
 {
 	Json::Value values;
 	Json::Reader reader;
 	if (reader.parse(arc_json, values) && values.isObject())
 	{
-		arc.rescode_ = (NIMResCode)values[kNIMSendArcKeyRescode].asUInt();
-		arc.msg_id_ = values[kNIMSendArcKeyMsgId].asString();
-		arc.talk_id_ = values[kNIMSendArcKeyTalkId].asString();
+		arc.rescode_ = (NIMResCode)values[kNIMSendAckKeyRescode].asUInt();
+		arc.msg_id_ = values[kNIMSendAckKeyMsgId].asString();
+		arc.talk_id_ = values[kNIMSendAckKeyTalkId].asString();
+		arc.msg_timetag_ = values[kNIMSendAckKeyTimetag].asInt64();
 		return true;
 	}
 	return false;

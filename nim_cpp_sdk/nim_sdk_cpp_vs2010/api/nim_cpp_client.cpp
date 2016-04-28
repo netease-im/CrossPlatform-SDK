@@ -153,7 +153,7 @@ bool Client::Init(const std::string& app_data_dir
 		srv_config[nim::kNIMRsaVersion] = config.rsa_version_;
 		config_root[nim::kNIMPrivateServerSetting] = srv_config;
 	}
-	return NIM_SDK_GET_FUNC(nim_client_init)(app_data_dir.c_str(), app_install_dir.c_str(), config_root.toStyledString().c_str());
+	return NIM_SDK_GET_FUNC(nim_client_init)(app_data_dir.c_str(), app_install_dir.c_str(), GetJsonStringWithNoStyled(config_root).c_str());
 }
 
 void Client::Cleanup(const std::string& json_extension/* = ""*/)
@@ -162,7 +162,6 @@ void Client::Cleanup(const std::string& json_extension/* = ""*/)
 	SDKFunction::UnLoadSdkDll();
 }
 
-static Client::LoginCallback *g_cb_login_ = nullptr;
 bool Client::Login(const std::string& app_key
 	, const std::string& account
 	, const std::string& password
@@ -172,19 +171,18 @@ bool Client::Login(const std::string& app_key
 	if (app_key.empty() || account.empty() || password.empty())
 		return false;
 
-	if (g_cb_login_ != nullptr)
+	LoginCallback* cb_pointer = nullptr;
+	if (cb)
 	{
-		delete g_cb_login_;
-		g_cb_login_ = nullptr;
+		cb_pointer = new LoginCallback(cb);
 	}
 
-	g_cb_login_ = new LoginCallback(cb);
 	NIM_SDK_GET_FUNC(nim_client_login)(app_key.c_str()
 										, account.c_str()
 										, password.c_str()
 										, json_extension.c_str()
 										, &CallbackLogin
-										, g_cb_login_);
+										, cb_pointer);
 
 	return true;
 }
@@ -194,18 +192,17 @@ void Client::Relogin(const std::string& json_extension/* = ""*/)
 	return NIM_SDK_GET_FUNC(nim_client_relogin)(json_extension.c_str());
 }
 
-static Client::LogoutCallback *g_cb_logout_ = nullptr;
 void Client::Logout(nim::NIMLogoutType logout_type
 	, const LogoutCallback& cb
 	, const std::string& json_extension/* = ""*/)
 {
-	if (g_cb_logout_ != nullptr)
+	LogoutCallback* cb_pointer = nullptr;
+	if (cb)
 	{
-		delete g_cb_logout_;
-		g_cb_logout_ = nullptr;
+		cb_pointer = new LogoutCallback(cb);
 	}
-	g_cb_logout_ = new Client::LogoutCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_client_logout)(logout_type, json_extension.c_str(), &CallbackLogout, g_cb_logout_);
+
+	return NIM_SDK_GET_FUNC(nim_client_logout)(logout_type, json_extension.c_str(), &CallbackLogout, cb_pointer);
 }
 
 bool Client::KickOtherClient(const std::list<std::string>& client_ids)

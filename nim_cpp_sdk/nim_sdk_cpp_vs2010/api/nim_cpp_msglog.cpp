@@ -25,9 +25,14 @@ typedef void(*nim_msglog_delete_all_async)(bool delete_sessions, const char *jso
 typedef void(*nim_msglog_query_msg_online_async)(const char *id, nim::NIMSessionType to_type, int limit_count, __int64 from_time, __int64 end_time, __int64 end_msg_id, bool reverse, bool need_save_to_local, const char *json_extension, nim_msglog_query_cb_func cb, const void *user_data);
 typedef void(*nim_msglog_query_msg_by_id_async)(const char *client_msg_id, const char *json_extension, nim_msglog_query_single_cb_func cb, const void *user_data);
 typedef void(*nim_msglog_query_msg_by_options_async)(NIMMsgLogQueryRange query_range, const char *ids, int limit_count, __int64 from_time, __int64 end_time, const char *end_client_msg_id, bool reverse, NIMMessageType msg_type, const char *search_content, const char *json_extension, nim_msglog_query_cb_func cb, const void *user_data);
-							
+typedef void(*nim_msglog_update_localext_async)(const char *msg_id, const char *local_ext, const char *json_extension, nim_msglog_res_cb_func cb, const void *user_data);
+						
 typedef void(*nim_msglog_export_db_async)(const char *dst_path, const char *json_extension, nim_msglog_modify_res_cb_func cb, const void *user_data);
 typedef void(*nim_msglog_import_db_async)(const char *src_path, const char *json_extension, nim_msglog_modify_res_cb_func res_cb, const void *res_user_data, nim_msglog_import_prg_cb_func prg_cb, const void *prg_user_data);
+
+typedef void(*nim_msglog_send_receipt_async)(const char *json_msg, const char *json_extension, nim_msglog_status_changed_cb_func cb, const void *user_data);
+typedef bool(*nim_msglog_query_be_readed)(const char *json_msg, const char *json_extension);
+typedef void(*nim_msglog_reg_status_changed_cb)(const char *json_extension, nim_msglog_status_changed_cb_func cb, const void *user_data);
 
 
 struct ImportDbCallbackUserData
@@ -472,6 +477,69 @@ bool MsgLog::ImportDbAsync(const std::string& src_path
 		, progress_cb_pointer);
 
 	return true;
+}
+
+static void CallbackMsgStatusChanged(int rescode, const char *result, const char *json_extent, const void *callback)
+{
+	if (callback)
+	{
+		MsgLog::MessageStatusChangedCallback* cb_pointer = (MsgLog::MessageStatusChangedCallback*)callback;
+		if (*cb_pointer)
+		{
+			MessageStatusChangedResult result(rescode, PCharToString(result));
+			(*cb_pointer)(result);
+		}
+	}
+}
+
+void MsgLog::SendReceiptAsync(const std::string& json_msg, const MsgLog::MessageStatusChangedCallback& cb)
+{
+	MsgLog::MessageStatusChangedCallback *callback = nullptr;
+	if (cb)
+		callback = new MsgLog::MessageStatusChangedCallback(cb);
+	NIM_SDK_GET_FUNC(nim_msglog_send_receipt_async)(json_msg.c_str(), nullptr, &CallbackMsgStatusChanged, callback);
+}
+
+bool MsgLog::QueryMessageBeReaded(const IMMessage& msg)
+{
+	return NIM_SDK_GET_FUNC(nim_msglog_query_be_readed)(msg.ToJsonString(false).c_str(), nullptr);
+}
+
+static MsgLog::MessageStatusChangedCallback* g_cb_msg_status_changed_cb_ = nullptr;
+void MsgLog::RegMessageStatusChangedCb(const MessageStatusChangedCallback& cb, const std::string &json_extension/* = ""*/)
+{
+	if (g_cb_msg_status_changed_cb_)
+	{
+		delete g_cb_msg_status_changed_cb_;
+		g_cb_msg_status_changed_cb_ = nullptr;
+	}
+	g_cb_msg_status_changed_cb_ = new MessageStatusChangedCallback(cb);
+
+	NIM_SDK_GET_FUNC(nim_msglog_reg_status_changed_cb)(json_extension.c_str(), &CallbackMsgStatusChanged, g_cb_msg_status_changed_cb_);
+}
+
+bool MsgLog::UpdateLocalExtAsync(const std::string& msg_id
+	, const std::string& local_ext
+	, const UpdateLocalExtCallback& cb
+	, const std::string& json_extension/* = ""*/)
+{
+	if (msg_id.empty())
+		return false;
+
+	UpdateLocalExtCallback* cb_pointer = nullptr;
+	if (cb)
+	{
+		cb_pointer = new UpdateLocalExtCallback(cb);
+	}
+
+	NIM_SDK_GET_FUNC(nim_msglog_update_localext_async)(msg_id.c_str()
+		, local_ext.c_str()
+		, json_extension.c_str()
+		, &CallbackModifySingleMsglog
+		, cb_pointer);
+
+	return true;
+
 }
 
 }

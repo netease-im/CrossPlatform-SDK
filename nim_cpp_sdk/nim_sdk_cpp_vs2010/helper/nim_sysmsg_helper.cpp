@@ -71,8 +71,7 @@ void ParseSysMessageContent(const Json::Value& content_json, SysMessage& msg)
 	if (content_json[kNIMSysMsgKeyPushNeedNick].isUInt())
 		msg.push_need_nick_ = content_json[kNIMSysMsgKeyPushNeedNick].asInt() == 1 ? BS_TRUE : BS_FALSE;
 	Json::Reader reader;
-	if (!reader.parse(content_json[kNIMSysMsgKeyPushPayload].asString(), msg.push_payload_) || !msg.push_payload_.isObject())
-		assert(0);
+	reader.parse(content_json[kNIMSysMsgKeyPushPayload].asString(), msg.push_payload_);
 }
 
 }

@@ -1,5 +1,5 @@
 ﻿/** @file nim_chatroom_common_helper.h
-  * @brief SDK辅助方法
+  * @brief 聊天室SDK辅助方法
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/09/08
@@ -15,7 +15,7 @@
 
 /**
 * @namespace nim_chatroom
-* @brief namespace nim_chatroom
+* @brief 聊天室
 */
 namespace nim_chatroom
 {

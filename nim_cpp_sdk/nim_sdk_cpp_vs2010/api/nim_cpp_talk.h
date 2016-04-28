@@ -15,7 +15,7 @@
 
 /**
 * @namespace nim
-* @brief namespace nim
+* @brief IM
 */
 namespace nim
 {
@@ -31,8 +31,9 @@ class Talk
 {
 
 public:
-	typedef std::function<void(const SendMessageArc&)>	SendMsgArcCallback;	/**< 发送消息回执通知回调模板 */
-	typedef std::function<void(const IMMessage&)>	ReveiveMsgCallback;	/**< 接收消息通知回调模板 */
+	typedef std::function<void(const SendMessageArc&)>	SendMsgAckCallback;	/**< 发送消息回执通知回调模板 */
+	typedef std::function<void(const IMMessage&)>	ReceiveMsgCallback;	/**< 接收消息通知回调模板 */
+	typedef std::function<void(const std::list<IMMessage>&)>	ReceiveMsgsCallback;	/**< 批量接收消息通知回调模板 */
 	typedef std::function<void(__int64, __int64)>	FileUpPrgCallback;	/**< 发送多媒体消息文件上传过程回调模板 */
 
 	/** @fn static void RegSendMsgCb(const SendMsgCallback& cb, const std::string& json_extension = "")
@@ -41,7 +42,7 @@ public:
 	* @param[in] cb		发送消息的回调函数
 	* @return void 无返回值
 	*/
-	static void RegSendMsgCb(const SendMsgArcCallback& cb, const std::string& json_extension = "");
+	static void RegSendMsgCb(const SendMsgAckCallback& cb, const std::string& json_extension = "");
 
 	/** 
 	* 发送消息
@@ -61,13 +62,21 @@ public:
 	*/
 	static bool StopSendMsg(const std::string& client_msg_id, const NIMMessageType& type, const std::string& json_extension = "");
 
-	/** @fn static void RegReceiveCb(const ReveiveMsgCallback& cb, const std::string& json_extension = "")
+	/** @fn static void RegReceiveCb(const ReceiveMsgCallback& cb, const std::string& json_extension = "")
 	* 注册接收消息回调 （建议全局注册,统一接受回调后分发消息到具体的会话）
 	* @param[in] json_extension json扩展参数（备用,目前不需要）
 	* @param[in] cb		接收消息的回调函数
 	* @return void 无返回值
 	*/
-	static void RegReceiveCb(const ReveiveMsgCallback& cb, const std::string& json_extension = "");
+	static void RegReceiveCb(const ReceiveMsgCallback& cb, const std::string& json_extension = "");
+
+	/** @fn static void RegReceiveCb(const ReceiveMsgCallback& cb, const std::string& json_extension = "")
+	* 注册批量接收消息回调 （建议全局注册,统一接受回调后分发消息到具体的会话）
+	* @param[in] json_extension json扩展参数（备用,目前不需要）
+	* @param[in] cb		接收消息的回调函数
+	* @return void 无返回值
+	*/
+	static void RegReceiveMessagesCb(const ReceiveMsgsCallback& cb, const std::string& json_extension = "");
 
 	/** @fn static std::string CreateTextMessage(const std::string& receiver_id, const NIMSessionType session_type, const std::string& client_msg_id, const std::string& content, const MessageSetting& msg_setting, __int64 timetag  = 0)
 	/* 生成文字消息内容,生成的字符串在调用SendMsg时直接传入 
