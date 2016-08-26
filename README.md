@@ -8,8 +8,8 @@ Windows(PC) SDK对外暴露的是C接口，为了让桌面开发者更加方便�
 ### <span id="SDK内容">SDK内容</span>
 * nim.dll： SDK核心功能模块；放在用户程序目录下
 * nim_audio.dll： 负责语音录制和播放；放在用户程序目录下
-* nim\_tools\_http.dll： 负责通用的http传输；nim.dll模块使用了此功能，用户自己的程序也可以使用；放在用户程序目录下
-* nim_videochat.dll： 负责视频聊天功能；放在用户程序目录下
+* nim\_tools\_http.dll： 负责通用的http传输；nim.dll模块使用了此功能，C++封装层(需要依赖Demo工程)
+* nrtc.dll： 负责视频聊天功能；放在用户程序目录下
 * nim_conf： SDK版本相关；放在用户程序目录下
 * nim_include： SDK所有头文件；用户自己决定放在合适位置  
 * nim\_c\_sdk： C 接口头文件
