@@ -3,7 +3,7 @@
 namespace nim_audio
 {
 
-static const std::wstring kSdkAudioDll_d = L"nim_audio_d.dll";
+static const std::wstring kSdkAudioDll_d = L"nim_audio.dll";
 static const std::wstring kSdkAudioDll = L"nim_audio.dll";
 
 HINSTANCE Audio::instance_audio_ = NULL;
