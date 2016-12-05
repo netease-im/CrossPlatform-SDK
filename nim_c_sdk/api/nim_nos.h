@@ -34,6 +34,22 @@ NIM_SDK_DLL_API void nim_nos_reg_download_cb(nim_nos_download_cb_func cb, const 
   */
 NIM_SDK_DLL_API void nim_nos_download_media(const char *json_msg, nim_nos_download_cb_func res_cb, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data);
 
+/** @fn void nim_nos_download_media_ex(const char *json_msg, const char *json_extension, nim_nos_download_cb_func res_cb, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data, nim_nos_download_speed_cb_func speed_cb, const void *speed_user_data, nim_nos_download_info_cb_func info_cb, const void *info_user_data)
+  * 获取资源(扩展)
+  * @param[in] json_msg 消息体json string (Keys SEE MORE `nim_talk_def.h` 『消息结构 Json Keys』)
+  * @param[in] json_extension json扩展参数
+  * @param[in] res_cb 下载的回调函数， nim_nos_download_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] res_user_data APP的自定义用户数据，SDK只负责传回给回调函数res_cb，不做任何处理！
+  * @param[in] prg_cb 下载进度的回调函数， nim_nos_download_prg_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] prg_user_data APP的自定义用户数据，SDK只负责传回给回调函数prg_cb，不做任何处理！
+  * @param[in] speed_cb 下载速度的回调函数， nim_nos_download_speed_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] speed_user_data APP的自定义用户数据，SDK只负责传回给回调函数speed_cb，不做任何处理！
+  * @param[in] info_cb 返回最终下载信息的回调函数， nim_nos_download_info_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] info_user_data APP的自定义用户数据，SDK只负责传回给回调函数info_cb，不做任何处理！
+  * @return void 无返回值
+  */
+NIM_SDK_DLL_API void nim_nos_download_media_ex(const char *json_msg, const char *json_extension, nim_nos_download_cb_func res_cb, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data, nim_nos_download_speed_cb_func speed_cb, const void *speed_user_data, nim_nos_download_info_cb_func info_cb, const void *info_user_data);
+
 /** @fn void nim_nos_stop_download_media(const char *json_msg)
   * 停止获取资源（目前仅对文件消息类型有效）
   * @param[in] json_msg 消息体json string (Keys SEE MORE `nim_talk_def.h` 『消息结构 Json Keys』)
@@ -52,6 +68,22 @@ NIM_SDK_DLL_API void nim_nos_stop_download_media(const char *json_msg);
   */
 NIM_SDK_DLL_API void nim_nos_upload(const char *local_file, nim_nos_upload_cb_func res_cb, const void *res_user_data, nim_nos_upload_prg_cb_func prg_cb, const void *prg_user_data);
 
+/** @fn void nim_nos_upload_ex(const char *local_file, const char *json_extension, nim_nos_upload_cb_func res_cb, const void *res_user_data, nim_nos_upload_prg_cb_func prg_cb, const void *prg_user_data, nim_nos_upload_speed_cb_func speed_cb, const void *speed_user_data, nim_nos_upload_info_cb_func info_cb, const void *info_user_data)
+  * 上传资源(扩展)
+  * @param[in] local_file 本地文件的完整路径，路径名必须是utf-8
+  * @param[in] json_extension json扩展参数
+  * @param[in] res_cb 上传的回调函数， nim_nos_upload_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] res_user_data APP的自定义用户数据，SDK只负责传回给回调函数res_cb，不做任何处理！
+  * @param[in] prg_cb 上传进度的回调函数， nim_nos_upload_prg_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] prg_user_data APP的自定义用户数据，SDK只负责传回给回调函数prg_cb，不做任何处理！
+  * @param[in] speed_cb 上传速度的回调函数， nim_nos_upload_speed_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] speed_user_data APP的自定义用户数据，SDK只负责传回给回调函数speed_cb，不做任何处理！
+  * @param[in] info_cb 返回最终上传信息的回调函数， nim_nos_upload_info_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] info_user_data APP的自定义用户数据，SDK只负责传回给回调函数info_cb，不做任何处理！
+  * @return void 无返回值
+  */
+NIM_SDK_DLL_API void nim_nos_upload_ex(const char *local_file, const char *json_extension, nim_nos_upload_cb_func res_cb, const void *res_user_data, nim_nos_upload_prg_cb_func prg_cb, const void *prg_user_data, nim_nos_upload_speed_cb_func speed_cb, const void *speed_user_data, nim_nos_upload_info_cb_func info_cb, const void *info_user_data);
+
 /** @fn void nim_nos_download(const char *nos_url, nim_nos_download_cb_func res_cb, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data)
   * 下载资源
   * @param[in] nos_url 下载资源的URL
@@ -62,6 +94,22 @@ NIM_SDK_DLL_API void nim_nos_upload(const char *local_file, nim_nos_upload_cb_fu
   * @return void 无返回值
   */
 NIM_SDK_DLL_API void nim_nos_download(const char *nos_url, nim_nos_download_cb_func res_cb, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data);
+
+/** @fn void nim_nos_download_ex(const char *nos_url, const char *json_extension, nim_nos_download_cb_func res_cb, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data, nim_nos_download_speed_cb_func speed_cb, const void *speed_user_data, nim_nos_download_info_cb_func info_cb, const void *info_user_data)
+  * 下载资源(扩展)
+  * @param[in] nos_url 下载资源的URL
+    * @param[in] json_extension json扩展参数
+  * @param[in] res_cb 下载的回调函数， nim_nos_upload_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] res_user_data APP的自定义用户数据，SDK只负责传回给回调函数res_cb，不做任何处理！
+  * @param[in] prg_cb 下载进度的回调函数， nim_nos_upload_prg_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] prg_user_data APP的自定义用户数据，SDK只负责传回给回调函数prg_cb，不做任何处理！
+  * @param[in] speed_cb 下载速度的回调函数， nim_nos_download_speed_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] speed_user_data APP的自定义用户数据，SDK只负责传回给回调函数speed_cb，不做任何处理！
+  * @param[in] info_cb 返回最终下载信息的回调函数， nim_nos_download_info_cb_func回调函数定义见nim_nos_def.h
+  * @param[in] info_user_data APP的自定义用户数据，SDK只负责传回给回调函数info_cb，不做任何处理！
+  * @return void 无返回值
+  */
+NIM_SDK_DLL_API void nim_nos_download_ex(const char *nos_url, const char *json_extension, nim_nos_download_cb_func res_cb, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data, nim_nos_download_speed_cb_func speed_cb, const void *speed_user_data, nim_nos_download_info_cb_func info_cb, const void *info_user_data);
 #ifdef __cplusplus
 };
 #endif //__cplusplus

@@ -1,15 +1,27 @@
-﻿/** @file nim_string_helper.cpp
+﻿/** @file nim_string_util.cpp
   * @brief string操作辅助方法
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Harrison
   * @date 2016/09/08
   */
 
-#include "nim_string_helper.h"
+#include "nim_string_util.h"
 #include "third_party/convert_utf/convert_utf.h"
 
 namespace nim
 {
+
+std::string PCharToString(const char* str)
+{
+	std::string res_str;
+	if (str) {
+		res_str = str;
+	}
+	else {
+		//assert(false);
+	}
+	return res_str;
+}
 
 #ifdef WIN32
 

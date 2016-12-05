@@ -1,13 +1,13 @@
-﻿/** @file nim_chatroom_common_helper.cpp
-  * @brief SDK辅助方法
+﻿/** @file nim_json_util.cpp
+  * @brief JSON辅助方法
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/09/08
   */
 
-#include "nim_chatroom_common_helper.h"
+#include "nim_json_util.h"
 
-namespace nim_chatroom
+namespace nim
 {
 
 bool StrListToJsonString(const std::list<std::string>& list, std::string& out)
@@ -45,18 +45,6 @@ bool JsonArrayStringToList(const std::string& array_str, std::list<std::string>&
 	return false;
 }
 
-std::string PCharToString(const char* str)
-{
-	std::string res_str;
-	if (str) {
-		res_str = str;
-	}
-	else {
-		assert(false);
-	}
-	return res_str;
-}
-
 bool ParseJsonValue(const std::string &content, Json::Value &values)
 {
 	Json::Reader reader;
@@ -71,5 +59,15 @@ std::string GetJsonStringWithNoStyled(const Json::Value& values)
 {
 	Json::FastWriter fw;
 	return fw.write(values);
+}
+
+Json::Value GetJsonValueFromJsonString(const std::string& json_string)
+{
+	Json::Value value;
+	Json::Reader reader;
+	if (!reader.parse(json_string, value) || !value.isObject())
+		assert(0);
+
+	return value;
 }
 }

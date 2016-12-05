@@ -1,40 +1,35 @@
-﻿/** @file nim_sdk_helper.cpp
+﻿/** @file nim_sdk_util.cpp
   * @brief SDK库辅助方法
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg, Harrison
   * @date 2015/09/08
   */
 
-#include "nim_sdk_helper.h"
-#include "nim_string_helper.h"
+#include "nim_sdk_util.h"
+#include "nim_string_util.h"
 
 namespace nim
 {
 #ifdef NIM_SDK_DLL_IMPORT
 
-#if !defined (WIN32)
-	static const std::string kSdkNimDll = "libnim.so";
-#elif defined (_DEBUG) || defined (DEBUG)
-	static const std::string kSdkNimDll = "nim_d.dll";
-#else
-	static const std::string kSdkNimDll = "nim.dll";
-#endif
+SDKInstance::SDKInstance()
+{
+	instance_nim_ = NULL;
+}
 
-#ifdef WIN32
-	HINSTANCE SDKFunction::instance_nim_ = NULL;
-#else
-	void *SDKFunction::instance_nim_ = NULL;
-#endif
-std::map<std::string, void*> SDKFunction::function_map;
+SDKInstance::~SDKInstance()
+{
+	function_map.clear();
+}
 
-bool SDKFunction::LoadSdkDll(const char *cur_module_dir)
+bool SDKInstance::LoadSdkDll(const char *cur_module_dir, const char *sdk_dll_file_name)
 {
 	std::string dir(cur_module_dir);
-	dir.append(kSdkNimDll);
+	dir.append(sdk_dll_file_name);
 
 #if defined (WIN32)
 	std::wstring utf16_dir;
-	UTF8ToUTF16(dir, utf16_dir);
+	nim::UTF8ToUTF16(dir, utf16_dir);
 	instance_nim_ = ::LoadLibraryW(utf16_dir.c_str());
 #else
 	instance_nim_ = dlopen(dir.c_str(), RTLD_LAZY);//so必须是绝对路径，如Android系统下是“/data/data/{程序包名}/lib/{so文件名}”
@@ -49,7 +44,7 @@ bool SDKFunction::LoadSdkDll(const char *cur_module_dir)
 	return true;
 }
 
-void SDKFunction::UnLoadSdkDll()
+void SDKInstance::UnLoadSdkDll()
 {
 	assert(instance_nim_);
 	if (instance_nim_)

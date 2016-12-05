@@ -1,11 +1,11 @@
-﻿/** @file nim_common_helper.cpp
-  * @brief SDK辅助方法
+﻿/** @file nim_json_util.cpp
+  * @brief JSON辅助方法
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/09/08
   */
 
-#include "nim_common_helper.h"
+#include "nim_json_util.h"
 
 namespace nim
 {
@@ -35,16 +35,24 @@ bool JsonStrArrayToList(const Json::Value& array_str, std::list<std::string>& ou
 	return false;
 }
 
-std::string PCharToString(const char* str)
+bool JsonArrayStringToList(const std::string& array_str, std::list<std::string>& out)
 {
-	std::string res_str;
-	if (str) {
-		res_str = str;
+	Json::Value value;
+	if (ParseJsonValue(array_str, value) && value.isArray())
+	{
+		return JsonStrArrayToList(value, out);
 	}
-	else {
-		//assert(false);
+	return false;
+}
+
+bool ParseJsonValue(const std::string &content, Json::Value &values)
+{
+	Json::Reader reader;
+	if (reader.parse(content, values))
+	{
+		return true;
 	}
-	return res_str;
+	return false;
 }
 
 std::string GetJsonStringWithNoStyled(const Json::Value& values)

@@ -1,12 +1,12 @@
-﻿/** @file nim_sdk_helper.h
+﻿/** @file nim_sdk_util.h
   * @brief SDK库辅助方法
   * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
   * @author towik, Oleg, Harrison
   * @date 2015/09/08
   */
 
-#ifndef _NIM_SDK_CPP_SDK_HELPER_H_
-#define _NIM_SDK_CPP_SDK_HELPER_H_
+#ifndef _NIM_SDK_CPP_NIM_SDK_UTIL_H_
+#define _NIM_SDK_CPP_NIM_SDK_UTIL_H_
 
 #include <string>
 #include <list>
@@ -23,40 +23,38 @@
 #endif
 #endif
 
-#ifndef NIM_SDK
-#include "..\..\..\..\tool_kits/base/thread/thread_manager.h"
-#include "..\..\..\..\tool_kits/base/callback/callback.h"
-#endif
-
 /**
 * @namespace nim
 * @brief namespace nim
 */
 namespace nim
 {
-
-#ifndef NIM_SDK
-inline void PostTaskToUIThread(const StdClosure &closure)
+/** @enum BoolStatus 自定义的布尔值类型数据的替代数据类型 */
+enum BoolStatus
 {
-	nbase::ThreadManager::PostTask(0, closure);
-}
-#endif
+	BS_NOT_INIT = -1,	/**< 未初始化 */
+	BS_FALSE	= 0,	/**< false */
+	BS_TRUE		= 1		/**< true */
+};
 
 #ifdef NIM_SDK_DLL_IMPORT
-/** @class SDKFunction
+/** @class SDKInstance
   * @brief SDK库辅助类，提供加载/卸载SDK库以及获取接口的方法
   */
-class SDKFunction
+class SDKInstance
 {
 public:
+	SDKInstance();
+	virtual ~SDKInstance();
+
 	/** 加载SDK库 */
-	static bool LoadSdkDll(const char *cur_module_dir);
+	bool LoadSdkDll(const char *cur_module_dir, const char *sdk_dll_file_name);
 
 	/** 卸载SDK库 */
-	static void UnLoadSdkDll();
+	void UnLoadSdkDll();
 
 	/** 获得指定接口 */
-	static void* GetFunction(const std::string& function_name)
+	void* GetFunction(const std::string& function_name)
 	{
 		auto it = function_map.find(function_name);
 		if (it != function_map.end()) {
@@ -76,12 +74,12 @@ public:
 
 private:
 #ifdef WIN32
-	static HINSTANCE instance_nim_;
+	HINSTANCE instance_nim_;
 #else
-	static void *instance_nim_;
+	void *instance_nim_;
 #endif
 
-	static std::map<std::string, void*> function_map;
+	std::map<std::string, void*> function_map;
 };
 
 static void nim_print_unfound_func_name(char* name)
@@ -94,11 +92,13 @@ static void unfound_function_holder()
 
 }
 
+extern SDKInstance *g_nim_sdk_instance;
+
 #define NIM_SDK_GET_FUNC(function_ptr)	\
-						((function_ptr)SDKFunction::GetFunction(#function_ptr) != NULL ? ((function_ptr)SDKFunction::GetFunction(#function_ptr)) : (nim_print_unfound_func_name(#function_ptr),(function_ptr)unfound_function_holder))
+						((function_ptr)g_nim_sdk_instance->GetFunction(#function_ptr) != NULL ? ((function_ptr)g_nim_sdk_instance->GetFunction(#function_ptr)) : (nim_print_unfound_func_name(#function_ptr),(function_ptr)unfound_function_holder))
 #else
 #define NIM_SDK_GET_FUNC(function_ptr) function_ptr
 #endif
 }
 
-#endif //_NIM_SDK_CPP_SDK_HELPER_H_
+#endif //_NIM_SDK_CPP_NIM_SDK_UTIL_H_

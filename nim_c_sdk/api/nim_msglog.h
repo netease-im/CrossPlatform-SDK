@@ -226,6 +226,14 @@ NIM_SDK_DLL_API void nim_msglog_send_receipt_async(const char *json_msg, const c
   */
 NIM_SDK_DLL_API bool nim_msglog_query_be_readed(const char *json_msg, const char *json_extension);
 
+/** @fn bool nim_msglog_query_receipt_sent(const char *json_msg, const char *json_extension)
+  * 查询收到的消息是否已经发送过已读回执
+  * @param[in] json_msg			消息json string。
+  * @param[in] json_extension	json扩展参数（备用，目前不需要）
+  * @return bool 是否已发送过
+  */
+NIM_SDK_DLL_API bool nim_msglog_query_receipt_sent(const char *json_msg, const char *json_extension);
+
 /** @fn void nim_msglog_reg_status_changed_cb(const char *json_extension, nim_msglog_status_changed_cb_func cb, const void *user_data)
   * (全局回调)注册全局的消息状态变更通知（目前只支持已读状态的通知）
   * @param[in] json_extension	json扩展参数（备用，目前不需要）

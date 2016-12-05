@@ -53,6 +53,13 @@ NIM_SDK_DLL_API	void nim_client_update_apns_token(const char *device_token);
   */
 NIM_SDK_DLL_API	void nim_client_login(const char *app_key, const char *account, const char *token, const char *json_extension, nim_json_transport_cb_func cb, const void *user_data);
 
+/** @fn int nim_client_get_login_state(const char *json_extension)
+  * 获取NIM客户端登录状态
+  * @param[in] json_extension json扩展参数（备用，目前不需要）
+  * @return int 登录状态
+  */
+NIM_SDK_DLL_API int nim_client_get_login_state(const char *json_extension);
+
 /** @fn void nim_client_relogin(const char *json_extension)
   * NIM客户端手动重连（注意 APP需要统一处理自动重连/手动重连的回调，因为如果处于某次自动重连的过程中调用手动重连接口，不起作用！）   
   * @param[in] json_extension json扩展参数（备用，目前不需要）
