@@ -23,6 +23,12 @@ extern"C"
   * @param[in] cb					回调函数, 定义见nim_plugin_in_def.h
   * @param[in] user_data			APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
+  * @note 错误码	200:成功
+  *				414:参数错误
+  *				404:聊天室不存在
+  *				403:不允许进入该聊天室
+  *				415:服务不可用，没有聊天室服务器可分配
+  *				13003:在黑名单中
   */
 NIM_SDK_DLL_API void nim_plugin_chatroom_request_enter_async(const int64_t room_id, const char *json_extension, nim_plugin_chatroom_request_enter_cb_func cb, const void *user_data);
 

@@ -42,7 +42,8 @@ static const char *kNIMMultiportPushConfigContentKeyOpen	= "switch_open";		/**< 
 /** @}*/ //多端推送设置/同步 内容Json key
 
 /** @name (PC SDK该设置无效)免打扰设置 内容Json key 
-客户端传入的属性（如果开启免打扰，请让第三方确保把时间转成东八区，即北京时间，小时是24小时制)
+* 客户端传入的属性（如果开启免打扰，请让第三方确保把时间转成东八区，即北京时间，小时是24小时制)
+* @{
 */
 static const char *kNIMDndShowDetail = "show_detail"; /**< 是否显示详情，1显示详情，2不显示详情，其它按1处理(Integer)*/
 static const char *kNIMDndOpened = "switch_open"; /**< 是否开启免打扰，1开启，2关闭，其它按2处理(Integer)*/
@@ -119,6 +120,7 @@ static const char *kNIMPreloadImageResize		= "preload_image_resize";	/**< string
 static const char *kNIMSDKLogLevel				= "sdk_log_level";			/**< int，定义见NIMSDKLogLevel（选填，SDK默认的内置级别为kNIMSDKLogLevelPro） */
 static const char *kNIMPushCerName				= "push_cer_name";			/**< string，推送证书名（选填，iOS端需要,PC SDK该设置无效） */
 static const char *kNIMSyncSessionAck			= "sync_session_ack";		/**< bool，设置是否已读未读状态多端同步，默认true */
+static const char *kNIMLoginRetryMaxTimes		= "login_retry_max_times";	/**< int，登录重试最大次数，如需设置建议设置大于3次，默认填0，SDK默认设置次数 */
 
 static const char *kNIMPrivateServerSetting		= "private_server_setting";	/**< json object, Private Server Setting（一旦设置了私有服务器，则全部连私有服务器，必须确保配置正确！） */
 static const char *kNIMLbsAddress				= "lbs";					/**< string, （必填，lbs地址） */

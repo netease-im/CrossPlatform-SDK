@@ -25,6 +25,12 @@ extern"C"
   * @param[in] cb 结果回调见nim_rts_def.h
   * @param[in] user_data APP的自定义用户数据，SDK只负责传回给回调函数，不做任何处理！
   * @return void 无返回值
+  * @note 错误码	200:成功
+  *				414:参数错误
+  *				501:数据库失败
+  *				509:通道失效
+  *				514:服务不可用 
+  *				11001:无可送达的被叫方,主叫方可直接挂断		
   */ 
 NIM_SDK_DLL_API	void nim_rts_start(int channel_type, const char *uid, const char *json_extension, nim_rts_start_cb_func cb, const void *user_data);
 
@@ -33,6 +39,9 @@ NIM_SDK_DLL_API	void nim_rts_start(int channel_type, const char *uid, const char
   * @param[in] cb 见nim_rts_def.h
   * @param[in] user_data APP的自定义用户数据，SDK只负责传回给回调函数，不做任何处理！
   * @return void 无返回值
+  * @note 错误码	200:成功
+  *				404:对象不存在，发起记录不存在
+  *				509:通道失效
   */ 
 NIM_SDK_DLL_API	void nim_rts_set_start_notify_cb_func(nim_rts_start_notify_cb_func cb, const void *user_data);
 
@@ -44,6 +53,8 @@ NIM_SDK_DLL_API	void nim_rts_set_start_notify_cb_func(nim_rts_start_notify_cb_fu
   * @param[in] cb 结果回调见nim_rts_def.h，返回的json_extension无效
   * @param[in] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
+  * @note 错误码	200:成功
+  *				417:提示已经创建好频道
   */
 NIM_SDK_DLL_API void nim_rts_create_conf(const char *name, const char *custom_info, const char *json_extension, nim_rts_create_cb_func cb, const void *user_data);
 
@@ -54,6 +65,7 @@ NIM_SDK_DLL_API void nim_rts_create_conf(const char *name, const char *custom_in
   * @param[in] cb 结果回调见nim_rts_def.h，回调的json_extension若成功返回创建的kNIMRtsCustomInfo及kNIMRtsChannelId，如{"channel_id": 1231, "custom_info":"hello world" }
   * @param[in] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
+  * @note 错误码	200:成功
   */
 NIM_SDK_DLL_API void nim_rts_join_conf(const char *name, const char *json_extension, nim_rts_join_cb_func cb, const void *user_data);
 
@@ -74,6 +86,8 @@ NIM_SDK_DLL_API	void nim_rts_ack(const char *session_id, int channel_type, bool 
   * @param[in] cb 见nim_rts_def.h
   * @param[in] user_data APP的自定义用户数据，SDK只负责传回给回调函数，不做任何处理！
   * @return void 无返回值
+  * @note 错误码	200:成功
+  *				509:失效
   */ 
 NIM_SDK_DLL_API	void nim_rts_set_ack_notify_cb_func(nim_rts_ack_notify_cb_func cb, const void *user_data);
 
@@ -99,6 +113,7 @@ NIM_SDK_DLL_API	void nim_rts_set_connect_notify_cb_func(nim_rts_connect_notify_c
   * @param[in] cb 见nim_rts_def.h
   * @param[in] user_data APP的自定义用户数据，SDK只负责传回给回调函数，不做任何处理！
   * @return void 无返回值
+  * @note 错误码	200:成功
   */ 
 NIM_SDK_DLL_API	void nim_rts_set_member_change_cb_func(nim_rts_member_change_cb_func cb, const void *user_data);
 
