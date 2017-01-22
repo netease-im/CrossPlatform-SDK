@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_cod_trans.h
   * @brief NIM SDK提供的文档转换相关接口，其中文档上传下载,请使用nos接口nim_nos_upload_ex/nim_nos_download/nim_nos_download_ex
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author redrain
   * @date 2016/12/15
   */

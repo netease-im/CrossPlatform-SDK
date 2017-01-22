@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_talk.h
   * @brief 聊天功能；主要包括发送消息、接收消息等功能
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author towik, Oleg, Harrison
   * @date 2015/2/1
   */

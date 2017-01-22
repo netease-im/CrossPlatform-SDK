@@ -1,6 +1,6 @@
 ﻿/** @file nim_res_code_def.h
   * @brief NIM SDK提供给外部使用的错误号定义（包含客户端自定义和服务器返回的所有错误号）
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Harrison
   * @date 2015/2/1
   */
@@ -54,7 +54,8 @@ enum NIMResCode
 	kNIMResInBlack				= 7101,		/**< 被接收方加入黑名单 SDK版本大于2.5.0支持*/
 	//客户端自定义的错误号
 	kNIMLocalRes					= 10000,		/**< 值大于该错误号的都是客户端自定义的错误号。不能随意更改其值！ */
-	kNIMResRoomLocalNeedRequestAgain	= 10001,	/**< 客户端本地错误号，需要重新向IM服务器获取进入聊天室权限 */
+	kNIMResRoomLocalNeedRequestAgain = 10001,	/**< 客户端本地错误号，需要重新向IM服务器获取进入聊天室权限 */
+	kNIMLocalResNetworkError		 = 10010,	/**< 客户端本地错误号，本地网络错误，需要检查本地网络 */
 
 	//客户端自定义的消息错误号
 	kNIMLocalResMsgNosUploadCancel	= 10200,		/**< (发送文件消息或者stop_upload_ex)HTTP upload to NOS上传暂停 */

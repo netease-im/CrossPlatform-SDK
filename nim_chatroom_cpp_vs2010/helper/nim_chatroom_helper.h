@@ -1,6 +1,6 @@
 ﻿/** @file nim_chatroom_helper.h
   * @brief 聊天室SDK辅助方法
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Oleg, Harrison
   * @date 2015/12/29
   */

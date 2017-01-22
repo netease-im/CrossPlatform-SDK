@@ -1,6 +1,6 @@
 ﻿/** @file nim_doc_trans_helper.h
   * @brief 文档传输辅助方法和数据结构定义
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Redrain
   * @date 2016/12/15
   */

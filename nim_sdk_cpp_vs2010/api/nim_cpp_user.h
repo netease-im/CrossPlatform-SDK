@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_user.h
   * @brief NIM SDK提供的用户相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/8/17
   */
@@ -24,7 +24,7 @@ namespace nim
 
 /** @class User
   * @brief NIM SDK提供的用户相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/8/17
   */

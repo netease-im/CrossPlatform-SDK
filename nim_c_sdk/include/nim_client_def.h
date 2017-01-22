@@ -1,6 +1,6 @@
 ﻿/** @file nim_client_def.h
   * @brief NIM SDK提供的Client相关定义（如登录、注销、被踢、掉线等功能）
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Harrison
   * @date 2015/2/1
   */
@@ -113,6 +113,7 @@ enum NIMMultiSpotNotifyType
   * @{
   */ 
 static const char *kNIMGlobalConfig				= "global_config";			/**< json object, Global Config */
+static const char *kNIMAppKey					= "app_key";				/**< string, （必填，APP KEY） */
 static const char *kNIMDataBaseEncryptKey		= "db_encrypt_key";			/**< string, 必填，目前只支持最多32个字符的加密密钥！建议使用32个字符 */
 static const char *kNIMPreloadAttach			= "preload_attach";			/**< bool, 是否需要预下载附件(图片和语音),选填,默认为true,如果有对带宽流量有较高要求的请关闭该选项，改为上层开发者按需下载附件文件 */
 static const char *kNIMPreloadImageQuality		= "preload_image_quality";	/**< int, 预下载图片质量,选填,范围0-100 */

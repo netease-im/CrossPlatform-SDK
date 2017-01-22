@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_rts.cpp
   * @brief NIM Rts提供的相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/7/3
   */
@@ -217,7 +217,7 @@ void RecDataCallbackWrapper(const char *session_id, int channel_type, const char
 
 //发起相关
 //NIM 创建rts会话，传入的JSON参数定义见nim_rts_def.h
-void Rts::StartChannel(int channel_type, const std::string& uid, const std::string& apns, const std::string& custom_info, const StartChannelCallback& cb)
+void Rts::StartChannel(int channel_type, const std::string& uid, const std::string& apns, const std::string& custom_info, bool data_record, bool audio_record, const StartChannelCallback& cb)
 {
 	StartChannelCallback* cb_pointer = nullptr;
 	if (cb)
@@ -228,7 +228,8 @@ void Rts::StartChannel(int channel_type, const std::string& uid, const std::stri
 	Json::Value values_temp;
 	values_temp[nim::kNIMRtsCreateCustomInfo] = custom_info;
 	values_temp[nim::kNIMRtsApnsText] = apns;
-	values_temp[nim::kNIMRtsDataRecord] = 1;
+	values_temp[nim::kNIMRtsDataRecord] = data_record ? 1 : 0;
+	values_temp[nim::kNIMRtsAudioRecord] = audio_record ? 1 : 0;
 	Json::FastWriter fs;
 	json = fs.write(values_temp);
 	return NIM_SDK_GET_FUNC(nim_rts_start)(channel_type, uid.c_str(), json.c_str(), &StartChannelCallbackWrapper, cb_pointer);
@@ -274,7 +275,7 @@ void Rts::JoinConf(const std::string& name, bool record, const JoinConfCallback&
 }
 
 //NIM 回复收到的邀请
-void Rts::Ack(const std::string& session_id, int channel_type, bool accept, const AckCallback& cb)
+void Rts::Ack(const std::string& session_id, int channel_type, bool accept, bool data_record, bool audio_record, const AckCallback& cb)
 {
 	AckCallback* cb_pointer = nullptr;
 	if (cb)
@@ -283,7 +284,8 @@ void Rts::Ack(const std::string& session_id, int channel_type, bool accept, cons
 	}
 	std::string json;
 	Json::Value values_temp;
-	values_temp[nim::kNIMRtsDataRecord] = 1;
+	values_temp[nim::kNIMRtsDataRecord] = data_record ? 1 : 0;
+	values_temp[nim::kNIMRtsAudioRecord] = audio_record ? 1 : 0;
 	Json::FastWriter fs;
 	json = fs.write(values_temp);
 	return NIM_SDK_GET_FUNC(nim_rts_ack)(session_id.c_str(), channel_type, accept, json.c_str(), &AckCallbackWrapper, cb_pointer);

@@ -1,6 +1,6 @@
 ﻿/** @file nim_chatroom_cpp.h
   * @brief 聊天室SDK
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Oleg, Harrison
   * @date 2015/12/29
   */

@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_rts.h
   * @brief NIM Rts提供的相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/7/3
   */
@@ -43,12 +43,14 @@ public:
 	typedef std::function<void(const std::string& session_id, int channel_type, const std::string& uid, const std::string& data)> RecDataCallback;
 
 	//发起相关
-	/** @fn void StartChannel(int channel_type, const std::string& uid, const std::string& apns, const std::string& custom_info, const StartChannelCallback& cb)
+	/** @fn void StartChannel(int channel_type, const std::string& uid, const std::string& apns, const std::string& custom_info, bool data_record, bool audio_record, const StartChannelCallback& cb)
 	  * NIM 创建rts会话，传入的JSON参数定义见nim_rts_def.h    
 	  * @param[in] channel_type 通道类型 如要tcp+音视频，则channel_type=kNIMRtsChannelTypeTcp|kNIMRtsChannelTypeVchat，同时整个SDK只允许一个音视频通道存在（包括vchat）
 	  * @param[in] uid 对方帐号
 	  * @param[in] apns json_extension Json string 扩展
 	  * @param[in] custom_info json_extension Json string 扩展
+	  * @param[in] data_record 服务器白板数据录制标记
+	  * @param[in] audio_record 服务器音频数据录制标记
 	  * @param[in] cb 结果回调见nim_rts_def.h
 	  * @return void 无返回值
 	  * @note 错误码	200:成功
@@ -58,7 +60,7 @@ public:
 	  *				514:服务不可用 
 	  *				11001:无可送达的被叫方,主叫方可直接挂断		
 	  */ 
-	static void StartChannel(int channel_type, const std::string& uid, const std::string& apns, const std::string& custom_info, const StartChannelCallback& cb);
+	static void StartChannel(int channel_type, const std::string& uid, const std::string& apns, const std::string& custom_info, bool data_record, bool audio_record, const StartChannelCallback& cb);
 
 	/** @fn void SetStartNotifyCb(const StartNotifyCallback& cb)
 	  * NIM 设置收到会话邀请的通知的回调   
@@ -91,15 +93,17 @@ public:
 	  */
 	static void JoinConf(const std::string& name, bool record, const JoinConfCallback& cb);
 
-	/** @fn void Ack(const std::string& session_id, int channel_type, bool accept, const AckCallback& cb)
+	/** @fn void Ack(const std::string& session_id, int channel_type, bool accept, bool data_record, bool audio_record, const AckCallback& cb)
 	  * NIM 回复收到的邀请  
 	  * @param[in] session_id 会话id
 	  * @param[in] channel_type 通道类型,暂时无效
 	  * @param[in] accept 是否接受
+	  * @param[in] data_record 服务器白板数据录制标记
+	  * @param[in] audio_record 服务器音频数据录制标记
 	  * @param[in] cb 见nim_rts_def.h
 	  * @return void 无返回值
 	  */ 
-	static void Ack(const std::string& session_id, int channel_type, bool accept, const AckCallback& cb);
+	static void Ack(const std::string& session_id, int channel_type, bool accept, bool data_record, bool audio_record, const AckCallback& cb);
 
 	/** @fn void SetAckNotifyCb(const AckNotifyCallback& cb)
 	  * NIM 设置收到对方回复的通知回调

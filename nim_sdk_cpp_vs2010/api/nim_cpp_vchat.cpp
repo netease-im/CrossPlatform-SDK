@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_vchat.cpp
   * @brief NIM VChat提供的音视频（包括设备）相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/4/30
   */
@@ -16,6 +16,7 @@ namespace nim
 #ifdef NIM_SDK_DLL_IMPORT
 typedef	bool(*nim_vchat_init)(const char *json_extension);
 typedef	void(*nim_vchat_cleanup)(const char *json_extension);
+typedef uint64_t(*nim_vchat_net_detect)(const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data);
 
 typedef void(*nim_vchat_enum_device_devpath)(nim::NIMDeviceType type, const char *json_extension, nim_vchat_enum_device_devpath_sync_cb_func cb, const void *user_data);
 typedef void(*nim_vchat_start_device)(nim::NIMDeviceType type, const char* device_path, unsigned fps, const char* json_extension, nim_vchat_start_device_cb_func cb, const void *user_data);
@@ -148,6 +149,28 @@ typedef void(*nim_vchat_set_streaming_mode)(bool streaming, const char* json_inf
 #include "nim_vchat.h"
 #endif
 
+static void CallbackNetDetect(bool ret, int rescode, const char *json_params, const void *user_data)
+{
+	if (user_data != nullptr)
+	{
+		NetDetectCbInfo res;
+		res.res_code_ = rescode;
+		Json::Reader reader;
+		Json::Value values;
+		if (reader.parse(PCharToString(json_params), values) && values.isObject())
+		{
+			res.loss_ = values[kNIMNetDetectLoss].asInt();
+			res.rtt_max_ = values[kNIMNetDetectRttmax].asInt();
+			res.rtt_min_ = values[kNIMNetDetectRttmin].asInt();
+			res.rtt_avg_ = values[kNIMNetDetectRttavg].asInt();
+			res.rtt_mdev_ = values[kNIMNetDetectRttmdev].asInt();
+			res.expand_info_ = values[kNIMNetDetectDetail].asString();
+		}
+		VChat::NetDetectCallback *cb = (VChat::NetDetectCallback *)user_data;
+		(*cb)(rescode, res);
+		delete cb;
+	}
+}
 //dll-------------------------------
 //NIM vchat初始化
 bool VChat::Init(const std::string& json_info)
@@ -158,6 +181,15 @@ bool VChat::Init(const std::string& json_info)
 void VChat::Cleanup()
 {
 	NIM_SDK_GET_FUNC(nim_vchat_cleanup)("");
+}
+void VChat::NetDetect(NetDetectCallback cb)
+{
+	NetDetectCallback* cb_pointer = nullptr;
+	if (cb)
+	{
+		cb_pointer = new NetDetectCallback(cb);
+	}
+	NIM_SDK_GET_FUNC(nim_vchat_net_detect)("", CallbackNetDetect, cb_pointer);
 }
 
 //device ---------------------------

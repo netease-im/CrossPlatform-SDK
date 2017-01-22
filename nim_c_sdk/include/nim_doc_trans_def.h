@@ -1,6 +1,6 @@
 ﻿/** @file nim_doc_trans_def.h
   * @brief NIM SDK提供的一些文档转换相关定义
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2016/12/12
   */

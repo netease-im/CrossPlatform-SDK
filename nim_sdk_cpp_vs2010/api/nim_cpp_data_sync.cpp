@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_data_sync.cpp
   * @brief NIM SDK提供的数据同步相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author towik, Oleg, Harrison
   * @date 2015/09/23
   */

@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_client.cpp
   * @brief 全局管理功能；主要包括SDK初始化/清理、客户端登录/退出等功能
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author towik, Oleg, Harrison
   * @date 2015/09/21
   */
@@ -131,7 +131,8 @@ static void CallbackKickother(const char* json_res, const void* callback)
 	}
 }
 
-bool Client::Init(const std::string& app_data_dir
+bool Client::Init(const std::string& app_key
+	, const std::string& app_data_dir
 	, const std::string& app_install_dir
 	, const SDKConfig &config)
 {
@@ -163,6 +164,7 @@ bool Client::Init(const std::string& app_data_dir
 	config_values[nim::kNIMSyncSessionAck] = config.sync_session_ack_;
 	config_values[nim::kNIMLoginRetryMaxTimes] = config.login_max_retry_times_;
 	config_root[nim::kNIMGlobalConfig] = config_values;
+	config_root[nim::kNIMAppKey] = app_key;
 
 	if (config.use_private_server_)
 	{

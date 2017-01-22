@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_friend.cpp
   * @brief NIM 好友相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author caowei, Oleg, Harrison
   * @date 2015/8/17
   */

@@ -1,6 +1,6 @@
 ﻿/** @file nim_talk_helper.h
   * @brief Talk 辅助方法和数据结构定义
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Oleg, Harrison
   * @date 2015/10/16
   */

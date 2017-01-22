@@ -1,6 +1,6 @@
 ﻿/** @file nim_device.h
   * @brief NIM VChat提供的音视频设备相关接口，使用前请先调用nim_vchat.h中nim_vchat_init
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/4/30
   */
@@ -139,7 +139,7 @@ NIM_SDK_DLL_API bool nim_vchat_get_audio_input_auto_volumn();
   */
 NIM_SDK_DLL_API void nim_vchat_set_audio_process_info(bool aec, bool ns, bool vid);
 
-/** @fn void nim_vchat_custom_audio_data(unsigned __int64 time, const char *data, unsigned int size, const char *json_extension);
+/** @fn void nim_vchat_custom_audio_data(uint64_t time, const char *data, unsigned int size, const char *json_extension);
   * NIM VCHAT 自定义音频数据接口, 采样位深只支持16或32， kNIMDeviceSampleRate支持8000，16000，32000，44100
   * @param[in] time 时间毫秒级
   * @param[in] data 音频数据pcm格式
@@ -147,9 +147,9 @@ NIM_SDK_DLL_API void nim_vchat_set_audio_process_info(bool aec, bool ns, bool vi
   * @param[in] json_extension 扩展Json string kNIMDeviceSampleRate采样频和kNIMDeviceSampleBit采样位深 默认如{"sample_rate":16000, "sample_bit":16}
   * @return bool true 调用成功，false 调用失败
   */ 
-NIM_SDK_DLL_API bool nim_vchat_custom_audio_data(unsigned __int64 time, const char *data, unsigned int size, const char *json_extension);
+NIM_SDK_DLL_API bool nim_vchat_custom_audio_data(uint64_t time, const char *data, unsigned int size, const char *json_extension);
 
-/** @typedef void nim_vchat_custom_video_data(unsigned __int64 time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension)
+/** @typedef void nim_vchat_custom_video_data(uint64_t time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension)
   * NIM VCHAT 自定义视频数据接口
   * @param[in] time 时间毫秒级
   * @param[in] data 视频数据， 默认为yuv420格式
@@ -159,7 +159,7 @@ NIM_SDK_DLL_API bool nim_vchat_custom_audio_data(unsigned __int64 time, const ch
   * @param[in] json_extension  扩展Json string，kNIMVideoSubType视频数据格式（缺省为kNIMVideoSubTypeI420）
   * @return bool true 调用成功，false 调用失败
   */ 
-NIM_SDK_DLL_API bool nim_vchat_custom_video_data(unsigned __int64 time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension);
+NIM_SDK_DLL_API bool nim_vchat_custom_video_data(uint64_t time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension);
 
 #ifdef __cplusplus
 };

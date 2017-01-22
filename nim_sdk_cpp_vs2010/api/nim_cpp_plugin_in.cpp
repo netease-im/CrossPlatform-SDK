@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_plugin_in.cpp
   * @brief NIM SDK 提供的plugin接入接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2015/12/29
   */

@@ -1,6 +1,6 @@
 ﻿/** @file nim_chatroom.h
   * @brief NIM 聊天室 SDK提供的接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Oleg, Harrison
   * @date 2015/12/28
   */

@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_vchat.h
   * @brief NIM VChat提供的音视频（包括设备）相关接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/4/30
   */
@@ -10,6 +10,7 @@
 
 #include <string>
 #include <functional>
+#include "nim_base_types.h"
 
 /**
 * @namespace nim
@@ -21,10 +22,32 @@ namespace nim
 #include "nim_vchat_def.h"
 #include "nim_device_def.h"
 
+/** @brief 网络探测回调信息 */
+struct NetDetectCbInfo
+{
+	int32_t res_code_;					/**< 返回的错误码 */
+	int32_t loss_;
+	int32_t rtt_max_;
+	int32_t rtt_min_;
+	int32_t rtt_avg_;
+	int32_t rtt_mdev_;
+	std::string expand_info_;
+
+	NetDetectCbInfo()
+	{
+		res_code_ = 0;
+		loss_ = 0;
+		rtt_max_ = 0;
+		rtt_min_ = 0;
+		rtt_avg_ = 0;
+		rtt_mdev_ = 0;
+	}
+};
 class VChat
 {
 
 public:
+	typedef std::function<void(int, NetDetectCbInfo)> NetDetectCallback;	/**< 网络探测回调模板 */
 	typedef std::function<void(bool ret, int code, const std::string& file, __int64 time)>  Mp4OptCallback;		/**< MP4录制事件通知回调模板 */
 	typedef std::function<void(bool ret, int code, const std::string& json_extension)> OptCallback;				/**< 操作回调模板 */
 	typedef std::function<void(int code, __int64 channel_id, const std::string& json_extension)> Opt2Callback;	/**< 操作回调模板 */
@@ -42,6 +65,22 @@ public:
 	* @return void 无返回值
 	*/
 	static void Cleanup();
+
+	/** @fn void NetDetect(NetDetectCallback cb)
+	* 音视频网络探测
+	* @param[in] cb 操作结果的回调函数
+	* @return void 无返回值
+	* @note 错误码	200:成功
+	*				0:流程错误
+	*				400:非法请求格式
+	*				417:请求数据不对
+	*				606:ip为内网ip
+	*				607:频率超限
+	*				20001:探测类型错误
+	*				20002:ip错误
+	*				20003:sock错误
+	*/
+	static void NetDetect(NetDetectCallback cb);
 
 	/** @fn static void EnumDeviceDevpath(nim::NIMDeviceType type, nim_vchat_enum_device_devpath_sync_cb_func cb)
 	* NIM VCHAT DEVICE 遍历设备

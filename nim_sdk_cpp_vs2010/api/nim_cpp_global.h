@@ -1,6 +1,6 @@
 ﻿/** @file nim_cpp_global.h
   * @brief NIM SDK提供的一些全局接口
-  * @copyright (c) 2015-2016, NetEase Inc. All rights reserved
+  * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author towik, Oleg
   * @date 2015/2/1
   */
@@ -20,28 +20,6 @@ namespace nim
 {
 #include "nim_global_def.h"
 
-
-///** @brief 网络探测回调信息 */
-//struct NetDetectCbInfo
-//{
-//	int32_t res_code_;					/**< 返回的错误码 */
-//	int32_t loss_;
-//	int32_t rtt_max_;
-//	int32_t rtt_min_;
-//	int32_t rtt_avg_;
-//	int32_t rtt_mdev_;
-//	std::string expand_info_;
-//
-//	NetDetectCbInfo()
-//	{
-//		res_code_ = 0;
-//		loss_ = 0;
-//		rtt_max_ = 0;
-//		rtt_min_ = 0;
-//		rtt_avg_ = 0;
-//		rtt_mdev_ = 0;
-//	}
-//};
 /** @class Global
   * @brief NIM SDK提供的一些全局接口
   */
@@ -49,7 +27,6 @@ class Global
 {
 public:
 	typedef std::function<void(int log_level,const std::string& log)> SDKLogCallback; 
-	//typedef std::function<void(int, NetDetectCbInfo)> NetDetectCallback;	/**< 网络探测回调模板 */
 
 public:
 	/** @fn void FreeStrBuf(char *str)
@@ -76,24 +53,6 @@ public:
     * @return void 无返回值
     */
 	static void SetProxy(NIMProxyType type, const std::string& host, int port, const std::string& user, const std::string& password);
-
-	///** @fn void NetDetect(NIMNetDetectType type, const std::string& app_key, NetDetectCallback cb)
-	//* 网络探测
-	//* @param[in] type 探测类型NIMNetDetectType
-	//* @param[in] app_key 应用标识 APP key
-	//* @param[in] cb 操作结果的回调函数
-	//* @return void 无返回值
-	//* @note 错误码	200:成功
-	//*				0:流程错误
-	//*				400:非法请求格式
-	//*				417:请求数据不对
-	//*				606:ip为内网ip
-	//*				607:频率超限
-	//*				20001:探测类型错误
-	//*				20002:ip错误
-	//*				20003:sock错误
-	//*/
-	//static void NetDetect(NIMNetDetectType type, const std::string& app_key, NetDetectCallback cb);
 
 	/** @fn void nim_client_reg_kickout_other_client_cb(const char *json_extension, nim_json_transport_cb_func cb, const void *user_data)
 	* 注册输出sdk log回调
