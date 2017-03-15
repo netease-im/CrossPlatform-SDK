@@ -310,9 +310,9 @@ struct ChatRoomGetMsgHistoryParameters
 {
 	int64_t start_timetag_;			/**<开始时间,单位毫秒 */
 	int limit_;						/**<本次返回的消息数量*/
-
+	bool reverse_;					/**<是否反向查询*/
 	/** 构造函数 */
-	ChatRoomGetMsgHistoryParameters() : start_timetag_(0), limit_(0) {}
+	ChatRoomGetMsgHistoryParameters() : start_timetag_(0), limit_(0), reverse_(false) {}
 
 	/** @fn std::string ToJsonString() const
 	  * @brief 组装Json Value字符串
@@ -323,6 +323,7 @@ struct ChatRoomGetMsgHistoryParameters
 		Json::Value values;
 		values[kNIMChatRoomGetMsgHistoryKeyStartTime] = start_timetag_;
 		values[kNIMChatRoomGetMsgHistoryKeyLimit] = limit_;
+		values[kNIMChatRoomGetMsgHistoryKeyReverse] = reverse_;
 		return nim::GetJsonStringWithNoStyled(values);
 	}
 };

@@ -13,7 +13,7 @@
 namespace nim
 {
 #ifdef NIM_SDK_DLL_IMPORT
-typedef void(*nim_plugin_chatroom_request_enter_async)(const __int64 room_id, const char *json_extension, nim_plugin_chatroom_request_enter_cb_func cb, const void *user_data);
+typedef void(*nim_plugin_chatroom_request_enter_async)(const int64_t room_id, const char *json_extension, nim_plugin_chatroom_request_enter_cb_func cb, const void *user_data);
 #else
 #include "nim_plugin_in.h"
 #endif
@@ -30,7 +30,7 @@ static void CallbackRequestChatRoomEnter(int error_code, const char *result, con
 	}
 }
 
-void PluginIn::ChatRoomRequestEnterAsync(const __int64 room_id, const ChatRoomRequestEnterCallback &callback, const std::string& json_extension/* = ""*/)
+void PluginIn::ChatRoomRequestEnterAsync(const int64_t room_id, const ChatRoomRequestEnterCallback &callback, const std::string& json_extension/* = ""*/)
 {
 	ChatRoomRequestEnterCallback* cb_pointer = nullptr;
 	if (callback)

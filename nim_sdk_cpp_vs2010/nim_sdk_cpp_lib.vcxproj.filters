@@ -18,14 +18,11 @@
       <UniqueIdentifier>{daa88381-673e-4107-a475-2e208bf65653}</UniqueIdentifier>
     </Filter>
     <Filter Include="util">
-      <UniqueIdentifier>{2f2e03d0-e2b2-41fb-a66c-cae5944d3d2e}</UniqueIdentifier>
+      <UniqueIdentifier>{86b7a220-156f-4c06-b51c-80d2e0f684ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helper\nim_client_helper.cpp">
-      <Filter>helper</Filter>
-    </ClCompile>
-    <ClCompile Include="helper\nim_file_helper.cpp">
       <Filter>helper</Filter>
     </ClCompile>
     <ClCompile Include="api\nim_cpp_client.cpp">
@@ -113,15 +110,18 @@
     <ClCompile Include="util\nim_string_util.cpp">
       <Filter>util</Filter>
     </ClCompile>
+    <ClCompile Include="api\nim_cpp_doc_trans.cpp">
+      <Filter>api</Filter>
+    </ClCompile>
+    <ClCompile Include="helper\nim_doc_trans_helper.cpp">
+      <Filter>helper</Filter>
+    </ClCompile>
     <ClCompile Include="helper\nim_nos_helper.cpp">
       <Filter>helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helper\nim_client_helper.h">
-      <Filter>helper</Filter>
-    </ClInclude>
-    <ClInclude Include="helper\nim_file_helper.h">
       <Filter>helper</Filter>
     </ClInclude>
     <ClInclude Include="api\nim_cpp_client.h">
@@ -208,6 +208,12 @@
     </ClInclude>
     <ClInclude Include="util\nim_string_util.h">
       <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="api\nim_cpp_doc_trans.h">
+      <Filter>api</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\nim_doc_trans_helper.h">
+      <Filter>helper</Filter>
     </ClInclude>
     <ClInclude Include="helper\nim_nos_helper.h">
       <Filter>helper</Filter>

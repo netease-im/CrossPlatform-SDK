@@ -49,6 +49,7 @@ class VChat
 public:
 	typedef std::function<void(int, NetDetectCbInfo)> NetDetectCallback;	/**< 网络探测回调模板 */
 	typedef std::function<void(bool ret, int code, const std::string& file, __int64 time)>  Mp4OptCallback;		/**< MP4录制事件通知回调模板 */
+	typedef Mp4OptCallback  AudioRecordCallback; /**< 音频录制事件通知回调模板 */
 	typedef std::function<void(bool ret, int code, const std::string& json_extension)> OptCallback;				/**< 操作回调模板 */
 	typedef std::function<void(int code, __int64 channel_id, const std::string& json_extension)> Opt2Callback;	/**< 操作回调模板 */
 
@@ -223,7 +224,7 @@ public:
 	static bool Control(unsigned __int64 channel_id, NIMVChatControlType type);
 
 	/** @fn static void StartRecord(const std::string& path, Mp4OptCallback cb)
-	* NRTC 开始录制MP4文件，一次只允许一个录制文件，在通话开始的时候才有实际数据
+	* NIM 开始录制MP4文件，一次只允许录制一个MP4文件，在通话开始的时候才有实际数据
 	* @param[in] path 文件录制路径
 	* @param[in] cb 结果回调
 	* @return void 无返回值
@@ -235,13 +236,34 @@ public:
 	static void StartRecord(const std::string& path, Mp4OptCallback cb);
 
 	/** @fn static void StopRecord(Mp4OptCallback cb)
-	* NRTC 停止录制MP4文件
+	* NIM 停止录制MP4文件
 	* @param[in] cb 结果回调
 	* @return void 无返回值
 	* @note 错误码	0:MP4结束
 	*				404:通话不存在
 	*/
 	static void StopRecord(Mp4OptCallback cb);
+
+	/** @fn static void StartAudioRecord(const std::string& path, AudioRecordCallback cb)
+	* NIM 开始录制音频文件，一次只允许录制一个音频文件，在通话开始的时候才有实际数据
+	* @param[in] path 文件录制路径
+	* @param[in] cb 结果回调
+	* @return void 无返回值
+	* @note 错误码	200:文件创建
+	*				400:文件已经存在
+	*				403:文件创建失败
+	*				404:通话不存在
+	*/
+	static void StartAudioRecord(const std::string& path, AudioRecordCallback cb);
+
+	/** @fn static void StopAudioRecord(AudioRecordCallback cb)
+	* NIM 停止录制音频文件
+	* @param[in] cb 结果回调
+	* @return void 无返回值
+	* @note 错误码	0:结束
+	*				404:通话不存在
+	*/
+	static void StopAudioRecord(AudioRecordCallback cb);
 
 	/** @fn static void End(const std::string& json_extension)
 	* NIM VCHAT 结束通话(需要主动在通话结束后调用，用于底层挂断和清理数据)
