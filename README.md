@@ -27,7 +27,7 @@ SDK不提供debug版本的动态链接库供开发者调试，如果遇到问题
 
 ### 快速接入SDK
 
-前往[Windows(PC) SDK Getting Started](http://dev.netease.im/docs?doc=nim_getting_start_pc "target=_blank")
+前往[Windows(PC) SDK Getting Started](http://dev.netease.im/docs/product/通用/新手接入/即时通讯/WindowsGettingStarted "target=_blank")
 
 ### SDK C++封装层类讲解
 

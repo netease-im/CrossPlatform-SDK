@@ -85,7 +85,7 @@ void JoinConfCallbackWrapper(int code, const char *session_id, const char *json_
 		Rts::JoinConfCallback* cb_pointer = (Rts::JoinConfCallback*)user_data;
 		if (*cb_pointer)
 		{
-			__int64 channel_id = 0;
+			int64_t channel_id = 0;
 			std::string custom_info;
 			Json::Value values;
 			Json::Reader reader;
@@ -244,7 +244,7 @@ void Rts::SetStartNotifyCb(const StartNotifyCallback& cb)
 	{
 		g_start_notify_cb_pointer = new StartNotifyCallback(cb);
 	}
-	return NIM_SDK_GET_FUNC(nim_rts_set_start_notify_cb_func)(&StartNotifyCallbackWrapper, g_start_notify_cb_pointer);
+	NIM_SDK_GET_FUNC(nim_rts_set_start_notify_cb_func)(&StartNotifyCallbackWrapper, g_start_notify_cb_pointer);
 }
 
 //NIM 向服务器创建多人rts会话，实际加入会话还需要调用加入接口。

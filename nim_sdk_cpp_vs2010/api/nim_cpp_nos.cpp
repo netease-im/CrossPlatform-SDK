@@ -28,6 +28,7 @@ typedef void(*nim_nos_stop_download_ex)(const char *task_id, const char *json_ex
 #else
 #include "nim_nos.h"
 #endif
+
 struct UploadCallbackUserData
 {
 	UploadCallbackUserData() :	callback_result(),	callback_progress_pointer(nullptr), callback_speed_pointer(nullptr), callback_transfer_pointer(nullptr) {}

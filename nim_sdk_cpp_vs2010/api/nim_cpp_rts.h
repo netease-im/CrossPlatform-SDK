@@ -10,6 +10,7 @@
 
 #include <string>
 #include <functional>
+#include "nim_base_types.h"
 
 /**
 * @namespace nim
@@ -30,7 +31,7 @@ public:
 	typedef std::function<void(nim::NIMResCode res_code, const std::string& session_id, int channel_type, const std::string& uid)> StartChannelCallback;
 	typedef std::function<void(const std::string& session_id, int channel_type, const std::string& uid, const std::string& custom_info)> StartNotifyCallback;
 	typedef std::function<void(nim::NIMResCode res_code)> CreateConfCallback;
-	typedef std::function<void(nim::NIMResCode res_code, const std::string& session_id, __int64 channel_id, const std::string& custom_info)> JoinConfCallback;
+	typedef std::function<void(nim::NIMResCode res_code, const std::string& session_id, int64_t channel_id, const std::string& custom_info)> JoinConfCallback;
 	typedef std::function<void(nim::NIMResCode res_code, const std::string& session_id, int channel_type, bool accept)> AckCallback;
 	typedef std::function<void(const std::string& session_id, int channel_type, bool accept, const std::string& uid)> AckNotifyCallback;
 	typedef std::function<void(const std::string& session_id, int channel_type, bool accept)> SyncAckNotifyCallback;

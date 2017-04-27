@@ -8,8 +8,8 @@
 #ifndef NIM_SDK_DLL_EXPORT_HEADERS_NIM_DEVICE_DEF_H_
 #define NIM_SDK_DLL_EXPORT_HEADERS_NIM_DEVICE_DEF_H_
 
+#include "../util/stdbool.h"
 #include "../util/nim_base_types.h"
-
 #ifdef __cplusplus
 extern"C"
 {
@@ -67,7 +67,7 @@ static const char *kNIMDeviceId				= "id"; 			/**< string 标识ID */
   * @param[out] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
   */ 
-typedef void (*nim_vchat_enum_device_devpath_sync_cb_func)(bool ret, NIMDeviceType type, const char *json_extension, const void *user_data);
+typedef void (*nim_vchat_enum_device_devpath_sync_cb_func)(bool ret, enum NIMDeviceType type, const char *json_extension, const void *user_data);
 
 /** @typedef void (*nim_vchat_start_device_cb_func)(NIMDeviceType type, bool ret, const char *json_extension, const void *user_data)
   * NIM Device 启动设备异步返回接口
@@ -77,7 +77,7 @@ typedef void (*nim_vchat_enum_device_devpath_sync_cb_func)(bool ret, NIMDeviceTy
   * @param[out] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
   */ 
-typedef void (*nim_vchat_start_device_cb_func)(NIMDeviceType type, bool ret, const char *json_extension, const void *user_data);
+typedef void (*nim_vchat_start_device_cb_func)(enum NIMDeviceType type, bool ret, const char *json_extension, const void *user_data);
 
 /** @typedef void (*nim_vchat_device_status_cb_func)(NIMDeviceType type, unsigned int status, const char *device_path, const char *json_extension, const void *user_data)
   * NIM Device 设备状态监听返回接口
@@ -88,7 +88,7 @@ typedef void (*nim_vchat_start_device_cb_func)(NIMDeviceType type, bool ret, con
   * @param[out] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
   */ 
-typedef void (*nim_vchat_device_status_cb_func)(NIMDeviceType type, unsigned int status, const char *device_path, const char *json_extension, const void *user_data);
+typedef void (*nim_vchat_device_status_cb_func)(enum NIMDeviceType type, uint32_t status, const char *device_path, const char *json_extension, const void *user_data);
 
 /** @typedef void (*nim_vchat_audio_data_cb_func)(uint64_t time, const char *data, unsigned int size, const char *json_extension, const void *user_data)
   * NIM Device 音频数据监听接口
@@ -99,7 +99,21 @@ typedef void (*nim_vchat_device_status_cb_func)(NIMDeviceType type, unsigned int
   * @param[out] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
   */ 
-typedef void (*nim_vchat_audio_data_cb_func)(uint64_t time, const char *data, unsigned int size, const char *json_extension, const void *user_data);
+typedef void (*nim_vchat_audio_data_cb_func)(uint64_t time, const char *data, uint32_t size, const char *json_extension, const void *user_data);
+
+/** @typedef void(*nim_vchat_audio_data_cb_func_ex)(uint64_t time, const char *data, uint32_t size, int channels, int rate, int volume, const char *json_extension, const void *user_data)
+  * NIM Device 音频数据监听接口
+  * @param[out] time 时间毫秒级，暂时无效
+  * @param[out] data 音频数据pcm格式
+  * @param[out] size data的数据长度
+  * @param[out] channels 通道数
+  * @param[out] rate 采样频
+  * @param[out] volume 音量值0-100
+  * @param[out] json_extension 扩展
+  * @param[out] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
+  * @return void 无返回值
+  */
+typedef void(*nim_vchat_audio_data_cb_func_ex)(uint64_t time, const char *data, uint32_t size, int channels, int rate, int volume, const char *json_extension, const void *user_data);
 
 /** @typedef void (*nim_vchat_video_data_cb_func)(uint64_t time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension, const void *user_data)
   * NIM Device 视频数据监听接口
@@ -112,7 +126,7 @@ typedef void (*nim_vchat_audio_data_cb_func)(uint64_t time, const char *data, un
   * @param[out] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
   */ 
-typedef void (*nim_vchat_video_data_cb_func)(uint64_t time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension, const void *user_data);
+typedef void (*nim_vchat_video_data_cb_func)(uint64_t time, const char *data, uint32_t size,uint32_t width, uint32_t height, const char *json_extension, const void *user_data);
 
 #ifdef __cplusplus
 };

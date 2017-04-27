@@ -9,6 +9,7 @@
 #define NIM_SDK_DLL_EXPORT_HEADERS_NIM_VCHAT_DEF_H_
 
 #include "../util/nim_base_types.h"
+#include "../util/stdbool.h"
 
 #ifdef __cplusplus
 extern"C"
@@ -136,19 +137,6 @@ enum NIMVChatAudioRecordCode{
 	kNIMVChatAudioRecordInvalid			= 404,		/**< 通话不存在 */
 };
 
-/** @enum NIMVChatSetStreamingModeCode 设置推流模式返回码  */
-enum NIMVChatSetStreamingModeCode{
-	kNIMVChatBypassStreamingInvalid					= 0,			/**< 无效的操作 */
-	kNIMVChatBypassStreamingSuccess					= 200,			/**< 设置成功 */
-	kNIMVChatBypassStreamingErrorExceedMax			= 202,			/**< 超过最大允许直播节点数量 */
-	kNIMVChatBypassStreamingErrorHostNotJoined		= 203,			/**< 必须由主播第一个开启直播 */
-	kNIMVChatBypassStreamingErrorServerError		= 204,			/**< 互动直播服务器错误 */
-	kNIMVChatBypassStreamingErrorOtherError			= 205,			/**< 互动直播其他错误 */
-	kNIMVChatBypassStreamingErrorNoResponse			= 404,			/**< 互动直播服务器没有响应 */
-	kNIMVChatBypassStreamingErrorReconnecting		= 405,			/**< 重连过程中无法进行相关操作，稍后再试 */
-	kNIMVChatBypassStreamingErrorTimeout			= 408,			/**< 互动直播设置超时 */
-};
-
 /** @enum NIMVChatVideoSplitMode 主播设置的直播分屏模式  */
 enum NIMVChatVideoSplitMode{
 	kNIMVChatSplitBottomHorFloating					= 0,			/**< 底部横排浮窗 */
@@ -156,6 +144,14 @@ enum NIMVChatVideoSplitMode{
 	kNIMVChatSplitLatticeTile						= 2,			/**< 平铺 */
 	kNIMVChatSplitLatticeCuttingTile				= 3,			/**< 裁剪平铺 */
 };
+
+/** @enum NIMVChatVideoFrameScaleType 视频画面长宽比，裁剪时不改变横竖屏，如4：3，代表宽高横屏4：3或者竖屏3：4  */
+enum NIMVChatVideoFrameScaleType{
+	kNIMVChatVideoFrameScaleNone					= 0,			/**< 默认，不裁剪 */
+	kNIMVChatVideoFrameScale1x1						= 1,			/**< 裁剪成1：1的形状 */
+	kNIMVChatVideoFrameScale4x3						= 2,			/**< 裁剪成4：3的形状，如果是 */
+	kNIMVChatVideoFrameScale16x9					= 3,			/**< 裁剪成16：9的形状 */
+}; 
 
 /** @name 网络探测回调 内容Json key for nim_vchat_opt_cb_func
   * @{
@@ -238,9 +234,9 @@ static const char *kNIMVChatReceiver		= "receiver";			/**< key 接收信息 */
   * 			kNIMVideoChatSessionTypeHangupRes,			//通话主动结果 code=200成功，json无效 \n
   * 			kNIMVideoChatSessionTypeHangupNotify,		//通话被挂断通知 code无效，json无效 \n
   * 			kNIMVideoChatSessionTypeSyncAckNotify,		//其他端接听挂断后的同步通知 json 返回 kNIMVChatTime，kNIMVChatType对应NIMVideoChatMode，kNIMVChatAccept，kNIMVChatClient  \n
-  *				kNIMVideoChatSessionTypeMp4Notify			//通知MP4录制状态，包括开始录制和结束录制 code无效，json 返回如下 \n
-  *															//	MP4开始 	{"mp4_start":{ "mp4_file": "d:\\test.mp4", "time": 14496477000000 }} \n
-  *															//	MP4结束 	{"mp4_close":{ "mp4_file": "d:\\test.mp4", "time": 120000, "status": 0 }} \n
+  *				kNIMVideoChatSessionTypeMp4Notify			//通知MP4录制状态，包括开始录制和结束录制， code无效，json(其他成员的录制通知带uid，自己的不带) 返回如下 \n
+  *															//	MP4开始 	{"mp4_start":{ "mp4_file": "d:\\test.mp4", "time": 14496477000000, "uid":"id123" }} \n
+  *															//	MP4结束 	{"mp4_close":{ "mp4_file": "d:\\test.mp4", "time": 120000, "status": 0, "uid":"id123" }} \n
   *				kNIMVideoChatSessionTypeAuRecordNotify		//通知音频录制状态，包括开始录制和结束录制 code无效，json 返回如下 \n
   *															//	录制开始 	{"audio_record_start":{ "file": "d:\\test.aac", "time": 14496477000000 }} \n
   *															//	录制结束 	{"audio_record_close":{ "file": "d:\\test.aac", "time": 120000, "status": 0 }} \n
@@ -254,7 +250,7 @@ static const char *kNIMVChatReceiver		= "receiver";			/**< key 接收信息 */
   * @return void 无返回值
   *
   */
-typedef void (*nim_vchat_cb_func)(NIMVideoChatSessionType type, int64_t channel_id, int code, const char *json_extension, const void *user_data);
+typedef void (*nim_vchat_cb_func)(enum NIMVideoChatSessionType type, int64_t channel_id, int code, const char *json_extension, const void *user_data);
 
 /** @typedef void (*nim_vchat_mp4_record_opt_cb_func)(bool ret, int code, const char *file, int64_t time, const char *json_extension, const void *user_data)
   * NIM MP4操作回调，实际的开始录制和结束都会在nim_vchat_cb_func中返回
@@ -278,7 +274,7 @@ typedef void (*nim_vchat_mp4_record_opt_cb_func)(bool ret, int code, const char 
   * @param[out] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
   * @return void 无返回值
   */
-typedef void (*nim_vchat_audio_record_opt_cb_func)(bool ret, int code, const char *file, __int64 time, const char *json_extension, const void *user_data);
+typedef void (*nim_vchat_audio_record_opt_cb_func)(bool ret, int code, const char *file, int64_t time, const char *json_extension, const void *user_data);
 
 /** @typedef void (*nim_vchat_opt_cb_func)(bool ret, int code, const char *json_extension, const void *user_data)
   * NIM 操作回调，通用的操作回调接口

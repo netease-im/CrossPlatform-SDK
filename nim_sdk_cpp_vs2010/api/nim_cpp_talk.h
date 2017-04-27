@@ -322,7 +322,13 @@ public:
 	*				10508:本地错误码,超过配置有效期或者所需参数不存在
 	*/
 	static void RecallMsg(const IMMessage &msg, const std::string &notify, const RecallMsgsCallback& cb, const std::string& json_extension = "");
-
+	
+	/** @fn static std::string CreateRetweetMessage(const std::string& src_msg_json	, const std::string& client_msg_id	, const NIMSessionType retweet_to_session_type	, const std::string& retweet_to_session_id	, const MessageSetting& msg_setting	, int64_t timetag = 0)
+	*  从消息体中获取附件（图片、语音、视频等）的本地路径
+	*  @param[in]  msg	消息
+	*  @return char *	消息如果有附件，不管是否已下载，返回附件的本地路径；消息如果没有附件，返回空字符串。
+	*/
+	static std::string GetAttachmentPathFromMsg(const IMMessage& msg);
 };
 
 } 

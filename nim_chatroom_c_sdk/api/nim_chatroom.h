@@ -8,8 +8,8 @@
 #ifndef NIM_CHATROOM_SDK_API_NIM_CHATROOM_H_
 #define NIM_CHATROOM_SDK_API_NIM_CHATROOM_H_
 
-#include "nim_chatroom_sdk_dll.h"
-#include "nim_chatroom_def.h"
+#include "../nim_chatroom_sdk_dll.h"
+#include "../export_headers/nim_chatroom_def.h"
 #include "../util/stdbool.h"
 
 #ifdef __cplusplus

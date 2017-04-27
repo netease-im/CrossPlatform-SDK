@@ -36,7 +36,7 @@ struct SDKConfig
 	int				custom_timeout_;				/**< int，自定义通讯超时时间，暂时不开放设置 */
 
 	//private_server_setting
-	bool			use_private_server_;			/**< 选填，是否使用私有服务器 */
+	bool			use_private_server_;			/**< 是否使用私有服务器，如果使用私有服务器，则必须设置为true */
 	std::string		lbs_address_;					/**< lbs地址，如果选择使用私有服务器，则必填 */
 	std::string  	nos_lbs_address_;				/**< nos lbs地址，如果选择使用私有服务器，则必填 */
 	std::list<std::string>	default_link_address_;			/**< 默认link服务器地址，如果选择使用私有服务器，则必填 */

@@ -81,12 +81,12 @@ static void CallbackSendMsgAck(int64_t room_id, int error_code, const char *resu
 		if (*cb_pointer)
 		{
 			Json::Value value;
+			ChatRoomMessage msg;
 			if (ParseJsonValue(PCharToString(result), value))
 			{
-				ChatRoomMessage msg;
 				msg.ParseFromJsonValue(value);
-				(*cb_pointer)(room_id, error_code, msg);
 			}
+			(*cb_pointer)(room_id, error_code, msg);
 		}
 	}
 }

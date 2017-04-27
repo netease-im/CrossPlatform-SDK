@@ -80,7 +80,7 @@ static void CallbackGetFriendProfile(const char *accid, const char *result_json,
 		{
 			FriendProfile friend_profile;
 			ParseFriendProfile(PCharToString(result_json), friend_profile);
-			(*cb_pointer)(accid, friend_profile);
+			(*cb_pointer)(PCharToString(accid), friend_profile);
 		}
 		delete cb_pointer;
 	}

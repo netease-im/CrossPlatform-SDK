@@ -195,20 +195,24 @@ public:
 	int64_t		   readonly_server_id_;				/**< 消息ID（服务器，只读） */
 
 	/** 构造函数 */
-	IMMessage() : feature_(kNIMMessageFeatureDefault)
+	IMMessage() : rescode_((NIMResCode)0)
+				, feature_(kNIMMessageFeatureDefault)
 				, readonly_sender_client_type_(kNIMClientTypeDefault) 
 				, readonly_server_id_(0)
 				, session_type_(kNIMSessionTypeP2P)
 				, timetag_(0)
+				, type_(kNIMMessageTypeUnknown)
 				, status_(nim::kNIMMsgLogStatusNone)
 				, sub_status_(nim::kNIMMsgLogSubStatusNone) {}
 
 	/** 构造函数 */
-	IMMessage(const std::string &json_msg) : feature_(kNIMMessageFeatureDefault)
+	IMMessage(const std::string &json_msg) : rescode_((NIMResCode)0)
+		, feature_(kNIMMessageFeatureDefault)
 		, readonly_sender_client_type_(kNIMClientTypeDefault) 
 		, readonly_server_id_(0)		
 		, session_type_(kNIMSessionTypeP2P)
 		, timetag_(0)
+		, type_(kNIMMessageTypeUnknown)
 		, status_(nim::kNIMMsgLogStatusNone)
 		, sub_status_(nim::kNIMMsgLogSubStatusNone) 
 	{
@@ -256,7 +260,7 @@ public:
 		values[kNIMMsgKeyAttach] = attach_;
 		values[kNIMMsgKeyClientMsgid] = client_msg_id_;
 		values[kNIMMsgKeyLocalFilePath] = local_res_path_;
-		values[kNIMMsgKeyLocalTalkId] = receiver_accid_;
+		values[kNIMMsgKeyLocalTalkId] = local_talk_id_;
 		values[kNIMMsgKeyLocalResId] = local_res_id_;
 		values[kNIMMsgKeyLocalLogStatus] = status_;
 		values[kNIMMsgKeyLocalLogSubStatus] = sub_status_;

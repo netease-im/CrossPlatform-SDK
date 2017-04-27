@@ -23,6 +23,7 @@ typedef void(*nim_talk_reg_notification_filter_cb)(const char *json_extension, n
 typedef char*(*nim_talk_create_retweet_msg)(const char* src_msg_json, const char* client_msg_id, const NIMSessionType retweet_to_session_type, const char* retweet_to_session_id, const char* msg_setting, int64_t timetag);
 typedef void(*nim_talk_recall_msg)(const char *json_msg, const char *notify, const char *json_extension, nim_talk_recall_msg_func cb, const void *user_data);
 typedef void(*nim_talk_reg_recall_msg_cb)(const char *json_extension, nim_talk_recall_msg_func cb, const void *user_data);
+typedef char*(*nim_talk_get_attachment_path_from_msg)(const char *json_msg);
 #else
 #include "nim_talk.h"
 #endif
@@ -542,6 +543,14 @@ void Talk::RecallMsg(const IMMessage &msg, const std::string &notify, const Reca
 		cb_pointer = new RecallMsgsCallback(cb);
 	}
 	NIM_SDK_GET_FUNC(nim_talk_recall_msg)(msg.ToJsonString(false).c_str(), notify.c_str(), json_extension.c_str(), &CallbackRecallMsg, cb_pointer);
+}
+
+std::string Talk::GetAttachmentPathFromMsg(const IMMessage& msg)
+{
+	const char* file_path = NIM_SDK_GET_FUNC(nim_talk_get_attachment_path_from_msg)(msg.ToJsonString(false).c_str());
+	std::string out_path = (std::string)file_path;
+	Global::FreeBuf((void *)file_path);
+	return out_path;
 }
 
 void Talk::UnregTalkCb()
