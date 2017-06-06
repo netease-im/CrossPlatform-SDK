@@ -337,6 +337,12 @@ static const char *kNIMChatRoomMemberInfoKeyTempMute	= "temp_mute";		/**<int 临
 static const char *kNIMChatRoomMemberInfoKeyTempMuteRestDuration= "temp_mute_rest_duration"; /**<long 临时禁言的解除时长,单位秒*/
 /** @}*/ //聊天室个人Info Json Keys
 
+/** @name 更新我的信息扩展字段 Json Keys
+  * @{
+  */
+static const char *kNIMChatRoomUpdateMyRoleExtNeedSave	= "need_save";	/**<bool 我的资料是否需要持久化保存，默认false*/
+/** @}*/ //更新我的信息扩展字段 Json Keys
+
 /** @enum NIMChatRoomLoginState 登录状态 */
 enum NIMChatRoomLoginState
 {
@@ -441,6 +447,7 @@ enum NIMChatRoomNotificationId
 	kNIMChatRoomNotificationIdMemberTempMute	= 314, /**< 临时禁言*/
 	kNIMChatRoomNotificationIdMemberTempUnMute	= 315, /**< 主动解除临时禁言*/
 	kNIMChatRoomNotificationIdMyRoleUpdated		= 316, /**< 成员主动更新了聊天室内的角色信息(仅指nick/avator/ext)*/
+	kNIMChatRoomNotificationIdQueueChanged		= 317, /**< 麦序队列中有变更*/
 	kNIMChatRoomNotificationIdRoomMuted			= 318, /**< 聊天室被禁言了,只有管理员可以发言,其他人都处于禁言状态*/
 	kNIMChatRoomNotificationIdRoomDeMuted		= 319, /**< 聊天室解除全体禁言状态*/
 };

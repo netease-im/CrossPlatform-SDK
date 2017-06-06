@@ -124,7 +124,7 @@ static const char *kNIMPushCerName				= "push_cer_name";			/**< string，推送�
 static const char *kNIMSyncSessionAck			= "sync_session_ack";		/**< bool，设置是否已读未读状态多端同步，默认true */
 static const char *kNIMLoginRetryMaxTimes		= "login_retry_max_times";	/**< int，登录重试最大次数，如需设置建议设置大于3次，默认填0，SDK默认设置次数 */
 
-static const char *kNIMPrivateServerSetting		= "private_server_setting";	/**< json object, Private Server Setting（一旦设置了私有服务器，则全部连私有服务器，必须确保配置正确！） */
+static const char *kNIMPrivateServerSetting		= "private_server_setting";	/**< json object, 私有服务器配置（一旦设置了私有服务器，则全部连私有服务器，必须确保配置正确！） */
 static const char *kNIMLbsAddress				= "lbs";					/**< string, （必填，lbs地址） */
 static const char *kNIMNosLbsAddress			= "nos_lbs";				/**< string, （必填，nos lbs地址） */
 static const char *kNIMDefaultLinkAddress		= "default_link";			/**< string array, （必填，默认link服务器地址） */
