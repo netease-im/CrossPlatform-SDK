@@ -12,8 +12,9 @@ Windows(PC) SDK对外暴露的是C接口，为了让桌面开发者更加方便�
 * x86_dlls：存放32位Dll的文件夹
 * nim.dll： SDK核心功能模块；放在用户程序目录下
 * nim_audio.dll： 负责语音录制和播放；放在用户程序目录下
-* nim\_tools\_http.dll： 负责通用的http传输；nim.dll模块使用了此功能，C++封装层(需要依赖Demo工程)
+* nim\_tools\_http.dll： 负责通用的http传输；nim.dll加载了此模块，需要放在用户程序目录下
 * nrtc.dll： 负责视频聊天功能；放在用户程序目录下
+* nrtc\_audio\_process.dll： 负责音频处理；放在用户程序目录下
 * nim\_audio\_hook.dll： 负责辅助采集播放器音频，由nrtc.dll调用；放在用户程序目录下，x64位暂时不提供该Dll。
 * nim_conf： SDK版本相关；放在用户程序目录下
 * nim\_c\_sdk： IM C 接口说明以及SDK所有定义的头文件（*_def.h头文件用户自己决定放在合适位置）。

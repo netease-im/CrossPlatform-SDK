@@ -395,7 +395,7 @@ public:
 	* NIM VCHAT 创建一个多人房间（后续需要主动调用加入接口进入房间）
 	* @param[in] room_name 房间名
 	* @param[in] custom_info 自定义的房间信息（加入房间的时候会返回）
-	* @param[in] json_extension 无效扩展字段
+	* @param[in] json_extension 可选kNIMVChatWebrtc
 	* @param[in] cb 结果回调见nim_vchat_def.h，返回的json_extension无效
 	* @return void 无返回值
 	* @note 错误码	200:成功

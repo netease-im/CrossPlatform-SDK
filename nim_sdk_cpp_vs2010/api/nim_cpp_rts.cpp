@@ -7,7 +7,6 @@
 
 #include "nim_cpp_rts.h"
 #include "nim_sdk_util.h"
-#include "nim_json_util.h"
 #include "nim_string_util.h"
 
 namespace nim
@@ -217,21 +216,14 @@ void RecDataCallbackWrapper(const char *session_id, int channel_type, const char
 
 //发起相关
 //NIM 创建rts会话，传入的JSON参数定义见nim_rts_def.h
-void Rts::StartChannel(int channel_type, const std::string& uid, const std::string& apns, const std::string& custom_info, bool data_record, bool audio_record, const StartChannelCallback& cb)
+void Rts::StartChannel(int channel_type, const std::string& uid, RtsStartInfo info, const StartChannelCallback& cb)
 {
 	StartChannelCallback* cb_pointer = nullptr;
 	if (cb)
 	{
 		cb_pointer = new StartChannelCallback(cb);
 	}
-	std::string json;
-	Json::Value values_temp;
-	values_temp[nim::kNIMRtsCreateCustomInfo] = custom_info;
-	values_temp[nim::kNIMRtsApnsText] = apns;
-	values_temp[nim::kNIMRtsDataRecord] = data_record ? 1 : 0;
-	values_temp[nim::kNIMRtsAudioRecord] = audio_record ? 1 : 0;
-	Json::FastWriter fs;
-	json = fs.write(values_temp);
+	std::string json = info.GetJsonStr();
 	return NIM_SDK_GET_FUNC(nim_rts_start)(channel_type, uid.c_str(), json.c_str(), &StartChannelCallbackWrapper, cb_pointer);
 }
 
