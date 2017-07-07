@@ -207,7 +207,7 @@ static const char *kNIMVChatNeedFromNick	= "need_nick";		/**< int 是否需要�
 static const char *kNIMVChatApnsPayload		= "payload";		/**< string JSON格式,推送payload */
 static const char *kNIMVChatSound			= "sound";			/**< string 推送声音 */
 static const char *kNIMVChatKeepCalling		= "keepcalling";	/**< int, 是否强制持续呼叫（对方离线也会呼叫）,1表示是，0表示否。默认是 */
-static const char *kNIMVChatWebrtc			= "webrtc";			/**< int, 是否支持webrtc互通,1表示是，0表示否。默认否 */
+static const char *kNIMVChatWebrtc			= "webrtc";			/**< int, 是否支持webrtc互通,1表示是，0表示否。默认否，无需要不要开启 */
 /** @}*/ //json extension params
 
 /** @name json extension params for nim_vchat_cb_func
@@ -265,7 +265,7 @@ static const char *kNIMVChatLiveState		= "live_state";			/**< key 直播状态 k
   *															//	录制结束 	{"audio_record_close":{ "file": "d:\\test.aac", "time": 120000, "status": 0 }} \n
   *				kNIMVideoChatSessionTypeInfoNotify			//实时状态		{"static_info":{"rtt":20, "video": {"fps":20, "KBps":200, "lost_rate":5, "width":1280,"height":720}, "audio": {"fps":17, "KBps":3", lost_rate":3 }}} \n
   *				kNIMVideoChatSessionTypeVolumeNotify		//音量状态 		{"audio_volume":{ "self": {"status":600}, "receiver": [{"uid":"id123","status":1000},{"uid":"id456","status":222}] }} \n
-  *				kNIMVideoChatSessionTypeLiveState			//直播状态		{"live_state":{"status":304 }} \n
+  *				kNIMVideoChatSessionTypeLiveState			//直播状态		{"live_state":{"status":505 }} \n
   * @param[out] type NIMVideoChatSessionType
   * @param[out] channel_id 通话的通道id
   * @param[out] code 结果类型或错误类型

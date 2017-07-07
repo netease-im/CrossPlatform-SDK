@@ -347,6 +347,32 @@ std::string Talk::CreateTipMessage(const std::string& receiver_id
 	return GetJsonStringWithNoStyled(values);
 }
 
+std::string Talk::CreateBotRobotMessage(const std::string& receiver_id
+	, const NIMSessionType session_type
+	, const std::string& client_msg_id
+	, const std::string& content
+	, const IMBotRobot& bot_msg
+	, const MessageSetting& msg_setting
+	, int64_t timetag/* = 0*/)
+{
+	Json::Value values;
+	values[kNIMMsgKeyToAccount] = receiver_id;
+	values[kNIMMsgKeyToType] = session_type;
+	values[kNIMMsgKeyClientMsgid] = client_msg_id;
+	values[kNIMMsgKeyBody] = content;
+	values[kNIMMsgKeyType] = kNIMMessageTypeRobot;
+	values[kNIMMsgKeyLocalTalkId] = receiver_id;
+	values[kNIMMsgKeyAttach] = bot_msg.ToJsonString();
+
+	msg_setting.ToJsonValue(values);
+
+	//选填
+	if (timetag > 0)
+		values[kNIMMsgKeyTime] = timetag;
+
+	return GetJsonStringWithNoStyled(values);
+}
+
 std::string Talk::CreateRetweetMessage(const std::string& src_msg_json
 	, const std::string& client_msg_id
 	, const NIMSessionType retweet_to_session_type
@@ -477,6 +503,25 @@ bool Talk::ParseLocationMessageAttach(const IMMessage& msg, IMLocation& location
 		location.description_ = values[kNIMLocationMsgKeyTitle].asString();
 		location.latitude_ = values[kNIMLocationMsgKeyLatitude].asDouble();
 		location.longitude_ = values[kNIMLocationMsgKeyLongitude].asDouble();
+		return true;
+	}
+	return false;
+}
+
+bool Talk::ParseBotRobotMessageAttach(const IMMessage& msg, IMBotRobot& robot_msg)
+{
+	if (msg.type_ != kNIMMessageTypeRobot)
+		return false;
+
+	Json::Value values;
+	Json::Reader reader;
+	if (reader.parse(msg.attach_, values) && values.isObject())
+	{
+		robot_msg.robot_accid_ = values[kNIMBotRobotMsgKeyRobotID].asString();
+		robot_msg.related_msg_id_ = values[kNIMBotRobotReceivedMsgKeyClientMsgID].asString();
+		robot_msg.out_msg_ = values[kNIMBotRobotReceivedMsgKeyMsgOut].asBool();
+		robot_msg.robot_msg_flag_ = values[kNIMBotRobotReceivedMsgKeyRobotMsg][kNIMBotRobotReceivedMsgKeyRobotMsgFlag].asString();
+		robot_msg.robot_msg_content_ = values[kNIMBotRobotReceivedMsgKeyRobotMsg][kNIMBotRobotReceivedMsgKeyRobotMsgMessage];
 		return true;
 	}
 	return false;

@@ -169,14 +169,14 @@ public:
 	*/
 	static bool GetAudioInputAutoVolumn();
 
-	/** @fn static void SetAudioProcess(bool aec, bool ns, bool vid)
+	/** @fn static void SetAudioProcess(bool aec, bool ns, bool vad)
 	* NIM VCHAT DEVICE 设置底层针对麦克风采集数据处理开关接口，默认全开（此接口是全局接口，在sdk初始化后设置一直有效）
 	* @param[in] aec true 标识打开回音消除功能，false 标识关闭
 	* @param[in] ns true 标识打开降噪功能，false 标识关闭
-	* @param[in] vid true 标识打开人言检测功能，false 标识关闭
+	* @param[in] vad true 标识打开人言检测功能，false 标识关闭
 	* @return void 无返回值
 	*/
-	static void SetAudioProcess(bool aec, bool ns, bool vid);
+	static void SetAudioProcess(bool aec, bool ns, bool vad);
 
 	/** @fn static void SetCbFunc(nim_vchat_cb_func cb)
 	* NIM VCHAT 设置通话回调或者服务器通知

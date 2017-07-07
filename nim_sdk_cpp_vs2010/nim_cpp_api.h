@@ -44,6 +44,8 @@
 #include "nim_cpp_doc_trans.h"
 //事件订阅
 #include "nim_cpp_subscribe_event.h"
+//机器人
+#include "nim_cpp_robot.h"
 #endif
 
 /**

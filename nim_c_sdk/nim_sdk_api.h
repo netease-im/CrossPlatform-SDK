@@ -39,3 +39,5 @@
 #include "nim_plugin_in.h"
 //工具辅助类API
 #include "nim_tools.h"
+//机器人
+#include "nim_robot.h"

@@ -64,7 +64,7 @@ NIM_SDK_DLL_API void nim_vchat_add_device_status_cb(enum NIMDeviceType type, nim
   */
 NIM_SDK_DLL_API void nim_vchat_remove_device_status_cb(enum NIMDeviceType type);
 
-/** @fn void nim_vchat_start_extend_camera(const char *id, const char *device_path, unsigned fps, const char *json_extension, nim_vchat_start_device_cb_func cb, const void *user_data)
+/** @fn void nim_vchat_start_extend_camera(const char *id, const char *device_path, uint32_t fps, const char *json_extension, nim_vchat_start_device_cb_func cb, const void *user_data)
   * NIM VCHAT DEVICE 启动辅助的摄像头，摄像头数据通过nim_vchat_set_video_data_cb设置采集回调返回，不直接通过视频通话发送给对方，并且不参与设备监听检测
   * @param[in] id 摄像头标识，用于开关及数据回调时的对应，不能为空。（同一id下设备将不重复启动，如果设备device_path不同会先关闭前一个设备开启新设备）
   * @param[in] device_path 设备路径对应kNIMDevicePath
@@ -142,16 +142,16 @@ NIM_SDK_DLL_API void nim_vchat_set_audio_input_auto_volumn(bool auto_volumn);
   */
 NIM_SDK_DLL_API bool nim_vchat_get_audio_input_auto_volumn();
 
-/** @fn void nim_vchat_set_audio_process_info(bool aec, bool ns, bool vid)
+/** @fn void nim_vchat_set_audio_process_info(bool aec, bool ns, bool vad)
   * NIM VCHAT DEVICE 设置底层针对麦克风采集数据处理开关接口，默认全开（此接口是全局接口，在sdk初始化后设置一直有效）
   * @param[in] aec true 标识打开回音消除功能，false 标识关闭
   * @param[in] ns true 标识打开降噪功能，false 标识关闭
-  * @param[in] vid true 标识打开人言检测功能，false 标识关闭
+  * @param[in] vad true 标识打开人言检测功能，false 标识关闭
   * @return void 无返回值
   */
-NIM_SDK_DLL_API void nim_vchat_set_audio_process_info(bool aec, bool ns, bool vid);
+NIM_SDK_DLL_API void nim_vchat_set_audio_process_info(bool aec, bool ns, bool vad);
 
-/** @fn void nim_vchat_custom_audio_data(uint64_t time, const char *data, unsigned int size, const char *json_extension);
+/** @fn void nim_vchat_custom_audio_data(uint64_t time, const char *data, uint32_t size, const char *json_extension);
   * NIM VCHAT 自定义音频数据接口, 采样位深只支持16或32， kNIMDeviceSampleRate支持8000，16000，32000，44100
   * @param[in] time 时间毫秒级
   * @param[in] data 音频数据pcm格式
