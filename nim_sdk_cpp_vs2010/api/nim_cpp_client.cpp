@@ -140,8 +140,8 @@ bool Client::Init(const std::string& app_key
 
 #if !defined (WIN32)
 	static const char *kSdkNimDll = "libnim.so";
-#elif defined (_DEBUG) || defined (DEBUG)
-	static const char *kSdkNimDll = "nim_d.dll";
+//#elif defined (_DEBUG) || defined (DEBUG)
+//	static const char *kSdkNimDll = "nim_d.dll";
 #else
 	static const char *kSdkNimDll = "nim.dll";
 #endif

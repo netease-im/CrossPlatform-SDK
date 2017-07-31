@@ -217,8 +217,8 @@ bool ChatRoom::Init(const std::string& app_install_dir, const std::string& json_
 
 #if !defined (WIN32)
 	static const char *kSdkNimDll = "libnim_chatroom.so";
-#elif defined (_DEBUG) || defined (DEBUG)
-	static const char *kSdkNimDll = "nim_chatroom_d.dll";
+//#elif defined (_DEBUG) || defined (DEBUG)
+//	static const char *kSdkNimDll = "nim_chatroom_d.dll";
 #else
 	static const char *kSdkNimDll = "nim_chatroom.dll";
 #endif
