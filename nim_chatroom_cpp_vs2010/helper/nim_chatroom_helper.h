@@ -262,6 +262,7 @@ public:
 	NIMChatRoomMsgType	msg_type_;				/**< 消息类型 */
 	std::string		msg_attach_;				/**< 消息内容,长度限制2048,json结构, 文本消息和其他消息保持一致 */
 	std::string		client_msg_id_;				/**< 客户端消息id */
+	std::string		msg_body_;					/**< 文本消息内容（聊天室机器人文本消息） */
 	ChatRoomMessageSetting msg_setting_;		/**< 消息属性设置 */
 
 public:
@@ -292,6 +293,7 @@ public:
 		client_msg_id_ = values[kNIMChatRoomMsgKeyClientMsgid].asString();
 		local_res_path_ = values[kNIMChatRoomMsgKeyLocalFilePath].asString();
 		local_res_id_ = values[kNIMChatRoomMsgKeyLocalResId].asString();
+		msg_body_ = values[kNIMChatRoomMsgKeyBody].asString();
 		msg_setting_.ParseMessageSetting(values);
 	}
 
@@ -307,6 +309,7 @@ public:
 		values[kNIMChatRoomMsgKeyClientMsgid] = client_msg_id_;
 		values[kNIMChatRoomMsgKeyLocalFilePath] = local_res_path_;
 		values[kNIMChatRoomMsgKeyLocalResId] = local_res_id_;
+		values[kNIMChatRoomMsgKeyBody] = msg_body_;
 		msg_setting_.ToJsonValue(values);
 		return nim::GetJsonStringWithNoStyled(values);
 	}

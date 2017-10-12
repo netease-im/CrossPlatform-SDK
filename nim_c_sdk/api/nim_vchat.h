@@ -1,5 +1,5 @@
 ﻿/** @file nim_vchat.h
-* @brief NIM VChat提供的音视频相关接口
+* @brief 音视频 接口头文件
 * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
 * @author gq
 * @date 2015/4/30

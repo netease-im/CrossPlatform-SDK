@@ -63,8 +63,7 @@ void Global::DetectProxy(NIMProxyType type, const std::string& host, int port, c
 	}
 	NIM_SDK_GET_FUNC(nim_global_detect_proxy)(type, host.c_str(), port, user.c_str(), password.c_str(), &CallbackDetectProxy, cb_pointer);
 }
-#endif
-
+#else
 static void CallbackSDKLog(int log_level, const char *log, const void *user_data)
 {
 	Global::SDKLogCallback* cb = (Global::SDKLogCallback*)user_data;
@@ -86,4 +85,7 @@ void Global::SetSDKLogCallback(const std::string&json_extension, const SDKLogCal
 	}
 	NIM_SDK_GET_FUNC(nim_global_reg_sdk_log_cb)(json_extension.c_str(), &CallbackSDKLog, cb_pointer);
 }
+#endif
+
+
 }

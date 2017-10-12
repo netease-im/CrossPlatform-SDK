@@ -1,5 +1,5 @@
 ﻿/** @file nim_robot.h
-  * @brief NIM SDK提供的robot接口
+  * @brief 智能机器人 接口头文件
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author Oleg
   * @date 2017/06/24

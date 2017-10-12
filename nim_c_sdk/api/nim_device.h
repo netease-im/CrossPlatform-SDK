@@ -1,5 +1,5 @@
 ﻿/** @file nim_device.h
-  * @brief NIM VChat提供的音视频设备相关接口，使用前请先调用nim_vchat.h中nim_vchat_init
+  * @brief 音视频设备 接口头文件，使用前请先调用音视频初始化接口
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/4/30

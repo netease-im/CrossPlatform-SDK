@@ -1,5 +1,5 @@
 ﻿/** @file nim_device_def.h
-  * @brief NIM VChat提供的设备相关接口定义
+  * @brief 音视频设备 接口相关的常量函数等定义头文件
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @author gq
   * @date 2015/4/24
