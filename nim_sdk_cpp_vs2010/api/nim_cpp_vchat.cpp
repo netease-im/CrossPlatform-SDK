@@ -196,6 +196,24 @@ void VChat::NetDetect(NetDetectCallback cb)
 	}
 	NIM_SDK_GET_FUNC(nim_vchat_net_detect)("", CallbackNetDetect, cb_pointer);
 }
+void VChat::NetDetectEx(int32_t ms_limit, nim::NIMNetDetectType type, NetDetectCallback cb)
+{
+	std::string json_value;
+	Json::FastWriter fs;
+	Json::Value value;
+	if (ms_limit > 0)
+	{
+		value[nim::kNIMNetDetectTimeLimit] = ms_limit;
+	}
+	value[nim::kNIMNetDetectType] = type;
+	json_value = fs.write(value);
+	NetDetectCallback* cb_pointer = nullptr;
+	if (cb)
+	{
+		cb_pointer = new NetDetectCallback(cb);
+	}
+	NIM_SDK_GET_FUNC(nim_vchat_net_detect)(json_value.c_str(), CallbackNetDetect, cb_pointer);
+}
 
 //device ---------------------------
 //遍历设备

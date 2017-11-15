@@ -5,10 +5,12 @@
   * @date 2015/09/23
   */
 
+#include "nim_base_types.h"
 #include "nim_cpp_data_sync.h"
 #include "nim_sdk_util.h"
 #include "nim_json_util.h"
 #include "nim_string_util.h"
+
 
 namespace nim
 {
