@@ -163,9 +163,11 @@ bool Client::Init(const std::string& app_key
 	config_values[nim::kNIMSDKLogLevel] = config.sdk_log_level_;
 	config_values[nim::kNIMSyncSessionAck] = config.sync_session_ack_;
 	config_values[nim::kNIMLoginRetryMaxTimes] = config.login_max_retry_times_;
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY	
 	config_values[nim::kNIMUseHttps] = config.use_https_;
 	config_values[nim::kNIMTeamNotificationUnreadCount] = config.team_notification_unread_count_;
 	config_values[nim::kNIMAnimatedImageThumbnailEnabled] = config.animated_image_thumbnail_enabled_;
+#endif
 	config_root[nim::kNIMGlobalConfig] = config_values;
 	config_root[nim::kNIMAppKey] = app_key;
 
@@ -269,66 +271,39 @@ bool Client::KickOtherClient(const std::list<std::string>& client_ids)
 	return true;
 }
 
-static Client::LoginCallback *g_cb_relogin_ = nullptr;
+static Client::LoginCallback g_cb_relogin_ = nullptr;
 void Client::RegReloginCb(const LoginCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	if (g_cb_relogin_ != nullptr)
-	{
-		delete g_cb_relogin_;
-		g_cb_relogin_ = nullptr;
-	}
-	g_cb_relogin_ = new LoginCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_client_reg_auto_relogin_cb)(json_extension.c_str(), &CallbackLogin, g_cb_relogin_);
+	g_cb_relogin_ = cb;
+	return NIM_SDK_GET_FUNC(nim_client_reg_auto_relogin_cb)(json_extension.c_str(), &CallbackLogin, &g_cb_relogin_);
 }
 
-static Client::KickoutCallback *g_cb_kickout_ = nullptr;
+static Client::KickoutCallback g_cb_kickout_ = nullptr;
 void Client::RegKickoutCb(const KickoutCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	if (g_cb_kickout_ != nullptr)
-	{
-		delete g_cb_kickout_;
-		g_cb_kickout_ = nullptr;
-	}
-	g_cb_kickout_ = new KickoutCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_client_reg_kickout_cb)(json_extension.c_str(), &CallbackKickout, g_cb_kickout_);
+	g_cb_kickout_ = cb;
+	return NIM_SDK_GET_FUNC(nim_client_reg_kickout_cb)(json_extension.c_str(), &CallbackKickout, &g_cb_kickout_);
 }
 
-static Client::DisconnectCallback *g_cb_disconnect_ = nullptr;
+static Client::DisconnectCallback g_cb_disconnect_ = nullptr;
 void Client::RegDisconnectCb(const DisconnectCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	if (g_cb_disconnect_ != nullptr)
-	{
-		delete g_cb_disconnect_;
-		g_cb_disconnect_ = nullptr;
-	}
-	g_cb_disconnect_ = new DisconnectCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_client_reg_disconnect_cb)(json_extension.c_str(), &CallbackDisconnect, g_cb_disconnect_);
+	g_cb_disconnect_ = cb;
+	return NIM_SDK_GET_FUNC(nim_client_reg_disconnect_cb)(json_extension.c_str(), &CallbackDisconnect, &g_cb_disconnect_);
 }
 
-static Client::MultiSpotLoginCallback *g_cb_multispot_login_ = nullptr;
+static Client::MultiSpotLoginCallback g_cb_multispot_login_ = nullptr;
 void Client::RegMultispotLoginCb(const MultiSpotLoginCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	if (g_cb_multispot_login_ != nullptr)
-	{
-		delete g_cb_multispot_login_;
-		g_cb_multispot_login_ = nullptr;
-	}
-	g_cb_multispot_login_ = new MultiSpotLoginCallback(cb);
-
-	return NIM_SDK_GET_FUNC(nim_client_reg_multispot_login_notify_cb)(json_extension.c_str(), &CallbackMutliSpotLogin, g_cb_multispot_login_);
+	g_cb_multispot_login_ = cb;
+	return NIM_SDK_GET_FUNC(nim_client_reg_multispot_login_notify_cb)(json_extension.c_str(), &CallbackMutliSpotLogin, &g_cb_multispot_login_);
 }
 
-static Client::KickOtherCallback *g_cb_kickother_ = nullptr;
+static Client::KickOtherCallback g_cb_kickother_ = nullptr;
 void Client::RegKickOtherClientCb(const KickOtherCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	if (g_cb_kickother_ != nullptr)
-	{
-		delete g_cb_kickother_;
-		g_cb_kickother_ = nullptr;
-	}
-	g_cb_kickother_ = new KickOtherCallback(cb);
-
-	return NIM_SDK_GET_FUNC(nim_client_reg_kickout_other_client_cb)(json_extension.c_str(), &CallbackKickother, g_cb_kickother_);
+	g_cb_kickother_ = cb;
+	return NIM_SDK_GET_FUNC(nim_client_reg_kickout_other_client_cb)(json_extension.c_str(), &CallbackKickother, &g_cb_kickother_);
 }
 
 static void CallbackSyncMultiportPushConfig(int rescode, const char *content, const char *json_extension, const void *user_data)
@@ -351,16 +326,11 @@ static void CallbackSyncMultiportPushConfig(int rescode, const char *content, co
 	}
 }
 
-static Client::MultiportPushConfigCallback* g_cb_sync_multiport_push_switch_ = nullptr;
+static Client::MultiportPushConfigCallback g_cb_sync_multiport_push_switch_ = nullptr;
 void Client::RegSyncMultiportPushConfigCb(const MultiportPushConfigCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	if (g_cb_sync_multiport_push_switch_)
-	{
-		delete g_cb_sync_multiport_push_switch_;
-		g_cb_sync_multiport_push_switch_ = nullptr;
-	}
-	g_cb_sync_multiport_push_switch_ = new MultiportPushConfigCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_client_reg_sync_multiport_push_config_cb)(json_extension.c_str(), &CallbackSyncMultiportPushConfig, g_cb_sync_multiport_push_switch_);
+	g_cb_sync_multiport_push_switch_ = cb;
+	return NIM_SDK_GET_FUNC(nim_client_reg_sync_multiport_push_config_cb)(json_extension.c_str(), &CallbackSyncMultiportPushConfig, &g_cb_sync_multiport_push_switch_);
 }
 
 static void CallbackMultiportPushConfig(int rescode, const char *content, const char *json_extension, const void *user_data)
@@ -415,30 +385,11 @@ void Client::GetMultiportPushConfigAsync(const MultiportPushConfigCallback& cb, 
 
 void Client::UnregClientCb()
 {
-	if (g_cb_relogin_ != nullptr)
-	{
-		delete g_cb_relogin_;
-		g_cb_relogin_ = nullptr;
-	}
-	if (g_cb_kickout_ != nullptr)
-	{
-		delete g_cb_kickout_;
-		g_cb_kickout_ = nullptr;
-	}
-	if (g_cb_disconnect_ != nullptr)
-	{
-		delete g_cb_disconnect_;
-		g_cb_disconnect_ = nullptr;
-	}
-	if (g_cb_multispot_login_ != nullptr)
-	{
-		delete g_cb_multispot_login_;
-		g_cb_multispot_login_ = nullptr;
-	}
-	if (g_cb_kickother_ != nullptr)
-	{
-		delete g_cb_kickother_;
-		g_cb_kickother_ = nullptr;
-	}
+	g_cb_relogin_ = nullptr;
+	g_cb_kickout_ = nullptr;
+	g_cb_disconnect_ = nullptr;
+	g_cb_multispot_login_ = nullptr;
+	g_cb_kickother_ = nullptr;
+
 }
 }

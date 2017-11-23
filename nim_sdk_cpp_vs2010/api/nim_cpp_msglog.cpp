@@ -239,7 +239,7 @@ bool MsgLog::QueryMsgOnlineAsync(const std::string &id
 
 	return true;
 }
-
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool MsgLog::QueryMsgOfSpecifiedTypeInASessionAsync(nim::NIMSessionType to_type
 	, const std::string &id
 	, int limit_count
@@ -278,7 +278,7 @@ bool MsgLog::QueryMsgOfSpecifiedTypeInASessionAsync(nim::NIMSessionType to_type
 
 	return true;
 }
-
+#endif
 bool MsgLog::QueryMsgByOptionsAsync(NIMMsgLogQueryRange query_range
 	, const std::list<std::string> &ids
 	, int limit_count
@@ -556,23 +556,18 @@ bool MsgLog::QuerySentMessageBeReaded(const IMMessage& msg)
 {
 	return NIM_SDK_GET_FUNC(nim_msglog_query_be_readed)(msg.ToJsonString(false).c_str(), nullptr);
 }
-
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool MsgLog::QueryReceivedMsgReceiptSent(const IMMessage& msg)
 {
 	return NIM_SDK_GET_FUNC(nim_msglog_query_receipt_sent)(msg.ToJsonString(false).c_str(), nullptr);
 }
+#endif
 
-static MsgLog::MessageStatusChangedCallback* g_cb_msg_status_changed_cb_ = nullptr;
+static MsgLog::MessageStatusChangedCallback g_cb_msg_status_changed_cb_ = nullptr;
 void MsgLog::RegMessageStatusChangedCb(const MessageStatusChangedCallback& cb, const std::string &json_extension/* = ""*/)
-{
-	if (g_cb_msg_status_changed_cb_)
-	{
-		delete g_cb_msg_status_changed_cb_;
-		g_cb_msg_status_changed_cb_ = nullptr;
-	}
-	g_cb_msg_status_changed_cb_ = new MessageStatusChangedCallback(cb);
-
-	NIM_SDK_GET_FUNC(nim_msglog_reg_status_changed_cb)(json_extension.c_str(), &CallbackMsgStatusChanged, g_cb_msg_status_changed_cb_);
+{	
+	g_cb_msg_status_changed_cb_ = cb;
+	NIM_SDK_GET_FUNC(nim_msglog_reg_status_changed_cb)(json_extension.c_str(), &CallbackMsgStatusChanged, &g_cb_msg_status_changed_cb_);
 }
 
 bool MsgLog::UpdateLocalExtAsync(const std::string& msg_id
@@ -598,7 +593,11 @@ bool MsgLog::UpdateLocalExtAsync(const std::string& msg_id
 	return true;
 
 }
-
+void MsgLog::UnregMsgologCb()
+{
+	g_cb_msg_status_changed_cb_ = nullptr;
+}
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool MsgLog::ReadAllAsync(const DBFunctionCallback& cb, const std::string& json_extension/* = ""*/)
 {
 	DBFunctionCallback* cb_pointer = nullptr;
@@ -610,5 +609,6 @@ bool MsgLog::ReadAllAsync(const DBFunctionCallback& cb, const std::string& json_
 
 	return true;
 }
+#endif
 
 }

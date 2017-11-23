@@ -69,16 +69,11 @@ static void CallbackSessionChange(int rescode, const char *result, int total_unr
 	}
 }
 
-static Session::ChangeCallback* g_cb_session_changed_ = nullptr;
+static Session::ChangeCallback g_cb_session_changed_ = nullptr;
 void Session::RegChangeCb(const ChangeCallback& cb, const std::string& json_extension)
 {
-	if (g_cb_session_changed_)
-	{
-		delete g_cb_session_changed_;
-		g_cb_session_changed_ = nullptr;
-	}
-	g_cb_session_changed_ = new ChangeCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_session_reg_change_cb)(json_extension.c_str(), &CallbackSessionChange, g_cb_session_changed_);
+	g_cb_session_changed_ = cb;
+	return NIM_SDK_GET_FUNC(nim_session_reg_change_cb)(json_extension.c_str(), &CallbackSessionChange, &g_cb_session_changed_);
 }
 
 void Session::QueryAllRecentSessionAsync(const QuerySessionListCallabck& cb, const std::string& json_extension)
@@ -130,7 +125,7 @@ bool Session::SetUnreadCountZeroAsync(nim::NIMSessionType to_type, const std::st
 
 	return true;
 }
-
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool Session::SetSessionTop(enum NIMSessionType to_type, const std::string& id, bool top, const ChangeCallback& cb, const std::string& json_extension/* = ""*/)
 {
 	if (id.empty())
@@ -170,14 +165,10 @@ bool Session::SetAllUnreadCountZeroAsync(const SetUnreadCountZeroCallback& cb, c
 
 	return true;
 }
-
+#endif
 void Session::UnregSessionCb()
 {
-	if (g_cb_session_changed_)
-	{
-		delete g_cb_session_changed_;
-		g_cb_session_changed_ = nullptr;
-	}
+	g_cb_session_changed_ = nullptr;
 }
 
 }

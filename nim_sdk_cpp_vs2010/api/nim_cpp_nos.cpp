@@ -209,26 +209,18 @@ static void CallbackMediaUploadResult(int res_code, const char *url, const char 
 	}
 }
 
-static NOS::DownloadMediaCallback* g_cb_pointer = nullptr;
+static NOS::DownloadMediaCallback g_cb_pointer = nullptr;
 void NOS::RegDownloadCb(const DownloadMediaCallback& cb)
 {
-	delete g_cb_pointer;
-	if (cb)
-	{
-		g_cb_pointer = new DownloadMediaCallback(cb);
-	}
-	return NIM_SDK_GET_FUNC(nim_nos_reg_download_cb)(&CallbackMediaDownloadResult, g_cb_pointer);
+	g_cb_pointer = cb;
+	return NIM_SDK_GET_FUNC(nim_nos_reg_download_cb)(&CallbackMediaDownloadResult, &g_cb_pointer);
 }
 
-static NOS::UploadMediaExCallback* g_cb_upload_pointer = nullptr;
+static NOS::UploadMediaExCallback g_cb_upload_pointer = nullptr;
 void NOS::RegUploadCb(const UploadMediaExCallback& cb)
 {
-	delete g_cb_upload_pointer;
-	if (cb)
-	{
-		g_cb_upload_pointer = new UploadMediaExCallback(cb);
-	}
-	return NIM_SDK_GET_FUNC(nim_nos_reg_upload_cb)(&CallbackMediaUploadResult, g_cb_upload_pointer);
+	g_cb_upload_pointer = cb;
+	return NIM_SDK_GET_FUNC(nim_nos_reg_upload_cb)(&CallbackMediaUploadResult, &g_cb_upload_pointer);
 }
 
 bool NOS::FetchMedia(const IMMessage& msg, const DownloadMediaCallback& callback_result, const ProgressCallback& callback_progress)
@@ -410,5 +402,9 @@ bool NOS::StopDownloadResourceEx(const std::string& task_id, const std::string& 
 	NIM_SDK_GET_FUNC(nim_nos_stop_download_ex)(task_id.c_str(), json_extension.c_str());
 	return true;
 }
-
+void NOS::UnregNosCb()
+{
+	g_cb_pointer = nullptr;
+	g_cb_upload_pointer = nullptr;
+}
 }

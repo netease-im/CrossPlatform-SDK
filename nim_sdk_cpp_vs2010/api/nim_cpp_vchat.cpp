@@ -33,6 +33,7 @@ typedef unsigned char(*nim_vchat_get_audio_volumn)(bool capture);
 typedef void(*nim_vchat_set_audio_input_auto_volumn)(bool auto_volumn);
 typedef bool(*nim_vchat_get_audio_input_auto_volumn)();
 typedef void(*nim_vchat_set_audio_process_info)(bool aec, bool ns, bool vad);
+typedef void(*nim_vchat_set_audio_howling_suppression)(bool work);
 
 //设置回掉
 typedef void(*nim_vchat_set_cb_func)(nim_vchat_cb_func cb, const void *user_data);
@@ -187,16 +188,16 @@ void VChat::Cleanup()
 {
 	NIM_SDK_GET_FUNC(nim_vchat_cleanup)("");
 }
-void VChat::NetDetect(NetDetectCallback cb)
+uint64_t VChat::NetDetect(NetDetectCallback cb)
 {
 	NetDetectCallback* cb_pointer = nullptr;
 	if (cb)
 	{
 		cb_pointer = new NetDetectCallback(cb);
 	}
-	NIM_SDK_GET_FUNC(nim_vchat_net_detect)("", CallbackNetDetect, cb_pointer);
+	return NIM_SDK_GET_FUNC(nim_vchat_net_detect)("", CallbackNetDetect, cb_pointer);
 }
-void VChat::NetDetectEx(int32_t ms_limit, nim::NIMNetDetectType type, NetDetectCallback cb)
+uint64_t VChat::NetDetectEx(int32_t ms_limit, nim::NIMNetDetectType type, nim::NIMNetDetectVideoQuality quality_type, NetDetectCallback cb)
 {
 	std::string json_value;
 	Json::FastWriter fs;
@@ -205,6 +206,10 @@ void VChat::NetDetectEx(int32_t ms_limit, nim::NIMNetDetectType type, NetDetectC
 	{
 		value[nim::kNIMNetDetectTimeLimit] = ms_limit;
 	}
+	if (quality_type != kNIMNDVideoQualityDefault)
+	{
+		value[nim::kNIMNetDetectQualityType] = quality_type;
+	}
 	value[nim::kNIMNetDetectType] = type;
 	json_value = fs.write(value);
 	NetDetectCallback* cb_pointer = nullptr;
@@ -212,7 +217,7 @@ void VChat::NetDetectEx(int32_t ms_limit, nim::NIMNetDetectType type, NetDetectC
 	{
 		cb_pointer = new NetDetectCallback(cb);
 	}
-	NIM_SDK_GET_FUNC(nim_vchat_net_detect)(json_value.c_str(), CallbackNetDetect, cb_pointer);
+	return NIM_SDK_GET_FUNC(nim_vchat_net_detect)(json_value.c_str(), CallbackNetDetect, cb_pointer);
 }
 
 //device ---------------------------
@@ -316,6 +321,10 @@ bool VChat::GetAudioInputAutoVolumn()
 void VChat::SetAudioProcess(bool aec, bool ns, bool vad)
 {
 	NIM_SDK_GET_FUNC(nim_vchat_set_audio_process_info)(aec, ns, vad);
+}
+void VChat::SetAudioHowlingSuppression(bool work)
+{
+	NIM_SDK_GET_FUNC(nim_vchat_set_audio_howling_suppression)(work);
 }
 
 //音视频通话-------------------------------

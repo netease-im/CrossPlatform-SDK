@@ -151,7 +151,15 @@ void MemberNotifyCallbackWrapper(const char *session_id, int channel_type, int t
 		Rts::MemberNotifyCallback* cb_pointer = (Rts::MemberNotifyCallback*)user_data;
 		if (*cb_pointer)
 		{
-			(*cb_pointer)(PCharToString(session_id), channel_type, PCharToString(uid), type);
+			int32_t leave_type = kNIMRtsMemberLeftNormal;
+			Json::Value values;
+			Json::Reader reader;
+			std::string json = PCharToString(json_extension);
+			if (reader.parse(json, values) && values.isObject())
+			{
+				leave_type = values[kNIMRtsLeaveType].asInt();
+			}
+			(*cb_pointer)(PCharToString(session_id), channel_type, PCharToString(uid), type, leave_type);
 		}
 	}
 }

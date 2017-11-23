@@ -111,16 +111,11 @@ static bool FilterTeamNotification(const char *content, const char *json_extensi
 	return false;
 }
 
-static Talk::SendMsgAckCallback* g_cb_send_msg_ack_ = nullptr;
+static Talk::SendMsgAckCallback g_cb_send_msg_ack_ = nullptr;
 void Talk::RegSendMsgCb(const SendMsgAckCallback& cb, const std::string& json_extension)
 {
-	if (g_cb_send_msg_ack_)
-	{
-		delete g_cb_send_msg_ack_;
-		g_cb_send_msg_ack_ = nullptr;
-	}
-	g_cb_send_msg_ack_ = new SendMsgAckCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_talk_reg_ack_cb)(json_extension.c_str(), &CallbackSendMsgAck, g_cb_send_msg_ack_);
+	g_cb_send_msg_ack_ = cb;
+	return NIM_SDK_GET_FUNC(nim_talk_reg_ack_cb)(json_extension.c_str(), &CallbackSendMsgAck, &g_cb_send_msg_ack_);
 }
 
 void Talk::SendMsg(const std::string& json_msg, const std::string& json_extension/* = ""*/, FileUpPrgCallback* pcb/* = nullptr*/)
@@ -148,26 +143,18 @@ bool Talk::StopSendMsg(const std::string& client_msg_id, const NIMMessageType& t
 	return true;
 }
 
-static Talk::ReceiveMsgCallback* g_cb_pointer = nullptr;
+static Talk::ReceiveMsgCallback g_cb_pointer = nullptr;
 void Talk::RegReceiveCb(const ReceiveMsgCallback& cb, const std::string& json_extension)
 {
-	delete g_cb_pointer;
-	if (cb)
-	{
-		g_cb_pointer = new ReceiveMsgCallback(cb);
-	}
-	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_cb)(json_extension.c_str(), &CallbackReceiveMsg, g_cb_pointer);
+	g_cb_pointer = cb;
+	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_cb)(json_extension.c_str(), &CallbackReceiveMsg, &g_cb_pointer);
 }
 
-static Talk::ReceiveMsgsCallback* g_cb_msgs_pointer = nullptr;
+static Talk::ReceiveMsgsCallback g_cb_msgs_pointer = nullptr;
 void Talk::RegReceiveMessagesCb(const ReceiveMsgsCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	delete g_cb_msgs_pointer;
-	if (cb)
-	{
-		g_cb_msgs_pointer = new ReceiveMsgsCallback(cb);
-	}
-	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_msgs_cb)(json_extension.c_str(), &CallbackReceiveMessages, g_cb_msgs_pointer);
+	g_cb_msgs_pointer = cb;
+	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_msgs_cb)(json_extension.c_str(), &CallbackReceiveMessages, &g_cb_msgs_pointer);
 }
 
 std::string Talk::CreateTextMessage(const std::string& receiver_id
@@ -349,7 +336,7 @@ std::string Talk::CreateTipMessage(const std::string& receiver_id
 
 	return GetJsonStringWithNoStyled(values);
 }
-
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
 std::string Talk::CreateBotRobotMessage(const std::string& receiver_id
 	, const NIMSessionType session_type
 	, const std::string& client_msg_id
@@ -375,7 +362,7 @@ std::string Talk::CreateBotRobotMessage(const std::string& receiver_id
 
 	return GetJsonStringWithNoStyled(values);
 }
-
+#endif
 std::string Talk::CreateRetweetMessage(const std::string& src_msg_json
 	, const std::string& client_msg_id
 	, const NIMSessionType retweet_to_session_type
@@ -510,7 +497,7 @@ bool Talk::ParseLocationMessageAttach(const IMMessage& msg, IMLocation& location
 	}
 	return false;
 }
-
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool Talk::ParseBotRobotMessageAttach(const IMMessage& msg, IMBotRobot& robot_msg)
 {
 	if (msg.type_ != kNIMMessageTypeRobot)
@@ -529,17 +516,14 @@ bool Talk::ParseBotRobotMessageAttach(const IMMessage& msg, IMBotRobot& robot_ms
 	}
 	return false;
 }
+#endif
 
-static Talk::TeamNotificationFilter* g_team_notification_filter_ = nullptr;
+static Talk::TeamNotificationFilter g_team_notification_filter_ = nullptr;
 void Talk::RegTeamNotificationFilter(const TeamNotificationFilter& filter, const std::string& json_extension/* = ""*/)
 {
-	if (g_team_notification_filter_)
-	{
-		delete g_team_notification_filter_;
-		g_team_notification_filter_ = nullptr;
-	}
-	g_team_notification_filter_ = new Talk::TeamNotificationFilter(filter);
-	return NIM_SDK_GET_FUNC(nim_talk_reg_notification_filter_cb)(json_extension.c_str(), &FilterTeamNotification, g_team_notification_filter_);
+	
+	g_team_notification_filter_ = filter;
+	return NIM_SDK_GET_FUNC(nim_talk_reg_notification_filter_cb)(json_extension.c_str(), &FilterTeamNotification, &g_team_notification_filter_);
 }
 
 static void ReceiveRecallMsg(int rescode, const char *content, const char *json_extension, const void *call_back)
@@ -556,16 +540,11 @@ static void ReceiveRecallMsg(int rescode, const char *content, const char *json_
 	}
 }
 
-static Talk::RecallMsgsCallback* g_recall_msg_cb_ = nullptr;
+static Talk::RecallMsgsCallback g_recall_msg_cb_ = nullptr;
 void Talk::RegRecallMsgsCallback(const RecallMsgsCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	if (g_recall_msg_cb_)
-	{
-		delete g_recall_msg_cb_;
-		g_recall_msg_cb_ = nullptr;
-	}
-	g_recall_msg_cb_ = new Talk::RecallMsgsCallback(cb);
-	return NIM_SDK_GET_FUNC(nim_talk_reg_recall_msg_cb)(json_extension.c_str(), &ReceiveRecallMsg, g_recall_msg_cb_);
+	g_recall_msg_cb_ = cb;
+	return NIM_SDK_GET_FUNC(nim_talk_reg_recall_msg_cb)(json_extension.c_str(), &ReceiveRecallMsg, &g_recall_msg_cb_);
 }
 
 static void CallbackRecallMsg(int rescode, const char *content, const char *json_extension, const void *call_back)
@@ -600,7 +579,7 @@ std::string Talk::GetAttachmentPathFromMsg(const IMMessage& msg)
 	Global::FreeBuf((void *)file_path);
 	return out_path;
 }
-
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
 static void CallbackReceiveBroadcastMsg(const char *content, const char *json_extension, const void *callback)
 {
 	if (callback)
@@ -651,70 +630,31 @@ static void CallbackReceiveBroadcastMessages(const char *content, const char *js
 	}
 }
 
-static Talk::ReceiveBroadcastMsgCallback* g_cb_broadcast_pointer = nullptr;
+static Talk::ReceiveBroadcastMsgCallback g_cb_broadcast = nullptr;
 void Talk::RegReceiveBroadcastMsgCb(const ReceiveBroadcastMsgCallback& cb, const std::string& json_extension)
 {
-	delete g_cb_broadcast_pointer;
-	if (cb)
-	{
-		g_cb_broadcast_pointer = new ReceiveBroadcastMsgCallback(cb);
-	}
-	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_broadcast_cb)(json_extension.c_str(), &CallbackReceiveBroadcastMsg, g_cb_broadcast_pointer);
+	g_cb_broadcast = cb;
+	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_broadcast_cb)(json_extension.c_str(), &CallbackReceiveBroadcastMsg, &g_cb_broadcast);
 }
 
-static Talk::ReceiveBroadcastMsgsCallback* g_cb_broadcast_msgs_pointer = nullptr;
+static Talk::ReceiveBroadcastMsgsCallback g_cb_broadcast_msgs = nullptr;
 void Talk::RegReceiveBroadcastMsgsCb(const ReceiveBroadcastMsgsCallback& cb, const std::string& json_extension/* = ""*/)
 {
-	delete g_cb_broadcast_msgs_pointer;
-	if (cb)
-	{
-		g_cb_broadcast_msgs_pointer = new ReceiveBroadcastMsgsCallback(cb);
-	}
-	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_broadcast_msgs_cb)(json_extension.c_str(), &CallbackReceiveBroadcastMessages, g_cb_broadcast_msgs_pointer);
+	g_cb_broadcast_msgs = cb;
+	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_broadcast_msgs_cb)(json_extension.c_str(), &CallbackReceiveBroadcastMessages, &g_cb_broadcast_msgs);
 }
-
+#endif
 void Talk::UnregTalkCb()
 {
-	if (g_cb_send_msg_ack_)
-	{
-		delete g_cb_send_msg_ack_;
-		g_cb_send_msg_ack_ = nullptr;
-	}
-	if (g_team_notification_filter_)
-	{
-		delete g_team_notification_filter_;
-		g_team_notification_filter_ = nullptr;
-	}
-	if (g_cb_pointer)
-	{
-		delete g_cb_pointer;
-		g_cb_pointer = nullptr;
-	}
-	if (g_cb_msgs_pointer)
-	{
-		delete g_cb_msgs_pointer;
-		g_cb_msgs_pointer = nullptr;
-	}
-	if (g_team_notification_filter_)
-	{
-		delete g_team_notification_filter_;
-		g_team_notification_filter_ = nullptr;
-	}
-	if (g_recall_msg_cb_)
-	{
-		delete g_recall_msg_cb_;
-		g_recall_msg_cb_ = nullptr;
-	}
-	if (g_cb_broadcast_msgs_pointer)
-	{
-		delete g_cb_broadcast_msgs_pointer;
-		g_cb_broadcast_msgs_pointer = nullptr;
-	}
-	if (g_cb_broadcast_pointer)
-	{
-		delete g_cb_broadcast_pointer;
-		g_cb_broadcast_pointer = nullptr;
-	}
+	g_cb_send_msg_ack_ = nullptr;
+	g_team_notification_filter_ = nullptr;
+	g_cb_pointer = nullptr;
+	g_cb_msgs_pointer = nullptr;
+	g_recall_msg_cb_ = nullptr;
+#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+	g_cb_broadcast_msgs = nullptr;
+	g_cb_broadcast = nullptr;
+#endif
 }
 
 }
