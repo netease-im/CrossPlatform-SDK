@@ -49,7 +49,8 @@ static void CallbackLogin(const char* json_res, const void *callback)
 			ParseOtherClientsPres(values[kNIMOtherClientsPres], res.other_clients_);
 		}
 		Client::LoginCallback *cb = (Client::LoginCallback *)callback;
-		(*cb)(res);
+		if(*cb != nullptr)
+			(*cb)(res);
 	}
 }
 
@@ -84,7 +85,8 @@ static void CallbackKickout(const char* json_res, const void *callback)
 			res.kick_reason_ = (NIMKickReason)values[kNIMKickoutReasonCode].asUInt();
 		}
 		Client::KickoutCallback *cb = (Client::KickoutCallback *)callback;
-		(*cb)(res);
+		if(*cb != nullptr)
+			(*cb)(res);
 	}
 }
 
@@ -93,7 +95,8 @@ static void CallbackDisconnect(const char* json_res, const void* callback)
 	if (callback != nullptr)
 	{
 		Client::DisconnectCallback *cb = (Client::DisconnectCallback *)callback;
-		(*cb)();
+		if(*cb != nullptr)
+			(*cb)();
 	}
 }
 
@@ -110,7 +113,8 @@ static void CallbackMutliSpotLogin(const char* json_res, const void* callback)
 			ParseOtherClientsPres(values[kNIMOtherClientsPres], res.other_clients_);
 		}
 		Client::MultiSpotLoginCallback *cb = (Client::MultiSpotLoginCallback *)callback;
-		(*cb)(res);
+		if(*cb != nullptr)
+			(*cb)(res);
 	}
 }
 
@@ -127,7 +131,8 @@ static void CallbackKickother(const char* json_res, const void* callback)
 			JsonStrArrayToList(values[kNIMKickoutOtherResDeviceIDs], res.device_ids_);
 		}
 		Client::KickOtherCallback *cb = (Client::KickOtherCallback *)callback;
-		(*cb)(res);
+		if(*cb != nullptr)
+			(*cb)(res);
 	}
 }
 
@@ -167,6 +172,16 @@ bool Client::Init(const std::string& app_key
 	config_values[nim::kNIMUseHttps] = config.use_https_;
 	config_values[nim::kNIMTeamNotificationUnreadCount] = config.team_notification_unread_count_;
 	config_values[nim::kNIMAnimatedImageThumbnailEnabled] = config.animated_image_thumbnail_enabled_;
+
+	for (auto iter = config.nos_download_address_list_.begin(); iter != config.nos_download_address_list_.end();++iter)
+		config_values[nim::kNIMDownloadAddressTemplate].append(*iter);
+	for (auto iter = config.nos_accelerate_host_list_.begin(); iter != config.nos_accelerate_host_list_.end();++iter)
+		config_values[nim::kNIMAccelerateHost].append(*iter);
+	for (auto iter = config.nos_accelerate_address_list_.begin();iter != config.nos_accelerate_address_list_.end();++iter)
+		config_values[kNIMAccelerateAddressTemplate].append(*iter);
+	for (auto iter = config.ntserver_address_list_.begin();iter != config.ntserver_address_list_.end();++iter)
+		config_values[kNIMNtserverAddress].append(*iter);
+	config_values[kNIMUploadStatisticsData] = config.upload_statistics_data_;
 #endif
 	config_root[nim::kNIMGlobalConfig] = config_values;
 	config_root[nim::kNIMAppKey] = app_key;
