@@ -192,6 +192,7 @@ enum NIMVChatConnectErrorCode{
 	kNIMVChatChannelDisconnected		= 11001,	/**< 断开连接 */
 	kNIMVChatVersionSelfLow				= 11002,	/**< 本人SDK版本太低不兼容 */
 	kNIMVChatVersionRemoteLow			= 11003,	/**< 对方SDK版本太低不兼容 */
+	kNIMVChatLocalChannelClosed			= 11004,	/**< 通道被关闭 */
 };
 
 
