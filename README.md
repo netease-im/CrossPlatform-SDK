@@ -22,7 +22,7 @@ Windows(PC) SDK对外暴露的是C接口，为了让桌面开发者更加方便�
 ### SDK内容
 * x64_dlls：存放64位Dll的文件夹
 * x86_dlls：存放32位Dll的文件夹
-* nim.dll： SDK核心功能模块；放在用户程序目录下
+* nim.dll： SDK主模块；放在用户程序目录下
 * nim_audio.dll： 负责语音录制和播放；放在用户程序目录下
 * nim\_tools\_http.dll： 负责通用的http传输；nim.dll加载了此模块，需要放在用户程序目录下
 * nrtc.dll： 负责视频聊天功能；放在用户程序目录下
