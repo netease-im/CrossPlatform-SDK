@@ -6,7 +6,7 @@
   */
 
 #include "nim_string_util.h"
-#include "convert_utf/convert_utf.h"
+#include "third_party/convert_utf/convert_utf.h"
 
 namespace nim
 {

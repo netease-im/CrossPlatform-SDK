@@ -58,6 +58,7 @@ typedef void(*nim_vchat_stop_audio_record)(const char *json_extension, nim_vchat
 typedef void(*nim_vchat_end)(const char* json_extension);
 //自定义视频数据
 typedef bool(*nim_vchat_custom_video_data)(uint64_t time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension);
+typedef bool(*nim_vchat_accompanying_sound)(unsigned char id, unsigned __int64 time, const char *data, unsigned int size, unsigned int rate, unsigned int channels, const char *json_extension);
 
 //NIM 通话中修改分辨率
 typedef void(*nim_vchat_set_video_quality)(int video_quality, const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data); 
@@ -150,6 +151,8 @@ typedef bool(*nim_vchat_join_room)(NIMVideoChatMode mode, const char *room_name,
 * @return void 无返回值
 */
 typedef void(*nim_vchat_update_rtmp_url)(const char *rtmp_url, const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data);
+
+typedef void(*nim_vchat_select_video_adaptive_strategy)(NIMVChatVideoEncodeMode mode, const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data);
 //typedef void(*nim_vchat_set_streaming_mode)(bool streaming, const char* json_info, nim_vchat_opt_cb_func cb, const void *user_data);
 #else
 #include "nim_vchat.h"
@@ -442,6 +445,10 @@ bool VChat::CustomVideoData(uint64_t time, const char *data, unsigned int size, 
 {
 	return NIM_SDK_GET_FUNC(nim_vchat_custom_video_data)(time, data, size, width, height, json_extension);
 }
+bool VChat::AccompanyingSound(unsigned char id, unsigned __int64 time, const char *data, unsigned int size, unsigned int rate, unsigned int channels, const char *json_extension)
+{
+	return NIM_SDK_GET_FUNC(nim_vchat_accompanying_sound)(id, time, data, size, rate, channels, json_extension);
+}
 
 void VChat::SetViewerMode(bool viewer)
 {
@@ -522,6 +529,11 @@ void VChat::UpdateRtmpUrl(const std::string& rtmp_url, OptCallback cb)
 {
 	OptCallback* cb_pointer = new OptCallback(cb);
 	return NIM_SDK_GET_FUNC(nim_vchat_update_rtmp_url)(rtmp_url.c_str(), "", OnOptCallback, cb_pointer);
+}
+void VChat::SelectVideoAdaptiveStrategy(NIMVChatVideoEncodeMode mode, const std::string& json_extension, Opt2Callback cb)
+{
+	OptCallback* cb_pointer = new OptCallback(cb);
+	return NIM_SDK_GET_FUNC(nim_vchat_select_video_adaptive_strategy)(mode, json_extension.c_str(), OnOptCallback, cb_pointer);
 }
 //void VChat::SetStreamingMode(bool streaming, OptCallback cb)
 //{

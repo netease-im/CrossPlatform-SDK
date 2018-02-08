@@ -33,6 +33,7 @@ typedef void(*nim_client_get_multiport_push_config)(const char *json_extension, 
 #include "nim_client.h"
 #endif
 	SDKConfig g_nim_sdk_config_;
+	
 static void CallbackLogin(const char* json_res, const void *callback)
 {
 	if (callback != nullptr)
@@ -143,13 +144,13 @@ bool Client::Init(const std::string& app_key
 {
 #ifdef NIM_SDK_DLL_IMPORT
 
-//#if !defined (WIN32)
-//	static const char *kSdkNimDll = "libnim.so";
-//#elif defined (_DEBUG) || defined (DEBUG)
-//	static const char *kSdkNimDll = "nim_d.dll";
-//#else
+// #if !defined (WIN32)
+// 	static const char *kSdkNimDll = "libnim.so";
+// #elif defined (_DEBUG) || defined (DEBUG)
+// 	static const char *kSdkNimDll = "nim_d.dll";
+// #else
 	static const char *kSdkNimDll = "nim.dll";
-//#endif
+// #endif
 	if (NULL == g_nim_sdk_instance)
 	{
 		g_nim_sdk_instance = new SDKInstance();
