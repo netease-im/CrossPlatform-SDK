@@ -125,7 +125,7 @@ bool Session::SetUnreadCountZeroAsync(nim::NIMSessionType to_type, const std::st
 
 	return true;
 }
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool Session::SetSessionTop(enum NIMSessionType to_type, const std::string& id, bool top, const ChangeCallback& cb, const std::string& json_extension/* = ""*/)
 {
 	if (id.empty())

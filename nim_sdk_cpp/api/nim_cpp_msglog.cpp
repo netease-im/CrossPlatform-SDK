@@ -239,7 +239,7 @@ bool MsgLog::QueryMsgOnlineAsync(const std::string &id
 
 	return true;
 }
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool MsgLog::QueryMsgOfSpecifiedTypeInASessionAsync(nim::NIMSessionType to_type
 	, const std::string &id
 	, int limit_count
@@ -556,7 +556,7 @@ bool MsgLog::QuerySentMessageBeReaded(const IMMessage& msg)
 {
 	return NIM_SDK_GET_FUNC(nim_msglog_query_be_readed)(msg.ToJsonString(false).c_str(), nullptr);
 }
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool MsgLog::QueryReceivedMsgReceiptSent(const IMMessage& msg)
 {
 	return NIM_SDK_GET_FUNC(nim_msglog_query_receipt_sent)(msg.ToJsonString(false).c_str(), nullptr);
@@ -597,7 +597,7 @@ void MsgLog::UnregMsgologCb()
 {
 	g_cb_msg_status_changed_cb_ = nullptr;
 }
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool MsgLog::ReadAllAsync(const DBFunctionCallback& cb, const std::string& json_extension/* = ""*/)
 {
 	DBFunctionCallback* cb_pointer = nullptr;

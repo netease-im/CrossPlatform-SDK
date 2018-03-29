@@ -154,6 +154,8 @@ typedef void(*nim_vchat_update_rtmp_url)(const char *rtmp_url, const char *json_
 
 typedef void(*nim_vchat_select_video_adaptive_strategy)(NIMVChatVideoEncodeMode mode, const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data);
 //typedef void(*nim_vchat_set_streaming_mode)(bool streaming, const char* json_info, nim_vchat_opt_cb_func cb, const void *user_data);
+
+typedef void (*nim_vchat_set_uid_picture_as_main)(const char *uid, const char* json_extension, nim_vchat_opt_cb_func cb, const void* user_data);
 #else
 #include "nim_vchat.h"
 #endif
@@ -540,5 +542,11 @@ void VChat::SelectVideoAdaptiveStrategy(NIMVChatVideoEncodeMode mode, const std:
 //	OptCallback* cb_pointer = new OptCallback(cb);
 //	return NIM_SDK_GET_FUNC(nim_vchat_set_streaming_mode)(streaming, "", OnOptCallback, cb_pointer);
 //}
+
+void VChat::SetUidAsMainPicture(const std::string& uid, const std::string& json_extension, Opt2Callback cb)
+{
+	OptCallback* cb_pointer = new OptCallback(cb);
+	return NIM_SDK_GET_FUNC(nim_vchat_set_uid_picture_as_main)(uid.c_str(), json_extension.c_str(), OnOptCallback, cb_pointer);
+}
 
 }  // namespace nim

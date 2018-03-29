@@ -336,7 +336,7 @@ std::string Talk::CreateTipMessage(const std::string& receiver_id
 
 	return GetJsonStringWithNoStyled(values);
 }
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 std::string Talk::CreateBotRobotMessage(const std::string& receiver_id
 	, const NIMSessionType session_type
 	, const std::string& client_msg_id
@@ -497,7 +497,7 @@ bool Talk::ParseLocationMessageAttach(const IMMessage& msg, IMLocation& location
 	}
 	return false;
 }
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 bool Talk::ParseBotRobotMessageAttach(const IMMessage& msg, IMBotRobot& robot_msg)
 {
 	if (msg.type_ != kNIMMessageTypeRobot)
@@ -579,7 +579,7 @@ std::string Talk::GetAttachmentPathFromMsg(const IMMessage& msg)
 	Global::FreeBuf((void *)file_path);
 	return out_path;
 }
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 static void CallbackReceiveBroadcastMsg(const char *content, const char *json_extension, const void *callback)
 {
 	if (callback)
@@ -651,7 +651,7 @@ void Talk::UnregTalkCb()
 	g_cb_pointer = nullptr;
 	g_cb_msgs_pointer = nullptr;
 	g_recall_msg_cb_ = nullptr;
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 	g_cb_broadcast_msgs = nullptr;
 	g_cb_broadcast = nullptr;
 #endif

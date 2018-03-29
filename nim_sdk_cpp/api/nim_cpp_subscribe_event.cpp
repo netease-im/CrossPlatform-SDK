@@ -13,7 +13,7 @@
 
 namespace nim
 {
-#if NIMAPI_UNDER_WIN_DESKTOP_ONLY
+#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 #ifdef NIM_SDK_DLL_IMPORT
 
 typedef void(*nim_subscribe_event_reg_push_event_cb)(const char *json_extension, nim_push_event_cb_func cb, const void *user_data);
