@@ -56,6 +56,7 @@ typedef void(*nim_vchat_start_audio_record)(const char *path, const char *json_e
 typedef void(*nim_vchat_stop_audio_record)(const char *json_extension, nim_vchat_audio_record_opt_cb_func cb, const void *user_data);
 //结束通话
 typedef void(*nim_vchat_end)(const char* json_extension);
+typedef void(*nim_vchat_relogin)(const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data);
 //自定义视频数据
 typedef bool(*nim_vchat_custom_video_data)(uint64_t time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension);
 typedef bool(*nim_vchat_accompanying_sound)(unsigned char id, unsigned __int64 time, const char *data, unsigned int size, unsigned int rate, unsigned int channels, const char *json_extension);
@@ -159,6 +160,20 @@ typedef void (*nim_vchat_set_uid_picture_as_main)(const char *uid, const char* j
 #else
 #include "nim_vchat.h"
 #endif
+
+static void OnOptCallback(bool ret, int code, const char *json_extension, const void *user_data)
+{
+	if (user_data)
+	{
+		VChat::OptCallback* cb_pointer = (VChat::OptCallback*)user_data;
+		if (*cb_pointer)
+		{
+			(*cb_pointer)(ret, code, PCharToString(json_extension));
+			//PostTaskToUIThread(std::bind((*cb_pointer), ret, code, PCharToString(json_extension)));
+		}
+		delete user_data;
+	}
+}
 
 static void CallbackNetDetect(bool ret, int rescode, const char *json_params, const void *user_data)
 {
@@ -427,6 +442,23 @@ void VChat::End(const std::string& json_extension)
 {
 	NIM_SDK_GET_FUNC(nim_vchat_end)(json_extension.c_str());
 }
+void VChat::Relogin(const std::string& session_id, OptCallback cb)
+{
+	std::string json_value;
+	if (!session_id.empty())
+	{
+		Json::FastWriter fs;
+		Json::Value value;
+		value[nim::kNIMVChatSessionId] = session_id;
+		json_value = fs.write(value);
+	}
+	OptCallback* cb_pointer = nullptr;
+	if (cb)
+	{
+		cb_pointer = new OptCallback(cb);
+	}
+	NIM_SDK_GET_FUNC(nim_vchat_relogin)(json_value.c_str(), OnOptCallback, cb_pointer);
+}
 void VChat::SetVideoQuality(int video_quality)
 {
 	NIM_SDK_GET_FUNC(nim_vchat_set_video_quality)(video_quality, "", nullptr, nullptr);
@@ -484,19 +516,6 @@ void VChat::SetVideoFrameScaleType(NIMVChatVideoFrameScaleType type)
 int VChat::GetVideoFrameScaleType()
 {
 	return NIM_SDK_GET_FUNC(nim_vchat_get_video_frame_scale_type)();
-}
-static void OnOptCallback(bool ret, int code, const char *json_extension, const void *user_data)
-{
-	if (user_data)
-	{
-		VChat::OptCallback* cb_pointer = (VChat::OptCallback*)user_data;
-		if (*cb_pointer)
-		{
-			(*cb_pointer)(ret, code, PCharToString(json_extension));
-			//PostTaskToUIThread(std::bind((*cb_pointer), ret, code, PCharToString(json_extension)));
-		}
-		delete user_data;
-	}
 }
 void VChat::SetMemberBlacklist(const std::string& uid, bool add, bool audio, const std::string& json_extension, OptCallback cb)
 {

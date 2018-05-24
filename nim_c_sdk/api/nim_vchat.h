@@ -325,7 +325,7 @@ extern"C"
 
 	/** @fn void nim_vchat_set_uid_picture_as_main(const char *uid, const char* json_extension, nim_vchat_opt_cb_func cb, const void* user_data)
 	* NIM 互动直播设置uid为房间主画面
-	* @param[in] uid 
+	* @param[in] uid 成员account
 	* @param[in] json_extension
 	* @param[in] cb 结果会叫见nim_vchat_def.h,返回的json_extension无效，返回的code参考NIMMainPictureOptCode
 	* @param[in] user_data APP的自定义用户数据，SDK只负责传回给回调函数cb，不做任何处理！
