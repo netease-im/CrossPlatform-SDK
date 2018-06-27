@@ -6,14 +6,16 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+	nim::Client::Init("test_appkey", "test_qt", "", nim::SDKConfig());
+	nim_chatroom::ChatRoom::Init("");
+
     MainWindow w;
     w.show();
 
-	bool ret = nim::Client::Init("test_appkey", "test_qt", "", nim::SDKConfig());
-	ret = nim_chatroom::ChatRoom::Init("");
+	int ret = a.exec();
 
 	nim_chatroom::ChatRoom::Cleanup();
 	nim::Client::Cleanup();
-
-    return a.exec();
+	return ret;
 }
