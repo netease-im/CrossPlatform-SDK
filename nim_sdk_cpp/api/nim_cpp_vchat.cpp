@@ -27,6 +27,7 @@ typedef void(*nim_vchat_start_extend_camera)(const char *id, const char *device_
 typedef void(*nim_vchat_stop_extend_camera)(const char *id, const char *json_extension);
 
 typedef void(*nim_vchat_set_audio_data_cb)(bool capture, const char* json_extension, nim_vchat_audio_data_cb_func cb, const void *user_data);
+typedef void(*nim_vchat_set_audio_data_cb_ex)(int type, const char *json_extension, nim_vchat_audio_data_cb_func_ex cb, const void *user_data);
 typedef void(*nim_vchat_set_video_data_cb)(bool capture, const char* json_extension, nim_vchat_video_data_cb_func cb, const void *user_data);
 typedef void(*nim_vchat_set_audio_volumn)(unsigned char volumn, bool capture);
 typedef unsigned char(*nim_vchat_get_audio_volumn)(bool capture);
@@ -95,6 +96,8 @@ typedef void(*nim_vchat_set_audio_mute)(bool muted);
 * @return bool true 静音，false 不静音
 */
 typedef bool(*nim_vchat_audio_mute_enabled)();
+typedef void(*nim_vchat_set_audio_play_mute)(bool muted);
+typedef bool(*nim_vchat_audio_play_mute_enabled)();
 
 /** @fn void nim_vchat_set_rotate_remote_video(bool rotate)
 * NIM VCHAT 设置不自动旋转对方画面，默认打开，全局有效（重新发起时也生效）
@@ -199,9 +202,17 @@ static void CallbackNetDetect(bool ret, int rescode, const char *json_params, co
 }
 //dll-------------------------------
 //NIM vchat初始化
-bool VChat::Init(const std::string& json_info)
+bool VChat::Init(const std::string& server_setting_path)
 {
-	return NIM_SDK_GET_FUNC(nim_vchat_init)(json_info.c_str());
+	std::string json_value;
+	if (!server_setting_path.empty())
+	{
+		Json::FastWriter fs;
+		Json::Value value;
+		value[nim::kNIMVChatServerSettingPath] = server_setting_path;
+		json_value = fs.write(value);
+	}
+	return NIM_SDK_GET_FUNC(nim_vchat_init)(json_value.c_str());
 }
 //NIM vchat清理
 void VChat::Cleanup()
@@ -302,6 +313,10 @@ void VChat::RemoveDeviceStatusCb(nim::NIMDeviceType type)
 void VChat::SetAudioDataCb(bool capture, nim_vchat_audio_data_cb_func cb)
 {
 	NIM_SDK_GET_FUNC(nim_vchat_set_audio_data_cb)(capture, "", cb, nullptr);
+}
+void VChat::SetAudioDataCbEx(int type, std::string json, nim_vchat_audio_data_cb_func_ex cb)
+{
+	NIM_SDK_GET_FUNC(nim_vchat_set_audio_data_cb_ex)(type, json.c_str(), cb, nullptr);
 }
 //capture = true	监听视频采集数据（摄像头）
 //capture = false	监听视频接收数据（接收到的图像数据，由上层播放）
@@ -500,6 +515,14 @@ void VChat::SetAudioMuted(bool muted)
 bool VChat::GetAudioMuteEnabled()
 {
 	return NIM_SDK_GET_FUNC(nim_vchat_audio_mute_enabled)();
+}
+void VChat::SetAudioPlayMuted(bool muted)
+{
+	NIM_SDK_GET_FUNC(nim_vchat_set_audio_play_mute)(muted);
+}
+bool VChat::GetAudioMutePlayEnabled()
+{
+	return NIM_SDK_GET_FUNC(nim_vchat_audio_play_mute_enabled)();
 }
 void VChat::SetRotateRemoteVideo(bool rotate)
 {
