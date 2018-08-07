@@ -178,6 +178,12 @@ bool Client::Init(const std::string& app_key
 	config_values[nim::kNIMCachingMarkreadEnabled] = config.caching_markread_;
 	config_values[nim::kNIMCachingMarkreadTime] = config.caching_markread_time_;
 	config_values[nim::kNIMCachingMarkreadCount] = config.caching_markread_count_;
+	config_values[nim::kNIMEnableUserDataFileLocalBackup] = config.enable_user_datafile_backup_;
+	config_values[nim::kNIMEnableUserDataFileLocalRestore] = config.enable_user_datafile_restore_;
+	config_values[nim::kNIMEnableUserDataFileDefRestoreProc] = config.enable_user_datafile_defrestoreproc_;
+	config_values[nim::kNIMUserDataFileLocalBackupFolder] = config.user_datafile_localbackup_folder_;
+
+
 
 	if (!config.server_conf_file_path_.empty())
 		config_root[nim::kNIMServerConfFilePath] = config.server_conf_file_path_;
