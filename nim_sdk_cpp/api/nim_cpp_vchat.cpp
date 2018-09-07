@@ -15,6 +15,7 @@ namespace nim
 
 #ifdef NIM_SDK_DLL_IMPORT
 typedef	bool(*nim_vchat_init)(const char *json_extension);
+typedef	void(*nim_vchat_set_proxy)(enum NIMProxyType type, const char *host, int port, const char *user, const char *password);
 typedef	void(*nim_vchat_cleanup)(const char *json_extension);
 typedef uint64_t(*nim_vchat_net_detect)(const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data);
 
@@ -34,7 +35,6 @@ typedef unsigned char(*nim_vchat_get_audio_volumn)(bool capture);
 typedef void(*nim_vchat_set_audio_input_auto_volumn)(bool auto_volumn);
 typedef bool(*nim_vchat_get_audio_input_auto_volumn)();
 typedef void(*nim_vchat_set_audio_process_info)(bool aec, bool ns, bool vad);
-//typedef void(*nim_vchat_set_audio_howling_suppression)(bool work);
 
 //设置回掉
 typedef void(*nim_vchat_set_cb_func)(nim_vchat_cb_func cb, const void *user_data);
@@ -60,7 +60,6 @@ typedef void(*nim_vchat_end)(const char* json_extension);
 typedef void(*nim_vchat_relogin)(const char *json_extension, nim_vchat_opt_cb_func cb, const void *user_data);
 //自定义视频数据
 typedef bool(*nim_vchat_custom_video_data)(uint64_t time, const char *data, unsigned int size, unsigned int width, unsigned int height, const char *json_extension);
-typedef bool(*nim_vchat_custom_audio_data)(uint64_t time, const char *data, uint32_t size, const char *json_extension);
 typedef bool(*nim_vchat_accompanying_sound)(unsigned char id, unsigned __int64 time, const char *data, unsigned int size, unsigned int rate, unsigned int channels, const char *json_extension);
 
 //NIM 通话中修改分辨率
@@ -502,10 +501,6 @@ bool VChat::CustomVideoData(uint64_t time, const char *data, unsigned int size, 
 {
 	return NIM_SDK_GET_FUNC(nim_vchat_custom_video_data)(time, data, size, width, height, json_extension);
 }
-bool VChat::CustomAudioData(uint64_t time, const char *data, unsigned int size, const char *json_extension)
-{
-	return NIM_SDK_GET_FUNC(nim_vchat_custom_audio_data)(time, data, size, json_extension);
-}
 bool VChat::AccompanyingSound(unsigned char id, unsigned __int64 time, const char *data, unsigned int size, unsigned int rate, unsigned int channels, const char *json_extension)
 {
 	return NIM_SDK_GET_FUNC(nim_vchat_accompanying_sound)(id, time, data, size, rate, channels, json_extension);
@@ -602,5 +597,8 @@ void VChat::SetUidAsMainPicture(const std::string& uid, const std::string& json_
 	OptCallback* cb_pointer = new OptCallback(cb);
 	return NIM_SDK_GET_FUNC(nim_vchat_set_uid_picture_as_main)(uid.c_str(), json_extension.c_str(), OnOptCallback, cb_pointer);
 }
-
+void VChat::SetProxy(NIMProxyType type, const std::string& host, int port, const std::string& user, const std::string& password)
+{
+	NIM_SDK_GET_FUNC(nim_vchat_set_proxy)(type, host.c_str(), port, user.c_str(), password.c_str());
+}
 }  // namespace nim

@@ -59,17 +59,18 @@ static void CallbackLogout(const char *json_res, const void *callback)
 {
 	if (callback != nullptr)
 	{
-		Client::LogoutCallback *cb = (Client::LogoutCallback *)callback;
-		NIMResCode error_code = kNIMResSuccess;
-		Json::Reader reader;
-		Json::Value values;
-		if (reader.parse(PCharToString(json_res), values) && values.isObject())
-		{
-			error_code = (NIMResCode)values[kNIMLogoutErrorCode].asInt();
-		}
-		(*cb)(error_code);
-		delete cb;
-		cb = nullptr;
+		Client::LogoutCallback cb = *(Client::LogoutCallback *)callback;
+		if (cb != nullptr)
+		{		
+			NIMResCode error_code = kNIMResSuccess;
+			Json::Reader reader;
+			Json::Value values;
+			if (reader.parse(PCharToString(json_res), values) && values.isObject())
+			{
+				error_code = (NIMResCode)values[kNIMLogoutErrorCode].asInt();
+			}
+			cb(error_code);
+		}		
 	}
 }
 
@@ -163,7 +164,7 @@ bool Client::Init(const std::string& app_key
 	//sdk能力参数（必填）
 	Json::Value config_values;
 	config_values[nim::kNIMDataBaseEncryptKey] = config.database_encrypt_key_;
-	config_values[nim::kNIMPreloadAttach] = config.preload_attach_;	
+	config_values[nim::kNIMPreloadAttach] = config.preload_attach_;
 	config_values[nim::kNIMPreloadImageQuality] = config.preload_image_quality_;
 	config_values[nim::kNIMPreloadImageResize] = config.preload_image_resize_;
 	config_values[nim::kNIMSDKLogLevel] = config.sdk_log_level_;
@@ -259,18 +260,18 @@ void Client::Relogin(const std::string& json_extension/* = ""*/)
 {
 	return NIM_SDK_GET_FUNC(nim_client_relogin)(json_extension.c_str());
 }
-
+Client::LogoutCallback g_logou_cb = nullptr;
 void Client::Logout(nim::NIMLogoutType logout_type
 	, const LogoutCallback& cb
 	, const std::string& json_extension/* = ""*/)
 {
-	LogoutCallback* cb_pointer = nullptr;
-	if (cb)
-	{
-		cb_pointer = new LogoutCallback(cb);
-	}
-
-	return NIM_SDK_GET_FUNC(nim_client_logout)(logout_type, json_extension.c_str(), &CallbackLogout, cb_pointer);
+	g_logou_cb = cb;
+	//LogoutCallback* cb_pointer = nullptr;
+	//if (cb)
+	//{
+	//	cb_pointer = new LogoutCallback(cb);
+	//}
+	return NIM_SDK_GET_FUNC(nim_client_logout)(logout_type, json_extension.c_str(), &CallbackLogout, &g_logou_cb);
 }
 
 bool Client::KickOtherClient(const std::list<std::string>& client_ids)
@@ -404,11 +405,10 @@ void Client::GetMultiportPushConfigAsync(const MultiportPushConfigCallback& cb, 
 
 void Client::UnregClientCb()
 {
-	g_cb_relogin_ = nullptr;
-	g_cb_kickout_ = nullptr;
+	g_cb_relogin_ = nullptr;	
+	g_cb_kickout_ = nullptr;	
 	g_cb_disconnect_ = nullptr;
 	g_cb_multispot_login_ = nullptr;
-	g_cb_kickother_ = nullptr;
-
+	g_cb_kickother_ = nullptr;	
 }
 }
