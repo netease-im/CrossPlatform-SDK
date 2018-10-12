@@ -336,7 +336,7 @@ std::string Talk::CreateTipMessage(const std::string& receiver_id
 
 	return GetJsonStringWithNoStyled(values);
 }
-#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
+
 std::string Talk::CreateBotRobotMessage(const std::string& receiver_id
 	, const NIMSessionType session_type
 	, const std::string& client_msg_id
@@ -362,7 +362,7 @@ std::string Talk::CreateBotRobotMessage(const std::string& receiver_id
 
 	return GetJsonStringWithNoStyled(values);
 }
-#endif
+
 std::string Talk::CreateRetweetMessage(const std::string& src_msg_json
 	, const std::string& client_msg_id
 	, const NIMSessionType retweet_to_session_type
@@ -497,7 +497,7 @@ bool Talk::ParseLocationMessageAttach(const IMMessage& msg, IMLocation& location
 	}
 	return false;
 }
-#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
+
 bool Talk::ParseBotRobotMessageAttach(const IMMessage& msg, IMBotRobot& robot_msg)
 {
 	if (msg.type_ != kNIMMessageTypeRobot)
@@ -516,7 +516,6 @@ bool Talk::ParseBotRobotMessageAttach(const IMMessage& msg, IMBotRobot& robot_ms
 	}
 	return false;
 }
-#endif
 
 static Talk::TeamNotificationFilter g_team_notification_filter_ = nullptr;
 void Talk::RegTeamNotificationFilter(const TeamNotificationFilter& filter, const std::string& json_extension/* = ""*/)
@@ -579,7 +578,7 @@ std::string Talk::GetAttachmentPathFromMsg(const IMMessage& msg)
 	Global::FreeBuf((void *)file_path);
 	return out_path;
 }
-#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
+
 static void CallbackReceiveBroadcastMsg(const char *content, const char *json_extension, const void *callback)
 {
 	if (callback)
@@ -643,7 +642,7 @@ void Talk::RegReceiveBroadcastMsgsCb(const ReceiveBroadcastMsgsCallback& cb, con
 	g_cb_broadcast_msgs = cb;
 	return NIM_SDK_GET_FUNC(nim_talk_reg_receive_broadcast_msgs_cb)(json_extension.c_str(), &CallbackReceiveBroadcastMessages, &g_cb_broadcast_msgs);
 }
-#endif
+
 void Talk::UnregTalkCb()
 {
 	g_cb_send_msg_ack_ = nullptr;
@@ -651,10 +650,8 @@ void Talk::UnregTalkCb()
 	g_cb_pointer = nullptr;
 	g_cb_msgs_pointer = nullptr;
 	g_recall_msg_cb_ = nullptr;
-#ifdef NIMAPI_UNDER_WIN_DESKTOP_ONLY
 	g_cb_broadcast_msgs = nullptr;
 	g_cb_broadcast = nullptr;
-#endif
 }
 
 }

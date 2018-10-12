@@ -28,6 +28,8 @@ typedef void(*nim_nos_stop_upload_ex)(const char *task_id, const char *json_exte
 typedef void(*nim_nos_download)(const char *nos_url, nim_nos_download_cb_func callback_result, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data);
 typedef void(*nim_nos_download_ex)(const char *nos_url, const char *json_extension, nim_nos_download_cb_func callback_result, const void *res_user_data, nim_nos_download_prg_cb_func prg_cb, const void *prg_user_data, nim_nos_download_speed_cb_func speed_cb, const void *speed_user_data, nim_nos_download_info_cb_func info_cb, const void *info_user_data);
 typedef void(*nim_nos_stop_download_ex)(const char *task_id, const char *json_extension);
+typedef void(*nim_nos_set_quick_trans)(int quick_trans);
+
 #else
 #include "nim_nos.h"
 #endif
@@ -140,6 +142,8 @@ static void CallbackUploadEx(int res_code, const char *url, const char *json_ext
 		delete (UploadCallbackExUserData*)user_data;
 	}
 }
+
+
 
 static void CallbackDownloadEx(int res_code, const char *file_path, const char *call_id, const char *res_id, const char *json_extension, const void *user_data)
 {
@@ -454,5 +458,10 @@ void NOS::UnregNosCb()
 {
 	g_cb_pointer = nullptr;
 	g_cb_upload_pointer = nullptr;
+}
+
+void NOS::SetSupportQuickTrans(bool bquick)
+{
+	NIM_SDK_GET_FUNC(nim_nos_set_quick_trans)((int)bquick);
 }
 }
