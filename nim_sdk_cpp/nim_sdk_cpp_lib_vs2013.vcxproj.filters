@@ -131,6 +131,12 @@
     <ClCompile Include="..\third_party\convert_utf\convert_utf.c">
       <Filter>third_party\convert_utf</Filter>
     </ClCompile>
+    <ClCompile Include="api\nim_cpp_signaling.cpp">
+      <Filter>api</Filter>
+    </ClCompile>
+    <ClCompile Include="helper\nim_signaling_helper.cpp">
+      <Filter>helper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helper\nim_client_helper.h">
@@ -244,6 +250,15 @@
     </ClInclude>
     <ClInclude Include="..\third_party\convert_utf\convert_utf.h">
       <Filter>third_party\convert_utf</Filter>
+    </ClInclude>
+    <ClInclude Include="callback_proxy.h">
+      <Filter>api</Filter>
+    </ClInclude>
+    <ClInclude Include="api\nim_cpp_signaling.h">
+      <Filter>api</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\nim_signaling_helper.h">
+      <Filter>helper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
