@@ -58,10 +58,7 @@ namespace nim
 		template<>
 		static void Run(const CallbackProxyClosure< void>& task)
 		{
-			if (docallback_async_ != nullptr)
-				docallback_async_(task);
-			else
-				task();
+			task();
 		}
 	public:
 		static std::function<void(const std::function< void()>&)> docallback_async_;

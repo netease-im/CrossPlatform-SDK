@@ -167,8 +167,6 @@ struct NIM_SDK_CPPWRAPPER_DLL_API SignalingPushInfo
 */
 struct NIM_SDK_CPPWRAPPER_DLL_API SignalingNotityInfo
 {
-	SignalingNotityInfo(){}
-	virtual ~SignalingNotityInfo(){}
 	enum NIMSignalingEventType event_type_;		/**< 通知类型 */
 	struct SignalingChannelInfo channel_info_;	/**< 频道信息 */
 	std::string  from_account_id_;				/**< 操作者 */
