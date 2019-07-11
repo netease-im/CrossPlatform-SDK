@@ -20,6 +20,57 @@ Windows(PC) SDK对外暴露的是C接口，为了让桌面开发者更加方便�
 可以通过官网下载SDK以及Demo源码，SDK包含C接口API文件和C++封装层的API文件及项目文件。 
 
 ### SDK内容
+### <span id="SDK 目录结构及主要文件介绍">SDK 目录结构及主要文件介绍</span>
+    nim_sdk ........................................................ SDK目录
+        bin ........................................................ SDK二进制文件目录
+	        x86_dlls ............................................... x86 SDK二进制文件目录
+	            redist_packages .................................... vs2017 x86 运行时库
+	        x64_dlls ............................................... x64 SDK二进制文件目录
+                redist_packages .................................... vs2017 x64 运行时库
+        include .................................................... SDK 引入包含目录
+            depend_lib ............................................. SDK C++封装层依赖库目录
+                include ............................................ SDK C++封装层依赖库包含目录
+                    json ........................................... Json工具包含目录
+                    nim_json_util.h ................................ JSON工具辅助方法
+                    nim_sdk_util.h ................................. 提供加载/卸载SDK以及获取接口的方法
+            nim_c_api.h ............................................ c im api引入文件
+            nim_chatroom_c_api.h ................................... c chatroom api引入文件
+            nim_cpp_api.h .......................................... c++ im api 引入文件
+            nim_chatroom_cpp_api.h ................................. c++ chatroom api 引入文件
+            nim_cpp_tools_api.h .................................... nim 工具类api 引入文件
+        public_define .............................................. SDK 共公类型定义目录 c/c++都会引用到数据结构定义
+            defines ................................................ im/chatroom/nim_tools数据类型定义目录
+            util ................................................... 编译开关及基础类型定义目录
+            nim_sdk_define_include.h ............................... im 公共数据类型定义引入文件
+            nim_chatroom_define_include.h .......................... chatroom 公共数据类型定义引入文件
+            nim_tool_define_include.h .............................. nim_tools 公共数据类型定义引入文件
+            nim_util_include.h ..................................... 基础类型定义引入文件
+        src ........................................................ c api/c++封装层实现代码目录
+            c_sdk .................................................. c api 定义代码目录                
+            cpp_sdk ................................................ c++封装层代码目录
+                depend_lib ......................................... c++封装层依赖库的实现代码目录
+                    cpp_wrapper_util_md.sln ........................ c++封装层依赖库 md/mdd 运行时库工程的解决方案文件
+                    cpp_wrapper_util_mt.sln ........................ c++封装层依赖库 mt/mtd 运行时库工程的解决方案文件
+                nim ................................................ im c++封装层实现代码目录
+                    nim_sdk_cpp_wrapper_dll.vcxproj ................ im c++封装层动态库工程文件 
+                    nim_sdk_cpp_wrapper_lib_md.vcxproj ............. im c++封装层静态库 md/mdd 运行时库工程文件
+                    nim_sdk_cpp_wrapper_lib_mt.vcxproj ............. im c++封装层静态库 mt/mtd 运行时库工程文件
+                nim_chatroom ....................................... chatrooom c++封装层实现代码目录
+                    nim_chatroom_sdk_cpp_wrapper_dll.vcxproj ....... chatrooom c++封装层动态库工程文件
+                    nim_chatroom_sdk_cpp_wrapper_lib_md.vcxproj .... chatrooom c++封装层静态库 md/mdd 运行时库工程文件
+                    nim_chatroom_sdk_cpp_wrapper_lib_mt.vcxproj .... chatrooom c++封装层静态库 mt/mtd 运行时库工程文件
+                nim_tools .......................................... nim tools c++封装层实现代码目录
+                    audio .......................................... audio模块 c++封装层实现代码目录
+                    http ........................................... http模块 c++封装层实现代码目录
+        libs ....................................................... c++封装层(静态库)、依赖库输出目录
+            x86 .................................................... x86平台输出目录
+                md ................................................. md/mdd 运行时库输出目录
+                mt ................................................. mt/mtd 运行时库输出目录
+            x64 .................................................... x64平台输出目录
+                md ................................................. md/mdd 运行时库输出目录
+                mt ................................................. mt/mtd 运行时库输出目录
+
+#### <span id="SDK二进制文件介绍">SDK二进制文件介绍</span>
 * x64_dlls：存放64位Dll的文件夹
 * x86_dlls：存放32位Dll的文件夹
 * nim.dll： SDK主模块；放在用户程序目录下
@@ -29,14 +80,6 @@ Windows(PC) SDK对外暴露的是C接口，为了让桌面开发者更加方便�
 * nrtc\_audio\_process.dll： 负责音频处理；放在用户程序目录下
 * nim\_audio\_hook.dll： 负责辅助采集播放器音频，由nrtc.dll调用；放在用户程序目录下，x64位暂时不提供该Dll。
 * nim_conf： SDK版本相关；放在用户程序目录下
-* nim\_c\_sdk： IM C 接口说明以及SDK所有定义的头文件（*_def.h头文件用户自己决定放在合适位置）。
-* nim\_chatroom\_c\_sdk: 聊天室 C 接口说明以及SDK所有定义的头文件（*_def.h头文件用户自己决定放在合适位置）。
-* nim\_sdk\_cpp\：IM C接口的C++封装层，包括工程文件，工程文件为VS2010创建，用户添加进自己的工程后可根据开发环境升级该工程文件。
-* nim\_chatroom\_cpp：聊天室C接口的C++封装层，包括工程文件，工程文件为VS2010创建，用户添加进自己的工程后可根据开发环境升级该工程文件。
-* nim\_tools\_c\_sdk：SDK工具类（语音录制播放和Http）C接口说明以及所有定义的头文件（*_def.h头文件用户自己决定放在合适位置）。
-* nim\_tools\_cpp\_sdk：SDK工具类（语音录制播放和Http）C接口的C++封装层。
-* win32\_vs2013\_demo：C++封装层win32 Demo，基于VS2013开发。
-* qt\_58\_vs2013\_demo: C++封装层QT Demo，QT版本5.8，基于VS2013开发。
 * README.md: C/C++ SDK开发手册。
 * QT\_README.md: C++ QT项目接入手册。
 
@@ -72,14 +115,43 @@ SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
 此外，每个类都包含一个对应Helper文件，如nim\_cpp\_client.h对应nim\_client\_helper.h，主要包含接口需要的辅助方法和数据结构的定义。
 
 ## 接入SDK C++封装层
-### 添加SDK C++封装层
-在nim\_cpp\_sdk\\nim\_sdk\_cpp_vs2010下包含nim\_sdk\_cpp\_lib.vcxproj项目文件，该工程是基于Visual Studio 2010开发，开发者可以通过解决方案右键添加已有项目将该项目文件添加到自己的工程，如果开发者已有解决方案的开发环境高于VS2010，请在导入的同时升级SDK项目，导入后编辑需要引用到SDK API的项目，在属性-通用属性-框架和引用中添加SDK项目为新的引用。当然开发者也可以仅仅将提供的SDK静态库添加到自己的工程，但是这里还是建议开发者将源码引入到自己的工程，方便扩展和调试。
+### 文件包含目录
 
-### 添加所需的第三方库
-SDK C++项目文件依赖第三方库jsoncpp，我们随包提供了基于vs2010编译的jsoncpp\_d.lib和jsoncpp.lib(nim\_cpp\_sdk\\nim\_sdk\_cpp\_vs2010\\libs)，同时为了方便vs其他版本的开发者使用，也附带了jsoncpp的源码(nim\_cpp\_sdk\\nim\_sdk\_cpp_vs2010\\third\_party)，开发者可以根据需要编译不同版本的json库(解决方案文件在nim\_cpp\_sdk\\nim\_sdk\_cpp\_vs2010\\third\_party\\jsoncpp\\makefiles\\msvc2010)，编译第三方库的时候要注意属性-C/C++/代码生成选项卡中的运行库要与主程序的运行库保持一致。
+引入SDK时包含目录包含到nim_sdk目录即可，以im demo 的custom_app_sdk工程为例，如下图
+    
+<div align="center"><img width="954" height="608" src="https://nim-nosdn.netease.im/MTAxMTAwMg%3D%3D%2FbmltYV8xOTQzNjk4MF8xNTYyNjgyODQyNjUyXzVmYmFhMDk2LTU5OWQtNGE3Yy05ODhiLTAyZWM1ZDI4OWFmMQ%3D%3D?createTime=1562682851"/></div>
 
-当然，开发者也可以使用自己熟悉的json有关的第三方库，如果使用其他第三方库，需要手工调整C++ SDK源码中引用到jsoncpp对象的代码。
+### c++封装层引入解决方案
 
-添加完第三方库后，还需要设置工程属性中，C/C++-常规中，附加包含目录添加第三方库的头文件路径(nim\_cpp\_sdk\\nim\_sdk\_cpp\_vs2010\\third\_party\\jsoncpp\\include)，这样方便在代码中包含json所需的头文件。
+C++封装层的工程文件在nim_sdk/src/nim/、nim_sdk/src/nim_chatroom/目录下，可以直接添加到解决方案中，以im demo为例如下图
+<div align="center"><img width="368" height="319" src="https://nim-nosdn.netease.im/MTAxMTAwMg%3D%3D%2FbmltYV8xOTQzNjk4MF8xNTYyNjgyODQyNjUzX2IzMTAxMjA1LWIzNzktNDQ1OS04Yzk0LTBlZDZmNjdkYTEwYw%3D%3D?createTime=1562683553"/></div>
+
+
+### 静态库引入
+
+C++封装层(静态库方式)缺省的输出目录为nim_sdk/libs/x86/md(mt)/、nim_sdk/libs/x64/md(mt)/，在库管理器中可以根据选择的运行时库指定附加依库目录到libs相应的目录并指定相应的静态库到附加依赖项中，以im demo 的custom_app_sdk工程为例，如下图
+<div align="center"><img width="949" height="604" src="https://nim-nosdn.netease.im/MTAxMTAwMg%3D%3D%2FbmltYV8xOTQzNjk4MF8xNTYyNjgyODQyNjUyX2Y1MGE2YzU1LTg4MWEtNDZjOC1hYWYzLWY3OWVjMGRhY2I0OA%3D%3D?createTime=1562683204"/></div>
+
+### C++动态库的使用方式
+C++封装层(静态库方式)缺省的输出目录为nim_sdk/bin/x86_dlls/、nim_sdk/bin/x64_dlls/,当以动态库的方式使用c++封装层时，可以将生成后的nim_sdk_cpp_wrapper_dll.dll/nim_sdk_cpp_wrapper_dll_d.dll、nim_chatroom_sdk_cpp_wrapper_dll.dll/nim_chatroom_sdk_cpp_wrapper_dll_d.dll拷贝到指定目录(例如exe的输出目录),以im demo的custom_app_sdk工程为例，如下图
+<div align="center"><img width="951" height="604" src="https://nim-nosdn.netease.im/MTAxMTAwMg%3D%3D%2FbmltYV8xOTQzNjk4MF8xNTYyNjgyODQyNjUzX2JiOTU5MzIzLTcwZGYtNDdjMS1iNjFkLWYwM2FjNWQ4OWZlYg%3D%3D?createTime=1562684550"/></div>
+
+### C++封装层依赖库编译
+C++封装层依赖库(depend_lib)预先生成了vs2013运行时库为md(mdd)/mt(mtd),debug/release版本的静态库，如果开发者需要不同vs版本(不同的平台工具集)的可静态库,以打开nim_sdk/src/cpp_sdk/depend_lib/cpp_wrapper_util_md.sln(cpp_wrapper_util_mt.sln)，修改cpp_wrapper工程的平台工具集来生成相应的版本.
+
+### SDK回调应用层的异步实现
+SDK在回调应用层时，如果应用层没有进行异步处理，可能会阻塞SDK内部线程，发生SDK没有响应、断线等问题，为了避免这种情况的发生，应用层在接收到SDK的回调时最好转为异步。SDK实现了指定异步回调的接口
+
+	/** @fn void SetCallbackFunction(const ChatRoom::SDKClosure& callback)
+  	* 当以动态库使用SDK时 设置SDK回调方法，为了不阻塞SDK线程，在回调中应该把任务抛到应用层的线程中
+  	* @param[in] callback	  回调方法
+  	* @return void 无返回值
+  	*/
+	static void SetCallbackFunction(const SDKClosure& callback);
+以 im demo为例，其使用方法如下
+
+    nim::Client::SetCallbackFunction([](const StdClosure & task) {
+		nbase::ThreadManager::PostTask(ThreadId::kThreadUI, task);
+	});
 
 **导入后注意调整平台工作集（属性-配置属性-常规），运行库（属性-配置属性-C/C++），附加包含目录（属性-配置属性-C/C++-常规），附加依赖项/附加库目录（属性-配置属性-库管理器）等。**
