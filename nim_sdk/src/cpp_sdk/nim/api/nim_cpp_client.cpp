@@ -201,6 +201,7 @@ bool Client::Init(const std::string& app_key
 		srv_config[nim::kNIMLbsAddress] = config.lbs_address_;
 		srv_config[nim::kNIMNosLbsAddress] = config.nos_lbs_address_;
 		srv_config[nim::kNIMDefaultLinkAddress] = config.default_link_address_;
+		srv_config[nim::kNIMPrivateEnableHttps] = config.private_enable_https_;
 		srv_config[nim::kNIMDefaultNosUploadAddress] = config.default_nos_upload_address_;
 		srv_config[nim::kNIMDefaultNosUploadHost] = config.default_nos_upload_host_;
 		srv_config[nim::kNIMRsaPublicKeyModule] = config.rsa_public_key_module_;

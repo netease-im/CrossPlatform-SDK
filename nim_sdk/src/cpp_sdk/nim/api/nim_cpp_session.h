@@ -41,6 +41,15 @@ public:
 	* @note 错误码	200:成功
 	*/
 	static void RegChangeCb(const ChangeCallback& cb, const std::string& json_extension = "");
+	
+	/** @fn static void QueryAllRecentSessionAsync(const QuerySessionListCallabck& cb, const std::string& json_extension = "")
+	* 查询指定数量的最后会话数据
+	* @param[in] limit		要返回的最大数量
+	* @param[in] cb			查询会话列表的回调函数
+	* @param[in] json_extension json扩展参数（备用，目前不需要）
+	* @return void 无返回值
+	*/
+	static void QueryLastFewSessionAsync(int limit, const QuerySessionListCallabck& cb, const std::string& json_extension = "");
 
 	/** @fn static void QueryAllRecentSessionAsync(const QuerySessionListCallabck& cb, const std::string& json_extension = "")
 	* 查询会话列表

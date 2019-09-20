@@ -73,13 +73,6 @@ void SDKInstance::UnLoadSdkDll()
 }
 void SDKInstance::OnSDKInited()
 {
-	if (CallbackProxy::docallback_async_ == nullptr)
-	{
-		typedef void(*sdk_docallback_async)(const std::function<void()>&);
-		static sdk_docallback_async nim_sdk_docallback_async = nullptr;
-		nim_sdk_docallback_async = (sdk_docallback_async)GetFunction("nim_sdk_docallback_async");
-		if (nim_sdk_docallback_async != nullptr)
-			CallbackProxy::docallback_async_ = std::move(std::bind(nim_sdk_docallback_async, std::placeholders::_1));
-	}	
+	
 }
 }

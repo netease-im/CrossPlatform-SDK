@@ -33,7 +33,7 @@ namespace nim
 	bool			sync_session_ack_;				/**< bool 设置是否已读未读状态多端同步，默认true */
 	int				login_max_retry_times_;			/**< int 登录重试最大次数，如需设置建议设置大于3次，默认填0，SDK默认设置次数 */
 	int				custom_timeout_;				/**< int 自定义通讯超时时间，暂时不开放设置 */
-	bool			use_https_;						/**< bool 是否启用HTTPS协议，默认为false */
+	bool			use_https_;						/**< bool 是否启用HTTPS协议，默认为true */
 	bool			team_notification_unread_count_;/**< bool 群通知是否计入未读数，默认为false */
 	bool			vchat_miss_unread_count_;		/**< bool 语音消息未接通消息是否计入未读数，默认为false */
 	bool			reset_unread_count_when_recall_;/**< bool 撤回消息是否重新计算未读消息计数，默认为false */
@@ -59,6 +59,7 @@ namespace nim
 	
 	//private_server_setting 私有服务器配置（设置方法有两种，一个是配置以下信息，一个是通过配置server_conf_file_path_地址，信息从文件中读取）
 	bool			use_private_server_;			/**< bool 是否使用私有服务器，如果使用私有服务器，则必须设置为true */
+	bool			private_enable_https_;	/**< bool，（必填，私有化配置是否启用HTTPS协议，启用私有化配置时会覆盖 kNIMUseHttps，为true时kNIMDefaultNosUploadHost必填） */
 	std::string		lbs_address_;					/**< string lbs地址，如果选择使用私有服务器，则必填 */
 	std::string  	nos_lbs_address_;				/**< string nos lbs地址，如果选择使用私有服务器，则必填 */
 	std::string		default_link_address_;			/**< string 默认link服务器地址，如果选择使用私有服务器，则必填 */

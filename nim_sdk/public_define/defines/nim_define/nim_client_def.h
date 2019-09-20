@@ -144,6 +144,7 @@ static const char *kNIMTeamMessageAckEnabled			= "team_msg_ack";			/**< bool，�
 static const char *kNIMNeedUpdateLBSBeforRelogin = "need_update_lbs_befor_relogin";  /**< bool 在进行重新登录前是否先刷新一下lbs,对于切换网络的场景适用  */
 static const char *kNIMServerConfFilePath				= "server_conf_file_path";	/**< string,  私有云服务器相关地址配置文件本地绝对路径，如果不填默认执行文件目录下的nim_server.conf */
 static const char *kNIMPrivateServerSetting				= "private_server_setting";	/**< json object, 私有服务器配置（设置方法有两种，一个是配置以下信息，一个是通过配置kNIMServerConfFilePath地址，信息从文件中读取） */
+static const char *kNIMPrivateEnableHttps = "https_enabled";				/**< bool，（必填，私有化配置是否启用HTTPS协议，启用私有化配置时会覆盖 kNIMUseHttps，为true时kNIMDefaultNosUploadHost必填） */
 static const char *kNIMLbsAddress						= "lbs";					/**< string, （必填，lbs地址） */
 static const char *kNIMNosLbsAddress					= "nos_lbs";				/**< string, （必填，nos lbs地址） */
 static const char *kNIMDefaultLinkAddress				= "link";					/**< string array, （必填，默认link服务器地址） */

@@ -19,7 +19,7 @@ namespace nim
 		, need_update_lbs_befor_relogin_(false)
 		, login_max_retry_times_(0)
 		, custom_timeout_(30)
-		, use_https_(false)
+		, use_https_(true)
 		, team_notification_unread_count_(false)
 		, animated_image_thumbnail_enabled_(false)
 		, upload_statistics_data_(true)
@@ -31,7 +31,8 @@ namespace nim
 		, enable_user_datafile_backup_(true)
 		, enable_user_datafile_restore_(false)
 		, enable_user_datafile_defrestoreproc_(false)
-		, user_datafile_localbackup_folder_("") {}
+		, user_datafile_localbackup_folder_("") 
+		, private_enable_https_(false){}
  bool ParseOtherClientsPres(const nim_cpp_wrapper_util::Json::Value array_objs, std::list<OtherClientPres> &outs)
 {
 	if (array_objs.isArray())
