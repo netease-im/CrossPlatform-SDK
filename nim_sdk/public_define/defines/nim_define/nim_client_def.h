@@ -134,21 +134,23 @@ static const char *kNIMSDKLogLevel						= "sdk_log_level";			/**< int，定义�
 static const char *kNIMPushCerName						= "push_cer_name";			/**< string，推送证书名（选填，iOS端需要,PC SDK该设置无效） */
 static const char *kNIMSyncSessionAck					= "sync_session_ack";		/**< bool，设置是否已读未读状态多端同步，默认true */
 static const char *kNIMLoginRetryMaxTimes				= "login_retry_max_times";	/**< int，登录重试最大次数，如需设置建议设置大于3次，默认填0，SDK默认设置次数 */
-static const char *kNIMUseHttps							= "use_https";				/**< bool，是否启用HTTPS协议，默认为false */
+static const char *kNIMUseHttps							= "use_https";				/**< bool，是否启用HTTPS协议，默认为true */
 static const char *kNIMTeamNotificationUnreadCount		= "team_notification_unread_count";		/**< bool，群通知是否计入未读数，默认为false */
 static const char *kNIMVChatMissUnreadCount				= "vchat_miss_unread_count";		/**< bool，语音消息未接通消息是否计入未读数，默认为false */
 static const char *kNIMResetUnreadCountWhenRecall		= "reset_unread_count_when_recall";		/**< bool，撤回消息是否重新计算未读消息计数，默认为false */
+static const char *kNIMUploadSDKEventsAfterLogin		= "upload_sdk_events_after_login";	/**< bool，在调用 Login 接口后无论成功是否上报历史错误日志到服务器（目前支持 408、415、500）默认为 false */
 static const char *kNIMAnimatedImageThumbnailEnabled	= "animated_image_thumbnail_enabled";	/**< bool，开启对动图缩略图的支持，默认为false，开启后获取的缩略图为原格式，关闭后获取的缩略图为第一帧静态图 */
 static const char *kNIMClientAntispam					= "client_antispam";		/**< bool，客户端反垃圾，默认为false，如需开启请提前咨询技术支持或销售 */
 static const char *kNIMTeamMessageAckEnabled			= "team_msg_ack";			/**< bool，群消息已读功能开关，默认为false，如需开启请提前咨询技术支持或销售  */
 static const char *kNIMNeedUpdateLBSBeforRelogin = "need_update_lbs_befor_relogin";  /**< bool 在进行重新登录前是否先刷新一下lbs,对于切换网络的场景适用  */
 static const char *kNIMServerConfFilePath				= "server_conf_file_path";	/**< string,  私有云服务器相关地址配置文件本地绝对路径，如果不填默认执行文件目录下的nim_server.conf */
 static const char *kNIMPrivateServerSetting				= "private_server_setting";	/**< json object, 私有服务器配置（设置方法有两种，一个是配置以下信息，一个是通过配置kNIMServerConfFilePath地址，信息从文件中读取） */
+static const char *kNIMPrivateEnableHttps = "https_enabled";				/**< bool，（必填，私有化配置是否启用HTTPS协议，启用私有化配置时会覆盖 kNIMUseHttps，为true时kNIMDefaultNosUploadHost必填） */
 static const char *kNIMLbsAddress						= "lbs";					/**< string, （必填，lbs地址） */
 static const char *kNIMNosLbsAddress					= "nos_lbs";				/**< string, （必填，nos lbs地址） */
 static const char *kNIMDefaultLinkAddress				= "link";					/**< string array, （必填，默认link服务器地址） */
 static const char *kNIMDefaultNosUploadAddress			= "nos_uploader";			/**< string array, （必填，默认nos 上传服务器地址） */
-static const char *kNIMDefaultNosUploadHost				= "nos_uploader_host";		/**< string array, （默认nos 上传服务器主机地址，仅 kNIMUseHttps设置为true 时有效，用作 https 上传时的域名校验及 http header host 字段填充） */
+static const char *kNIMDefaultNosUploadHost				= "nos_uploader_host";		/**< string array, （kNIMPrivateEnableHttps设置为true 时必填，默认nos 上传服务器主机地址，用作 https 上传时的域名校验及 http header host 字段填充） */
 static const char *kNIMRsaPublicKeyModule				= "module";					/**< string, （必填，RSA public key） */
 static const char *kNIMRsaVersion						= "version";				/**< int, （必填，RSA version） */
 static const char *kNIMDownloadAddressTemplate			= "nos_downloader";			/**< string, 下载地址拼接模板，用于拼接最终得到的下载地址 */
@@ -164,7 +166,12 @@ static const char *kNIMUserDataFileLocalBackupFolder	= "user_datafile_localbacku
 static const char *kNIMEnableUserDataFileLocalBackup	= "enable_user_datafile_backup";			/**< bool 是否开启用户数据备份(本地)功能  缺省true*/
 static const char *kNIMEnableUserDataFileLocalRestore	= "enable_user_datafile_restore";			/**< bool 是否开启用户数据恢复(本地)功能  缺省false*/
 static const char *kNIMEnableUserDataFileDefRestoreProc	= "enable_user_datafile_defrestoreproc";	/**< bool 是否使用缺省的用户数据恢复(本地)方案  缺省false enable_user_datafile_restore_ == true 生效*/
-
+static const char *kNIMSpecialFlag = "special_flag";/**< int 是否为专属集群 1:是 0: 否*/
+static const char *kNIMInitENC = "default_initenc"; /**< int  非对称加密算法 缺省值 0x0001(RSA) 其它算法后续开放*/
+static const char *kNIMInitENCKey = "initenc_key"; /**< string  非对称加密算法key 自定义时则必填 十六进制大整数 不带0x*/
+static const char *kNIMInitENCKey2 = "initenc_key2"; /**< string  非对称加密算法key2 RSA:EXP,SM2: SM2Y 自定义时则必填 十六进制大整数 不带0x*/
+static const char *kNIMInitENCVersion = "initenc_version";   /**< int  非对称加密算法的 key version 自定义时则必填 */
+static const char *kNIMENC = "enc";     /**< int  对称加密算法  缺省值 0x0001(RC4)  其它算法后续开放*/
 
 /** @}*/ //json extension params for nim_client_init API
 

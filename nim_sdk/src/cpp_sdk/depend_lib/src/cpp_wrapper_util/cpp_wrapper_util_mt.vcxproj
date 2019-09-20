@@ -46,7 +46,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{20F2845C-A2C7-42A2-99F9-52AE69BD6976}</ProjectGuid>
+    <ProjectGuid>{CDB9EED5-D969-4E4D-90C0-D6AE5D91F836}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>cppwrapperutil</RootNamespace>
     <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>

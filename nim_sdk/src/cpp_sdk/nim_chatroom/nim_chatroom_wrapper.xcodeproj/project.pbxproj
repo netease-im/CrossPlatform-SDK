@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0ECABE3123262B6800191E3B /* nim_chatroom_helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ECABE2D23262B6700191E3B /* nim_chatroom_helper.h */; };
+		0ECABE3223262B6800191E3B /* nim_chatroom_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ECABE2E23262B6700191E3B /* nim_chatroom_helper.cpp */; };
+		0ECABE3323262B6800191E3B /* nim_chatroom_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ECABE2E23262B6700191E3B /* nim_chatroom_helper.cpp */; };
+		0ECABE382326319A00191E3B /* nim_chatroom_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ECABE362326319A00191E3B /* nim_chatroom_cpp.cpp */; };
+		0ECABE392326319A00191E3B /* nim_chatroom_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ECABE362326319A00191E3B /* nim_chatroom_cpp.cpp */; };
+		0ECABE3A2326319A00191E3B /* nim_chatroom_cpp.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ECABE372326319A00191E3B /* nim_chatroom_cpp.h */; };
+		0ECABE3D232631A000191E3B /* nim_chatroom_loader_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ECABE3B232631A000191E3B /* nim_chatroom_loader_helper.cpp */; };
+		0ECABE3E232631A000191E3B /* nim_chatroom_loader_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0ECABE3B232631A000191E3B /* nim_chatroom_loader_helper.cpp */; };
+		0ECABE3F232631A000191E3B /* nim_chatroom_loader_helper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ECABE3C232631A000191E3B /* nim_chatroom_loader_helper.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		87A5A4C71F57F4EF0019A158 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0ECABE2D23262B6700191E3B /* nim_chatroom_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim_chatroom_helper.h; sourceTree = "<group>"; };
+		0ECABE2E23262B6700191E3B /* nim_chatroom_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nim_chatroom_helper.cpp; sourceTree = "<group>"; };
+		0ECABE362326319A00191E3B /* nim_chatroom_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nim_chatroom_cpp.cpp; sourceTree = "<group>"; };
+		0ECABE372326319A00191E3B /* nim_chatroom_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim_chatroom_cpp.h; sourceTree = "<group>"; };
+		0ECABE3B232631A000191E3B /* nim_chatroom_loader_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nim_chatroom_loader_helper.cpp; sourceTree = "<group>"; };
+		0ECABE3C232631A000191E3B /* nim_chatroom_loader_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim_chatroom_loader_helper.h; sourceTree = "<group>"; };
+		87A5A4BB1F57F4C80019A158 /* libnim_chatroom_wrapper Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libnim_chatroom_wrapper Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87A5A4C91F57F4EF0019A158 /* libnim_chatroom_wrapper iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libnim_chatroom_wrapper iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		87A5A4B81F57F4C80019A158 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87A5A4C61F57F4EF0019A158 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		87A5A4B01F57F4710019A158 = {
+			isa = PBXGroup;
+			children = (
+				87A5A4D21F57F5C50019A158 /* api */,
+				87A5A4D51F57F5C50019A158 /* helper */,
+				87A5A4BC1F57F4C80019A158 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		87A5A4BC1F57F4C80019A158 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87A5A4BB1F57F4C80019A158 /* libnim_chatroom_wrapper Mac.a */,
+				87A5A4C91F57F4EF0019A158 /* libnim_chatroom_wrapper iOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87A5A4D21F57F5C50019A158 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				0ECABE362326319A00191E3B /* nim_chatroom_cpp.cpp */,
+				0ECABE372326319A00191E3B /* nim_chatroom_cpp.h */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		87A5A4D51F57F5C50019A158 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				0ECABE3B232631A000191E3B /* nim_chatroom_loader_helper.cpp */,
+				0ECABE3C232631A000191E3B /* nim_chatroom_loader_helper.h */,
+				0ECABE2E23262B6700191E3B /* nim_chatroom_helper.cpp */,
+				0ECABE2D23262B6700191E3B /* nim_chatroom_helper.h */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		87A5A4B91F57F4C80019A158 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ECABE3A2326319A00191E3B /* nim_chatroom_cpp.h in Headers */,
+				0ECABE3F232631A000191E3B /* nim_chatroom_loader_helper.h in Headers */,
+				0ECABE3123262B6800191E3B /* nim_chatroom_helper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		87A5A4BA1F57F4C80019A158 /* nim_chatroom_wrapper Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87A5A4C21F57F4C80019A158 /* Build configuration list for PBXNativeTarget "nim_chatroom_wrapper Mac" */;
+			buildPhases = (
+				87A5A4B71F57F4C80019A158 /* Sources */,
+				87A5A4B81F57F4C80019A158 /* Frameworks */,
+				87A5A4B91F57F4C80019A158 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "nim_chatroom_wrapper Mac";
+			productName = "nim_chatroom_wrapper Mac";
+			productReference = 87A5A4BB1F57F4C80019A158 /* libnim_chatroom_wrapper Mac.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		87A5A4C81F57F4EF0019A158 /* nim_chatroom_wrapper iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87A5A4CF1F57F4EF0019A158 /* Build configuration list for PBXNativeTarget "nim_chatroom_wrapper iOS" */;
+			buildPhases = (
+				87A5A4C51F57F4EF0019A158 /* Sources */,
+				87A5A4C61F57F4EF0019A158 /* Frameworks */,
+				87A5A4C71F57F4EF0019A158 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "nim_chatroom_wrapper iOS";
+			productName = "nim_chatroom_wrapper iOS";
+			productReference = 87A5A4C91F57F4EF0019A158 /* libnim_chatroom_wrapper iOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		87A5A4B11F57F4710019A158 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				TargetAttributes = {
+					87A5A4BA1F57F4C80019A158 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					87A5A4C81F57F4EF0019A158 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 87A5A4B41F57F4710019A158 /* Build configuration list for PBXProject "nim_chatroom_wrapper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 87A5A4B01F57F4710019A158;
+			productRefGroup = 87A5A4BC1F57F4C80019A158 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				87A5A4C81F57F4EF0019A158 /* nim_chatroom_wrapper iOS */,
+				87A5A4BA1F57F4C80019A158 /* nim_chatroom_wrapper Mac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		87A5A4B71F57F4C80019A158 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ECABE3323262B6800191E3B /* nim_chatroom_helper.cpp in Sources */,
+				0ECABE392326319A00191E3B /* nim_chatroom_cpp.cpp in Sources */,
+				0ECABE3E232631A000191E3B /* nim_chatroom_loader_helper.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87A5A4C51F57F4EF0019A158 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ECABE3223262B6800191E3B /* nim_chatroom_helper.cpp in Sources */,
+				0ECABE382326319A00191E3B /* nim_chatroom_cpp.cpp in Sources */,
+				0ECABE3D232631A000191E3B /* nim_chatroom_loader_helper.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		87A5A4B51F57F4710019A158 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = NIM_SDK_DLL_IMPORT;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../../../..\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+			};
+			name = Debug;
+		};
+		87A5A4B61F57F4710019A158 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = NIM_SDK_DLL_IMPORT;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../../../..\"",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+			};
+			name = Release;
+		};
+		87A5A4C31F57F4C80019A158 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		87A5A4C41F57F4C80019A158 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		87A5A4D01F57F4EF0019A158 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		87A5A4D11F57F4EF0019A158 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		87A5A4B41F57F4710019A158 /* Build configuration list for PBXProject "nim_chatroom_wrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87A5A4B51F57F4710019A158 /* Debug */,
+				87A5A4B61F57F4710019A158 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87A5A4C21F57F4C80019A158 /* Build configuration list for PBXNativeTarget "nim_chatroom_wrapper Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87A5A4C31F57F4C80019A158 /* Debug */,
+				87A5A4C41F57F4C80019A158 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87A5A4CF1F57F4EF0019A158 /* Build configuration list for PBXNativeTarget "nim_chatroom_wrapper iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87A5A4D01F57F4EF0019A158 /* Debug */,
+				87A5A4D11F57F4EF0019A158 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 87A5A4B11F57F4710019A158 /* Project object */;
+}

@@ -1,4 +1,4 @@
-﻿/** @file nim_sdk_define_include.h
+/** @file nim_sdk_define_include.h
   * @brief nim im 公共数据类型定义总的包含文件
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @date 2017/08/03
@@ -6,6 +6,10 @@
 
 #ifndef _NIM_SDK_CPP_NIM_SDK_DEFINES_H_
 #define _NIM_SDK_CPP_NIM_SDK_DEFINES_H_
+
+#if !defined(_WIN32) && !defined(WIN32)
+#include <pthread.h>
+#endif
 
 #ifndef DEF_UNDER_NO_NAMESPACE
 /**
@@ -41,7 +45,6 @@ namespace nim
 #include "public_define/defines/nim_define/nim_signaling_def.h"
 
 #include "public_define/defines/nim_define/nim_super_team_def.h"
-
 
 #ifndef DEF_UNDER_NO_NAMESPACE
 }

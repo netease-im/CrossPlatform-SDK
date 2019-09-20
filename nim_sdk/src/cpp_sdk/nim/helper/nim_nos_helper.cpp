@@ -1,9 +1,11 @@
-﻿/** @file nim_nos_helper.h
+/** @file nim_nos_helper.h
   * @brief NOS数据结构定义
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @date 2016/12/16
   */
-
+#if !defined(WIN32)
+#include <pthread.h>
+#endif
 #include "src/cpp_sdk/nim/helper/nim_nos_helper.h"
 #include "include/depend_lib/include/nim_json_util.h"
 namespace nim
