@@ -166,12 +166,12 @@ static const char *kNIMUserDataFileLocalBackupFolder	= "user_datafile_localbacku
 static const char *kNIMEnableUserDataFileLocalBackup	= "enable_user_datafile_backup";			/**< bool 是否开启用户数据备份(本地)功能  缺省true*/
 static const char *kNIMEnableUserDataFileLocalRestore	= "enable_user_datafile_restore";			/**< bool 是否开启用户数据恢复(本地)功能  缺省false*/
 static const char *kNIMEnableUserDataFileDefRestoreProc	= "enable_user_datafile_defrestoreproc";	/**< bool 是否使用缺省的用户数据恢复(本地)方案  缺省false enable_user_datafile_restore_ == true 生效*/
-static const char *kNIMSpecialFlag = "special_flag";/**< int 是否为专属集群 1:是 0: 否*/
-static const char *kNIMInitENC = "default_initenc"; /**< int  非对称加密算法 缺省值 0x0001(RSA) 其它算法后续开放*/
-static const char *kNIMInitENCKey = "initenc_key"; /**< string  非对称加密算法key 自定义时则必填 十六进制大整数 不带0x*/
-static const char *kNIMInitENCKey2 = "initenc_key2"; /**< string  非对称加密算法key2 RSA:EXP,SM2: SM2Y 自定义时则必填 十六进制大整数 不带0x*/
-static const char *kNIMInitENCVersion = "initenc_version";   /**< int  非对称加密算法的 key version 自定义时则必填 */
-static const char *kNIMENC = "enc";     /**< int  对称加密算法  缺省值 0x0001(RC4)  其它算法后续开放*/
+static const char *kNIMSpecialFlag 						= "special_flag";/**< int 是否为专属集群 1:是 0: 否*/
+static const char *kNIMInitENC 							= "default_initenc"; /**< int  非对称加密算法 缺省值 0x0001(RSA) 其它算法后续开放*/
+static const char *kNIMInitENCKey 						= "initenc_key"; /**< string  非对称加密算法key 自定义时则必填 十六进制大整数 不带0x*/
+static const char *kNIMInitENCKey2 						= "initenc_key2"; /**< string  非对称加密算法key2 RSA:EXP,SM2: SM2Y 自定义时则必填 十六进制大整数 不带0x*/
+static const char *kNIMInitENCVersion 					= "initenc_version";   /**< int  非对称加密算法的 key version 自定义时则必填 */
+static const char *kNIMENC 								= "enc";     /**< int  对称加密算法  缺省值 0x0001(RC4)  其它算法后续开放*/
 
 /** @}*/ //json extension params for nim_client_init API
 
