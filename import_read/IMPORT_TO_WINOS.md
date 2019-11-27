@@ -1,5 +1,9 @@
 # 跨平台 SDK WINOS 接入指南
 
+## 快速接入
+
+前往[Windows(PC) SDK Getting Started](http://dev.netease.im/docs/product/通用/新手接入/即时通讯/WindowsGettingStarted "target=_blank")
+
 ## 文件包含目录
 
 引入SDK时包含目录包含到nim_sdk目录即可，以im demo 的custom_app_sdk工程为例，如下图

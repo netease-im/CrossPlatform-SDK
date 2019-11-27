@@ -93,10 +93,6 @@ Windows xp(sp3及以上）、Windows 7、Windows 8/8.1、Windows 10。 **SDK 从
 
 SDK不提供debug版本的动态链接库供开发者调试，如果遇到问题请联系技术支持或在线客服。
 
-### 快速接入SDK
-
-前往[Windows(PC) SDK Getting Started](http://dev.netease.im/docs/product/通用/新手接入/即时通讯/WindowsGettingStarted "target=_blank")
-
 ### SDK C++封装层类讲解
 
 SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
