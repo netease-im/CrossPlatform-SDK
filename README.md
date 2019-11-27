@@ -123,11 +123,15 @@ SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
 此外，每个类都包含一个对应Helper文件，如nim\_cpp\_client.h对应nim\_client\_helper.h，主要包含接口需要的辅助方法和数据结构的定义。
 
 ## 接入SDK C++封装层
-[WINOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_WINOS.md)
-[MACOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_MACOS.md)
-[LINUX 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_LINUX.md)
-[IOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_IOS.md)
-[AOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_AOS.md)
+### [WINOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_WINOS.md)
+
+### [MACOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_MACOS.md)
+
+### [LINUX 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_LINUX.md)
+
+### [IOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_IOS.md)
+
+### [AOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_AOS.md)
 
 ### SDK回调应用层的异步实现
 SDK在回调应用层时，如果应用层没有进行异步处理，可能会阻塞SDK内部线程，发生SDK没有响应、断线等问题，为了避免这种情况的发生，应用层在接收到SDK的回调时最好转为异步。SDK实现了指定异步回调的接口
