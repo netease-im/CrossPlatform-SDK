@@ -29,3 +29,19 @@ C++封装层(静态库方式)缺省的输出目录为nim_sdk/bin/x86_dlls/、nim
 C++封装层依赖库(depend_lib)预先生成了vs2013运行时库为md(mdd)/mt(mtd),debug/release版本的静态库，如果开发者需要不同vs版本(不同的平台工具集)的可静态库,以打开nim_sdk/src/cpp_sdk/depend_lib/cpp_wrapper_util_md.sln(cpp_wrapper_util_mt.sln)，修改cpp_wrapper工程的平台工具集来生成相应的版本.
 
 **导入后注意调整平台工作集（属性-配置属性-常规），运行库（属性-配置属性-C/C++），附加包含目录（属性-配置属性-C/C++-常规），附加依赖项/附加库目录（属性-配置属性-库管理器）等。**
+
+## SDK回调应用层的异步实现
+
+SDK在回调应用层时，如果应用层没有进行异步处理，可能会阻塞SDK内部线程，发生SDK没有响应、断线等问题，为了避免这种情况的发生，应用层在接收到SDK的回调时最好转为异步。SDK实现了指定异步回调的接口
+
+	/** @fn void SetCallbackFunction(const ChatRoom::SDKClosure& callback)
+  	* 当以动态库使用SDK时 设置SDK回调方法，为了不阻塞SDK线程，在回调中应该把任务抛到应用层的线程中
+  	* @param[in] callback	  回调方法
+  	* @return void 无返回值
+  	*/
+	static void SetCallbackFunction(const SDKClosure& callback);
+以 im demo为例，其使用方法如下
+
+    nim::Client::SetCallbackFunction([](const StdClosure & task) {
+		nbase::ThreadManager::PostTask(ThreadId::kThreadUI, task);
+	});

@@ -5,77 +5,71 @@
 ### 版本更新
 [传输门](http://dev.netease.im/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97/Windows%E7%AB%AF%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97)
 
-### 开发集成
-[传输门](http://dev.netease.im/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/SDK%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90/Windows%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90)
 
 ### 接口文档
 [传输门](http://dev.netease.im/docs/interface/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AFWindows%E7%AB%AF/NIMSDKAPI_CPP/html/index.html)
 
 ## 概述
 云信跨平台 SDK对外暴露的是C接口，为了让开发者更加方便快捷的接入SDK，我们基于C接口进行了各平台下的C++封装，既可以让开发者方便直观的调用接口使用云信的服务，也可以供基于C接口开发的的开发者作为参考。
-### windows平台支持
-Windows xp(sp3及以上）、Windows 7、Windows 8/8.1、Windows 10。 **SDK 从V3.2.5版本开始全面支持32位和64位程序接入。**
-### 移动端平台
-**敬请期待**
-### MacOS
-**敬请期待**
-### Linux
-**敬请期待**
+### 支持平台
+
+- Windows
+
+    Windows xp(sp3及以上）、Windows 7、Windows 8/8.1、Windows 10.
 
 ## 开发准备
 可以通过官网下载SDK以及Demo源码，SDK包含C接口API文件和C++封装层的API文件及项目文件。 
 
 ### SDK内容
 ### <span id="SDK 目录结构及主要文件介绍">SDK 目录结构及主要文件介绍</span>
-    nim_sdk ......................................................... SDK目录
-        windows ..................................................... Windows平台SDK
-            bin ..................................................... SDK二进制文件目录
-                x86_dlls ............................................ x86 SDK二进制文件目录
-                    redist_packages ................................. vs2017 x86 运行时库
-                x64_dlls ............................................ x64 SDK二进制文件目录
-                    redist_packages ................................. vs2017 x64 运行时库
-            include ................................................. SDK 引入包含目录
-                depend_lib .......................................... SDK C++封装层依赖库目录
-                    include ......................................... SDK C++封装层依赖库包含目录
-                        json ........................................ Json工具包含目录
-                        nim_json_util.h ............................. JSON工具辅助方法
-                        nim_sdk_util.h .............................. 提供加载/卸载SDK以及获取接口的方法
-                nim_c_api.h ......................................... c im api引入文件
-                nim_chatroom_c_api.h ................................ c chatroom api引入文件
-                nim_cpp_api.h ....................................... c++ im api 引入文件
-                nim_chatroom_cpp_api.h .............................. c++ chatroom api 引入文件
-                nim_cpp_tools_api.h ................................. nim 工具类api 引入文件
-            public_define ........................................... SDK 共公类型定义目录 c/c++都会引用到数据结构定义
-                defines ............................................. im/chatroom/nim_tools数据类型定义目录
-                util ................................................ 编译开关及基础类型定义目录
-                nim_sdk_define_include.h ............................ im 公共数据类型定义引入文件
-                nim_chatroom_define_include.h ....................... chatroom 公共数据类型定义引入文件
-                nim_tool_define_include.h ........................... nim_tools 公共数据类型定义引入文件
-                nim_util_include.h .................................. 基础类型定义引入文件
-            src ..................................................... c api/c++封装层实现代码目录
-                c_sdk ............................................... c api 定义代码目录                
-                cpp_sdk ............................................. c++封装层代码目录
-                    depend_lib ...................................... c++封装层依赖库的实现代码目录
-                        cpp_wrapper_util_md.sln ..................... c++封装层依赖库 md/mdd 运行时库工程的解决方案文件
-                        cpp_wrapper_util_mt.sln ..................... c++封装层依赖库 mt/mtd 运行时库工程的解决方案文件
-                    nim ............................................. im c++封装层实现代码目录
-                        nim_sdk_cpp_wrapper_dll.vcxproj ............. im c++封装层动态库工程文件 
-                        nim_sdk_cpp_wrapper_lib_md.vcxproj .......... im c++封装层静态库 md/mdd 运行时库工程文件
-                        nim_sdk_cpp_wrapper_lib_mt.vcxproj .......... im c++封装层静态库 mt/mtd 运行时库工程文件
-                    nim_chatroom .................................... chatrooom c++封装层实现代码目录
-                        nim_chatroom_sdk_cpp_wrapper_dll.vcxproj .... chatrooom c++封装层动态库工程文件
-                        nim_chatroom_sdk_cpp_wrapper_lib_md.vcxproj . chatrooom c++封装层静态库 md/mdd 运行时库工程文件
-                        nim_chatroom_sdk_cpp_wrapper_lib_mt.vcxproj . chatrooom c++封装层静态库 mt/mtd 运行时库工程文件
-                    nim_tools ....................................... nim tools c++封装层实现代码目录
-                        audio ....................................... audio模块 c++封装层实现代码目录
-                        http ........................................ http模块 c++封装层实现代码目录
-            libs .................................................... c++封装层(静态库)、依赖库输出目录
-                x86 ................................................. x86平台输出目录
-                    md .............................................. md/mdd 运行时库输出目录
-                    mt .............................................. mt/mtd 运行时库输出目录
-                x64 ................................................. x64平台输出目录
-                    md .............................................. md/mdd 运行时库输出目录
-                    mt .............................................. mt/mtd 运行时库输出目录
+    nim_sdk ..................................................... SDK目录
+        bin ..................................................... SDK二进制文件目录
+            x86_dlls ............................................ x86 SDK二进制文件目录
+                redist_packages ................................. vs2017 x86 运行时库
+            x64_dlls ............................................ x64 SDK二进制文件目录
+                redist_packages ................................. vs2017 x64 运行时库
+        include ................................................. SDK 引入包含目录
+            depend_lib .......................................... SDK C++封装层依赖库目录
+                include ......................................... SDK C++封装层依赖库包含目录
+                    json ........................................ Json工具包含目录
+                    nim_json_util.h ............................. JSON工具辅助方法
+                    nim_sdk_util.h .............................. 提供加载/卸载SDK以及获取接口的方法
+            nim_c_api.h ......................................... c im api引入文件
+            nim_chatroom_c_api.h ................................ c chatroom api引入文件
+            nim_cpp_api.h ....................................... c++ im api 引入文件
+            nim_chatroom_cpp_api.h .............................. c++ chatroom api 引入文件
+            nim_cpp_tools_api.h ................................. nim 工具类api 引入文件
+        public_define ........................................... SDK 共公类型定义目录 c/c++都会引用到数据结构定义
+            defines ............................................. im/chatroom/nim_tools数据类型定义目录
+            util ................................................ 编译开关及基础类型定义目录
+            nim_sdk_define_include.h ............................ im 公共数据类型定义引入文件
+            nim_chatroom_define_include.h ....................... chatroom 公共数据类型定义引入文件
+            nim_tool_define_include.h ........................... nim_tools 公共数据类型定义引入文件
+            nim_util_include.h .................................. 基础类型定义引入文件
+        src ..................................................... c api/c++封装层实现代码目录
+            c_sdk ............................................... c api 定义代码目录                
+            cpp_sdk ............................................. c++封装层代码目录
+                depend_lib ...................................... c++封装层依赖库的实现代码目录
+                    cpp_wrapper_util_md.sln ..................... c++封装层依赖库 md/mdd 运行时库工程的解决方案文件
+                    cpp_wrapper_util_mt.sln ..................... c++封装层依赖库 mt/mtd 运行时库工程的解决方案文件
+                nim ............................................. im c++封装层实现代码目录
+                    nim_sdk_cpp_wrapper_dll.vcxproj ............. im c++封装层动态库工程文件 
+                    nim_sdk_cpp_wrapper_lib_md.vcxproj .......... im c++封装层静态库 md/mdd 运行时库工程文件
+                    nim_sdk_cpp_wrapper_lib_mt.vcxproj .......... im c++封装层静态库 mt/mtd 运行时库工程文件
+                nim_chatroom .................................... chatrooom c++封装层实现代码目录
+                    nim_chatroom_sdk_cpp_wrapper_dll.vcxproj .... chatrooom c++封装层动态库工程文件
+                    nim_chatroom_sdk_cpp_wrapper_lib_md.vcxproj . chatrooom c++封装层静态库 md/mdd 运行时库工程文件
+                    nim_chatroom_sdk_cpp_wrapper_lib_mt.vcxproj . chatrooom c++封装层静态库 mt/mtd 运行时库工程文件
+                nim_tools ....................................... nim tools c++封装层实现代码目录
+                    audio ....................................... audio模块 c++封装层实现代码目录
+                    http ........................................ http模块 c++封装层实现代码目录
+        libs .................................................... c++封装层(静态库)、依赖库输出目录
+            x86 ................................................. x86平台输出目录
+                md .............................................. md/mdd 运行时库输出目录
+                mt .............................................. mt/mtd 运行时库输出目录
+            x64 ................................................. x64平台输出目录
+                md .............................................. md/mdd 运行时库输出目录
+                mt .............................................. mt/mtd 运行时库输出目录
 
 #### <span id="SDK二进制文件介绍">SDK二进制文件介绍</span>
 **Windows/bin**
@@ -117,29 +111,17 @@ SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
 * nim_http::HttpRequest: Http上传下载功能
 
 此外，每个类都包含一个对应Helper文件，如nim\_cpp\_client.h对应nim\_client\_helper.h，主要包含接口需要的辅助方法和数据结构的定义。
+## 开发集成
+- Windows
 
-## 接入SDK C++封装层
-### [WINOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_WINOS.md)
+    [开发集成](http://dev.netease.im/docs/product/IM%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF/SDK%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90/Windows%E5%BC%80%E5%8F%91%E9%9B%86%E6%88%90)
 
-### [MACOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_MACOS.md)
+    [c++封装层接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/docs/IMPORT_TO_WINOS.md)
+## TODO
+- MacOS 适配
 
-### [LINUX 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_LINUX.md)
+- iOS 适配
 
-### [IOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_IOS.md)
+- Android 适配
 
-### [AOS 接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/import_read/IMPORT_TO_AOS.md)
-
-### SDK回调应用层的异步实现
-SDK在回调应用层时，如果应用层没有进行异步处理，可能会阻塞SDK内部线程，发生SDK没有响应、断线等问题，为了避免这种情况的发生，应用层在接收到SDK的回调时最好转为异步。SDK实现了指定异步回调的接口
-
-	/** @fn void SetCallbackFunction(const ChatRoom::SDKClosure& callback)
-  	* 当以动态库使用SDK时 设置SDK回调方法，为了不阻塞SDK线程，在回调中应该把任务抛到应用层的线程中
-  	* @param[in] callback	  回调方法
-  	* @return void 无返回值
-  	*/
-	static void SetCallbackFunction(const SDKClosure& callback);
-以 im demo为例，其使用方法如下
-
-    nim::Client::SetCallbackFunction([](const StdClosure & task) {
-		nbase::ThreadManager::PostTask(ThreadId::kThreadUI, task);
-	});
+- Linux 适配
