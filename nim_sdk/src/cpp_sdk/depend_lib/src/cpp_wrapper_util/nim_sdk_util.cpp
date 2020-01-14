@@ -1,4 +1,4 @@
-/** @file nim_sdk_util.cpp
+﻿/** @file nim_sdk_util.cpp
   * @brief SDK库辅助方法
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @date 2015/09/08

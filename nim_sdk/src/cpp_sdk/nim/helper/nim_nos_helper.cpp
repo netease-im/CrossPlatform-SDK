@@ -1,4 +1,4 @@
-/** @file nim_nos_helper.h
+﻿/** @file nim_nos_helper.h
   * @brief NOS数据结构定义
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @date 2016/12/16

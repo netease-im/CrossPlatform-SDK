@@ -37,6 +37,11 @@
 		0ECABE372326319A00191E3B /* nim_chatroom_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim_chatroom_cpp.h; sourceTree = "<group>"; };
 		0ECABE3B232631A000191E3B /* nim_chatroom_loader_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nim_chatroom_loader_helper.cpp; sourceTree = "<group>"; };
 		0ECABE3C232631A000191E3B /* nim_chatroom_loader_helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nim_chatroom_loader_helper.h; sourceTree = "<group>"; };
+		87A2325423C8970900F57B2A /* nim_chatroom_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nim_chatroom_sdk.framework; path = ../../../libs/iOS/nim_chatroom_sdk.framework; sourceTree = "<group>"; };
+		87A2325623C8970B00F57B2A /* core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = core.framework; path = ../../../libs/iOS/core.framework; sourceTree = "<group>"; };
+		87A2325A23C897BF00F57B2A /* core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = core.framework; path = ../../../libs/Mac/core.framework; sourceTree = "<group>"; };
+		87A2325B23C897BF00F57B2A /* nim_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nim_sdk.framework; path = ../../../libs/Mac/nim_sdk.framework; sourceTree = "<group>"; };
+		87A2325E23C897C700F57B2A /* nim_chatroom_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nim_chatroom_sdk.framework; path = ../../../libs/Mac/nim_chatroom_sdk.framework; sourceTree = "<group>"; };
 		87A5A4BB1F57F4C80019A158 /* libnim_chatroom_wrapper Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libnim_chatroom_wrapper Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A5A4C91F57F4EF0019A158 /* libnim_chatroom_wrapper iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libnim_chatroom_wrapper iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -59,12 +64,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		87A2325323C8970800F57B2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87A2325E23C897C700F57B2A /* nim_chatroom_sdk.framework */,
+				87A2325623C8970B00F57B2A /* core.framework */,
+				87A2325A23C897BF00F57B2A /* core.framework */,
+				87A2325B23C897BF00F57B2A /* nim_sdk.framework */,
+				87A2325423C8970900F57B2A /* nim_chatroom_sdk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		87A5A4B01F57F4710019A158 = {
 			isa = PBXGroup;
 			children = (
 				87A5A4D21F57F5C50019A158 /* api */,
 				87A5A4D51F57F5C50019A158 /* helper */,
 				87A5A4BC1F57F4C80019A158 /* Products */,
+				87A2325323C8970800F57B2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,7 +229,7 @@
 		87A5A4B51F57F4710019A158 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = NIM_SDK_DLL_IMPORT;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../..\"",
 					"\"$(SRCROOT)/../../../..\"",
@@ -224,7 +242,7 @@
 		87A5A4B61F57F4710019A158 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_PREPROCESSOR_DEFINITIONS = NIM_SDK_DLL_IMPORT;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../..\"",
 					"\"$(SRCROOT)/../../../..\"",
@@ -261,6 +279,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../libs/Mac\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -275,8 +294,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../../../..\"",
+					"\"$(SRCROOT)/../../../libs/Mac/nim_chatroom_sdk_Mac.framework/Headers\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -311,6 +335,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../libs/Mac\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
@@ -320,8 +345,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../../../..\"",
+					"\"$(SRCROOT)/../../../libs/Mac/nim_chatroom_sdk_Mac.framework/Headers\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -354,6 +384,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../libs/iOS\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -368,9 +399,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../../../..\"",
+					"\"$(SRCROOT)/../../../libs/iOS/nim_chatroom_sdk_iOS.framework/Headers\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -404,6 +441,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../libs/iOS\"";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -412,8 +450,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/../../..\"",
+					"\"$(SRCROOT)/../../../..\"",
+					"\"$(SRCROOT)/../../../libs/iOS/nim_chatroom_sdk_iOS.framework/Headers\"",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
