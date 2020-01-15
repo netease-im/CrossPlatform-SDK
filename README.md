@@ -17,7 +17,7 @@
 
     Windows xp(sp3及以上）、Windows 7、Windows 8/8.1、Windows 10.
 
-- iOS/OSX (alpha v)
+- iOS/OSX (alpha)
 
     iOS 9.0以上，OSX 10.8 以上
 
