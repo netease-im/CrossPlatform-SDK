@@ -130,7 +130,7 @@ SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
     [c++封装层接入](./docs/IMPORT_TO_IOSMAC.md)
 
 ## 交流 
-- 遇到问题：欢迎查看网易云信提供的更详细的API文档，网易云信的客户也可以通过技术支持更快的找到我们。
+- 遇到问题：欢迎查看网易云信提供的更详细的[API文档](https://dev.yunxin.163.com/docs/interface/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AFWindows%E7%AB%AF/NIMSDKAPI_CPP/html/index.html)，网易云信的客户也可以通过技术支持更快的找到我们。
 - 提交缺陷：在确保使用最新版本依然存在问题时请尽量以简洁的语言描述清楚复现该问题的步骤并提交 issue。网易云信的客户也可以通过技术支持更快的将问题反馈给我们。
 ## TODO
 
