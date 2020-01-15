@@ -125,7 +125,7 @@ SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
 
     [c++封装层接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/docs/IMPORT_TO_WINOS.md)
 
-- iOS/OSX 
+- iOS/OSX  （alpha）
   
   [c++封装层接入](./docs/IMPORT_TO_IOSMAC.md)
   
