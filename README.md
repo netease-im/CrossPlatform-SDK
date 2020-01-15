@@ -17,6 +17,9 @@
 
     Windows xp(sp3及以上）、Windows 7、Windows 8/8.1、Windows 10.
 
+- iOS/OSX
+    iOS 9.0以上，OSX 10.8 以上
+
 ## 开发准备
 可以通过官网下载SDK以及Demo源码，SDK包含C接口API文件和C++封装层的API文件及项目文件。 
 

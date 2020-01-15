@@ -12,7 +12,8 @@
 
 将nim_sdk/libs/iOS目录直接拖进项目中去,设置Framework Search Paths(正常情况下，将目录拖进项目后会自动添加，不需要再手动设置)
 <div align="center"><img src="./images/128d7219217e469f9ce92a877e7ed209_1e439ea3f6d6b02a7b29f41e87558bb1.jpg"/></div>
-## c++封装层引入解决方案
+
+##  c++封装层引入解决方案
 
 C++封装层的工程文件在nim_sdk/src/nim/、nim_sdk/src/nim_chatroom/、nim_sdk/src/depend_lib/src/cpp_wrapper_util/目录下，可以直接添加到解决方案中,如下图
 <div align="center"><img src="./images/d005eb6850d448de9bd5903f2910c147_c2006aa6522dd9495e889e9dbe5370d4.jpg"/></div>
