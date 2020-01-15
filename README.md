@@ -17,7 +17,7 @@
 
     Windows xp(sp3及以上）、Windows 7、Windows 8/8.1、Windows 10.
 
-- iOS/OSX
+- iOS/OSX (alpha v)
 
     iOS 9.0以上，OSX 10.8 以上
 
@@ -125,7 +125,7 @@ SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
 
     [c++封装层接入](./docs/IMPORT_TO_WINOS.md)
 
-- iOS/OSX (alpha)
+- iOS/OSX
   
     [c++封装层接入](./docs/IMPORT_TO_IOSMAC.md)
 
