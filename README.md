@@ -75,7 +75,7 @@
             Mac ..................................................... Mac平台库目录
 
 #### <span id="SDK二进制文件介绍">SDK二进制文件介绍</span>
-libs\win
+##### libs\win
 * x64:存放64位Dll的文件夹
 * x86：存放32位Dll的文件夹
 * nim.dll： SDK主模块；放在用户程序目录下
@@ -87,14 +87,14 @@ libs\win
 * nim_conf： SDK版本相关；放在用户程序目录下
 * README.md: C/C++ SDK开发手册。
 * QT\_README.md: C++ QT项目接入手册。
-libs\iOS
-*core_iOS.framework:t通用模块，nim/chatroom依赖模块
-*nim_sdk_iOS.framework : IM相关的功能
-*nim_chatroom_iOS.framework:聊天室相关功能模块
-libs\Mac:
-*core_Mac.framework:t通用模块，nim/chatroom依赖模块
-*nim_sdk_Mac.framework : IM相关的功能
-*nim_chatroom_Mac.framework:聊天室相关功能模块
+##### libs\iOS
+* core_iOS.framework:t通用模块，nim/chatroom依赖模块
+* nim_sdk_iOS.framework : IM相关的功能
+* nim_chatroom_iOS.framework:聊天室相关功能模块
+##### libs\Mac:
+* core_Mac.framework:t通用模块，nim/chatroom依赖模块
+* nim_sdk_Mac.framework : IM相关的功能
+* nim_chatroom_Mac.framework:聊天室相关功能模块
 
 
 SDK不提供debug版本的动态链接库供开发者调试，如果遇到问题请联系技术支持或在线客服。
@@ -131,8 +131,10 @@ SDK C++封装层代码在nim\_cpp\_sdk\下，主要封装了以下核心类：
     [c++封装层接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/docs/IMPORT_TO_WINOS.md)
 
 - iOS/OSX 
-  [c++封装层接入](https://github.com/netease-im/CrossPlatform-SDK/blob/master/docs/IMPORT_TO_IOSMAC.md)
-- 
+  
+  [c++封装层接入](./docs/IMPORT_TO_IOSMAC.md)
+  
+  
 ## TODO
 
 - Android 适配
