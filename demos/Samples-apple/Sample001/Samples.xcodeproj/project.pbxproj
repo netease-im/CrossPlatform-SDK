@@ -1,0 +1,2886 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06C375978DD44291ED7D1811 /* libPods-Samples iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9620BF12EAFE4AA2B32B37 /* libPods-Samples iOS.a */; };
+		52CC6C93541DD0CC61816CB0 /* libPods-Samples Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5FB1CA4D4C24C2FC7087BF /* libPods-Samples Mac.a */; };
+		8709BCD0238B6DE40050F8CC /* NIMSDKClientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCCF238B6DE40050F8CC /* NIMSDKClientModel.m */; };
+		8709BCD3238BA6F70050F8CC /* NIMSDKTalkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCD2238BA6F70050F8CC /* NIMSDKTalkModel.m */; };
+		8709BCD9238D023B0050F8CC /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCD8238D023B0050F8CC /* SettingView.m */; };
+		8709BCDD238D08DC0050F8CC /* AppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCDC238D08DC0050F8CC /* AppUtils.m */; };
+		8709BCE2238D0F2C0050F8CC /* NIMSDKSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCE1238D0F2C0050F8CC /* NIMSDKSessionManager.m */; };
+		8709BCF4238E63770050F8CC /* NIMSDKSessionImpl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCF3238E63770050F8CC /* NIMSDKSessionImpl.mm */; };
+		8709BCF7238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCF6238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.mm */; };
+		8709BCFE238E7C1D0050F8CC /* NIMSDKSessionHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCFD238E7C1D0050F8CC /* NIMSDKSessionHelper.mm */; };
+		8709BD02238EB5490050F8CC /* SessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BD01238EB5490050F8CC /* SessionView.m */; };
+		87120B4023C30E2700276650 /* ChatroomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87120B3F23C30E2700276650 /* ChatroomView.m */; };
+		87120B4423C322A400276650 /* Sample02ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87120B4323C322A400276650 /* Sample02ViewController.m */; };
+		87120B4723C322C700276650 /* Sample02Adaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 87120B4623C322C700276650 /* Sample02Adaptor.m */; };
+		8739E9B223B9D7DE0084FDE1 /* NIMSDKChatroomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9B123B9D7DE0084FDE1 /* NIMSDKChatroomManager.m */; };
+		8739E9B323B9D7DE0084FDE1 /* NIMSDKChatroomManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9B123B9D7DE0084FDE1 /* NIMSDKChatroomManager.m */; };
+		8739E9B623B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9B523B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm */; };
+		8739E9B723B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9B523B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm */; };
+		8739E9BA23B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9B923B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm */; };
+		8739E9BB23B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9B923B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm */; };
+		8739E9BC23B9E47A0084FDE1 /* libnim_chatroom_wrapper iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8739E9A523B9CEE10084FDE1 /* libnim_chatroom_wrapper iOS.a */; };
+		8739E9BD23B9E4820084FDE1 /* libnim_chatroom_wrapper Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8739E9A723B9CEE10084FDE1 /* libnim_chatroom_wrapper Mac.a */; };
+		8739E9C223B9F3460084FDE1 /* NIMSDKChatroomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9C123B9F3460084FDE1 /* NIMSDKChatroomModel.m */; };
+		8739E9C323B9F3460084FDE1 /* NIMSDKChatroomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9C123B9F3460084FDE1 /* NIMSDKChatroomModel.m */; };
+		8739E9CA23B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9C923B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm */; };
+		8739E9CB23B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8739E9C923B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm */; };
+		875B4EEF23794AC6005A6B47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 875B4EEE23794AC6005A6B47 /* AppDelegate.m */; };
+		875B4EF223794AC6005A6B47 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 875B4EF123794AC6005A6B47 /* SceneDelegate.m */; };
+		875B4EFA23794AC7005A6B47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 875B4EF923794AC7005A6B47 /* Assets.xcassets */; };
+		875B4EFD23794AC7005A6B47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 875B4EFB23794AC7005A6B47 /* LaunchScreen.storyboard */; };
+		875B4F0023794AC7005A6B47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 875B4EFF23794AC7005A6B47 /* main.m */; };
+		875B4F0A23794AC8005A6B47 /* Sample01Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 875B4F0923794AC8005A6B47 /* Sample01Tests.m */; };
+		875B4F1523794AC8005A6B47 /* Sample01UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 875B4F1423794AC8005A6B47 /* Sample01UITests.m */; };
+		87A232B123C8A35000F57B2A /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87AF73EC23A8D7D0009C1C43 /* ExternalAccessory.framework */; };
+		87A232CC23C8AA6600F57B2A /* nim_sdk_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C723C8A63F00F57B2A /* nim_sdk_Mac.framework */; };
+		87A232CD23C8AA6600F57B2A /* nim_sdk_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C723C8A63F00F57B2A /* nim_sdk_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		87A232CF23C8AA6700F57B2A /* nim_chatroom_sdk_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C823C8A63F00F57B2A /* nim_chatroom_sdk_Mac.framework */; };
+		87A232D023C8AA6700F57B2A /* nim_chatroom_sdk_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C823C8A63F00F57B2A /* nim_chatroom_sdk_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		87A232D123C8AA6900F57B2A /* core_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C623C8A63F00F57B2A /* core_Mac.framework */; };
+		87A232D223C8AA6900F57B2A /* core_Mac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C623C8A63F00F57B2A /* core_Mac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		87A232D323C8AA7000F57B2A /* core_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C023C8A63500F57B2A /* core_iOS.framework */; };
+		87A232D423C8AA7000F57B2A /* core_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C023C8A63500F57B2A /* core_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		87A232D523C8AA7200F57B2A /* nim_chatroom_sdk_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C123C8A63500F57B2A /* nim_chatroom_sdk_iOS.framework */; };
+		87A232D623C8AA7200F57B2A /* nim_chatroom_sdk_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C123C8A63500F57B2A /* nim_chatroom_sdk_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		87A232D723C8AA7400F57B2A /* nim_sdk_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C223C8A63500F57B2A /* nim_sdk_iOS.framework */; };
+		87A232D823C8AA7400F57B2A /* nim_sdk_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 87A232C223C8A63500F57B2A /* nim_sdk_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		87AF739523A8B2D5009C1C43 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF739323A8B2D5009C1C43 /* LoginView.m */; };
+		87AF739823A8B2DC009C1C43 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AF739623A8B2DC009C1C43 /* LoginViewController.m */; };
+		87AF739B23A8C59F009C1C43 /* NIMMulticastDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 87E5026F237A48B10006EC7B /* NIMMulticastDelegate.h */; };
+		87AF739C23A8C59F009C1C43 /* NIMMulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50270237A48B10006EC7B /* NIMMulticastDelegate.m */; };
+		87AF739D23A8C59F009C1C43 /* NIMDispatch.h in Sources */ = {isa = PBXBuildFile; fileRef = 87E50272237A48BB0006EC7B /* NIMDispatch.h */; };
+		87AF739E23A8C59F009C1C43 /* NIMDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50273237A48BB0006EC7B /* NIMDispatch.m */; };
+		87AF739F23A8C59F009C1C43 /* NSString+ext.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B7923865CED00DBED75 /* NSString+ext.h */; };
+		87AF73A023A8C59F009C1C43 /* NSString+ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B7A23865CED00DBED75 /* NSString+ext.m */; };
+		87AF73A123A8C59F009C1C43 /* NSDictionary+ext.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B7C23865DB100DBED75 /* NSDictionary+ext.h */; };
+		87AF73A223A8C59F009C1C43 /* NSDictionary+ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B7D23865DB100DBED75 /* NSDictionary+ext.m */; };
+		87AF73A323A8C59F009C1C43 /* NIMSDKResCode.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B912387CFB200DBED75 /* NIMSDKResCode.h */; };
+		87AF73A423A8C59F009C1C43 /* NIMSDKClientDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B902387CF8600DBED75 /* NIMSDKClientDefine.h */; };
+		87AF73A523A8C59F009C1C43 /* NIMSDKDataSyncDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B922387D19100DBED75 /* NIMSDKDataSyncDefine.h */; };
+		87AF73A623A8C59F009C1C43 /* NIMSDKDocTransDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B932387D3EA00DBED75 /* NIMSDKDocTransDefine.h */; };
+		87AF73A723A8C59F009C1C43 /* NIMSDKFriendDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B942387D49200DBED75 /* NIMSDKFriendDefine.h */; };
+		87AF73A823A8C59F009C1C43 /* NIMSDKGlobalDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B952387D52100DBED75 /* NIMSDKGlobalDefine.h */; };
+		87AF73A923A8C59F009C1C43 /* NIMSDKMessageLogDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B962387D73800DBED75 /* NIMSDKMessageLogDefine.h */; };
+		87AF73AA23A8C59F009C1C43 /* NIMSDKNosDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B972387D96600DBED75 /* NIMSDKNosDefine.h */; };
+		87AF73AB23A8C59F009C1C43 /* NIMSDKRobotDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B982387DA3900DBED75 /* NIMSDKRobotDefine.h */; };
+		87AF73AC23A8C59F009C1C43 /* NIMSDKRtsDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B992387DBB500DBED75 /* NIMSDKRtsDefine.h */; };
+		87AF73AD23A8C59F009C1C43 /* NIMSDKSessionDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B9A2387DCAB00DBED75 /* NIMSDKSessionDefine.h */; };
+		87AF73AE23A8C59F009C1C43 /* NIMSDKSingnalingDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B9B2387DDDC00DBED75 /* NIMSDKSingnalingDefine.h */; };
+		87AF73AF23A8C59F009C1C43 /* NIMSDKSubscribeEventDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B9C2387DE9700DBED75 /* NIMSDKSubscribeEventDefine.h */; };
+		87AF73B023A8C59F009C1C43 /* NIMSDKSuperTeamDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B9D2387DF1200DBED75 /* NIMSDKSuperTeamDefine.h */; };
+		87AF73B123A8C59F009C1C43 /* NIMSDKSysMsgDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B9E2387DFA700DBED75 /* NIMSDKSysMsgDefine.h */; };
+		87AF73B223A8C59F009C1C43 /* NIMSDKTalkDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B9F2387E03400DBED75 /* NIMSDKTalkDefine.h */; };
+		87AF73B323A8C59F009C1C43 /* NIMSDKTeamDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24BA02387E07500DBED75 /* NIMSDKTeamDefine.h */; };
+		87AF73B423A8C59F009C1C43 /* NIMSDKToolDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24BA12387E13400DBED75 /* NIMSDKToolDefine.h */; };
+		87AF73B523A8C59F009C1C43 /* NIMSDKUserDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24BA22387E18100DBED75 /* NIMSDKUserDefine.h */; };
+		87AF73B623A8C59F009C1C43 /* NIMSDKAVChatDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24BA32387E28D00DBED75 /* NIMSDKAVChatDefine.h */; };
+		87AF73B723A8C59F009C1C43 /* NIMSDKDeviceDefine.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24BA42387E5F500DBED75 /* NIMSDKDeviceDefine.h */; };
+		87AF73B823A8C59F009C1C43 /* NIMSDKClientModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCCE238B6DE40050F8CC /* NIMSDKClientModel.h */; };
+		87AF73B923A8C59F009C1C43 /* NIMSDKClientModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCCF238B6DE40050F8CC /* NIMSDKClientModel.m */; };
+		87AF73BA23A8C59F009C1C43 /* NIMSDKTalkModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCD1238BA6F70050F8CC /* NIMSDKTalkModel.h */; };
+		87AF73BB23A8C59F009C1C43 /* NIMSDKTalkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCD2238BA6F70050F8CC /* NIMSDKTalkModel.m */; };
+		87AF73BC23A8C59F009C1C43 /* NIMSDKServiceProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCEA238E494F0050F8CC /* NIMSDKServiceProtocol.h */; };
+		87AF73BD23A8C59F009C1C43 /* NIMSDKLoginServiceProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24A2423852E5F00DBED75 /* NIMSDKLoginServiceProtocol.h */; };
+		87AF73BE23A8C59F009C1C43 /* NIMSDKSessionServiceProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCE7238D0F5E0050F8CC /* NIMSDKSessionServiceProtocol.h */; };
+		87AF73BF23A8C59F009C1C43 /* NIMSDKDelegateType.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCFA238E76D70050F8CC /* NIMSDKDelegateType.h */; };
+		87AF73C023A8C59F009C1C43 /* NIMSDKLoginHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B8A23867A7900DBED75 /* NIMSDKLoginHelper.h */; };
+		87AF73C123A8C59F009C1C43 /* NIMSDKLoginHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B8B23867BCE00DBED75 /* NIMSDKLoginHelper.mm */; };
+		87AF73C223A8C59F009C1C43 /* NIMSDKLoginManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24A2523854E9300DBED75 /* NIMSDKLoginManager.h */; };
+		87AF73C323A8C59F009C1C43 /* NIMSDKLoginManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87D24A2623854E9300DBED75 /* NIMSDKLoginManager.mm */; };
+		87AF73C423A8C59F009C1C43 /* NIMSDKSessionHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCFC238E7C060050F8CC /* NIMSDKSessionHelper.h */; };
+		87AF73C523A8C59F009C1C43 /* NIMSDKSessionHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCFD238E7C1D0050F8CC /* NIMSDKSessionHelper.mm */; };
+		87AF73C623A8C59F009C1C43 /* NIMSDKSessionManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCE0238D0F2C0050F8CC /* NIMSDKSessionManager.h */; };
+		87AF73C723A8C59F009C1C43 /* NIMSDKSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCE1238D0F2C0050F8CC /* NIMSDKSessionManager.m */; };
+		87AF73C823A8C59F009C1C43 /* NIMSDKSessionImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCF2238E63770050F8CC /* NIMSDKSessionImpl.h */; };
+		87AF73C923A8C59F009C1C43 /* NIMSDKSessionImpl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCF3238E63770050F8CC /* NIMSDKSessionImpl.mm */; };
+		87AF73CA23A8C59F009C1C43 /* NIMSDKSessionImpl+callbacks.h in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCF5238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.h */; };
+		87AF73CB23A8C59F009C1C43 /* NIMSDKSessionImpl+callbacks.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8709BCF6238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.mm */; };
+		87AF73CC23A8C59F009C1C43 /* NIMSDK.h in Sources */ = {isa = PBXBuildFile; fileRef = 87D24A202385193200DBED75 /* NIMSDK.h */; };
+		87AF73CD23A8C59F009C1C43 /* NIMSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87D24A212385193200DBED75 /* NIMSDK.mm */; };
+		87AF73CE23A8C59F009C1C43 /* BaseSampleViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 873900FB23A33FA90082F099 /* BaseSampleViewController.h */; };
+		87AF73CF23A8C59F009C1C43 /* BaseSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873900FC23A33FA90082F099 /* BaseSampleViewController.m */; };
+		87AF73D023A8C59F009C1C43 /* MessageView.h in Sources */ = {isa = PBXBuildFile; fileRef = 8739010E23A381010082F099 /* MessageView.h */; };
+		87AF73D123A8C59F009C1C43 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8739010F23A381010082F099 /* MessageView.m */; };
+		87AF73D223A8C59F009C1C43 /* Sample01ViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 873900FE23A33FEE0082F099 /* Sample01ViewController.h */; };
+		87AF73D323A8C59F009C1C43 /* Sample01ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 873900FF23A33FEE0082F099 /* Sample01ViewController.m */; };
+		87AF73D423A8C59F009C1C43 /* Sample01Adaptor.h in Sources */ = {isa = PBXBuildFile; fileRef = 8739011123A387150082F099 /* Sample01Adaptor.h */; };
+		87AF73D523A8C59F009C1C43 /* Sample01Adaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8739011223A387150082F099 /* Sample01Adaptor.m */; };
+		87AF73D623A8C59F009C1C43 /* SampleModel.h in Sources */ = {isa = PBXBuildFile; fileRef = 872AA55623A0BB6200997419 /* SampleModel.h */; };
+		87AF73D723A8C59F009C1C43 /* SampleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 872AA55723A0BB6200997419 /* SampleModel.m */; };
+		87AF73D823A8C59F009C1C43 /* SampleTableCellView.h in Sources */ = {isa = PBXBuildFile; fileRef = 872AA55B23A0C98B00997419 /* SampleTableCellView.h */; };
+		87AF73D923A8C59F009C1C43 /* SampleTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 872AA55C23A0C98B00997419 /* SampleTableCellView.m */; };
+		87AF73DA23A8C59F009C1C43 /* MainViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 87EF0A7523A235960073E91E /* MainViewController.h */; };
+		87AF73DB23A8C59F009C1C43 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87EF0A7623A235960073E91E /* MainViewController.m */; };
+		87AF73DC23A8C59F009C1C43 /* NIMLoginView.h in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A741239F4857008D3E1C /* NIMLoginView.h */; };
+		87AF73DD23A8C59F009C1C43 /* NIMLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A742239F4857008D3E1C /* NIMLoginView.m */; };
+		87AF73DE23A8C59F009C1C43 /* NIMLoginViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A6FD239E4CA3008D3E1C /* NIMLoginViewController.h */; };
+		87AF73DF23A8C59F009C1C43 /* NIMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A6FE239E4CA3008D3E1C /* NIMLoginViewController.m */; };
+		87AF73E023A8C59F009C1C43 /* NIMAppUtils.h in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A784239F831D008D3E1C /* NIMAppUtils.h */; };
+		87AF73E123A8C59F009C1C43 /* NIMAppUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A785239F831D008D3E1C /* NIMAppUtils.m */; };
+		87AF73E223A8C59F009C1C43 /* NIMAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A706239E5C4A008D3E1C /* NIMAppDelegate.h */; };
+		87AF73E323A8C59F009C1C43 /* NIMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A707239E5C4A008D3E1C /* NIMAppDelegate.m */; };
+		87AF73E423A8C59F009C1C43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A70F239E5C4B008D3E1C /* main.m */; };
+		87AF73E523A8C795009C1C43 /* NIMLoginManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 87E50283237A8FE20006EC7B /* NIMLoginManager.h */; };
+		87AF73E623A8C795009C1C43 /* NIMLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50284237A8FE20006EC7B /* NIMLoginManager.m */; };
+		87AF73E723A8C79B009C1C43 /* CurrentUser.h in Sources */ = {isa = PBXBuildFile; fileRef = 87E5027B237A8D2F0006EC7B /* CurrentUser.h */; };
+		87AF73E823A8C79B009C1C43 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5027C237A8D2F0006EC7B /* CurrentUser.m */; };
+		87AF73E923A8C7AE009C1C43 /* NIMKitFileLocationHelper.h in Sources */ = {isa = PBXBuildFile; fileRef = 87E50280237A8F2F0006EC7B /* NIMKitFileLocationHelper.h */; };
+		87AF73EA23A8C7AE009C1C43 /* NIMKitFileLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5027F237A8F2F0006EC7B /* NIMKitFileLocationHelper.m */; };
+		87D24A1D238517D400DBED75 /* libcpp_wrapper_util iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D24A1A2385177F00DBED75 /* libcpp_wrapper_util iOS.a */; };
+		87D24A1E238517D400DBED75 /* libnim_wrapper iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D24A0F2385177400DBED75 /* libnim_wrapper iOS.a */; };
+		87D24A222385193200DBED75 /* NIMSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87D24A212385193200DBED75 /* NIMSDK.mm */; };
+		87D24A2723854E9300DBED75 /* NIMSDKLoginManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87D24A2623854E9300DBED75 /* NIMSDKLoginManager.mm */; };
+		87D24A29238551F500DBED75 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D24A28238551F500DBED75 /* libc++.tbd */; settings = {ATTRIBUTES = (Weak, ); }; };
+		87D24B7B23865CED00DBED75 /* NSString+ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B7A23865CED00DBED75 /* NSString+ext.m */; };
+		87D24B7E23865DB100DBED75 /* NSDictionary+ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B7D23865DB100DBED75 /* NSDictionary+ext.m */; };
+		87D24B8C23867BCE00DBED75 /* NIMSDKLoginHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 87D24B8B23867BCE00DBED75 /* NIMSDKLoginHelper.mm */; };
+		87E50271237A48B20006EC7B /* NIMMulticastDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50270237A48B10006EC7B /* NIMMulticastDelegate.m */; };
+		87E50274237A48BB0006EC7B /* NIMDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50273237A48BB0006EC7B /* NIMDispatch.m */; };
+		87E5027D237A8D2F0006EC7B /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5027C237A8D2F0006EC7B /* CurrentUser.m */; };
+		87E50281237A8F2F0006EC7B /* NIMKitFileLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5027F237A8F2F0006EC7B /* NIMKitFileLocationHelper.m */; };
+		87E50285237A8FE20006EC7B /* NIMLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50284237A8FE20006EC7B /* NIMLoginManager.m */; };
+		87E50292237AAC510006EC7B /* SessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50290237AAC510006EC7B /* SessionViewController.m */; };
+		87E50293237AAC510006EC7B /* SessionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E50291237AAC510006EC7B /* SessionViewController.xib */; };
+		87E50297237AAC6F0006EC7B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E50295237AAC6F0006EC7B /* SettingViewController.m */; };
+		87E50298237AAC6F0006EC7B /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87E50296237AAC6F0006EC7B /* SettingViewController.xib */; };
+		87E5029B237AAD7F0006EC7B /* NIMMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E5029A237AAD7F0006EC7B /* NIMMainTabBarController.m */; };
+		87F0A70A239E5C4B008D3E1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87F0A709239E5C4B008D3E1C /* Assets.xcassets */; };
+		87F0A71B239E5C4B008D3E1C /* Samples_MacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A71A239E5C4B008D3E1C /* Samples_MacTests.m */; };
+		87F0A726239E5C4B008D3E1C /* Samples_MacUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 87F0A725239E5C4B008D3E1C /* Samples_MacUITests.m */; };
+		87F0A76F239F667D008D3E1C /* libcpp_wrapper_util Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D24A1C2385177F00DBED75 /* libcpp_wrapper_util Mac.a */; };
+		87F0A770239F667D008D3E1C /* libnim_wrapper Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87D24A112385177400DBED75 /* libnim_wrapper Mac.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8739E9A423B9CEE10084FDE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8739E99D23B9CEE10084FDE1 /* nim_chatroom_wrapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 87A5A4C91F57F4EF0019A158;
+			remoteInfo = "nim_chatroom_wrapper iOS";
+		};
+		8739E9A623B9CEE10084FDE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8739E99D23B9CEE10084FDE1 /* nim_chatroom_wrapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 87A5A4BB1F57F4C80019A158;
+			remoteInfo = "nim_chatroom_wrapper Mac";
+		};
+		875B4F0623794AC8005A6B47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 875B4E5C23790DC6005A6B47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 875B4EEA23794AC6005A6B47;
+			remoteInfo = Sample01;
+		};
+		875B4F1123794AC8005A6B47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 875B4E5C23790DC6005A6B47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 875B4EEA23794AC6005A6B47;
+			remoteInfo = Sample01;
+		};
+		87D24A0E2385177400DBED75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87D24A082385177400DBED75 /* nim_wrapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 87C62BE01E499EC300C36A29;
+			remoteInfo = "nim_wrapper iOS";
+		};
+		87D24A102385177400DBED75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87D24A082385177400DBED75 /* nim_wrapper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 87C62BD21E499EB300C36A29;
+			remoteInfo = "nim_wrapper Mac";
+		};
+		87D24A192385177F00DBED75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87D24A142385177F00DBED75 /* cpp_wrapper_util.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0E4E08982325F0F300022EEF;
+			remoteInfo = "cpp_wrapper_util iOS";
+		};
+		87D24A1B2385177F00DBED75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87D24A142385177F00DBED75 /* cpp_wrapper_util.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0E4E08B42325F12A00022EEF;
+			remoteInfo = "cpp_wrapper_util Mac";
+		};
+		87F0A717239E5C4B008D3E1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 875B4E5C23790DC6005A6B47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F0A703239E5C4A008D3E1C;
+			remoteInfo = "Samples Mac";
+		};
+		87F0A722239E5C4B008D3E1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 875B4E5C23790DC6005A6B47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F0A703239E5C4A008D3E1C;
+			remoteInfo = "Samples Mac";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8791614723C72CA300314300 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				87A232D823C8AA7400F57B2A /* nim_sdk_iOS.framework in Embed Frameworks */,
+				87A232D423C8AA7000F57B2A /* core_iOS.framework in Embed Frameworks */,
+				87A232D623C8AA7200F57B2A /* nim_chatroom_sdk_iOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87A232CE23C8AA6600F57B2A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				87A232D223C8AA6900F57B2A /* core_Mac.framework in Embed Frameworks */,
+				87A232CD23C8AA6600F57B2A /* nim_sdk_Mac.framework in Embed Frameworks */,
+				87A232D023C8AA6700F57B2A /* nim_chatroom_sdk_Mac.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		038B854D8EE094D6D2EB8CAF /* libPods-Sample01.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sample01.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15EA2A6DD89037D57E35FB83 /* Pods-Samples Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-Samples Mac/Pods-Samples Mac.release.xcconfig"; sourceTree = "<group>"; };
+		357D211D61D8AD3133F62047 /* Pods-Samples iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Samples iOS/Pods-Samples iOS.release.xcconfig"; sourceTree = "<group>"; };
+		792DFD1A87B99B678F111A74 /* Pods-Samples Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Samples Mac/Pods-Samples Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		7BC326544D3B22C3B590888D /* Pods-Samples iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Samples iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Samples iOS/Pods-Samples iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8709BCCE238B6DE40050F8CC /* NIMSDKClientModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NIMSDKClientModel.h; path = "../New Group/NIMSDKClientModel.h"; sourceTree = "<group>"; };
+		8709BCCF238B6DE40050F8CC /* NIMSDKClientModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMSDKClientModel.m; sourceTree = "<group>"; };
+		8709BCD1238BA6F70050F8CC /* NIMSDKTalkModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NIMSDKTalkModel.h; path = "../New Group1/NIMSDKTalkModel.h"; sourceTree = "<group>"; };
+		8709BCD2238BA6F70050F8CC /* NIMSDKTalkModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMSDKTalkModel.m; sourceTree = "<group>"; };
+		8709BCD7238D023B0050F8CC /* SettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
+		8709BCD8238D023B0050F8CC /* SettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
+		8709BCDB238D08DC0050F8CC /* AppUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppUtils.h; sourceTree = "<group>"; };
+		8709BCDC238D08DC0050F8CC /* AppUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppUtils.m; sourceTree = "<group>"; };
+		8709BCE0238D0F2C0050F8CC /* NIMSDKSessionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSessionManager.h; sourceTree = "<group>"; };
+		8709BCE1238D0F2C0050F8CC /* NIMSDKSessionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMSDKSessionManager.m; sourceTree = "<group>"; };
+		8709BCE7238D0F5E0050F8CC /* NIMSDKSessionServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSessionServiceProtocol.h; sourceTree = "<group>"; };
+		8709BCEA238E494F0050F8CC /* NIMSDKServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKServiceProtocol.h; sourceTree = "<group>"; };
+		8709BCF2238E63770050F8CC /* NIMSDKSessionImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSessionImpl.h; sourceTree = "<group>"; };
+		8709BCF3238E63770050F8CC /* NIMSDKSessionImpl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NIMSDKSessionImpl.mm; sourceTree = "<group>"; };
+		8709BCF5238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NIMSDKSessionImpl+callbacks.h"; sourceTree = "<group>"; };
+		8709BCF6238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NIMSDKSessionImpl+callbacks.mm"; sourceTree = "<group>"; };
+		8709BCFA238E76D70050F8CC /* NIMSDKDelegateType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKDelegateType.h; sourceTree = "<group>"; };
+		8709BCFC238E7C060050F8CC /* NIMSDKSessionHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSessionHelper.h; sourceTree = "<group>"; };
+		8709BCFD238E7C1D0050F8CC /* NIMSDKSessionHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NIMSDKSessionHelper.mm; sourceTree = "<group>"; };
+		8709BD00238EB5490050F8CC /* SessionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionView.h; sourceTree = "<group>"; };
+		8709BD01238EB5490050F8CC /* SessionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionView.m; sourceTree = "<group>"; };
+		87120B3E23C30E2600276650 /* ChatroomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatroomView.h; sourceTree = "<group>"; };
+		87120B3F23C30E2700276650 /* ChatroomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatroomView.m; sourceTree = "<group>"; };
+		87120B4223C322A400276650 /* Sample02ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sample02ViewController.h; sourceTree = "<group>"; };
+		87120B4323C322A400276650 /* Sample02ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample02ViewController.m; sourceTree = "<group>"; };
+		87120B4523C322C700276650 /* Sample02Adaptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sample02Adaptor.h; sourceTree = "<group>"; };
+		87120B4623C322C700276650 /* Sample02Adaptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample02Adaptor.m; sourceTree = "<group>"; };
+		87120B4923C3263400276650 /* NESample02Delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESample02Delegate.h; sourceTree = "<group>"; };
+		87120B4A23C3264700276650 /* NESample02Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NESample02Protocol.h; sourceTree = "<group>"; };
+		872AA55623A0BB6200997419 /* SampleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleModel.h; sourceTree = "<group>"; };
+		872AA55723A0BB6200997419 /* SampleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleModel.m; sourceTree = "<group>"; };
+		872AA55B23A0C98B00997419 /* SampleTableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleTableCellView.h; sourceTree = "<group>"; };
+		872AA55C23A0C98B00997419 /* SampleTableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTableCellView.m; sourceTree = "<group>"; };
+		873900FB23A33FA90082F099 /* BaseSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseSampleViewController.h; sourceTree = "<group>"; };
+		873900FC23A33FA90082F099 /* BaseSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseSampleViewController.m; sourceTree = "<group>"; };
+		873900FE23A33FEE0082F099 /* Sample01ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sample01ViewController.h; sourceTree = "<group>"; };
+		873900FF23A33FEE0082F099 /* Sample01ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample01ViewController.m; sourceTree = "<group>"; };
+		8739010E23A381010082F099 /* MessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
+		8739010F23A381010082F099 /* MessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
+		8739011123A387150082F099 /* Sample01Adaptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sample01Adaptor.h; sourceTree = "<group>"; };
+		8739011223A387150082F099 /* Sample01Adaptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample01Adaptor.m; sourceTree = "<group>"; };
+		8739E99D23B9CEE10084FDE1 /* nim_chatroom_wrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = nim_chatroom_wrapper.xcodeproj; path = src/cpp_sdk/nim_chatroom/nim_chatroom_wrapper.xcodeproj; sourceTree = "<group>"; };
+		8739E9AF23B9D7180084FDE1 /* NIMSDKChatroomServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKChatroomServiceProtocol.h; sourceTree = "<group>"; };
+		8739E9B023B9D7DE0084FDE1 /* NIMSDKChatroomManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKChatroomManager.h; sourceTree = "<group>"; };
+		8739E9B123B9D7DE0084FDE1 /* NIMSDKChatroomManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMSDKChatroomManager.m; sourceTree = "<group>"; };
+		8739E9B423B9D8A70084FDE1 /* NIMSDKChatroomImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKChatroomImpl.h; sourceTree = "<group>"; };
+		8739E9B523B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NIMSDKChatroomImpl.mm; sourceTree = "<group>"; };
+		8739E9B823B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NIMSDKChatroomImpl+callbacks.h"; sourceTree = "<group>"; };
+		8739E9B923B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "NIMSDKChatroomImpl+callbacks.mm"; sourceTree = "<group>"; };
+		8739E9BE23B9E89D0084FDE1 /* NIMSDKChatroomDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKChatroomDefine.h; sourceTree = "<group>"; };
+		8739E9C023B9F3460084FDE1 /* NIMSDKChatroomModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKChatroomModel.h; sourceTree = "<group>"; };
+		8739E9C123B9F3460084FDE1 /* NIMSDKChatroomModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMSDKChatroomModel.m; sourceTree = "<group>"; };
+		8739E9C823B9FC4D0084FDE1 /* NIMSDKChatroomHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKChatroomHelper.h; sourceTree = "<group>"; };
+		8739E9C923B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NIMSDKChatroomHelper.mm; sourceTree = "<group>"; };
+		875B4EEB23794AC6005A6B47 /* Samples iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Samples iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		875B4EED23794AC6005A6B47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		875B4EEE23794AC6005A6B47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		875B4EF023794AC6005A6B47 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		875B4EF123794AC6005A6B47 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		875B4EF923794AC7005A6B47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		875B4EFC23794AC7005A6B47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		875B4EFE23794AC7005A6B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		875B4EFF23794AC7005A6B47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		875B4F0523794AC8005A6B47 /* Samples iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Samples iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		875B4F0923794AC8005A6B47 /* Sample01Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample01Tests.m; sourceTree = "<group>"; };
+		875B4F0B23794AC8005A6B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		875B4F1023794AC8005A6B47 /* Samples iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Samples iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		875B4F1423794AC8005A6B47 /* Sample01UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample01UITests.m; sourceTree = "<group>"; };
+		875B4F1623794AC8005A6B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87A232B723C8A43700F57B2A /* nim_chatroom_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nim_chatroom_sdk.framework; path = Vendors/NIM/libs/Mac/nim_chatroom_sdk.framework; sourceTree = "<group>"; };
+		87A232B823C8A43700F57B2A /* core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = core.framework; path = Vendors/NIM/libs/Mac/core.framework; sourceTree = "<group>"; };
+		87A232B923C8A43800F57B2A /* nim_sdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nim_sdk.framework; path = Vendors/NIM/libs/Mac/nim_sdk.framework; sourceTree = "<group>"; };
+		87A232C023C8A63500F57B2A /* core_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = core_iOS.framework; sourceTree = "<group>"; };
+		87A232C123C8A63500F57B2A /* nim_chatroom_sdk_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nim_chatroom_sdk_iOS.framework; sourceTree = "<group>"; };
+		87A232C223C8A63500F57B2A /* nim_sdk_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nim_sdk_iOS.framework; sourceTree = "<group>"; };
+		87A232C623C8A63F00F57B2A /* core_Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = core_Mac.framework; sourceTree = "<group>"; };
+		87A232C723C8A63F00F57B2A /* nim_sdk_Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nim_sdk_Mac.framework; sourceTree = "<group>"; };
+		87A232C823C8A63F00F57B2A /* nim_chatroom_sdk_Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = nim_chatroom_sdk_Mac.framework; sourceTree = "<group>"; };
+		87AF739323A8B2D5009C1C43 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		87AF739423A8B2D5009C1C43 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		87AF739623A8B2DC009C1C43 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		87AF739723A8B2DC009C1C43 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		87AF73EC23A8D7D0009C1C43 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/System/Library/Frameworks/ExternalAccessory.framework; sourceTree = DEVELOPER_DIR; };
+		87D248E623850EBC00DBED75 /* nim_sdk_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nim_sdk_iOS.framework; path = vendors/NIM/nim_sdk_iOS.framework; sourceTree = "<group>"; };
+		87D24A082385177400DBED75 /* nim_wrapper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = nim_wrapper.xcodeproj; path = src/cpp_sdk/nim/nim_wrapper.xcodeproj; sourceTree = "<group>"; };
+		87D24A142385177F00DBED75 /* cpp_wrapper_util.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cpp_wrapper_util.xcodeproj; path = src/cpp_sdk/depend_lib/src/cpp_wrapper_util/cpp_wrapper_util.xcodeproj; sourceTree = "<group>"; };
+		87D24A202385193200DBED75 /* NIMSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDK.h; sourceTree = "<group>"; };
+		87D24A212385193200DBED75 /* NIMSDK.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NIMSDK.mm; sourceTree = "<group>"; };
+		87D24A2423852E5F00DBED75 /* NIMSDKLoginServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKLoginServiceProtocol.h; sourceTree = "<group>"; };
+		87D24A2523854E9300DBED75 /* NIMSDKLoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKLoginManager.h; sourceTree = "<group>"; };
+		87D24A2623854E9300DBED75 /* NIMSDKLoginManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = NIMSDKLoginManager.mm; path = "../New Group/NIMSDKLoginManager.mm"; sourceTree = "<group>"; };
+		87D24A28238551F500DBED75 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.2.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
+		87D24B7923865CED00DBED75 /* NSString+ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ext.h"; sourceTree = "<group>"; };
+		87D24B7A23865CED00DBED75 /* NSString+ext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ext.m"; sourceTree = "<group>"; };
+		87D24B7C23865DB100DBED75 /* NSDictionary+ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ext.h"; sourceTree = "<group>"; };
+		87D24B7D23865DB100DBED75 /* NSDictionary+ext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ext.m"; sourceTree = "<group>"; };
+		87D24B8A23867A7900DBED75 /* NIMSDKLoginHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKLoginHelper.h; sourceTree = "<group>"; };
+		87D24B8B23867BCE00DBED75 /* NIMSDKLoginHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NIMSDKLoginHelper.mm; sourceTree = "<group>"; };
+		87D24B902387CF8600DBED75 /* NIMSDKClientDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKClientDefine.h; sourceTree = "<group>"; };
+		87D24B912387CFB200DBED75 /* NIMSDKResCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKResCode.h; sourceTree = "<group>"; };
+		87D24B922387D19100DBED75 /* NIMSDKDataSyncDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKDataSyncDefine.h; sourceTree = "<group>"; };
+		87D24B932387D3EA00DBED75 /* NIMSDKDocTransDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKDocTransDefine.h; sourceTree = "<group>"; };
+		87D24B942387D49200DBED75 /* NIMSDKFriendDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKFriendDefine.h; sourceTree = "<group>"; };
+		87D24B952387D52100DBED75 /* NIMSDKGlobalDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKGlobalDefine.h; sourceTree = "<group>"; };
+		87D24B962387D73800DBED75 /* NIMSDKMessageLogDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKMessageLogDefine.h; sourceTree = "<group>"; };
+		87D24B972387D96600DBED75 /* NIMSDKNosDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKNosDefine.h; sourceTree = "<group>"; };
+		87D24B982387DA3900DBED75 /* NIMSDKRobotDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKRobotDefine.h; sourceTree = "<group>"; };
+		87D24B992387DBB500DBED75 /* NIMSDKRtsDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKRtsDefine.h; sourceTree = "<group>"; };
+		87D24B9A2387DCAB00DBED75 /* NIMSDKSessionDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSessionDefine.h; sourceTree = "<group>"; };
+		87D24B9B2387DDDC00DBED75 /* NIMSDKSingnalingDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSingnalingDefine.h; sourceTree = "<group>"; };
+		87D24B9C2387DE9700DBED75 /* NIMSDKSubscribeEventDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSubscribeEventDefine.h; sourceTree = "<group>"; };
+		87D24B9D2387DF1200DBED75 /* NIMSDKSuperTeamDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSuperTeamDefine.h; sourceTree = "<group>"; };
+		87D24B9E2387DFA700DBED75 /* NIMSDKSysMsgDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKSysMsgDefine.h; sourceTree = "<group>"; };
+		87D24B9F2387E03400DBED75 /* NIMSDKTalkDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKTalkDefine.h; sourceTree = "<group>"; };
+		87D24BA02387E07500DBED75 /* NIMSDKTeamDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKTeamDefine.h; sourceTree = "<group>"; };
+		87D24BA12387E13400DBED75 /* NIMSDKToolDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKToolDefine.h; sourceTree = "<group>"; };
+		87D24BA22387E18100DBED75 /* NIMSDKUserDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKUserDefine.h; sourceTree = "<group>"; };
+		87D24BA32387E28D00DBED75 /* NIMSDKAVChatDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKAVChatDefine.h; sourceTree = "<group>"; };
+		87D24BA42387E5F500DBED75 /* NIMSDKDeviceDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMSDKDeviceDefine.h; sourceTree = "<group>"; };
+		87E5026F237A48B10006EC7B /* NIMMulticastDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMMulticastDelegate.h; sourceTree = "<group>"; };
+		87E50270237A48B10006EC7B /* NIMMulticastDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMMulticastDelegate.m; sourceTree = "<group>"; };
+		87E50272237A48BB0006EC7B /* NIMDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMDispatch.h; sourceTree = "<group>"; };
+		87E50273237A48BB0006EC7B /* NIMDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMDispatch.m; sourceTree = "<group>"; };
+		87E5027B237A8D2F0006EC7B /* CurrentUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
+		87E5027C237A8D2F0006EC7B /* CurrentUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
+		87E5027F237A8F2F0006EC7B /* NIMKitFileLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIMKitFileLocationHelper.m; sourceTree = "<group>"; };
+		87E50280237A8F2F0006EC7B /* NIMKitFileLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIMKitFileLocationHelper.h; sourceTree = "<group>"; };
+		87E50283237A8FE20006EC7B /* NIMLoginManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMLoginManager.h; sourceTree = "<group>"; };
+		87E50284237A8FE20006EC7B /* NIMLoginManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMLoginManager.m; sourceTree = "<group>"; };
+		87E5028F237AAC510006EC7B /* SessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionViewController.h; sourceTree = "<group>"; };
+		87E50290237AAC510006EC7B /* SessionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionViewController.m; sourceTree = "<group>"; };
+		87E50291237AAC510006EC7B /* SessionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionViewController.xib; sourceTree = "<group>"; };
+		87E50294237AAC6F0006EC7B /* SettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		87E50295237AAC6F0006EC7B /* SettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		87E50296237AAC6F0006EC7B /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		87E50299237AAD7F0006EC7B /* NIMMainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMMainTabBarController.h; sourceTree = "<group>"; };
+		87E5029A237AAD7F0006EC7B /* NIMMainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMMainTabBarController.m; sourceTree = "<group>"; };
+		87E5533423C81BFA00892321 /* Samples iOSPro.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Samples iOSPro.entitlements"; sourceTree = "<group>"; };
+		87E5533523C81BFA00892321 /* Samples iOSDev.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Samples iOSDev.entitlements"; sourceTree = "<group>"; };
+		87EF0A7523A235960073E91E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		87EF0A7623A235960073E91E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		87F0A6FD239E4CA3008D3E1C /* NIMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMLoginViewController.h; sourceTree = "<group>"; };
+		87F0A6FE239E4CA3008D3E1C /* NIMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMLoginViewController.m; sourceTree = "<group>"; };
+		87F0A704239E5C4A008D3E1C /* Samples Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Samples Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F0A706239E5C4A008D3E1C /* NIMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMAppDelegate.h; sourceTree = "<group>"; };
+		87F0A707239E5C4A008D3E1C /* NIMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMAppDelegate.m; sourceTree = "<group>"; };
+		87F0A709239E5C4B008D3E1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		87F0A70E239E5C4B008D3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87F0A70F239E5C4B008D3E1C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		87F0A711239E5C4B008D3E1C /* Samples_Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Samples_Mac.entitlements; sourceTree = "<group>"; };
+		87F0A716239E5C4B008D3E1C /* Samples MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Samples MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F0A71A239E5C4B008D3E1C /* Samples_MacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Samples_MacTests.m; sourceTree = "<group>"; };
+		87F0A71C239E5C4B008D3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87F0A721239E5C4B008D3E1C /* Samples MacUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Samples MacUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F0A725239E5C4B008D3E1C /* Samples_MacUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Samples_MacUITests.m; sourceTree = "<group>"; };
+		87F0A727239E5C4B008D3E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87F0A741239F4857008D3E1C /* NIMLoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMLoginView.h; sourceTree = "<group>"; };
+		87F0A742239F4857008D3E1C /* NIMLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMLoginView.m; sourceTree = "<group>"; };
+		87F0A784239F831D008D3E1C /* NIMAppUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NIMAppUtils.h; sourceTree = "<group>"; };
+		87F0A785239F831D008D3E1C /* NIMAppUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NIMAppUtils.m; sourceTree = "<group>"; };
+		87F0A78B239F94E1008D3E1C /* Samples MacDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Samples MacDebug.entitlements"; path = "Samples Mac/Samples MacDebug.entitlements"; sourceTree = "<group>"; };
+		BD9620BF12EAFE4AA2B32B37 /* libPods-Samples iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Samples iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC5FB1CA4D4C24C2FC7087BF /* libPods-Samples Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Samples Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		875B4EE823794AC6005A6B47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87A232B123C8A35000F57B2A /* ExternalAccessory.framework in Frameworks */,
+				87D24A29238551F500DBED75 /* libc++.tbd in Frameworks */,
+				8739E9BC23B9E47A0084FDE1 /* libnim_chatroom_wrapper iOS.a in Frameworks */,
+				87A232D723C8AA7400F57B2A /* nim_sdk_iOS.framework in Frameworks */,
+				87D24A1D238517D400DBED75 /* libcpp_wrapper_util iOS.a in Frameworks */,
+				87D24A1E238517D400DBED75 /* libnim_wrapper iOS.a in Frameworks */,
+				87A232D523C8AA7200F57B2A /* nim_chatroom_sdk_iOS.framework in Frameworks */,
+				87A232D323C8AA7000F57B2A /* core_iOS.framework in Frameworks */,
+				06C375978DD44291ED7D1811 /* libPods-Samples iOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		875B4F0223794AC7005A6B47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		875B4F0D23794AC8005A6B47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A701239E5C4A008D3E1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8739E9BD23B9E4820084FDE1 /* libnim_chatroom_wrapper Mac.a in Frameworks */,
+				87F0A770239F667D008D3E1C /* libnim_wrapper Mac.a in Frameworks */,
+				87A232CC23C8AA6600F57B2A /* nim_sdk_Mac.framework in Frameworks */,
+				87A232D123C8AA6900F57B2A /* core_Mac.framework in Frameworks */,
+				87F0A76F239F667D008D3E1C /* libcpp_wrapper_util Mac.a in Frameworks */,
+				87A232CF23C8AA6700F57B2A /* nim_chatroom_sdk_Mac.framework in Frameworks */,
+				52CC6C93541DD0CC61816CB0 /* libPods-Samples Mac.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A713239E5C4B008D3E1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A71E239E5C4B008D3E1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		82F67FD02000A86398E3D949 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7BC326544D3B22C3B590888D /* Pods-Samples iOS.debug.xcconfig */,
+				357D211D61D8AD3133F62047 /* Pods-Samples iOS.release.xcconfig */,
+				792DFD1A87B99B678F111A74 /* Pods-Samples Mac.debug.xcconfig */,
+				15EA2A6DD89037D57E35FB83 /* Pods-Samples Mac.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8709BCC9238B6CCB0050F8CC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				8739E9BF23B9F3150084FDE1 /* chatroom */,
+				8709BCEF238E626E0050F8CC /* client */,
+				8709BCF0238E62800050F8CC /* session */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8709BCD4238CF6E20050F8CC /* session */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCFB238E7B9C0050F8CC /* helper */,
+				8709BCD5238CF6F30050F8CC /* manager */,
+			);
+			path = session;
+			sourceTree = "<group>";
+		};
+		8709BCD5238CF6F30050F8CC /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCE0238D0F2C0050F8CC /* NIMSDKSessionManager.h */,
+				8709BCE1238D0F2C0050F8CC /* NIMSDKSessionManager.m */,
+				8709BCF2238E63770050F8CC /* NIMSDKSessionImpl.h */,
+				8709BCF3238E63770050F8CC /* NIMSDKSessionImpl.mm */,
+				8709BCF5238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.h */,
+				8709BCF6238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.mm */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		8709BCD6238D01F50050F8CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCD7238D023B0050F8CC /* SettingView.h */,
+				8709BCD8238D023B0050F8CC /* SettingView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8709BCDA238D08B30050F8CC /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCDB238D08DC0050F8CC /* AppUtils.h */,
+				8709BCDC238D08DC0050F8CC /* AppUtils.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		8709BCEF238E626E0050F8CC /* client */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCCE238B6DE40050F8CC /* NIMSDKClientModel.h */,
+				8709BCCF238B6DE40050F8CC /* NIMSDKClientModel.m */,
+			);
+			path = client;
+			sourceTree = "<group>";
+		};
+		8709BCF0238E62800050F8CC /* session */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCD1238BA6F70050F8CC /* NIMSDKTalkModel.h */,
+				8709BCD2238BA6F70050F8CC /* NIMSDKTalkModel.m */,
+			);
+			path = session;
+			sourceTree = "<group>";
+		};
+		8709BCF8238E769D0050F8CC /* common */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCFA238E76D70050F8CC /* NIMSDKDelegateType.h */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		8709BCFB238E7B9C0050F8CC /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCFC238E7C060050F8CC /* NIMSDKSessionHelper.h */,
+				8709BCFD238E7C1D0050F8CC /* NIMSDKSessionHelper.mm */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		8709BCFF238EB4980050F8CC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8709BD00238EB5490050F8CC /* SessionView.h */,
+				8709BD01238EB5490050F8CC /* SessionView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		87120B3623C30DAC00276650 /* sample02 */ = {
+			isa = PBXGroup;
+			children = (
+				87120B4823C325FF00276650 /* model */,
+				87120B3D23C30DFF00276650 /* view */,
+				87120B4123C3227B00276650 /* ViewController */,
+			);
+			path = sample02;
+			sourceTree = "<group>";
+		};
+		87120B3D23C30DFF00276650 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				87120B3E23C30E2600276650 /* ChatroomView.h */,
+				87120B3F23C30E2700276650 /* ChatroomView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		87120B4123C3227B00276650 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87120B4223C322A400276650 /* Sample02ViewController.h */,
+				87120B4323C322A400276650 /* Sample02ViewController.m */,
+				87120B4523C322C700276650 /* Sample02Adaptor.h */,
+				87120B4623C322C700276650 /* Sample02Adaptor.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		87120B4823C325FF00276650 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				87120B4923C3263400276650 /* NESample02Delegate.h */,
+				87120B4A23C3264700276650 /* NESample02Protocol.h */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		872AA55223A0BB2800997419 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				872AA55623A0BB6200997419 /* SampleModel.h */,
+				872AA55723A0BB6200997419 /* SampleModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		872D0E65239E340F005591B4 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A78D239FA2C0008D3E1C /* mainview */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		872D0E6A239E3418005591B4 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				87EF0A7523A235960073E91E /* MainViewController.h */,
+				87EF0A7623A235960073E91E /* MainViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		873900F523A33F490082F099 /* samples */ = {
+			isa = PBXGroup;
+			children = (
+				873900FB23A33FA90082F099 /* BaseSampleViewController.h */,
+				873900FC23A33FA90082F099 /* BaseSampleViewController.m */,
+				873900FA23A33F650082F099 /* sample01 */,
+				87120B3623C30DAC00276650 /* sample02 */,
+			);
+			path = samples;
+			sourceTree = "<group>";
+		};
+		873900FA23A33F650082F099 /* sample01 */ = {
+			isa = PBXGroup;
+			children = (
+				8739010923A380E40082F099 /* view */,
+				8739010123A33FF40082F099 /* ViewController */,
+			);
+			path = sample01;
+			sourceTree = "<group>";
+		};
+		8739010123A33FF40082F099 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				873900FE23A33FEE0082F099 /* Sample01ViewController.h */,
+				873900FF23A33FEE0082F099 /* Sample01ViewController.m */,
+				8739011123A387150082F099 /* Sample01Adaptor.h */,
+				8739011223A387150082F099 /* Sample01Adaptor.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8739010923A380E40082F099 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8739010E23A381010082F099 /* MessageView.h */,
+				8739010F23A381010082F099 /* MessageView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		8739E99E23B9CEE10084FDE1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8739E9A523B9CEE10084FDE1 /* libnim_chatroom_wrapper iOS.a */,
+				8739E9A723B9CEE10084FDE1 /* libnim_chatroom_wrapper Mac.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8739E9AC23B9D2BB0084FDE1 /* chatroom */ = {
+			isa = PBXGroup;
+			children = (
+				8739E9AE23B9D4D30084FDE1 /* helper */,
+				8739E9AD23B9D4C80084FDE1 /* manager */,
+			);
+			path = chatroom;
+			sourceTree = "<group>";
+		};
+		8739E9AD23B9D4C80084FDE1 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				8739E9B023B9D7DE0084FDE1 /* NIMSDKChatroomManager.h */,
+				8739E9B123B9D7DE0084FDE1 /* NIMSDKChatroomManager.m */,
+				8739E9B423B9D8A70084FDE1 /* NIMSDKChatroomImpl.h */,
+				8739E9B523B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm */,
+				8739E9B823B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.h */,
+				8739E9B923B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		8739E9AE23B9D4D30084FDE1 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				8739E9C823B9FC4D0084FDE1 /* NIMSDKChatroomHelper.h */,
+				8739E9C923B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		8739E9BF23B9F3150084FDE1 /* chatroom */ = {
+			isa = PBXGroup;
+			children = (
+				8739E9C023B9F3460084FDE1 /* NIMSDKChatroomModel.h */,
+				8739E9C123B9F3460084FDE1 /* NIMSDKChatroomModel.m */,
+			);
+			path = chatroom;
+			sourceTree = "<group>";
+		};
+		875B4E5B23790DC6005A6B47 = {
+			isa = PBXGroup;
+			children = (
+				87E5533523C81BFA00892321 /* Samples iOSDev.entitlements */,
+				87E5533423C81BFA00892321 /* Samples iOSPro.entitlements */,
+				87F0A78B239F94E1008D3E1C /* Samples MacDebug.entitlements */,
+				87D248EB23850F7900DBED75 /* Vendors */,
+				87D24B6823863CD000DBED75 /* classes */,
+				875B4E6923790E0D005A6B47 /* Products */,
+				82F67FD02000A86398E3D949 /* Pods */,
+				D8B5B481BCC55EBCD8E246CF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		875B4E6323790DEE005A6B47 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				873900F523A33F490082F099 /* samples */,
+				872D0E65239E340F005591B4 /* common */,
+				87F0A6F7239E4C48008D3E1C /* login */,
+				87F0A705239E5C4A008D3E1C /* Samples Mac */,
+				87F0A719239E5C4B008D3E1C /* Samples MacTests */,
+				87F0A724239E5C4B008D3E1C /* Samples MacUITests */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		875B4E6923790E0D005A6B47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				875B4EEB23794AC6005A6B47 /* Samples iOS.app */,
+				875B4F0523794AC8005A6B47 /* Samples iOSTests.xctest */,
+				875B4F1023794AC8005A6B47 /* Samples iOSUITests.xctest */,
+				87F0A704239E5C4A008D3E1C /* Samples Mac.app */,
+				87F0A716239E5C4B008D3E1C /* Samples MacTests.xctest */,
+				87F0A721239E5C4B008D3E1C /* Samples MacUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		875B4EE623794AAF005A6B47 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				87E5026C237A483F0006EC7B /* common */,
+				87E5028C237AAC070006EC7B /* setting */,
+				87E5028B237AABF80006EC7B /* message */,
+				87E50275237A559D0006EC7B /* login */,
+				875B4EEC23794AC6005A6B47 /* Samples iOS */,
+				875B4F0823794AC8005A6B47 /* Samples iOSTests */,
+				875B4F1323794AC8005A6B47 /* Samples iOSUITests */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		875B4EEC23794AC6005A6B47 /* Samples iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCDA238D08B30050F8CC /* utils */,
+				875B4EED23794AC6005A6B47 /* AppDelegate.h */,
+				875B4EEE23794AC6005A6B47 /* AppDelegate.m */,
+				875B4EF023794AC6005A6B47 /* SceneDelegate.h */,
+				875B4EF123794AC6005A6B47 /* SceneDelegate.m */,
+				875B4EF923794AC7005A6B47 /* Assets.xcassets */,
+				875B4EFB23794AC7005A6B47 /* LaunchScreen.storyboard */,
+				875B4EFE23794AC7005A6B47 /* Info.plist */,
+				875B4EFF23794AC7005A6B47 /* main.m */,
+			);
+			path = "Samples iOS";
+			sourceTree = "<group>";
+		};
+		875B4F0823794AC8005A6B47 /* Samples iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				875B4F0923794AC8005A6B47 /* Sample01Tests.m */,
+				875B4F0B23794AC8005A6B47 /* Info.plist */,
+			);
+			path = "Samples iOSTests";
+			sourceTree = "<group>";
+		};
+		875B4F1323794AC8005A6B47 /* Samples iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				875B4F1423794AC8005A6B47 /* Sample01UITests.m */,
+				875B4F1623794AC8005A6B47 /* Info.plist */,
+			);
+			path = "Samples iOSUITests";
+			sourceTree = "<group>";
+		};
+		875B4F2023794BAC005A6B47 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87AF739723A8B2DC009C1C43 /* LoginViewController.h */,
+				87AF739623A8B2DC009C1C43 /* LoginViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		87A2326D23C89FED00F57B2A /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				87A2327323C89FEE00F57B2A /* iOS */,
+				87A2327723C89FEE00F57B2A /* Mac */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		87A2327323C89FEE00F57B2A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				87A232C023C8A63500F57B2A /* core_iOS.framework */,
+				87A232C123C8A63500F57B2A /* nim_chatroom_sdk_iOS.framework */,
+				87A232C223C8A63500F57B2A /* nim_sdk_iOS.framework */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		87A2327723C89FEE00F57B2A /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				87A232C623C8A63F00F57B2A /* core_Mac.framework */,
+				87A232C823C8A63F00F57B2A /* nim_chatroom_sdk_Mac.framework */,
+				87A232C723C8A63F00F57B2A /* nim_sdk_Mac.framework */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		87D248EA23850F5400DBED75 /* NIMSDK */ = {
+			isa = PBXGroup;
+			children = (
+				87D24B8D2387CEAA00DBED75 /* global */,
+				87D24A2323851C7C00DBED75 /* protocol */,
+				87D24B742386400900DBED75 /* services */,
+				87D24A202385193200DBED75 /* NIMSDK.h */,
+				87D24A212385193200DBED75 /* NIMSDK.mm */,
+			);
+			path = NIMSDK;
+			sourceTree = "<group>";
+		};
+		87D248EB23850F7900DBED75 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				87D248EC23850F7900DBED75 /* NIM */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		87D248EC23850F7900DBED75 /* NIM */ = {
+			isa = PBXGroup;
+			children = (
+				87A2326D23C89FED00F57B2A /* libs */,
+				8739E99D23B9CEE10084FDE1 /* nim_chatroom_wrapper.xcodeproj */,
+				87D24A142385177F00DBED75 /* cpp_wrapper_util.xcodeproj */,
+				87D24A082385177400DBED75 /* nim_wrapper.xcodeproj */,
+			);
+			path = NIM;
+			sourceTree = "<group>";
+		};
+		87D248EF23850F9A00DBED75 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				87D24B892386798F00DBED75 /* helper */,
+				87D24B852386785400DBED75 /* model */,
+				87D24B752386405F00DBED75 /* manager */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		87D24A092385177400DBED75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87D24A0F2385177400DBED75 /* libnim_wrapper iOS.a */,
+				87D24A112385177400DBED75 /* libnim_wrapper Mac.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87D24A152385177F00DBED75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87D24A1A2385177F00DBED75 /* libcpp_wrapper_util iOS.a */,
+				87D24A1C2385177F00DBED75 /* libcpp_wrapper_util Mac.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		87D24A2323851C7C00DBED75 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCEA238E494F0050F8CC /* NIMSDKServiceProtocol.h */,
+				87D24A2423852E5F00DBED75 /* NIMSDKLoginServiceProtocol.h */,
+				8709BCE7238D0F5E0050F8CC /* NIMSDKSessionServiceProtocol.h */,
+				8739E9AF23B9D7180084FDE1 /* NIMSDKChatroomServiceProtocol.h */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
+		87D24B6823863CD000DBED75 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				87D24B6D23863D0C00DBED75 /* common */,
+				87D248EA23850F5400DBED75 /* NIMSDK */,
+				875B4E6323790DEE005A6B47 /* Mac */,
+				875B4EE623794AAF005A6B47 /* iOS */,
+			);
+			path = classes;
+			sourceTree = "<group>";
+		};
+		87D24B6D23863D0C00DBED75 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				87E5026E237A486A0006EC7B /* delegate */,
+				87E5026D237A48530006EC7B /* dispatch */,
+				87D24B7623865A7A00DBED75 /* categories */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		87D24B742386400900DBED75 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCF8238E769D0050F8CC /* common */,
+				8739E9AC23B9D2BB0084FDE1 /* chatroom */,
+				87D248EF23850F9A00DBED75 /* login */,
+				8709BCD4238CF6E20050F8CC /* session */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		87D24B752386405F00DBED75 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				87D24A2523854E9300DBED75 /* NIMSDKLoginManager.h */,
+				87D24A2623854E9300DBED75 /* NIMSDKLoginManager.mm */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		87D24B7623865A7A00DBED75 /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				87D24B7923865CED00DBED75 /* NSString+ext.h */,
+				87D24B7A23865CED00DBED75 /* NSString+ext.m */,
+				87D24B7C23865DB100DBED75 /* NSDictionary+ext.h */,
+				87D24B7D23865DB100DBED75 /* NSDictionary+ext.m */,
+			);
+			path = categories;
+			sourceTree = "<group>";
+		};
+		87D24B852386785400DBED75 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		87D24B892386798F00DBED75 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				87D24B8A23867A7900DBED75 /* NIMSDKLoginHelper.h */,
+				87D24B8B23867BCE00DBED75 /* NIMSDKLoginHelper.mm */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		87D24B8D2387CEAA00DBED75 /* global */ = {
+			isa = PBXGroup;
+			children = (
+				87D24BA52387E7DE00DBED75 /* defines */,
+				8709BCC9238B6CCB0050F8CC /* model */,
+			);
+			path = global;
+			sourceTree = "<group>";
+		};
+		87D24BA52387E7DE00DBED75 /* defines */ = {
+			isa = PBXGroup;
+			children = (
+				87D24B912387CFB200DBED75 /* NIMSDKResCode.h */,
+				87D24B902387CF8600DBED75 /* NIMSDKClientDefine.h */,
+				87D24B922387D19100DBED75 /* NIMSDKDataSyncDefine.h */,
+				87D24B932387D3EA00DBED75 /* NIMSDKDocTransDefine.h */,
+				87D24B942387D49200DBED75 /* NIMSDKFriendDefine.h */,
+				87D24B952387D52100DBED75 /* NIMSDKGlobalDefine.h */,
+				87D24B962387D73800DBED75 /* NIMSDKMessageLogDefine.h */,
+				87D24B972387D96600DBED75 /* NIMSDKNosDefine.h */,
+				87D24B982387DA3900DBED75 /* NIMSDKRobotDefine.h */,
+				87D24B992387DBB500DBED75 /* NIMSDKRtsDefine.h */,
+				87D24B9A2387DCAB00DBED75 /* NIMSDKSessionDefine.h */,
+				87D24B9B2387DDDC00DBED75 /* NIMSDKSingnalingDefine.h */,
+				87D24B9C2387DE9700DBED75 /* NIMSDKSubscribeEventDefine.h */,
+				87D24B9D2387DF1200DBED75 /* NIMSDKSuperTeamDefine.h */,
+				87D24B9E2387DFA700DBED75 /* NIMSDKSysMsgDefine.h */,
+				87D24B9F2387E03400DBED75 /* NIMSDKTalkDefine.h */,
+				87D24BA02387E07500DBED75 /* NIMSDKTeamDefine.h */,
+				87D24BA12387E13400DBED75 /* NIMSDKToolDefine.h */,
+				87D24BA22387E18100DBED75 /* NIMSDKUserDefine.h */,
+				87D24BA32387E28D00DBED75 /* NIMSDKAVChatDefine.h */,
+				87D24BA42387E5F500DBED75 /* NIMSDKDeviceDefine.h */,
+				8739E9BE23B9E89D0084FDE1 /* NIMSDKChatroomDefine.h */,
+			);
+			path = defines;
+			sourceTree = "<group>";
+		};
+		87E5026C237A483F0006EC7B /* common */ = {
+			isa = PBXGroup;
+			children = (
+				87E50286237AABB00006EC7B /* controller */,
+				87E5027E237A8F010006EC7B /* util */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		87E5026D237A48530006EC7B /* dispatch */ = {
+			isa = PBXGroup;
+			children = (
+				87E50272237A48BB0006EC7B /* NIMDispatch.h */,
+				87E50273237A48BB0006EC7B /* NIMDispatch.m */,
+			);
+			path = dispatch;
+			sourceTree = "<group>";
+		};
+		87E5026E237A486A0006EC7B /* delegate */ = {
+			isa = PBXGroup;
+			children = (
+				87E5026F237A48B10006EC7B /* NIMMulticastDelegate.h */,
+				87E50270237A48B10006EC7B /* NIMMulticastDelegate.m */,
+			);
+			path = delegate;
+			sourceTree = "<group>";
+		};
+		87E50275237A559D0006EC7B /* login */ = {
+			isa = PBXGroup;
+			children = (
+				87E50282237A8FD10006EC7B /* manager */,
+				87E5027A237A8CEB0006EC7B /* Model */,
+				87E50276237A89F50006EC7B /* View */,
+				875B4F2023794BAC005A6B47 /* ViewController */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		87E50276237A89F50006EC7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87AF739423A8B2D5009C1C43 /* LoginView.h */,
+				87AF739323A8B2D5009C1C43 /* LoginView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87E5027A237A8CEB0006EC7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87E5027B237A8D2F0006EC7B /* CurrentUser.h */,
+				87E5027C237A8D2F0006EC7B /* CurrentUser.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		87E5027E237A8F010006EC7B /* util */ = {
+			isa = PBXGroup;
+			children = (
+				87E50280237A8F2F0006EC7B /* NIMKitFileLocationHelper.h */,
+				87E5027F237A8F2F0006EC7B /* NIMKitFileLocationHelper.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		87E50282237A8FD10006EC7B /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				87E50283237A8FE20006EC7B /* NIMLoginManager.h */,
+				87E50284237A8FE20006EC7B /* NIMLoginManager.m */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		87E50286237AABB00006EC7B /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				87E50299237AAD7F0006EC7B /* NIMMainTabBarController.h */,
+				87E5029A237AAD7F0006EC7B /* NIMMainTabBarController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		87E5028B237AABF80006EC7B /* message */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCFF238EB4980050F8CC /* view */,
+				87E5028E237AAC210006EC7B /* ViewController */,
+			);
+			path = message;
+			sourceTree = "<group>";
+		};
+		87E5028C237AAC070006EC7B /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				8709BCD6238D01F50050F8CC /* View */,
+				87E5028D237AAC0D0006EC7B /* ViewController */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		87E5028D237AAC0D0006EC7B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87E50294237AAC6F0006EC7B /* SettingViewController.h */,
+				87E50295237AAC6F0006EC7B /* SettingViewController.m */,
+				87E50296237AAC6F0006EC7B /* SettingViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		87E5028E237AAC210006EC7B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87E5028F237AAC510006EC7B /* SessionViewController.h */,
+				87E50290237AAC510006EC7B /* SessionViewController.m */,
+				87E50291237AAC510006EC7B /* SessionViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		87F0A6F7239E4C48008D3E1C /* login */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A740239F482F008D3E1C /* View */,
+				87F0A6FC239E4C4E008D3E1C /* ViewController */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		87F0A6FC239E4C4E008D3E1C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A6FD239E4CA3008D3E1C /* NIMLoginViewController.h */,
+				87F0A6FE239E4CA3008D3E1C /* NIMLoginViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		87F0A705239E5C4A008D3E1C /* Samples Mac */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A783239F8304008D3E1C /* utils */,
+				87F0A706239E5C4A008D3E1C /* NIMAppDelegate.h */,
+				87F0A707239E5C4A008D3E1C /* NIMAppDelegate.m */,
+				87F0A709239E5C4B008D3E1C /* Assets.xcassets */,
+				87F0A70E239E5C4B008D3E1C /* Info.plist */,
+				87F0A70F239E5C4B008D3E1C /* main.m */,
+				87F0A711239E5C4B008D3E1C /* Samples_Mac.entitlements */,
+			);
+			name = "Samples Mac";
+			path = "../../Samples Mac";
+			sourceTree = "<group>";
+		};
+		87F0A719239E5C4B008D3E1C /* Samples MacTests */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A71A239E5C4B008D3E1C /* Samples_MacTests.m */,
+				87F0A71C239E5C4B008D3E1C /* Info.plist */,
+			);
+			path = "Samples MacTests";
+			sourceTree = "<group>";
+		};
+		87F0A724239E5C4B008D3E1C /* Samples MacUITests */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A725239E5C4B008D3E1C /* Samples_MacUITests.m */,
+				87F0A727239E5C4B008D3E1C /* Info.plist */,
+			);
+			path = "Samples MacUITests";
+			sourceTree = "<group>";
+		};
+		87F0A740239F482F008D3E1C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A741239F4857008D3E1C /* NIMLoginView.h */,
+				87F0A742239F4857008D3E1C /* NIMLoginView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87F0A783239F8304008D3E1C /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				87F0A784239F831D008D3E1C /* NIMAppUtils.h */,
+				87F0A785239F831D008D3E1C /* NIMAppUtils.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		87F0A78D239FA2C0008D3E1C /* mainview */ = {
+			isa = PBXGroup;
+			children = (
+				872AA55223A0BB2800997419 /* model */,
+				87F0A78E239FA2D2008D3E1C /* view */,
+				872D0E6A239E3418005591B4 /* controller */,
+			);
+			path = mainview;
+			sourceTree = "<group>";
+		};
+		87F0A78E239FA2D2008D3E1C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				872AA55B23A0C98B00997419 /* SampleTableCellView.h */,
+				872AA55C23A0C98B00997419 /* SampleTableCellView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		D8B5B481BCC55EBCD8E246CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				87A232B823C8A43700F57B2A /* core.framework */,
+				87A232B723C8A43700F57B2A /* nim_chatroom_sdk.framework */,
+				87A232B923C8A43800F57B2A /* nim_sdk.framework */,
+				87AF73EC23A8D7D0009C1C43 /* ExternalAccessory.framework */,
+				87D24A28238551F500DBED75 /* libc++.tbd */,
+				87D248E623850EBC00DBED75 /* nim_sdk_iOS.framework */,
+				038B854D8EE094D6D2EB8CAF /* libPods-Sample01.a */,
+				BD9620BF12EAFE4AA2B32B37 /* libPods-Samples iOS.a */,
+				FC5FB1CA4D4C24C2FC7087BF /* libPods-Samples Mac.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		875B4EEA23794AC6005A6B47 /* Samples iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 875B4F1723794AC8005A6B47 /* Build configuration list for PBXNativeTarget "Samples iOS" */;
+			buildPhases = (
+				2852AF4E9EF504B41EBE1DBB /* [CP] Check Pods Manifest.lock */,
+				875B4EE723794AC6005A6B47 /* Sources */,
+				875B4EE823794AC6005A6B47 /* Frameworks */,
+				875B4EE923794AC6005A6B47 /* Resources */,
+				DF68AAD76D9C1B300DC42984 /* [CP] Copy Pods Resources */,
+				8791614723C72CA300314300 /* Embed Frameworks */,
+				87B828B323CDC30400556EC9 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Samples iOS";
+			productName = Sample01;
+			productReference = 875B4EEB23794AC6005A6B47 /* Samples iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		875B4F0423794AC7005A6B47 /* Samples iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 875B4F1A23794AC8005A6B47 /* Build configuration list for PBXNativeTarget "Samples iOSTests" */;
+			buildPhases = (
+				875B4F0123794AC7005A6B47 /* Sources */,
+				875B4F0223794AC7005A6B47 /* Frameworks */,
+				875B4F0323794AC7005A6B47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				875B4F0723794AC8005A6B47 /* PBXTargetDependency */,
+			);
+			name = "Samples iOSTests";
+			productName = Sample01Tests;
+			productReference = 875B4F0523794AC8005A6B47 /* Samples iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		875B4F0F23794AC8005A6B47 /* Samples iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 875B4F1D23794AC8005A6B47 /* Build configuration list for PBXNativeTarget "Samples iOSUITests" */;
+			buildPhases = (
+				875B4F0C23794AC8005A6B47 /* Sources */,
+				875B4F0D23794AC8005A6B47 /* Frameworks */,
+				875B4F0E23794AC8005A6B47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				875B4F1223794AC8005A6B47 /* PBXTargetDependency */,
+			);
+			name = "Samples iOSUITests";
+			productName = Sample01UITests;
+			productReference = 875B4F1023794AC8005A6B47 /* Samples iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		87F0A703239E5C4A008D3E1C /* Samples Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87F0A728239E5C4B008D3E1C /* Build configuration list for PBXNativeTarget "Samples Mac" */;
+			buildPhases = (
+				8728653D0CCA59129A6EC57E /* [CP] Check Pods Manifest.lock */,
+				87F0A700239E5C4A008D3E1C /* Sources */,
+				87F0A701239E5C4A008D3E1C /* Frameworks */,
+				87F0A702239E5C4A008D3E1C /* Resources */,
+				87A232CE23C8AA6600F57B2A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Samples Mac";
+			productName = "Samples Mac";
+			productReference = 87F0A704239E5C4A008D3E1C /* Samples Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		87F0A715239E5C4B008D3E1C /* Samples MacTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87F0A72B239E5C4B008D3E1C /* Build configuration list for PBXNativeTarget "Samples MacTests" */;
+			buildPhases = (
+				87F0A712239E5C4B008D3E1C /* Sources */,
+				87F0A713239E5C4B008D3E1C /* Frameworks */,
+				87F0A714239E5C4B008D3E1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87F0A718239E5C4B008D3E1C /* PBXTargetDependency */,
+			);
+			name = "Samples MacTests";
+			productName = "Samples MacTests";
+			productReference = 87F0A716239E5C4B008D3E1C /* Samples MacTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		87F0A720239E5C4B008D3E1C /* Samples MacUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 87F0A72E239E5C4B008D3E1C /* Build configuration list for PBXNativeTarget "Samples MacUITests" */;
+			buildPhases = (
+				87F0A71D239E5C4B008D3E1C /* Sources */,
+				87F0A71E239E5C4B008D3E1C /* Frameworks */,
+				87F0A71F239E5C4B008D3E1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				87F0A723239E5C4B008D3E1C /* PBXTargetDependency */,
+			);
+			name = "Samples MacUITests";
+			productName = "Samples MacUITests";
+			productReference = 87F0A721239E5C4B008D3E1C /* Samples MacUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		875B4E5C23790DC6005A6B47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1120;
+				TargetAttributes = {
+					875B4EEA23794AC6005A6B47 = {
+						CreatedOnToolsVersion = 11.2;
+					};
+					875B4F0423794AC7005A6B47 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = 875B4EEA23794AC6005A6B47;
+					};
+					875B4F0F23794AC8005A6B47 = {
+						CreatedOnToolsVersion = 11.2;
+						TestTargetID = 875B4EEA23794AC6005A6B47;
+					};
+					87F0A703239E5C4A008D3E1C = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+					87F0A715239E5C4B008D3E1C = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 87F0A703239E5C4A008D3E1C;
+					};
+					87F0A720239E5C4B008D3E1C = {
+						CreatedOnToolsVersion = 11.2.1;
+						TestTargetID = 87F0A703239E5C4A008D3E1C;
+					};
+				};
+			};
+			buildConfigurationList = 875B4E5F23790DC6005A6B47 /* Build configuration list for PBXProject "Samples" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 875B4E5B23790DC6005A6B47;
+			productRefGroup = 875B4E6923790E0D005A6B47 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 87D24A152385177F00DBED75 /* Products */;
+					ProjectRef = 87D24A142385177F00DBED75 /* cpp_wrapper_util.xcodeproj */;
+				},
+				{
+					ProductGroup = 8739E99E23B9CEE10084FDE1 /* Products */;
+					ProjectRef = 8739E99D23B9CEE10084FDE1 /* nim_chatroom_wrapper.xcodeproj */;
+				},
+				{
+					ProductGroup = 87D24A092385177400DBED75 /* Products */;
+					ProjectRef = 87D24A082385177400DBED75 /* nim_wrapper.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				875B4EEA23794AC6005A6B47 /* Samples iOS */,
+				875B4F0423794AC7005A6B47 /* Samples iOSTests */,
+				875B4F0F23794AC8005A6B47 /* Samples iOSUITests */,
+				87F0A703239E5C4A008D3E1C /* Samples Mac */,
+				87F0A715239E5C4B008D3E1C /* Samples MacTests */,
+				87F0A720239E5C4B008D3E1C /* Samples MacUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		8739E9A523B9CEE10084FDE1 /* libnim_chatroom_wrapper iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libnim_chatroom_wrapper iOS.a";
+			remoteRef = 8739E9A423B9CEE10084FDE1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8739E9A723B9CEE10084FDE1 /* libnim_chatroom_wrapper Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libnim_chatroom_wrapper Mac.a";
+			remoteRef = 8739E9A623B9CEE10084FDE1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		87D24A0F2385177400DBED75 /* libnim_wrapper iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libnim_wrapper iOS.a";
+			remoteRef = 87D24A0E2385177400DBED75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		87D24A112385177400DBED75 /* libnim_wrapper Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libnim_wrapper Mac.a";
+			remoteRef = 87D24A102385177400DBED75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		87D24A1A2385177F00DBED75 /* libcpp_wrapper_util iOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcpp_wrapper_util iOS.a";
+			remoteRef = 87D24A192385177F00DBED75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		87D24A1C2385177F00DBED75 /* libcpp_wrapper_util Mac.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libcpp_wrapper_util Mac.a";
+			remoteRef = 87D24A1B2385177F00DBED75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		875B4EE923794AC6005A6B47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87E50293237AAC510006EC7B /* SessionViewController.xib in Resources */,
+				875B4EFD23794AC7005A6B47 /* LaunchScreen.storyboard in Resources */,
+				875B4EFA23794AC7005A6B47 /* Assets.xcassets in Resources */,
+				87E50298237AAC6F0006EC7B /* SettingViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		875B4F0323794AC7005A6B47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		875B4F0E23794AC8005A6B47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A702239E5C4A008D3E1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F0A70A239E5C4B008D3E1C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A714239E5C4B008D3E1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A71F239E5C4B008D3E1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2852AF4E9EF504B41EBE1DBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Samples iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8728653D0CCA59129A6EC57E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Samples Mac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87B828B323CDC30400556EC9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\n# Strip invalid architectures\n\nstrip_invalid_archs() {\nbinary=\"$1\"\necho \"current binary ${binary}\"\n# Get architectures for current file\narchs=\"$(lipo -info \"$binary\" | rev | cut -d ':' -f1 | rev)\"\nstripped=\"\"\nfor arch in $archs; do\nif ! [[ \"${ARCHS}\" == *\"$arch\"* ]]; then\nif [ -f \"$binary\" ]; then\n# Strip non-valid architectures in-place\nlipo -remove \"$arch\" -output \"$binary\" \"$binary\" || exit 1\nstripped=\"$stripped $arch\"\nfi\nfi\ndone\nif [[ \"$stripped\" ]]; then\necho \"Stripped $binary of architectures:$stripped\"\nfi\n}\n\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nstrip_invalid_archs \"$FRAMEWORK_EXECUTABLE_PATH\"\ndone\n\n";
+		};
+		DF68AAD76D9C1B300DC42984 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Samples iOS/Pods-Samples iOS-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TZImagePickerController.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Samples iOS/Pods-Samples iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		875B4EE723794AC6005A6B47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8739E9C223B9F3460084FDE1 /* NIMSDKChatroomModel.m in Sources */,
+				8739E9B623B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm in Sources */,
+				8709BD02238EB5490050F8CC /* SessionView.m in Sources */,
+				875B4EEF23794AC6005A6B47 /* AppDelegate.m in Sources */,
+				87D24A222385193200DBED75 /* NIMSDK.mm in Sources */,
+				8709BCFE238E7C1D0050F8CC /* NIMSDKSessionHelper.mm in Sources */,
+				8709BCD9238D023B0050F8CC /* SettingView.m in Sources */,
+				87AF739823A8B2DC009C1C43 /* LoginViewController.m in Sources */,
+				87E50297237AAC6F0006EC7B /* SettingViewController.m in Sources */,
+				87E5029B237AAD7F0006EC7B /* NIMMainTabBarController.m in Sources */,
+				87E50285237A8FE20006EC7B /* NIMLoginManager.m in Sources */,
+				87D24B7E23865DB100DBED75 /* NSDictionary+ext.m in Sources */,
+				87E50271237A48B20006EC7B /* NIMMulticastDelegate.m in Sources */,
+				87E5027D237A8D2F0006EC7B /* CurrentUser.m in Sources */,
+				87E50292237AAC510006EC7B /* SessionViewController.m in Sources */,
+				875B4F0023794AC7005A6B47 /* main.m in Sources */,
+				87D24B8C23867BCE00DBED75 /* NIMSDKLoginHelper.mm in Sources */,
+				87D24A2723854E9300DBED75 /* NIMSDKLoginManager.mm in Sources */,
+				87E50281237A8F2F0006EC7B /* NIMKitFileLocationHelper.m in Sources */,
+				875B4EF223794AC6005A6B47 /* SceneDelegate.m in Sources */,
+				8739E9CA23B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm in Sources */,
+				8709BCD0238B6DE40050F8CC /* NIMSDKClientModel.m in Sources */,
+				87D24B7B23865CED00DBED75 /* NSString+ext.m in Sources */,
+				8739E9B223B9D7DE0084FDE1 /* NIMSDKChatroomManager.m in Sources */,
+				8709BCF4238E63770050F8CC /* NIMSDKSessionImpl.mm in Sources */,
+				87E50274237A48BB0006EC7B /* NIMDispatch.m in Sources */,
+				8709BCF7238E70E10050F8CC /* NIMSDKSessionImpl+callbacks.mm in Sources */,
+				8709BCDD238D08DC0050F8CC /* AppUtils.m in Sources */,
+				8709BCE2238D0F2C0050F8CC /* NIMSDKSessionManager.m in Sources */,
+				8739E9BA23B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm in Sources */,
+				87AF739523A8B2D5009C1C43 /* LoginView.m in Sources */,
+				8709BCD3238BA6F70050F8CC /* NIMSDKTalkModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		875B4F0123794AC7005A6B47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				875B4F0A23794AC8005A6B47 /* Sample01Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		875B4F0C23794AC8005A6B47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				875B4F1523794AC8005A6B47 /* Sample01UITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A700239E5C4A008D3E1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87AF73E923A8C7AE009C1C43 /* NIMKitFileLocationHelper.h in Sources */,
+				87AF73EA23A8C7AE009C1C43 /* NIMKitFileLocationHelper.m in Sources */,
+				87AF73E723A8C79B009C1C43 /* CurrentUser.h in Sources */,
+				87AF73E823A8C79B009C1C43 /* CurrentUser.m in Sources */,
+				87AF73E523A8C795009C1C43 /* NIMLoginManager.h in Sources */,
+				87AF73E623A8C795009C1C43 /* NIMLoginManager.m in Sources */,
+				87AF739B23A8C59F009C1C43 /* NIMMulticastDelegate.h in Sources */,
+				87AF739C23A8C59F009C1C43 /* NIMMulticastDelegate.m in Sources */,
+				87AF739D23A8C59F009C1C43 /* NIMDispatch.h in Sources */,
+				87AF739E23A8C59F009C1C43 /* NIMDispatch.m in Sources */,
+				87AF739F23A8C59F009C1C43 /* NSString+ext.h in Sources */,
+				87AF73A023A8C59F009C1C43 /* NSString+ext.m in Sources */,
+				8739E9C323B9F3460084FDE1 /* NIMSDKChatroomModel.m in Sources */,
+				87AF73A123A8C59F009C1C43 /* NSDictionary+ext.h in Sources */,
+				87AF73A223A8C59F009C1C43 /* NSDictionary+ext.m in Sources */,
+				87AF73A323A8C59F009C1C43 /* NIMSDKResCode.h in Sources */,
+				87AF73A423A8C59F009C1C43 /* NIMSDKClientDefine.h in Sources */,
+				87AF73A523A8C59F009C1C43 /* NIMSDKDataSyncDefine.h in Sources */,
+				87AF73A623A8C59F009C1C43 /* NIMSDKDocTransDefine.h in Sources */,
+				87120B4723C322C700276650 /* Sample02Adaptor.m in Sources */,
+				87AF73A723A8C59F009C1C43 /* NIMSDKFriendDefine.h in Sources */,
+				87AF73A823A8C59F009C1C43 /* NIMSDKGlobalDefine.h in Sources */,
+				87AF73A923A8C59F009C1C43 /* NIMSDKMessageLogDefine.h in Sources */,
+				87AF73AA23A8C59F009C1C43 /* NIMSDKNosDefine.h in Sources */,
+				8739E9B323B9D7DE0084FDE1 /* NIMSDKChatroomManager.m in Sources */,
+				87AF73AB23A8C59F009C1C43 /* NIMSDKRobotDefine.h in Sources */,
+				87AF73AC23A8C59F009C1C43 /* NIMSDKRtsDefine.h in Sources */,
+				87AF73AD23A8C59F009C1C43 /* NIMSDKSessionDefine.h in Sources */,
+				87AF73AE23A8C59F009C1C43 /* NIMSDKSingnalingDefine.h in Sources */,
+				87AF73AF23A8C59F009C1C43 /* NIMSDKSubscribeEventDefine.h in Sources */,
+				87AF73B023A8C59F009C1C43 /* NIMSDKSuperTeamDefine.h in Sources */,
+				87AF73B123A8C59F009C1C43 /* NIMSDKSysMsgDefine.h in Sources */,
+				87AF73B223A8C59F009C1C43 /* NIMSDKTalkDefine.h in Sources */,
+				87AF73B323A8C59F009C1C43 /* NIMSDKTeamDefine.h in Sources */,
+				87AF73B423A8C59F009C1C43 /* NIMSDKToolDefine.h in Sources */,
+				87AF73B523A8C59F009C1C43 /* NIMSDKUserDefine.h in Sources */,
+				87AF73B623A8C59F009C1C43 /* NIMSDKAVChatDefine.h in Sources */,
+				87AF73B723A8C59F009C1C43 /* NIMSDKDeviceDefine.h in Sources */,
+				87AF73B823A8C59F009C1C43 /* NIMSDKClientModel.h in Sources */,
+				87AF73B923A8C59F009C1C43 /* NIMSDKClientModel.m in Sources */,
+				87AF73BA23A8C59F009C1C43 /* NIMSDKTalkModel.h in Sources */,
+				87AF73BB23A8C59F009C1C43 /* NIMSDKTalkModel.m in Sources */,
+				8739E9B723B9D8A70084FDE1 /* NIMSDKChatroomImpl.mm in Sources */,
+				87AF73BC23A8C59F009C1C43 /* NIMSDKServiceProtocol.h in Sources */,
+				87AF73BD23A8C59F009C1C43 /* NIMSDKLoginServiceProtocol.h in Sources */,
+				87AF73BE23A8C59F009C1C43 /* NIMSDKSessionServiceProtocol.h in Sources */,
+				87AF73BF23A8C59F009C1C43 /* NIMSDKDelegateType.h in Sources */,
+				87AF73C023A8C59F009C1C43 /* NIMSDKLoginHelper.h in Sources */,
+				87AF73C123A8C59F009C1C43 /* NIMSDKLoginHelper.mm in Sources */,
+				87AF73C223A8C59F009C1C43 /* NIMSDKLoginManager.h in Sources */,
+				87AF73C323A8C59F009C1C43 /* NIMSDKLoginManager.mm in Sources */,
+				87AF73C423A8C59F009C1C43 /* NIMSDKSessionHelper.h in Sources */,
+				87AF73C523A8C59F009C1C43 /* NIMSDKSessionHelper.mm in Sources */,
+				87AF73C623A8C59F009C1C43 /* NIMSDKSessionManager.h in Sources */,
+				87AF73C723A8C59F009C1C43 /* NIMSDKSessionManager.m in Sources */,
+				87AF73C823A8C59F009C1C43 /* NIMSDKSessionImpl.h in Sources */,
+				87AF73C923A8C59F009C1C43 /* NIMSDKSessionImpl.mm in Sources */,
+				87AF73CA23A8C59F009C1C43 /* NIMSDKSessionImpl+callbacks.h in Sources */,
+				87AF73CB23A8C59F009C1C43 /* NIMSDKSessionImpl+callbacks.mm in Sources */,
+				87AF73CC23A8C59F009C1C43 /* NIMSDK.h in Sources */,
+				8739E9BB23B9DA1C0084FDE1 /* NIMSDKChatroomImpl+callbacks.mm in Sources */,
+				87AF73CD23A8C59F009C1C43 /* NIMSDK.mm in Sources */,
+				87AF73CE23A8C59F009C1C43 /* BaseSampleViewController.h in Sources */,
+				87AF73CF23A8C59F009C1C43 /* BaseSampleViewController.m in Sources */,
+				87AF73D023A8C59F009C1C43 /* MessageView.h in Sources */,
+				87AF73D123A8C59F009C1C43 /* MessageView.m in Sources */,
+				87AF73D223A8C59F009C1C43 /* Sample01ViewController.h in Sources */,
+				87AF73D323A8C59F009C1C43 /* Sample01ViewController.m in Sources */,
+				87AF73D423A8C59F009C1C43 /* Sample01Adaptor.h in Sources */,
+				87AF73D523A8C59F009C1C43 /* Sample01Adaptor.m in Sources */,
+				87AF73D623A8C59F009C1C43 /* SampleModel.h in Sources */,
+				87120B4423C322A400276650 /* Sample02ViewController.m in Sources */,
+				87AF73D723A8C59F009C1C43 /* SampleModel.m in Sources */,
+				87AF73D823A8C59F009C1C43 /* SampleTableCellView.h in Sources */,
+				87AF73D923A8C59F009C1C43 /* SampleTableCellView.m in Sources */,
+				87AF73DA23A8C59F009C1C43 /* MainViewController.h in Sources */,
+				87AF73DB23A8C59F009C1C43 /* MainViewController.m in Sources */,
+				87AF73DC23A8C59F009C1C43 /* NIMLoginView.h in Sources */,
+				87AF73DD23A8C59F009C1C43 /* NIMLoginView.m in Sources */,
+				87AF73DE23A8C59F009C1C43 /* NIMLoginViewController.h in Sources */,
+				87AF73DF23A8C59F009C1C43 /* NIMLoginViewController.m in Sources */,
+				87AF73E023A8C59F009C1C43 /* NIMAppUtils.h in Sources */,
+				8739E9CB23B9FC8A0084FDE1 /* NIMSDKChatroomHelper.mm in Sources */,
+				87120B4023C30E2700276650 /* ChatroomView.m in Sources */,
+				87AF73E123A8C59F009C1C43 /* NIMAppUtils.m in Sources */,
+				87AF73E223A8C59F009C1C43 /* NIMAppDelegate.h in Sources */,
+				87AF73E323A8C59F009C1C43 /* NIMAppDelegate.m in Sources */,
+				87AF73E423A8C59F009C1C43 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A712239E5C4B008D3E1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F0A71B239E5C4B008D3E1C /* Samples_MacTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87F0A71D239E5C4B008D3E1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87F0A726239E5C4B008D3E1C /* Samples_MacUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		875B4F0723794AC8005A6B47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 875B4EEA23794AC6005A6B47 /* Samples iOS */;
+			targetProxy = 875B4F0623794AC8005A6B47 /* PBXContainerItemProxy */;
+		};
+		875B4F1223794AC8005A6B47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 875B4EEA23794AC6005A6B47 /* Samples iOS */;
+			targetProxy = 875B4F1123794AC8005A6B47 /* PBXContainerItemProxy */;
+		};
+		87F0A718239E5C4B008D3E1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F0A703239E5C4A008D3E1C /* Samples Mac */;
+			targetProxy = 87F0A717239E5C4B008D3E1C /* PBXContainerItemProxy */;
+		};
+		87F0A723239E5C4B008D3E1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F0A703239E5C4A008D3E1C /* Samples Mac */;
+			targetProxy = 87F0A722239E5C4B008D3E1C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		875B4EFB23794AC7005A6B47 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				875B4EFC23794AC7005A6B47 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		875B4E6023790DC6005A6B47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = "-Objc";
+			};
+			name = Debug;
+		};
+		875B4E6123790DC6005A6B47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = "-Objc";
+			};
+			name = Release;
+		};
+		875B4F1823794AC8005A6B47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BC326544D3B22C3B590888D /* Pods-Samples iOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Samples iOSDev.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/NIM/libs/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/M80AttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"\"$(SRCROOT)/Vendors/NIM\"/**",
+				);
+				INFOPLIST_FILE = "classes/iOS/Samples iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/M80AttributedLabel\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"-fembed-bitcode",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NIM.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = nim_demo_dev;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		875B4F1923794AC8005A6B47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 357D211D61D8AD3133F62047 /* Pods-Samples iOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Samples iOSPro.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendors/NIM/libs/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/M80AttributedLabel\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"\"$(SRCROOT)/Vendors/NIM\"/**",
+				);
+				INFOPLIST_FILE = "classes/iOS/Samples iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/M80AttributedLabel\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/TZImagePickerController\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/Toast\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"-fembed-bitcode",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.netease.NIM.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = nim_demo;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		875B4F1B23794AC8005A6B47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Sample01Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dudu.Sample01Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample01.app/Sample01";
+			};
+			name = Debug;
+		};
+		875B4F1C23794AC8005A6B47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Sample01Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dudu.Sample01Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample01.app/Sample01";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		875B4F1E23794AC8005A6B47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Sample01UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dudu.Sample01UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sample01;
+			};
+			name = Debug;
+		};
+		875B4F1F23794AC8005A6B47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Sample01UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dudu.Sample01UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Sample01;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87F0A729239E5C4B008D3E1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 792DFD1A87B99B678F111A74 /* Pods-Samples Mac.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Samples Mac/Samples MacDebug.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Vendors/NIM/libs/Mac";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"\"$(SRCROOT)/Vendors/NIM\"/**",
+				);
+				INFOPLIST_FILE = "Samples Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.Samples-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		87F0A72A239E5C4B008D3E1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15EA2A6DD89037D57E35FB83 /* Pods-Samples Mac.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "Samples Mac/Samples_Mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Vendors/NIM/libs/Mac";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
+					"\"$(SRCROOT)/Vendors/NIM\"/**",
+				);
+				INFOPLIST_FILE = "Samples Mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.Samples-Mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		87F0A72C239E5C4B008D3E1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Samples MacTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.Samples-MacTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samples Mac.app/Contents/MacOS/Samples Mac";
+			};
+			name = Debug;
+		};
+		87F0A72D239E5C4B008D3E1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Samples MacTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.Samples-MacTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samples Mac.app/Contents/MacOS/Samples Mac";
+			};
+			name = Release;
+		};
+		87F0A72F239E5C4B008D3E1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Samples MacUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.Samples-MacUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = "Samples Mac";
+			};
+			name = Debug;
+		};
+		87F0A730239E5C4B008D3E1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 569GNZ5392;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "Samples MacUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.Samples-MacUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = "Samples Mac";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		875B4E5F23790DC6005A6B47 /* Build configuration list for PBXProject "Samples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				875B4E6023790DC6005A6B47 /* Debug */,
+				875B4E6123790DC6005A6B47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		875B4F1723794AC8005A6B47 /* Build configuration list for PBXNativeTarget "Samples iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				875B4F1823794AC8005A6B47 /* Debug */,
+				875B4F1923794AC8005A6B47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		875B4F1A23794AC8005A6B47 /* Build configuration list for PBXNativeTarget "Samples iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				875B4F1B23794AC8005A6B47 /* Debug */,
+				875B4F1C23794AC8005A6B47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		875B4F1D23794AC8005A6B47 /* Build configuration list for PBXNativeTarget "Samples iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				875B4F1E23794AC8005A6B47 /* Debug */,
+				875B4F1F23794AC8005A6B47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87F0A728239E5C4B008D3E1C /* Build configuration list for PBXNativeTarget "Samples Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87F0A729239E5C4B008D3E1C /* Debug */,
+				87F0A72A239E5C4B008D3E1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87F0A72B239E5C4B008D3E1C /* Build configuration list for PBXNativeTarget "Samples MacTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87F0A72C239E5C4B008D3E1C /* Debug */,
+				87F0A72D239E5C4B008D3E1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		87F0A72E239E5C4B008D3E1C /* Build configuration list for PBXNativeTarget "Samples MacUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87F0A72F239E5C4B008D3E1C /* Debug */,
+				87F0A730239E5C4B008D3E1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 875B4E5C23790DC6005A6B47 /* Project object */;
+}

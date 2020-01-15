@@ -1,0 +1,64 @@
+workspace '../Samples.xcworkspace'
+def commonpods
+    pod 'SDWebImage', '~> 4.2.2'
+    pod 'Toast', '~> 3.1.0'
+    pod 'M80AttributedLabel', '~> 1.6.3'
+    pod 'TZImagePickerController', '~> 1.9.3'
+    
+end
+
+def masonry
+
+    pod 'Masonry'
+end
+
+#bitcode enable
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_BITCODE'] = 'YES'
+
+      if config.name == 'Release'
+          config.build_settings['BITCODE_GENERATION_MODE'] = 'bitcode'
+      else
+          config.build_settings['BITCODE_GENERATION_MODE'] = 'marker'
+      end
+
+      cflags = config.build_settings['OTHER_CFLAGS'] || ['$(inherited)']
+
+      if config.name == 'Release'
+          cflags << '-fembed-bitcode'
+      else
+          cflags << '-fembed-bitcode-marker'
+      end
+
+      config.build_settings['OTHER_CFLAGS'] = cflags
+    end
+  end
+end
+
+target 'Samples iOS' do
+    platform :ios,"9.0"
+    project 'Samples.xcodeproj'
+    commonpods
+    masonry
+    
+    pod 'Reachability', '~> 3.2'
+    pod 'SVProgressHUD', '~> 2.1.2'
+    pod 'Fabric'
+    pod 'Crashlytics'
+    pod 'AFNetworking', '~> 3.2.1'
+    pod 'YYModel', '~> 1.0.4'
+    pod 'MJRefresh', '~> 3.1.15.7'
+end
+
+target 'Samples Mac' do
+    platform :osx,"10.8"
+    project 'Samples.xcodeproj'
+    masonry
+    
+    pod 'Fabric'
+    pod 'Crashlytics'
+    pod 'Reachability', '~> 3.2'
+    pod 'YYModel', '~> 1.0.4'
+end

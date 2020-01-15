@@ -1,0 +1,77 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - Crashlytics (3.13.1):
+    - Fabric (~> 1.10.1)
+  - Fabric (1.10.1)
+  - M80AttributedLabel (1.6.3)
+  - Masonry (1.1.0)
+  - MJRefresh (3.1.15.7)
+  - Reachability (3.2)
+  - SDWebImage (4.2.3):
+    - SDWebImage/Core (= 4.2.3)
+  - SDWebImage/Core (4.2.3)
+  - SVProgressHUD (2.1.2)
+  - Toast (3.1.0)
+  - TZImagePickerController (1.9.8)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.2.1)
+  - Crashlytics
+  - Fabric
+  - M80AttributedLabel (~> 1.6.3)
+  - Masonry
+  - MJRefresh (~> 3.1.15.7)
+  - Reachability (~> 3.2)
+  - SDWebImage (~> 4.2.2)
+  - SVProgressHUD (~> 2.1.2)
+  - Toast (~> 3.1.0)
+  - TZImagePickerController (~> 1.9.3)
+  - YYModel (~> 1.0.4)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Crashlytics
+    - Fabric
+    - M80AttributedLabel
+    - Masonry
+    - MJRefresh
+    - Reachability
+    - SDWebImage
+    - SVProgressHUD
+    - Toast
+    - TZImagePickerController
+    - YYModel
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
+  Fabric: f6f21452846788bb44595d73e9909d79d328e617
+  M80AttributedLabel: d06543195d3e451d2ea62ad76d04aa9cea7661d4
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  TZImagePickerController: 3b9413ae5d049b1fdc5b0c720ad283f35b679a50
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 59277cc47a4b4e10b4c6d698efd3cda48dda6b5c
+
+COCOAPODS: 1.5.3

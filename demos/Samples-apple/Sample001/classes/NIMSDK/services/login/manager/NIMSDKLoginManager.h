@@ -1,0 +1,16 @@
+//
+//  NIMSDKLoginManager.h
+//  Samples iOS
+//
+//  Created by dudu on 2019/11/20.
+//
+
+#import "NIMSDKLoginServiceProtocol.h"
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NIMSDKLoginManager : NSObject<NIMSDKLoginServiceProtocol>
+
+@end
+
+NS_ASSUME_NONNULL_END
