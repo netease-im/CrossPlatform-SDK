@@ -1,4 +1,4 @@
-/** @file nim_talkex_def_quick_comment.h
+﻿/** @file nim_talkex_def_quick_comment.h
   * @brief 快捷回复接口相关的常量函数等定义头文件
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @date 2020/04/19

@@ -1,4 +1,4 @@
-/** @file nim_cpp_talkex_quick_comment.cpp
+﻿/** @file nim_cpp_talkex_quick_comment.cpp
   * @brief 快捷回复相关功能
   * @copyright (c) 2015-2020, NetEase Inc. All rights reserved
   * @date 2020/04/20

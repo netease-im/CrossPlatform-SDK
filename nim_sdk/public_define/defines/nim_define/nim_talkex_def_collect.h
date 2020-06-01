@@ -1,4 +1,4 @@
-/** @file nim_talkex_def_collect.h
+﻿/** @file nim_talkex_def_collect.h
   * @brief 收藏接口相关的常量函数等定义头文件
   * @copyright (c) 2015-2017, NetEase Inc. All rights reserved
   * @date 2020/04/19

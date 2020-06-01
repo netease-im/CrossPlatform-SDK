@@ -1,4 +1,4 @@
-/** @file nim_cpp_talkex_collect.cpp
+﻿/** @file nim_cpp_talkex_collect.cpp
   * @brief 收藏相关功能
   * @copyright (c) 2015-2020, NetEase Inc. All rights reserved
   * @date 2020/04/20

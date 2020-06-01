@@ -1,4 +1,4 @@
-/** @file nim_talkex_helper_collect.cpp
+﻿/** @file nim_talkex_helper_collect.cpp
   * @brief TalkEx 收藏辅助方法和数据结构定义
   * @copyright (c) 2015-2020, NetEase Inc. All rights reserved
   * @date 2020/04/20
